@@ -1593,28 +1593,35 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentDrillAnswer = null;
 
     window.showDrill = () => {
-        document.getElementById('drill-start-screen').style.display = 'block';
-        document.getElementById('drill-active-screen').style.display = 'none';
+        const startScreen = document.getElementById('drill-start-screen');
+        const activeScreen = document.getElementById('drill-active-screen');
+        if (startScreen) startScreen.style.display = 'block';
+        if (activeScreen) activeScreen.style.display = 'none';
     };
 
     window.startDrill = () => {
         drillScore = 0;
-        document.getElementById('drill-score').innerText = '0';
+        const scoreEl = document.getElementById('drill-score');
+        if (scoreEl) scoreEl.innerText = '0';
         window.scrollTo(0, 0);
-        document.getElementById('drill-start-screen').style.display = 'none';
-        document.getElementById('drill-active-screen').style.display = 'block';
-        document.getElementById('drill-input').value = '';
-        document.getElementById('drill-input').focus();
+        const startScreen = document.getElementById('drill-start-screen');
+        const activeScreen = document.getElementById('drill-active-screen');
+        if (startScreen) startScreen.style.display = 'none';
+        if (activeScreen) activeScreen.style.display = 'block';
+        const inputEl = document.getElementById('drill-input');
+        if (inputEl) { inputEl.value = ''; inputEl.focus(); }
 
         generateDrillQuestion();
 
         let timeLeft = 60;
-        document.getElementById('drill-timer').innerText = timeLeft;
+        const timerEl = document.getElementById('drill-timer');
+        if (timerEl) timerEl.innerText = timeLeft;
 
         if (drillTimer) clearInterval(drillTimer);
         drillTimer = setInterval(() => {
             timeLeft--;
-            document.getElementById('drill-timer').innerText = timeLeft;
+            const t = document.getElementById('drill-timer');
+            if (t) t.innerText = timeLeft;
             if (timeLeft <= 0) {
                 endDrill();
             }
@@ -1642,32 +1649,40 @@ document.addEventListener('DOMContentLoaded', () => {
             currentDrillAnswer = p;
         }
 
-        document.getElementById('drill-question').innerText = qText;
+        const qEl = document.getElementById('drill-question');
+        if (qEl) qEl.innerText = qText;
     };
 
-    document.getElementById('drill-input').addEventListener('input', (e) => {
-        if (e.target.value == currentDrillAnswer) {
-            drillScore += 10;
-            document.getElementById('drill-score').innerText = drillScore;
-            e.target.value = '';
-            generateDrillQuestion();
+    const drillInput = document.getElementById('drill-input');
+    if (drillInput) {
+        drillInput.addEventListener('input', (e) => {
+            if (e.target.value == currentDrillAnswer) {
+                drillScore += 10;
+                document.getElementById('drill-score').innerText = drillScore;
+                e.target.value = '';
+                generateDrillQuestion();
 
-            // Visual feedback
-            const q = document.getElementById('drill-question');
-            q.style.color = 'var(--accent-cyan)';
-            setTimeout(() => q.style.color = 'white', 100);
-        }
-    });
+                // Visual feedback
+                const q = document.getElementById('drill-question');
+                if (q) {
+                    q.style.color = 'var(--accent-cyan)';
+                    setTimeout(() => q.style.color = 'white', 100);
+                }
+            }
+        });
+    }
 
     const endDrill = () => {
         clearInterval(drillTimer);
-        document.getElementById('drill-active-screen').style.display = 'none';
-        document.getElementById('drill-start-screen').style.display = 'block';
+        const activeScreen = document.getElementById('drill-active-screen');
+        const startScreen = document.getElementById('drill-start-screen');
+        if (activeScreen) activeScreen.style.display = 'none';
+        if (startScreen) startScreen.style.display = 'block';
 
         const startMsg = document.querySelector('#drill-start-screen h2');
-        startMsg.innerHTML = `Drill Complete: <span class="gradient-text">${drillScore} Points</span>`;
+        if (startMsg) startMsg.innerHTML = `Drill Complete: <span class="gradient-text">${drillScore} Points</span>`;
 
-        window.typeTerminalMessage(`DRILL TERMINATED. Final Score: ${drillScore}. ${drillScore > 100 ? "Excellent algorithmic speed detected." : "Precision is high, but throughput needs optimization. Continue recalibrating."}`);
+        if (window.typeTerminalMessage) window.typeTerminalMessage(`DRILL TERMINATED. Final Score: ${drillScore}. ${drillScore > 100 ? "Excellent algorithmic speed detected." : "Precision is high, but throughput needs optimization. Continue recalibrating."}`);
     };
 
     // --- Global Search Implementation ---

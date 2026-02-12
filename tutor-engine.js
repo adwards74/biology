@@ -116,6 +116,15 @@ window.TutorEngine = (function () {
         }
     };
 
+    /**
+     * getSocraticAdvice - Compatibility wrapper for app.js
+     * Links the application's tutor tip feature to the biological knowledge map.
+     */
+    function getSocraticAdvice(lessonKey, subjectId) {
+        const query = (lessonKey || subjectId || "").replace(/-/g, " ");
+        return handleChatInput(query);
+    }
+
     // ========================================
     // BIOLOGY HINT DATABASE (Elite TJHSST IBET)
     // ========================================
@@ -237,16 +246,50 @@ window.TutorEngine = (function () {
     // Initialize map
     setTimeout(() => KnowledgeMap.build(), 1000);
 
+    function getConceptMatrix(lessonKey) {
+        const normalized = (lessonKey || "general").toLowerCase();
+        const results = KnowledgeMap.search(normalized);
+        const best = results.length > 0 ? results[0] : null;
+
+        return {
+            current: best ? (best.title || best.name || normalized) : normalized,
+            parents: [], // Placeholder for future graph logic
+            children: []
+        };
+    }
+
+    function getNextRecommendation(subjectId, progress) {
+        const subject = window.MATH_DATA && window.MATH_DATA.subjects.find(s => s.id === subjectId);
+        if (!subject) return { message: "Sync complete. Ready for new input." };
+
+        // Find first incomplete unit
+        const nextUnit = subject.units.find(u => {
+            return u.lectures.some(l => {
+                const id = l.url.split(':').pop();
+                return !(progress && progress[id] && progress[id].completed);
+            });
+        });
+
+        if (nextUnit) {
+            return { message: `Recommended: Focus on **${nextUnit.title}** to strengthen your ${subject.title} foundation.` };
+        }
+        return { message: "Current pillar mastered. Neural link suggests proceeding to the next complexity level." };
+    }
+
     // Public API
     window.handleChatInput = handleChatInput;
+    window.getSocraticAdvice = getSocraticAdvice;
     window.recordQuizResult = recordQuizResult;
     window.typeTerminalMessage = typeTerminalMessage;
     window.buildNeuralMap = () => KnowledgeMap.build();
+    window.getNextRecommendation = getNextRecommendation;
 
     return {
         handleChatInput,
         recordQuizResult,
         typeTerminalMessage,
+        getConceptMatrix,
+        getNextRecommendation,
         buildNeuralMap: () => KnowledgeMap.build()
     };
 })();

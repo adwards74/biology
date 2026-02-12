@@ -24,19 +24,25 @@ window.UIEngine = (function () {
             }
         };
 
-        container.innerHTML = subjects.map((sub, idx) => {
+        container.innerHTML = (subjects || []).map((sub, idx) => {
+            if (!sub) return '';
             // Calculate actual progress %
             let totalLectures = 0;
             let completedLectures = 0;
-            sub.units.forEach(unit => {
-                unit.lectures.forEach(lecture => {
-                    totalLectures++;
-                    const id = lecture.url.split(':').pop();
-                    if (progress[id] && progress[id].completed) {
-                        completedLectures++;
+            if (sub.units) {
+                sub.units.forEach(unit => {
+                    if (unit.lectures) {
+                        unit.lectures.forEach(lecture => {
+                            totalLectures++;
+                            const parts = (lecture.url || "").split(':');
+                            const id = parts.length > 0 ? parts.pop() : null;
+                            if (id && progress[id] && progress[id].completed) {
+                                completedLectures++;
+                            }
+                        });
                     }
                 });
-            });
+            }
             const percent = totalLectures > 0 ? Math.round((completedLectures / totalLectures) * 100) : 0;
 
             return `
@@ -61,7 +67,8 @@ window.UIEngine = (function () {
 
 
     function showSubjectDetail(subjectId) {
-        const subject = MATH_DATA.subjects.find(s => s.id === subjectId);
+        const data = window.MATH_DATA || { subjects: [] };
+        const subject = data.subjects.find(s => s.id === subjectId);
         if (!subject) return;
 
         const main = document.getElementById('dashboard-view');
@@ -204,7 +211,8 @@ window.UIEngine = (function () {
             </div>
             <div id="subject-cards-container" class="subject-grid"></div>
         `;
-        renderSubjectGrid(MATH_DATA.subjects, 'subject-cards-container');
+        const data = window.MATH_DATA || {};
+        renderSubjectGrid(data.subjects || [], 'subject-cards-container');
     }
 
     // Expose functions global context

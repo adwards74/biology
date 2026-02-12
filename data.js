@@ -3,6 +3,7 @@
  * Modeling the TJHSST 9th Grade IBET Biology Curriculum
  */
 
+window.MATH_DATA = window.MATH_DATA || {};
 window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-render.js
     subjects: [
         {
@@ -11,7 +12,7 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
             code: "BIO-100",
             icon: "fas fa-microscope",
             color: "#10b981",
-            difficulty: "intermediate",
+            difficulty: "basic",
             description: "Advanced analysis of cellular architecture, transport kinetics, and enzymatic control systems.",
             units: [
                 {
@@ -74,11 +75,11 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
         },
         {
             id: "molecular-genetics",
-            title: "The Molecular Blueprint",
+            title: "Molecular Genetics",
             code: "BIO-200",
             icon: "fas fa-dna",
             color: "#06b6d4",
-            difficulty: "advanced",
+            difficulty: "intermediate",
             description: "Information theory applied to biology. DNA replication, protein synthesis, and the logic of gene regulation.",
             units: [
                 {
@@ -98,8 +99,46 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
             ]
         },
         {
+            id: "metabolism",
+            title: "Energy & Metabolism",
+            code: "BIO-300",
+            icon: "fas fa-bolt",
+            color: "#f59e0b",
+            difficulty: "intermediate",
+            description: "Energy transformation systems. Photosynthesis and cellular respiration mechanics.",
+            units: [
+                {
+                    title: "Unit 7: Solar Engines",
+                    intuition: "Life runs on solar flux captured via electron transport chains.",
+                    topics: ["PSII and PSI", "Chemiosmosis", "Calvin Cycle"],
+                    lectures: [
+                        { name: "7.1: The Solar Panel", url: "lesson:bio:ch3-1" }
+                    ]
+                }
+            ]
+        },
+        {
+            id: "heredity",
+            title: "Heredity & Variation",
+            code: "BIO-400",
+            icon: "fas fa-users-viewfinder",
+            color: "#8b5cf6",
+            difficulty: "advanced",
+            description: "Classical and Non-Mendelian genetics. Probability models for life inheritance.",
+            units: [
+                {
+                    title: "Unit 9: Genetic Probability",
+                    intuition: "Inheritance is a statistical game played with chromosomal cards.",
+                    topics: ["Mendelian Logic", "Pedigrees", "Linkage"],
+                    lectures: [
+                        { name: "9.1: The Laws of Segregation", url: "lesson:bio:ch4-1" }
+                    ]
+                }
+            ]
+        },
+        {
             id: "biostatistics",
-            title: "The TJ Scientist (Quantitative)",
+            title: "The TJ Scientist",
             code: "BIO-500",
             icon: "fas fa-square-root-variable",
             color: "#ef4444",
@@ -111,8 +150,7 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                     intuition: "Is your data significant or just noise? Statistics provides the mathematical threshold for proof.",
                     topics: ["Chi-Square Analysis", "SEM & Error Bars", "Null Hypothesis Testing"],
                     lectures: [
-                        { name: "11.1: The Chi-Square Test", url: "lesson:bio:ch5-1" },
-                        { name: "11.2: Error Bar Logic", url: "lesson:bio:ch5-2" }
+                        { name: "11.1: The Chi-Square Test", url: "lesson:bio:ch5-1" }
                     ],
                     examples: [
                         {
@@ -134,6 +172,23 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                 }
             ]
         }
+    ],
+    strategy: {
+        content: `
+            <h2>TJHSST IBET Strategy Guide</h2>
+            <div class="glass-card">
+                <h4>1. Focus on the Mechanism</h4>
+                <p>Don't just memorize terms. For every organelle or process, ask: <em>How does this contribute to homeostasis?</em></p>
+                <h4>2. Quantitative Precision</h4>
+                <p>TJ's Biology curriculum is heavy on math. Master the Chi-Square test and Water Potential calculations early.</p>
+                <h4>3. The FRQ Logic</h4>
+                <p>When writing, use the **Claim, Evidence, Reasoning (CER)** model. It's the standard for IBET success.</p>
+            </div>
+        `
+    },
+    external_resources: [
+        { title: "Khan Academy Bio", url: "https://www.khanacademy.org/science/biology", icon: "fas fa-leaf", desc: "Foundational concepts for supplemental review." },
+        { title: "Bozeman Science", url: "http://www.bozemanscience.com/biology", icon: "fas fa-video", desc: "In-depth video lectures on AP/Honors Bio topics." }
     ]
 };
 

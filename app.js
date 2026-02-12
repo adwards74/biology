@@ -1,6 +1,8 @@
 window.onerror = function (msg, url, line, col, error) {
     console.error("GLOBAL ERROR caught:", { msg, url, line, col, error });
-    alert("GLOBAL ERROR: " + msg + "\nLine: " + line + "\nURL: " + url);
+    let errorDetail = "";
+    if (error && error.stack) errorDetail = "\nStack: " + error.stack;
+    alert("GLOBAL ERROR: " + msg + "\nLine: " + line + "\nURL: " + url + errorDetail);
 };
 
 document.addEventListener('DOMContentLoaded', () => {

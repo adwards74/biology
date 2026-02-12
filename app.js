@@ -1,8 +1,16 @@
 window.onerror = function (msg, url, line, col, error) {
-    console.error("GLOBAL ERROR caught:", { msg, url, line, col, error });
+    // Filter out CORS-masked errors from external CDN scripts (MathJax, FontAwesome, etc.)
+    // These appear as "Script error." with line=0 and empty URL when loading via file:// protocol.
+    // They are harmless browser security messages, NOT actual application bugs.
+    if (msg === "Script error." && line === 0 && (!url || url === "")) {
+        console.warn("[CORS] External CDN script error (masked by browser security policy). Safe to ignore.");
+        return true; // Suppress the error
+    }
+
+    console.error("APPLICATION ERROR:", { msg, url, line, col, error });
     let errorDetail = "";
     if (error && error.stack) errorDetail = "\nStack: " + error.stack;
-    alert("GLOBAL ERROR: " + msg + "\nLine: " + line + "\nURL: " + url + errorDetail);
+    alert("APPLICATION ERROR: " + msg + "\nLine: " + line + "\nFile: " + url + errorDetail);
 };
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -195,7 +195,7 @@ window.UIEngine = (function () {
         main.innerHTML = `
             <div class="hero">
                 <h1>Sabrina <span class="gradient-text">Elite 5.3</span></h1>
-                <p>Advanced Biological Systems Architecture for TJHSST & Beyond.</p>
+                <p>Advanced Biological Systems Analysis for TJHSST & Beyond.</p>
                 <div style="margin-top:20px;">
                     <button class="glass-btn reset-btn" onclick="window.resetProgress()" style="padding:10px 20px; font-size:0.8rem; border-color:rgba(245,87,108,0.3); color:#f5576c;">
                         <i class="fas fa-sync-alt"></i> Reset Neural Link

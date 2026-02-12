@@ -4,4 +4,4 @@
  * Lesson data is loaded dynamically from data/chapters/*.js
  */
 window.CHAPTER_DATA = window.CHAPTER_DATA || {};
-const MATH_LESSONS = { algebra2: {} }; // Maintain legacy reference for safety
+window.MATH_LESSONS = { algebra2: {} }; // Maintain legacy reference for safety

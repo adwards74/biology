@@ -362,7 +362,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="badge-card glass animate__animated animate__zoomIn">
                 <div class="logo-icon"><i class="fas fa-microscope"></i></div>
                 <span>Sabrina.Bio</span>
-            </div>    <p>You have mastered <strong>${chapterTitle}</strong></p>
+                <h2>Achievement Unlocked!</h2>
+                <p>You have mastered <strong>${chapterTitle}</strong></p>
                 <div class="badge-title">${badgeName}</div>
                 <button onclick="this.parentElement.parentElement.remove()" class="glass next-btn">Keep Going!</button>
             </div>

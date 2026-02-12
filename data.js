@@ -92,7 +92,20 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "Why is one DNA strand built in fragments (Okazaki)?", answer: "DNA Polymerase can only build in the $5' \rightarrow 3'$ direction.", options: ["Because it is faster", "$5' \rightarrow 3'$ constraint", "To prevent mutations"], explanation: "As the fork opens, the lagging strand must wait for enough space to build 'forward' in small chunks." }
+                            { title: "L1: Intuition", question: "Why is one DNA strand built in fragments (Okazaki)?", answer: "DNA Polymerase can only build in the 5'→3' direction.", options: ["Because it is faster", "5'→3' constraint", "To prevent mutations"], explanation: "As the fork opens, the lagging strand must wait for enough space to build 'forward' in small chunks." }
+                        ]
+                    }
+                },
+                {
+                    title: "Unit 5: Gene Expression",
+                    intuition: "The Central Dogma: DNA is transcribed to RNA, which is translated into protein. One gene, one polypeptide.",
+                    topics: ["Transcription", "mRNA Processing", "Translation", "Codon Table"],
+                    lectures: [
+                        { name: "5.1: Transcription & Translation", url: "lesson:bio:ch2-3" }
+                    ],
+                    quiz: {
+                        levels: [
+                            { title: "L1: Intuition", question: "What is the start codon and which amino acid does it code for?", answer: "AUG — Methionine", options: ["UAA — Stop", "AUG — Methionine", "GCA — Alanine"], explanation: "AUG is both the universal start codon and codes for the amino acid methionine." }
                         ]
                     }
                 }
@@ -113,7 +126,25 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                     topics: ["PSII and PSI", "Chemiosmosis", "Calvin Cycle"],
                     lectures: [
                         { name: "7.1: The Solar Panel", url: "lesson:bio:ch3-1" }
-                    ]
+                    ],
+                    quiz: {
+                        levels: [
+                            { title: "L1: Intuition", question: "Where does the oxygen released during photosynthesis come from?", answer: "From the splitting of water (photolysis)", options: ["From CO₂", "From glucose breakdown", "From the splitting of water (photolysis)"], explanation: "Water is split in PSII: 2H₂O → 4H⁺ + 4e⁻ + O₂. The oxygen you breathe comes from water, not CO₂." }
+                        ]
+                    }
+                },
+                {
+                    title: "Unit 8: Cellular Respiration",
+                    intuition: "Glucose is broken down in controlled steps to harvest ATP. Oxygen is the final electron acceptor.",
+                    topics: ["Glycolysis", "Krebs Cycle", "Oxidative Phosphorylation", "Fermentation"],
+                    lectures: [
+                        { name: "8.1: Cellular Respiration", url: "lesson:bio:ch3-3" }
+                    ],
+                    quiz: {
+                        levels: [
+                            { title: "L1: Intuition", question: "How much ATP does aerobic respiration produce per glucose compared to fermentation?", answer: "~30-32 ATP (aerobic) vs. 2 ATP (fermentation)", options: ["2 vs. 2", "~30-32 vs. 2", "~30-32 vs. 18"], explanation: "Without oxygen, only glycolysis can run (2 ATP). With oxygen, the full pathway yields ~30-32 ATP — about 15x more efficient." }
+                        ]
+                    }
                 }
             ]
         },
@@ -129,10 +160,28 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                 {
                     title: "Unit 9: Genetic Probability",
                     intuition: "Inheritance is a statistical game played with chromosomal cards.",
-                    topics: ["Mendelian Logic", "Pedigrees", "Linkage"],
+                    topics: ["Mendelian Logic", "Punnett Squares", "Dihybrid Crosses"],
                     lectures: [
                         { name: "9.1: The Laws of Segregation", url: "lesson:bio:ch4-1" }
-                    ]
+                    ],
+                    quiz: {
+                        levels: [
+                            { title: "L1: Intuition", question: "What phenotype ratio do you expect from a monohybrid cross Aa × Aa?", answer: "3 dominant : 1 recessive", options: ["1:1", "3:1", "9:3:3:1"], explanation: "A monohybrid cross of two heterozygotes produces 1 AA : 2 Aa : 1 aa genotype, which gives a 3:1 dominant:recessive phenotype ratio." }
+                        ]
+                    }
+                },
+                {
+                    title: "Unit 10: Chromosomal Linkage",
+                    intuition: "Genes on the same chromosome break Mendel's second law — unless crossing over separates them.",
+                    topics: ["Linked Genes", "Recombination Frequency", "Gene Mapping"],
+                    lectures: [
+                        { name: "10.1: Chromosomal Linkage & Mapping", url: "lesson:bio:ch4-3" }
+                    ],
+                    quiz: {
+                        levels: [
+                            { title: "L1: Intuition", question: "If two genes have a recombination frequency of 50%, what does that tell you?", answer: "They are on different chromosomes (unlinked)", options: ["They are very close together", "They are on different chromosomes (unlinked)", "They never recombine"], explanation: "RF of 50% means genes assort independently — they behave as if on different chromosomes. Linked genes always have RF < 50%." }
+                        ]
+                    }
                 }
             ]
         },
@@ -155,18 +204,31 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                     examples: [
                         {
                             title: "Chi-Square for Mendelian Ratios",
-                            problem: "You observe 310 tall plants and 90 short plants in a cross expecting 3:1. Calculate $\chi^2$.",
+                            problem: "You observe 310 tall plants and 90 short plants in a cross expecting 3:1. Calculate χ².",
                             steps: [
                                 "Expected: Tall = 300, Short = 100.",
-                                "$\chi^2 = (310-300)^2/300 + (90-100)^2/100$.",
-                                "$\chi^2 = 100/300 + 100/100 = 0.33 + 1.0 = 1.33$."
+                                "χ² = (310-300)²/300 + (90-100)²/100.",
+                                "χ² = 100/300 + 100/100 = 0.33 + 1.0 = 1.33."
                             ],
-                            intuition: "Since $1.33 < 3.84$ (critical value for df=1), we fail to reject the null. The data supports the 3:1 ratio."
+                            intuition: "Since 1.33 < 3.84 (critical value for df=1), we fail to reject the null. The data supports the 3:1 ratio."
                         }
                     ],
                     quiz: {
                         levels: [
                             { title: "L3: Mastery", question: "What does it mean if your 95% Confidence Interval error bars for two groups OVERLAP?", answer: "The difference between the groups is likely NOT statistically significant.", options: ["Data is perfect", "Difference is significant", "Not statistically significant"], explanation: "Overlapping error bars suggest the real means could be the same." }
+                        ]
+                    }
+                },
+                {
+                    title: "Unit 12: Experimental Design",
+                    intuition: "A well-designed experiment eliminates all alternative explanations for the results.",
+                    topics: ["Variables & Controls", "Sample Size", "Replication", "IBET Protocols"],
+                    lectures: [
+                        { name: "12.1: Designing the Lab", url: "lesson:bio:ch5-3" }
+                    ],
+                    quiz: {
+                        levels: [
+                            { title: "L1: Intuition", question: "Why must an experiment have a negative control?", answer: "To establish a baseline showing what happens without the treatment", options: ["To save money", "To establish a baseline without treatment", "To increase sample size"], explanation: "A negative control receives no treatment, establishing the baseline against which experimental results are compared." }
                         ]
                     }
                 }

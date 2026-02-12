@@ -31,6 +31,36 @@ window.CHAPTER_DATA["ch4"] = {
                     <p>Mendel's genius was treating inheritance as a <strong>statistical problem</strong>. A Punnett square doesn't tell you what a specific offspring WILL be — it tells you the <strong>probability distribution</strong> of all possible outcomes. With enough offspring, observed ratios converge on predicted ratios (Law of Large Numbers).</p>
                 </div>
 
+                <!-- VISUAL DYNAMIC: PUNNETT LOGIC -->
+                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
+                    <h5 style="color: var(--accent-purple); margin-bottom: 20px; text-align: center;"><i class="fas fa-th-large"></i> Visual Dynamic: Probability Matrix Logic</h5>
+                    <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+                        <svg viewBox="0 0 300 300" style="max-width: 350px; width: 100%; height: auto;">
+                            <!-- Grid -->
+                            <rect x="60" y="60" width="220" height="220" rx="10" fill="rgba(139,92,246,0.1)" stroke="var(--accent-purple)" stroke-width="2" />
+                            <line x1="170" y1="60" x2="170" y2="280" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                            <line x1="60" y1="170" x2="280" y2="170" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                            
+                            <!-- Alleles (Top) -->
+                            <text x="115" y="40" fill="var(--accent-purple)" font-size="16" font-weight="bold" text-anchor="middle">B</text>
+                            <text x="225" y="40" fill="var(--accent-purple)" font-size="16" font-weight="bold" text-anchor="middle">b</text>
+                            
+                            <!-- Alleles (Side) -->
+                            <text x="30" y="125" fill="var(--accent-purple)" font-size="16" font-weight="bold" text-anchor="middle">B</text>
+                            <text x="30" y="235" fill="var(--accent-purple)" font-size="16" font-weight="bold" text-anchor="middle">b</text>
+                            
+                            <!-- Boxes -->
+                            <g transform="translate(60,60)">
+                                <text x="55" y="65" fill="#fff" font-size="20" text-anchor="middle" font-weight="bold">BB</text>
+                                <text x="165" y="65" fill="var(--accent-cyan)" font-size="14" text-anchor="middle">Bb</text>
+                                <text x="55" y="175" fill="var(--accent-cyan)" font-size="14" text-anchor="middle">Bb</text>
+                                <text x="165" y="175" fill="var(--accent-red)" font-size="14" text-anchor="middle">bb</text>
+                            </g>
+                            <text x="170" y="295" fill="#aaa" font-size="9" text-anchor="middle" font-style="italic">Standard 1:2:1 Genotype Distribution</text>
+                        </svg>
+                    </div>
+                </div>
+
                 <h2>I. Monohybrid Cross: One Gene, Two Alleles</h2>
 
                 <p>Cross: <strong>Bb × Bb</strong> (both parents heterozygous)</p>
@@ -105,6 +135,38 @@ window.CHAPTER_DATA["ch4"] = {
                 <div class="intuition-box glass" style="border-left-color: var(--accent-purple);">
                     <h3><i class="fas fa-lightbulb"></i> Big Idea: Breaking Mendel's Second Law</h3>
                     <p>Mendel's Law of Independent Assortment only works for genes on <strong>different chromosomes</strong>. When two genes are on the <strong>same chromosome</strong>, they travel together unless crossing over physically separates them. The closer two genes are, the less likely crossing over occurs between them — and this gives us a way to <strong>map gene positions</strong>.</p>
+                </div>
+
+                <!-- VISUAL DYNAMIC: CHROMOSOMAL LINKAGE -->
+                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
+                    <h5 style="color: var(--accent-purple); margin-bottom: 20px; text-align: center;"><i class="fas fa-link"></i> Visual Dynamic: Genetic Linkage Architecture</h5>
+                    <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center;">
+                        <svg viewBox="0 0 400 200" style="max-width: 450px; width: 100%; height: auto;">
+                            <!-- Chromosome 1 -->
+                            <rect x="100" y="40" width="20" height="120" rx="10" fill="rgba(6,182,212,0.1)" stroke="var(--accent-cyan)" stroke-width="2" />
+                            <circle cx="110" cy="70" r="5" fill="var(--accent-amber)" />
+                            <text x="120" y="75" fill="var(--accent-amber)" font-size="10">Gene A</text>
+                            
+                            <circle cx="110" cy="130" r="5" fill="var(--accent-emerald)" />
+                            <text x="120" y="135" fill="var(--accent-emerald)" font-size="10">Gene B</text>
+                            
+                            <text x="110" y="30" fill="white" font-size="10" text-anchor="middle" font-weight="bold">LINKED</text>
+                            <text x="110" y="175" fill="#aaa" font-size="8" text-anchor="middle">Inherited together</text>
+                            
+                            <!-- Separator -->
+                            <line x1="200" y1="50" x2="200" y2="150" stroke="rgba(255,255,255,0.1)" stroke-width="1" />
+                            
+                            <!-- Chromosome 2 & 3 -->
+                            <rect x="280" y="40" width="20" height="60" rx="10" fill="rgba(255,255,255,0.05)" stroke="white" stroke-width="1" />
+                            <circle cx="290" cy="70" r="5" fill="var(--accent-amber)" />
+                            
+                            <rect x="340" y="100" width="20" height="60" rx="10" fill="rgba(255,255,255,0.05)" stroke="white" stroke-width="1" />
+                            <circle cx="350" cy="130" r="5" fill="var(--accent-emerald)" />
+                            
+                            <text x="320" y="30" fill="white" font-size="10" text-anchor="middle" font-weight="bold">UNLINKED</text>
+                            <text x="320" y="175" fill="#aaa" font-size="8" text-anchor="middle">Independent Assortment</text>
+                        </svg>
+                    </div>
                 </div>
 
                 <h2>I. Linked vs. Unlinked Genes</h2>

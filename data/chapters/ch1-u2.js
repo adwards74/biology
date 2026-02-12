@@ -60,6 +60,39 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
 
                 <p><strong>The Golden Rule:</strong> Water ALWAYS moves from <strong>high $\\Psi$</strong> to <strong>low $\\Psi$</strong>. Pure water ($\\Psi = 0$) has the highest possible water potential.</p>
 
+                <!-- VISUAL DYNAMIC: WATER POTENTIAL LOGIC -->
+                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
+                    <h5 style="color: var(--accent-cyan); margin-bottom: 20px; text-align: center;"><i class="fas fa-faucet"></i> Visual Dynamic: Water Potential & Osmotic Pressure</h5>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                        <svg viewBox="0 0 400 200" style="max-width: 500px; width: 100%; height: auto;">
+                            <!-- U-Tube Glass -->
+                            <path d="M 120 40 L 120 160 Q 120 180 140 180 L 260 180 Q 280 180 280 160 L 280 40" fill="none" stroke="white" stroke-width="3" opacity="0.3" />
+                            
+                            <!-- Left Side (High WP) -->
+                            <rect x="122" y="80" width="58" height="100" fill="rgba(6,182,212,0.2)" />
+                            <text x="150" y="70" fill="var(--accent-cyan)" font-size="10" text-anchor="middle" font-weight="bold">High $\Psi$ (0 MPa)</text>
+                            
+                            <!-- Right Side (Low WP) -->
+                            <rect x="220" y="110" width="58" height="70" fill="rgba(16,185,129,0.3)" />
+                            <text x="250" y="100" fill="var(--accent-emerald)" font-size="10" text-anchor="middle" font-weight="bold">Low $\Psi$ (-1.0 MPa)</text>
+                            
+                            <!-- Solutes (Right) -->
+                            <circle cx="230" cy="130" r="3" fill="var(--accent-amber)" />
+                            <circle cx="260" cy="140" r="3" fill="var(--accent-amber)" />
+                            <circle cx="240" cy="160" r="3" fill="var(--accent-amber)" />
+                            <circle cx="265" cy="165" r="3" fill="var(--accent-amber)" />
+                            
+                            <!-- Arrow (Flow) -->
+                            <path d="M 150 160 Q 200 190 250 160" fill="none" stroke="var(--accent-cyan)" stroke-width="4" stroke-linecap="round">
+                                <animate attributeName="stroke-dasharray" from="0,200" to="200,0" dur="2s" repeatCount="indefinite" />
+                            </path>
+                            <text x="200" y="175" fill="white" font-size="9" text-anchor="middle">NET FLOW</text>
+                            
+                            <text x="200" y="30" fill="white" font-size="11" text-anchor="middle" font-style="italic">Diffusion of water down the potential gradient</text>
+                        </svg>
+                    </div>
+                </div>
+
                 <h2>III. Tonicity: Effects on Cells</h2>
 
                 <p>Tonicity describes the relative concentration of solutes outside the cell compared to inside. It determines whether the cell gains water, loses water, or stays the same.</p>
@@ -170,6 +203,44 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                 <h2>I. The Transport Spectrum</h2>
 
                 <p>All membrane transport falls on a spectrum from completely passive to fully active:</p>
+
+                <!-- VISUAL DYNAMIC: TRANSPORT ANIMATION -->
+                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
+                    <h5 style="color: var(--accent-cyan); margin-bottom: 20px; text-align: center;"><i class="fas fa-bolt"></i> Visual Dynamic: Membrane Transport Energetics</h5>
+                    <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+                        <!-- PASSIVE -->
+                        <div style="text-align: center;">
+                            <svg viewBox="0 0 150 200" width="150">
+                                <rect x="0" y="90" width="150" height="20" fill="rgba(255,255,255,0.1)" stroke="white" stroke-width="1" />
+                                <rect x="60" y="85" width="30" height="30" fill="#111" stroke="var(--accent-cyan)" stroke-width="2" />
+                                <!-- Channel Particles -->
+                                <circle cx="75" cy="40" r="4" fill="var(--accent-cyan)">
+                                    <animate attributeName="cy" from="30" to="170" dur="1.5s" repeatCount="indefinite" />
+                                </circle>
+                                <text x="75" y="20" fill="var(--accent-cyan)" font-size="10" text-anchor="middle" font-weight="bold">PASSIVE</text>
+                                <text x="75" y="190" fill="#aaa" font-size="8" text-anchor="middle">High → Low (Free)</text>
+                            </svg>
+                        </div>
+                        <!-- ACTIVE -->
+                        <div style="text-align: center;">
+                            <svg viewBox="0 0 150 200" width="150">
+                                <rect x="0" y="90" width="150" height="20" fill="rgba(255,255,255,0.1)" stroke="white" stroke-width="1" />
+                                <rect x="60" y="85" width="30" height="30" fill="#111" stroke="var(--accent-amber)" stroke-width="2" />
+                                <!-- ATP Spark -->
+                                <circle cx="95" cy="100" r="8" fill="rgba(245,158,11,0.2)">
+                                    <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite" />
+                                </circle>
+                                <text x="105" y="105" fill="var(--accent-amber)" font-size="8">ATP</text>
+                                <!-- Pump Particles -->
+                                <circle cx="75" cy="170" r="4" fill="var(--accent-emerald)">
+                                    <animate attributeName="cy" from="170" to="30" dur="1.5s" repeatCount="indefinite" />
+                                </circle>
+                                <text x="75" y="20" fill="var(--accent-amber)" font-size="10" text-anchor="middle" font-weight="bold">ACTIVE</text>
+                                <text x="75" y="190" fill="#aaa" font-size="8" text-anchor="middle">Low → High (Spent)</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
 
                 <div style="overflow-x: auto; margin: 25px 0;">
                     <table class="glass-table" style="width:100%; border-collapse:collapse; font-size:0.88rem;">

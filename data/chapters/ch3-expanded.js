@@ -29,6 +29,39 @@ window.CHAPTER_DATA["ch3"] = {
                     <p>Photosynthesis is NOT just "plants making food from sunlight." It is a sophisticated <strong>electron relay system</strong> where photons excite electrons, which are then passed through protein complexes to pump H⁺ ions and generate ATP. The "light reactions" capture energy; the "Calvin Cycle" uses that energy to build sugar from CO₂.</p>
                 </div>
 
+                <!-- VISUAL DYNAMIC: PHOTOSYNTHESIS OVERVIEW -->
+                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
+                    <h5 style="color: var(--accent-orange); margin-bottom: 20px; text-align: center;"><i class="fas fa-sun"></i> Visual Dynamic: The Chloroplast Energy Cycle</h5>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                        <svg viewBox="0 0 500 200" style="max-width: 600px; width: 100%; height: auto;">
+                            <!-- Light Reactions (Left) -->
+                            <rect x="20" y="40" width="180" height="120" rx="15" fill="rgba(16,185,129,0.1)" stroke="var(--accent-emerald)" stroke-width="2" />
+                            <text x="110" y="30" fill="var(--accent-emerald)" font-size="12" font-weight="bold" text-anchor="middle">LIGHT REACTIONS</text>
+                            <text x="110" y="100" fill="white" font-size="10" text-anchor="middle">Thylakoids</text>
+                            
+                            <!-- Calvin Cycle (Right) -->
+                            <circle cx="380" cy="100" r="60" fill="rgba(251,146,60,0.1)" stroke="var(--accent-orange)" stroke-width="2" />
+                            <text x="380" y="30" fill="var(--accent-orange)" font-size="12" font-weight="bold" text-anchor="middle">CALVIN CYCLE</text>
+                            <text x="380" y="105" fill="white" font-size="10" text-anchor="middle">Stroma</text>
+                            
+                            <!-- Connectors -->
+                            <path d="M 200 80 L 320 80" marker-end="url(#arrow)" stroke="var(--accent-cyan)" stroke-width="2" />
+                            <text x="260" y="70" fill="var(--accent-cyan)" font-size="9" text-anchor="middle">ATP + NADPH</text>
+                            
+                            <path d="M 320 120 L 200 120" marker-end="url(#arrow)" stroke="#888" stroke-width="2" />
+                            <text x="260" y="140" fill="#888" font-size="9" text-anchor="middle">ADP + NADP⁺</text>
+                            
+                            <!-- Inputs/Outputs -->
+                            <text x="40" y="180" fill="var(--accent-cyan)" font-size="9">H₂O → O₂</text>
+                            <text x="400" y="180" fill="var(--accent-amber)" font-size="9">CO₂ → SUGAR</text>
+                            
+                            <defs>
+                                <marker id="arrow" markerWidth="6" markerHeight="6" refX="0" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="context-stroke" /></marker>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+
                 <h2>I. The Light-Dependent Reactions (Thylakoid Membrane)</h2>
 
                 <p>The overall equation: <strong>$$6CO_2 + 6H_2O \\xrightarrow{\\text{light}} C_6H_{12}O_6 + 6O_2$$</strong></p>
@@ -101,6 +134,38 @@ window.CHAPTER_DATA["ch3"] = {
                 <div class="intuition-box glass" style="border-left-color: var(--accent-orange);">
                     <h3><i class="fas fa-lightbulb"></i> Big Idea: Respiration Is Controlled Combustion</h3>
                     <p>Burning glucose in a fire releases all its energy as heat — instantly and wastefully. Cellular respiration does the same chemistry ($C_6H_{12}O_6 + 6O_2 → 6CO_2 + 6H_2O$) but in <strong>many small steps</strong>, capturing ~34% of the energy as ATP. The rest is still released as heat (which is why you're warm!).</p>
+                </div>
+
+                <!-- VISUAL DYNAMIC: RESPIRATION FLOW -->
+                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
+                    <h5 style="color: var(--accent-orange); margin-bottom: 20px; text-align: center;"><i class="fas fa-battery-full"></i> Visual Dynamic: The ATP Production Workflow</h5>
+                    <div style="display: flex; justify-content: center; align-items: center; gap: 20px; min-height: 200px;">
+                        <svg viewBox="0 0 500 150" style="max-width: 600px; width: 100%; height: auto;">
+                            <!-- Stage 1 -->
+                            <rect x="20" y="40" width="100" height="70" rx="10" fill="rgba(255,255,255,0.05)" stroke="white" stroke-width="1" />
+                            <text x="70" y="70" fill="white" font-size="10" text-anchor="middle">GLYCOLYSIS</text>
+                            <text x="70" y="85" fill="#aaa" font-size="8" text-anchor="middle">Cytoplasm</text>
+                            
+                            <!-- Stage 2 -->
+                            <rect x="180" y="40" width="100" height="70" rx="10" fill="rgba(251,146,60,0.1)" stroke="var(--accent-orange)" stroke-width="2" />
+                            <text x="230" y="70" fill="var(--accent-orange)" font-size="10" text-anchor="middle" font-weight="bold">KREBS CYCLE</text>
+                            <text x="230" y="85" fill="#aaa" font-size="8" text-anchor="middle">Matrix</text>
+                            
+                            <!-- Stage 3 -->
+                            <rect x="340" y="40" width="140" height="70" rx="10" fill="rgba(16,185,129,0.1)" stroke="var(--accent-emerald)" stroke-width="2" />
+                            <text x="410" y="70" fill="var(--accent-emerald)" font-size="10" text-anchor="middle" font-weight="bold">ETC / OX-PHOS</text>
+                            <text x="410" y="85" fill="#aaa" font-size="8" text-anchor="middle">Inner Membrane</text>
+                            
+                            <!-- Connectors -->
+                            <path d="M 120 75 L 180 75" marker-end="url(#arrow)" stroke="white" stroke-width="1.5" />
+                            <path d="M 280 75 L 340 75" marker-end="url(#arrow)" stroke="white" stroke-width="1.5" />
+                            
+                            <!-- ATP Yields -->
+                            <text x="70" y="130" fill="var(--accent-cyan)" font-size="9" text-anchor="middle">2 ATP</text>
+                            <text x="230" y="130" fill="var(--accent-cyan)" font-size="9" text-anchor="middle">2 ATP</text>
+                            <text x="410" y="130" fill="var(--accent-cyan)" font-size="10" text-anchor="middle" font-weight="bold">~28 ATP</text>
+                        </svg>
+                    </div>
                 </div>
 
                 <h2>I. The Four Stages</h2>

@@ -124,6 +124,40 @@ window.CHAPTER_DATA["ch5"] = {
                     <p>The goal of experimental design is NOT just to "test a hypothesis" — it's to design a test so carefully that the <strong>only possible explanation</strong> for the results is the independent variable. Every control, every constant, every replicate exists to eliminate a possible alternative explanation.</p>
                 </div>
 
+                <!-- VISUAL DYNAMIC: EXPERIMENTAL DESIGN HIERARCHY -->
+                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
+                    <h5 style="color: var(--accent-magenta); margin-bottom: 20px; text-align: center;"><i class="fas fa-sitemap"></i> Visual Dynamic: Experimental Design Architecture</h5>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                        <svg viewBox="0 0 500 200" style="max-width: 600px; width: 100%; height: auto;">
+                            <!-- Central Flow -->
+                            <rect x="180" y="20" width="140" height="40" rx="8" fill="var(--accent-magenta)" opacity="0.2" stroke="var(--accent-magenta)" stroke-width="2" />
+                            <text x="250" y="45" fill="white" font-size="12" font-weight="bold" text-anchor="middle">INDEPENDENT (IV)</text>
+                            
+                            <path d="M 250 60 L 250 140" marker-end="url(#arrow)" stroke="white" stroke-width="2" />
+                            
+                            <rect x="180" y="140" width="140" height="40" rx="8" fill="var(--accent-cyan)" opacity="0.2" stroke="var(--accent-cyan)" stroke-width="2" />
+                            <text x="250" y="165" fill="white" font-size="12" font-weight="bold" text-anchor="middle">DEPENDENT (DV)</text>
+                            
+                            <!-- Side Guards -->
+                            <g transform="translate(40, 80)">
+                                <rect x="0" y="0" width="100" height="40" rx="5" fill="rgba(255,255,255,0.05)" stroke="#888" stroke-width="1" />
+                                <text x="50" y="25" fill="#aaa" font-size="10" text-anchor="middle">Constants</text>
+                                <text x="50" y="55" fill="#888" font-size="8" text-anchor="middle">Eliminate confounding</text>
+                            </g>
+                            
+                            <g transform="translate(360, 80)">
+                                <rect x="0" y="0" width="100" height="40" rx="5" fill="rgba(255,255,255,0.05)" stroke="#888" stroke-width="1" />
+                                <text x="50" y="25" fill="#aaa" font-size="10" text-anchor="middle">Controls</text>
+                                <text x="50" y="55" fill="#888" font-size="8" text-anchor="middle">Establish baselines</text>
+                            </g>
+                            
+                            <defs>
+                                <marker id="arrow" markerWidth="6" markerHeight="6" refX="0" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="white" /></marker>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+
                 <h2>I. The Variables of Science</h2>
 
                 <div style="overflow-x: auto; margin: 25px 0;">
@@ -153,6 +187,37 @@ window.CHAPTER_DATA["ch5"] = {
                 <div class="tj-edge glass">
                     <h4><i class="fas fa-bolt"></i> TJ Honors Insight: IBET Lab Report Standards</h4>
                     <p>In IBET labs, you must explicitly state your <strong>null hypothesis</strong>, identify ALL controlled variables, justify your sample size, and include statistical analysis (chi-square or t-test). A "good result" is not just the expected outcome — it's a result that is <strong>statistically significant</strong> and <strong>reproducible</strong>.</p>
+                </div>
+
+                <!-- VISUAL DYNAMIC: ERROR BARS & SIGNIFICANCE -->
+                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
+                    <h5 style="color: var(--accent-magenta); margin-bottom: 20px; text-align: center;"><i class="fas fa-chart-bar"></i> Visual Dynamic: Data Reliability & Error Analysis</h5>
+                    <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 40px;">
+                        <svg viewBox="0 0 200 200" width="180">
+                            <!-- Axes -->
+                            <line x1="30" y1="170" x2="180" y2="170" stroke="white" stroke-width="2" />
+                            <line x1="30" y1="170" x2="30" y2="30" stroke="white" stroke-width="2" />
+                            
+                            <!-- Significant Result (No overlap) -->
+                            <rect x="50" y="100" width="30" height="70" fill="var(--accent-magenta)" opacity="0.5" />
+                            <line x1="65" y1="80" x2="65" y2="120" stroke="white" stroke-width="2" />
+                            <line x1="55" y1="80" x2="75" y2="80" stroke="white" stroke-width="2" />
+                            <line x1="55" y1="120" x2="75" y2="120" stroke="white" stroke-width="2" />
+                            
+                            <rect x="110" y="130" width="30" height="40" fill="var(--accent-magenta)" opacity="0.3" />
+                            <line x1="125" y1="115" x2="125" y2="145" stroke="white" stroke-width="2" />
+                            <line x1="115" y1="115" x2="135" y2="115" stroke="white" stroke-width="2" />
+                            <line x1="115" y1="145" x2="135" y2="145" stroke="white" stroke-width="2" />
+                            
+                            <text x="100" y="190" fill="var(--accent-emerald)" font-size="10" text-anchor="middle" font-weight="bold">No Overlap = Significant</text>
+                            <text x="95" y="60" fill="var(--accent-emerald)" font-size="14" font-weight="bold">*</text>
+                        </svg>
+                        
+                        <div style="flex: 1; min-width: 200px; font-size: 0.9rem; color: #ddd;">
+                            <p style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: var(--accent-emerald);"></i> <strong>95% Confidence Interval:</strong> If these bars do not overlap, we can be confident the difference is not due to chance.</p>
+                            <p><i class="fas fa-exclamation-triangle" style="color: var(--accent-red);"></i> <strong>Overlap = Null Hypothesis:</strong> If error bars overlap significantly, we fail to reject the null hypothesis.</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="example-card glass" style="padding:20px; border-radius:var(--standard-radius); margin:25px 0; border-left:3px solid var(--accent-magenta);">

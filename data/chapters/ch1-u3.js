@@ -41,10 +41,43 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                 </ul>
                 <p>They DO:</p>
                 <ul style="line-height: 2;">
-                    <li>✅ Lower $E_a$ → reactions happen faster</li>
-                    <li>✅ Increase reaction rate by factors of $10^6$ to $10^{12}$</li>
                     <li>✅ Are highly specific — each enzyme catalyzes only one reaction (or type of reaction)</li>
                 </ul>
+
+                <!-- VISUAL DYNAMIC: ACTIVATION ENERGY -->
+                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
+                    <h5 style="color: var(--accent-purple); margin-bottom: 20px; text-align: center;"><i class="fas fa-mountain"></i> Visual Dynamic: Lowering the Activation Barrier</h5>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                        <svg viewBox="0 0 400 200" style="max-width: 500px; width: 100%; height: auto;">
+                            <!-- Paths -->
+                            <path d="M 40 160 L 100 160 Q 150 20 200 160 L 360 160" fill="none" stroke="var(--accent-red)" stroke-width="2" stroke-dasharray="4" />
+                            <path d="M 40 160 L 100 160 Q 150 100 200 160 L 360 160" fill="none" stroke="var(--accent-purple)" stroke-width="4" />
+                            
+                            <!-- Labels -->
+                            <text x="50" y="150" fill="white" font-size="9">Reactants</text>
+                            <text x="300" y="150" fill="white" font-size="9">Products</text>
+                            
+                            <!-- E_a arrows -->
+                            <path d="M 120 160 L 120 35" stroke="var(--accent-red)" stroke-width="1" marker-end="url(#arrow-red)" />
+                            <text x="110" y="30" fill="var(--accent-red)" font-size="8" text-anchor="end">Unaided $E_a$</text>
+                            
+                            <path d="M 140 160 L 140 105" stroke="var(--accent-purple)" stroke-width="1" marker-end="url(#arrow-purple)" />
+                            <text x="150" y="100" fill="var(--accent-purple)" font-size="8">With Enzyme $E_a$</text>
+                            
+                            <!-- Axes -->
+                            <line x1="40" y1="180" x2="370" y2="180" stroke="white" stroke-width="1" opacity="0.5" />
+                            <line x1="40" y1="180" x2="40" y2="20" stroke="white" stroke-width="1" opacity="0.5" />
+                            
+                            <defs>
+                                <marker id="arrow-red" markerWidth="5" markerHeight="5" refX="0" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5 z" fill="var(--accent-red)" /></marker>
+                                <marker id="arrow-purple" markerWidth="5" markerHeight="5" refX="0" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5 z" fill="var(--accent-purple)" /></marker>
+                            </defs>
+                        </svg>
+                        <div style="font-size: 0.85rem; color: #aaa; text-align: center; font-style: italic;">
+                            Enzymes lower the "energy hill," allowing more reactant molecules to reach the transition state per second.
+                        </div>
+                    </div>
+                </div>
 
                 <h2>II. How Enzymes Work: The Induced Fit Model</h2>
 
@@ -52,11 +85,33 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
 
                 <p>The modern <strong>Induced Fit Model</strong> (proposed by Daniel Koshland, 1958) recognizes that:</p>
                 <ol style="line-height: 2.2;">
-                    <li>The substrate approaches the active site.</li>
-                    <li>The enzyme's active site <strong>changes shape slightly</strong> to grip the substrate more tightly — like a hand closing around a ball.</li>
-                    <li>This conformational change places stress on the substrate's chemical bonds, making them easier to break or form.</li>
                     <li>Products are released, and the enzyme returns to its original shape, ready for the next substrate.</li>
                 </ol>
+
+                <!-- VISUAL DYNAMIC: INDUCED FIT ANIMATION -->
+                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
+                    <h5 style="color: var(--accent-purple); margin-bottom: 20px; text-align: center;"><i class="fas fa-hand-holding-heart"></i> Visual Dynamic: The Induced Fit Mechanism</h5>
+                    <div style="display: flex; justify-content: center; align-items: center; gap: 30px;">
+                        <svg viewBox="0 0 200 150" width="200">
+                            <!-- Enzyme Base -->
+                            <path d="M 40 100 Q 40 40 100 40 Q 160 40 160 100" fill="none" stroke="var(--accent-purple)" stroke-width="4" />
+                            
+                            <!-- Substrate approaching -->
+                            <rect x="85" y="0" width="30" height="20" fill="var(--accent-cyan)" opacity="0.8">
+                                <animate attributeName="y" values="0;45;45;0" dur="3s" repeatCount="indefinite" />
+                            </rect>
+                            
+                            <!-- Enzyme 'Lips' closing -->
+                            <path d="M 40 100 Q 100 40 160 100" fill="none" stroke="var(--accent-purple)" stroke-width="8">
+                                <animate attributeName="d" 
+                                    values="M 40 100 Q 100 40 160 100; M 40 100 Q 100 65 160 100; M 40 100 Q 100 40 160 100" 
+                                    dur="3s" repeatCount="indefinite" />
+                            </path>
+                            
+                            <text x="100" y="130" fill="white" font-size="9" text-anchor="middle">Dynamic Active Site</text>
+                        </svg>
+                    </div>
+                </div>
 
                 <div class="proof-box glass">
                     <h4>Enzyme Kinetics: The Michaelis-Menten Relationship</h4>

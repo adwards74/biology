@@ -12,6 +12,8 @@
     --accent-magenta: #f5576c;
     --accent-orange: #ff9d00;
     --accent-teal: #14b8a6;
+    --accent-amber: #f59e0b;
+    --accent-red: #ef4444;
     --neon-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
     --neon-magenta: 0 0 15px rgba(245, 87, 108, 0.3);
     --neon-blue-glow: 0 0 20px rgba(0, 210, 255, 0.4);
@@ -1147,4 +1149,246 @@ em {
     border-color: var(--accent-cyan);
     background: rgba(0, 210, 255, 0.05);
     border-radius: var(--standard-radius);
+}
+
+/* =============================================
+   Lesson View & Content Layout
+   ============================================= */
+.lesson-view {
+    max-width: 960px;
+    margin: 0 auto;
+    padding-bottom: 60px;
+}
+
+.lesson-nav {
+    border-radius: var(--standard-radius);
+    margin-bottom: 30px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.lesson-nav .back-btn,
+.lesson-nav .complete-btn,
+.lesson-nav .next-btn {
+    border: 1px solid var(--glass-border);
+    border-radius: var(--standard-radius);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.lesson-nav .back-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.lesson-nav .complete-btn:hover {
+    background: rgba(56, 239, 125, 0.1);
+    color: var(--accent-green);
+}
+
+.lesson-nav .next-btn:hover {
+    background: rgba(0, 210, 255, 0.1);
+}
+
+.lesson-title-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.lesson-badge {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--accent-blue);
+    opacity: 0.6;
+}
+
+.lesson-body-wrapper {
+    padding: 0 25px;
+}
+
+.lesson-header {
+    margin-bottom: 35px;
+}
+
+.lesson-header .subtitle {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-style: italic;
+}
+
+.lesson-content {
+    font-size: 1.05rem;
+    line-height: 2;
+    color: #e2e8f0;
+}
+
+.lesson-content h2 {
+    color: var(--accent-blue);
+    font-size: 1.6rem;
+    margin: 40px 0 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.lesson-content h3 {
+    color: var(--accent-cyan);
+    font-size: 1.2rem;
+    margin: 30px 0 12px;
+}
+
+.lesson-content h4 {
+    color: var(--accent-purple);
+    font-size: 1.05rem;
+    margin: 20px 0 10px;
+}
+
+.lesson-content p {
+    margin-bottom: 18px;
+    color: #cbd5e1;
+}
+
+.lesson-content ul,
+.lesson-content ol {
+    margin: 15px 0 20px 20px;
+    color: #cbd5e1;
+}
+
+.lesson-content li {
+    margin-bottom: 8px;
+    line-height: 1.8;
+}
+
+.lesson-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9rem;
+}
+
+.lesson-content th,
+.lesson-content td {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.lesson-content th {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--accent-blue);
+    font-weight: 600;
+}
+
+.lesson-content tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Visual Dynamic — SVG Diagram Container */
+.visual-dynamic {
+    border-radius: var(--standard-radius);
+    padding: 25px;
+    margin: 30px 0;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+.visual-dynamic:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.visual-dynamic h5 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+.visual-dynamic svg {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Lecture link completed state */
+.lecture-link.completed {
+    border-left: 3px solid var(--accent-green);
+    background: rgba(56, 239, 125, 0.03);
+}
+
+/* Quiz overlay for graduation challenges */
+.quiz-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    padding: 40px;
+}
+
+.quiz-standalone-card {
+    padding: 50px;
+    border-radius: var(--standard-radius);
+    text-align: center;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 0 40px rgba(0, 210, 255, 0.1);
+}
+
+.quiz-standalone-card .chapter-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--accent-purple);
+    text-transform: uppercase;
+}
+
+.quiz-standalone-card .options-grid {
+    display: grid;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.quiz-standalone-card .quiz-btn {
+    padding: 15px 20px;
+    font-size: 0.95rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: var(--standard-radius);
+    border: 1px solid var(--glass-border);
+    background: transparent;
+    color: white;
+}
+
+.quiz-standalone-card .quiz-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--accent-cyan);
+    transform: translateX(5px);
+}
+
+/* Fade-in utility */
+.fadeIn {
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Next Lesson Button Premium Style */
+.next-btn-large:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 35px rgba(0, 210, 255, 0.8) !important;
 }

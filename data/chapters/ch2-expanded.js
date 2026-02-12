@@ -43,6 +43,39 @@ window.CHAPTER_DATA["ch2"] = {
 
                 <p><strong>Memory trick:</strong> <em>Pur</em>ines are <em>Pur</em>e As <em>G</em>old (A, G). <em>Py</em>rimidines — <em>C</em>u<em>T</em> the <em>Py</em>e (C, T, U).</p>
 
+                <!-- VISUAL DYNAMIC: DNA DOUBLE HELIX -->
+                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
+                    <h5 style="color: var(--accent-cyan); margin-bottom: 20px; text-align: center;"><i class="fas fa-dna"></i> Visual Dynamic: Quaternary Information Logic</h5>
+                    <div style="display: flex; justify-content: center; align-items: center; gap: 30px; min-height: 220px;">
+                        <svg viewBox="0 0 200 200" width="180">
+                            <!-- DNA Strands -->
+                            <path d="M 60 20 Q 140 100 60 180" fill="none" stroke="var(--accent-cyan)" stroke-width="3" opacity="0.8" />
+                            <path d="M 140 20 Q 60 100 140 180" fill="none" stroke="var(--accent-cyan)" stroke-width="3" stroke-dasharray="2,2" />
+                            
+                            <!-- Base Pairs -->
+                            <line x1="68" y1="40" x2="132" y2="40" stroke="var(--accent-amber)" stroke-width="2" />
+                            <circle cx="100" cy="40" r="4" fill="#111" stroke="white" stroke-width="0.5" />
+                            
+                            <line x1="90" y1="80" x2="110" y2="80" stroke="var(--accent-emerald)" stroke-width="2" />
+                            <circle cx="100" cy="80" r="4" fill="#111" stroke="white" stroke-width="0.5" />
+                            
+                            <line x1="90" y1="120" x2="110" y2="120" stroke="var(--accent-red)" stroke-width="2" />
+                            <circle cx="100" cy="120" r="4" fill="#111" stroke="white" stroke-width="0.5" />
+                            
+                            <line x1="68" y1="160" x2="132" y2="160" stroke="var(--accent-cyan)" stroke-width="2" />
+                            <circle cx="100" cy="160" r="4" fill="#111" stroke="white" stroke-width="0.5" />
+                            
+                            <!-- Legend -->
+                            <text x="100" y="195" fill="#aaa" font-size="8" text-anchor="middle">Quaternary Basis: A-T, G-C</text>
+                        </svg>
+                        <div style="flex: 1; font-size: 0.9rem; color: #ddd; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 20px;">
+                            <div style="margin-bottom: 10px;"><span style="color:var(--accent-cyan);">■</span> Phosphodiester Backbone</div>
+                            <div style="margin-bottom: 10px;"><span style="color:var(--accent-amber);">■</span> Hydrogen Bonds</div>
+                            <div><span style="color:var(--accent-emerald);">■</span> Nitrogenous Base Pairs</div>
+                        </div>
+                    </div>
+                </div>
+
                 <h2>II. The Double Helix: Structure and Stability</h2>
 
                 <p>Watson and Crick (1953), building on Rosalind Franklin's X-ray crystallography data, proposed the double helix model:</p>
@@ -154,6 +187,39 @@ window.CHAPTER_DATA["ch2"] = {
                     </table>
                 </div>
 
+                <!-- VISUAL DYNAMIC: REPLICATION FORK -->
+                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
+                    <h5 style="color: var(--accent-cyan); margin-bottom: 20px; text-align: center;"><i class="fas fa-project-diagram"></i> Visual Dynamic: High-Fidelity Replication Machinery</h5>
+                    <div style="display: flex; justify-content: center; align-items: center; min-height: 250px;">
+                        <svg viewBox="0 0 500 250" style="max-width: 600px; width: 100%; height: auto;">
+                            <!-- Parent Strands -->
+                            <path d="M 500 50 L 250 125 L 500 200" fill="none" stroke="white" stroke-width="1.5" opacity="0.3" />
+                            
+                            <!-- Helicase -->
+                            <polygon points="230,110 270,125 230,140" fill="var(--accent-amber)" stroke="white" stroke-width="1" />
+                            <text x="250" y="100" fill="var(--accent-amber)" font-size="10" text-anchor="middle" font-weight="bold">HELICASE</text>
+                            
+                            <!-- Leading Strand -->
+                            <path d="M 270 118 L 480 55" fill="none" stroke="var(--accent-cyan)" stroke-width="4" />
+                            <text x="400" y="45" fill="var(--accent-cyan)" font-size="9">Leading Strand (Continuous)</text>
+                            
+                            <!-- Lagging Strand -->
+                            <path d="M 280 140 L 340 160" fill="none" stroke="var(--accent-emerald)" stroke-width="4" />
+                            <path d="M 360 165 L 420 185" fill="none" stroke="var(--accent-emerald)" stroke-width="4" />
+                            <path d="M 440 190 L 490 205" fill="none" stroke="var(--accent-emerald)" stroke-width="4" opacity="0.5" />
+                            <text x="400" y="220" fill="var(--accent-emerald)" font-size="9">Lagging Strand (Okazaki)</text>
+                            
+                            <!-- DNA Pol III -->
+                            <rect x="310" y="45" width="20" height="25" rx="5" fill="var(--accent-cyan)" opacity="0.8" />
+                            <rect x="340" y="150" width="20" height="25" rx="5" fill="var(--accent-emerald)" opacity="0.8" />
+                            
+                            <!-- Direction Arrows -->
+                            <path d="M 240 125 L 180 125" marker-end="url(#arrow)" stroke="white" stroke-width="2" />
+                            <text x="210" y="115" fill="white" font-size="8" text-anchor="middle">Fork Movement</text>
+                        </svg>
+                    </div>
+                </div>
+
                 <h2>III. The Leading vs. Lagging Strand Problem</h2>
 
                 <p>DNA Polymerase can ONLY add nucleotides in the <strong>5′→3′ direction</strong>. This creates an asymmetry at the replication fork:</p>
@@ -216,6 +282,54 @@ window.CHAPTER_DATA["ch2"] = {
                 <div class="intuition-box glass" style="border-left-color: var(--accent-cyan);">
                     <h3><i class="fas fa-lightbulb"></i> Big Idea: DNA → RNA → Protein (The Central Dogma)</h3>
                     <p>DNA is the master blueprint locked in the vault (nucleus). The cell never sends the original out — instead, it makes a disposable mRNA copy (transcription), sends it to the factory floor (ribosome), and assembles the product (translation). This is Francis Crick's <strong>Central Dogma</strong> of molecular biology.</p>
+                </div>
+
+                <!-- VISUAL DYNAMIC: CENTRAL DOGMA -->
+                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
+                    <h5 style="color: var(--accent-cyan); margin-bottom: 20px; text-align: center;"><i class="fas fa-microchip"></i> Visual Dynamic: Information Flow Architecture</h5>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                        <svg viewBox="0 0 500 150" style="max-width: 600px; width: 100%; height: auto;">
+                            <!-- Stage 1: DNA -->
+                            <g transform="translate(40, 50)">
+                                <path d="M 0 0 Q 30 50 0 100" fill="none" stroke="var(--accent-cyan)" stroke-width="2" />
+                                <path d="M 30 0 Q 0 50 30 100" fill="none" stroke="var(--accent-cyan)" stroke-width="2" />
+                                <text x="15" y="-15" fill="var(--accent-cyan)" font-size="10" text-anchor="middle" font-weight="bold">DNA</text>
+                                <text x="15" y="115" fill="#aaa" font-size="8" text-anchor="middle">Nucleus</text>
+                            </g>
+                            
+                            <!-- Arrow 1 -->
+                            <path d="M 90 75 L 170 75" marker-end="url(#arrow)" stroke="white" stroke-width="2" stroke-dasharray="4,2">
+                                <animate attributeName="stroke-dashoffset" from="0" to="24" dur="2s" repeatCount="indefinite" />
+                            </path>
+                            <text x="130" y="65" fill="white" font-size="8" text-anchor="middle">Transcription</text>
+                            
+                            <!-- Stage 2: mRNA -->
+                            <g transform="translate(190, 50)">
+                                <path d="M 0 50 L 60 50" fill="none" stroke="var(--accent-amber)" stroke-width="3" />
+                                <text x="30" y="-15" fill="var(--accent-amber)" font-size="10" text-anchor="middle" font-weight="bold">mRNA</text>
+                            </g>
+                            
+                            <!-- Arrow 2 -->
+                            <path d="M 270 75 L 350 75" marker-end="url(#arrow)" stroke="white" stroke-width="2" stroke-dasharray="4,2">
+                                <animate attributeName="stroke-dashoffset" from="0" to="24" dur="2s" repeatCount="indefinite" />
+                            </path>
+                            <text x="310" y="65" fill="white" font-size="8" text-anchor="middle">Translation</text>
+                            
+                            <!-- Stage 3: Protein -->
+                            <g transform="translate(370, 50)">
+                                <circle cx="40" cy="50" r="25" fill="rgba(16,185,129,0.2)" stroke="var(--accent-emerald)" stroke-width="2" />
+                                <text x="40" y="-15" fill="var(--accent-emerald)" font-size="10" text-anchor="middle" font-weight="bold">PROTEIN</text>
+                                <text x="40" y="55" fill="white" font-size="8" text-anchor="middle">3D Structure</text>
+                            </g>
+                            
+                            <defs>
+                                <marker id="arrow" markerWidth="6" markerHeight="6" refX="0" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="white" /></marker>
+                            </defs>
+                        </svg>
+                        <div style="font-size: 0.85rem; color: #aaa; text-align: center; font-style: italic;">
+                            Digital Code (DNA) → Analog Interface (mRNA) → Functional Product (Protein)
+                        </div>
+                    </div>
                 </div>
 
                 <h2>I. Transcription: DNA → mRNA</h2>

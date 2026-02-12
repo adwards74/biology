@@ -50,6 +50,45 @@ window.CHAPTER_DATA["ch1"] = {
 
                 <p><strong>What does this mean biologically?</strong> A large cell has proportionally less membrane surface through which to import nutrients and export waste relative to the volume of cytoplasm that needs to be serviced. At some point, the cell physically cannot bring in enough oxygen or glucose to sustain its metabolism. This is why most cells are between <strong>1–100 μm</strong> in diameter.</p>
 
+                <!-- VISUAL DYNAMIC: SA/V RATIO GRAPH -->
+                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
+                    <h5 style="color: var(--accent-emerald); margin-bottom: 20px; text-align: center;"><i class="fas fa-chart-line"></i> Visual Dynamic: Geometric Stress & Scalability</h5>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                        <svg viewBox="0 0 400 250" style="max-width: 500px; width: 100%; height: auto; filter: drop-shadow(0 0 10px rgba(16,185,129,0.2));">
+                            <!-- Grid Lines -->
+                            <line x1="40" y1="200" x2="360" y2="200" stroke="rgba(255,255,255,0.1)" stroke-width="1" />
+                            <line x1="40" y1="40" x2="40" y2="200" stroke="rgba(255,255,255,0.1)" stroke-width="1" />
+                            
+                            <!-- Area Curve (r^2) - Cyan -->
+                            <path d="M 40 200 Q 150 180 340 100" fill="none" stroke="var(--accent-cyan)" stroke-width="3" stroke-dasharray="4" />
+                            <!-- Volume Curve (r^3) - Amber -->
+                            <path d="M 40 200 Q 180 195 350 40" fill="none" stroke="var(--accent-amber)" stroke-width="3" />
+                            <!-- Ratio Curve (1/r) - Emerald -->
+                            <path d="M 50 50 Q 100 180 350 190" fill="none" stroke="var(--accent-emerald)" stroke-width="4" />
+                            
+                            <!-- Labels -->
+                            <text x="350" y="35" fill="var(--accent-amber)" font-size="12" font-weight="bold">Volume (r³)</text>
+                            <text x="340" y="95" fill="var(--accent-cyan)" font-size="12" font-weight="bold">Area (r²)</text>
+                            <text x="340" y="185" fill="var(--accent-emerald)" font-size="12" font-weight="bold">SA/V Ratio</text>
+                            
+                            <!-- Axes -->
+                            <line x1="40" y1="200" x2="370" y2="200" stroke="white" stroke-width="2" marker-end="url(#arrow)" />
+                            <line x1="40" y1="200" x2="40" y2="30" stroke="white" stroke-width="2" marker-end="url(#arrow)" />
+                            <text x="375" y="215" fill="white" font-size="10" text-anchor="end">Radius (r)</text>
+                            <text x="35" y="25" fill="white" font-size="10" transform="rotate(-90, 35, 25)" text-anchor="end">Magnitude</text>
+                            
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+                                  <path d="M0,0 L0,6 L9,3 z" fill="white" />
+                                </marker>
+                            </defs>
+                        </svg>
+                        <div style="font-size: 0.85rem; color: #aaa; text-align: center; font-style: italic;">
+                            The "Death Cross": As radius increases, Volume explodes while the SA/V ratio collapses, creating <strong>geometric stress</strong> that limits cell size.
+                        </div>
+                    </div>
+                </div>
+
                 <!-- COMPARISON TABLE -->
                 <div style="overflow-x: auto; margin: 25px 0;">
                     <table class="glass-table" style="width:100%; border-collapse:collapse; font-size:0.9rem;">
@@ -90,6 +129,46 @@ window.CHAPTER_DATA["ch1"] = {
                 <h2>III. The Organelle Team: Eukaryotic Cell Architecture</h2>
 
                 <p>Eukaryotic cells solve the complexity problem through <strong>compartmentalization</strong> — dividing the cell into specialized compartments (organelles), each with its own microenvironment optimized for specific chemical reactions.</p>
+
+                <!-- VISUAL DYNAMIC: ANIMAL VS PLANT -->
+                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
+                    <h5 style="color: var(--accent-emerald); margin-bottom: 20px; text-align: center;"><i class="fas fa-shapes"></i> Visual Dynamic: Cellular Architecture Comparison</h5>
+                    <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+                        <svg viewBox="0 0 500 250" style="max-width: 600px; width: 100%; height: auto;">
+                            <!-- ANIMAL CELL (Left) -->
+                            <circle cx="125" cy="125" r="90" fill="rgba(6,182,212,0.1)" stroke="var(--accent-cyan)" stroke-width="2" stroke-dasharray="5,3" />
+                            <circle cx="125" cy="125" r="30" fill="rgba(255,255,255,0.05)" stroke="white" stroke-width="1" />
+                            <text x="125" y="125" fill="white" font-size="10" text-anchor="middle">Nucleus</text>
+                            <text x="125" y="30" fill="var(--accent-cyan)" font-size="14" font-weight="bold" text-anchor="middle">ANIMAL</text>
+                            
+                            <!-- Animal Highlights -->
+                            <circle cx="160" cy="160" r="12" fill="none" stroke="var(--accent-amber)" stroke-width="1.5" />
+                            <text x="175" y="165" fill="#aaa" font-size="9">Centrioles</text>
+                            <circle cx="80" cy="150" r="10" fill="none" stroke="var(--accent-red)" stroke-width="1.5" />
+                            <text x="50" y="155" fill="#aaa" font-size="9" text-anchor="end">Lysosomes</text>
+                            
+                            <!-- PLANT CELL (Right) -->
+                            <rect x="285" y="35" width="180" height="180" rx="20" fill="rgba(16,185,129,0.1)" stroke="var(--accent-emerald)" stroke-width="4" />
+                            <circle cx="375" cy="165" r="25" fill="rgba(255,255,255,0.05)" stroke="white" stroke-width="1" />
+                            <text x="375" y="165" fill="white" font-size="10" text-anchor="middle">Nucleus</text>
+                            <text x="375" y="30" fill="var(--accent-emerald)" font-size="14" font-weight="bold" text-anchor="middle">PLANT</text>
+                            
+                            <!-- Plant Highlights -->
+                            <rect x="340" y="70" width="70" height="60" rx="10" fill="none" stroke="var(--accent-cyan)" stroke-width="2" opacity="0.6" />
+                            <text x="375" y="105" fill="#fff" font-size="8" text-anchor="middle">Vacuole</text>
+                            
+                            <ellipse cx="310" cy="80" rx="15" ry="8" fill="none" stroke="var(--accent-emerald)" stroke-width="1.5" />
+                            <text x="310" y="65" fill="#aaa" font-size="9" text-anchor="middle">Chloroplast</text>
+                            
+                            <!-- SHARED Connector -->
+                            <path d="M 215 125 L 285 125" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="4" />
+                            <circle cx="250" cy="125" r="15" fill="#111" stroke="white" stroke-width="1" />
+                            <text x="250" y="128" fill="white" font-size="8" text-anchor="middle">SHARED</text>
+                            <text x="250" y="150" fill="#aaa" font-size="8" text-anchor="middle">ER, Golgi,</text>
+                            <text x="250" y="160" fill="#aaa" font-size="8" text-anchor="middle">Mitochondria</text>
+                        </svg>
+                    </div>
+                </div>
 
                 <div style="overflow-x: auto; margin: 25px 0;">
                     <table class="glass-table" style="width:100%; border-collapse:collapse; font-size:0.88rem;">

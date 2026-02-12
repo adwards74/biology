@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabrina's Biology Portal | TJHSST IBET Prep</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- MathJax for Formula Rendering (Statistics/Bioenergetics) -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                tags: 'ams'
+            },
+            options: {
+                enableMenu: false
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header glass">
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-microscope"></i></div>
+            <span>Sabrina.Bio</span>
+        </div>
+        <button id="menu-toggle" class="glass"><i class="fas fa-bars"></i></button>
+    </header>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar glass">
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-microscope"></i></div>
+                <span>Sabrina.Bio</span>
+            </div>
+
+            <div class="nav-links">
+                <a href="#" class="nav-item active" data-view="dashboard">
+                    <i class="fas fa-home"></i> <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-view="subjects">
+                    <i class="fas fa-dna"></i> <span>Curriculum</span>
+                </a>
+                <a href="#" class="nav-item" data-view="strategy">
+                    <i class="fas fa-rocket"></i> <span>IBET Strategy</span>
+                </a>
+                <a href="#" class="nav-item" data-view="knowledge">
+                    <i class="fas fa-project-diagram"></i> <span>Concept Map</span>
+                </a>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="profile-card">
+                    <div class="avatar" style="background:var(--accent-emerald)">S</div>
+                    <div class="info">
+                        <span class="name">Sabrina</span>
+                        <span class="sub">TJHSST '30</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="content-area">
+            <header class="top-header">
+                <div class="search-bar glass">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="global-search" placeholder="Search biology topics...">
+                </div>
+                <div class="header-actions">
+                    <div class="badge neon-blue">IBET 9th Grade</div>
+                </div>
+            </header>
+
+            <div id="view-container">
+                <!-- Dashboard View -->
+                <section class="view active" id="dashboard-view"></section>
+
+                <!-- Curriculum View -->
+                <section class="view" id="curriculum-view">
+                    <div class="hero">
+                        <h1>Biology <span class="gradient-text">Elite 5.3</span></h1>
+                        <p>Advanced Biological Systems Analysis for TJHSST IBET.</p>
+                    </div>
+                    <div id="curriculum-grid" class="subject-grid"></div>
+                </section>
+
+                <!-- concept Map View -->
+                <section class="view" id="knowledge-view">
+                    <div class="hero">
+                        <h1>Biological <span class="gradient-text">Architecture</span></h1>
+                        <p>Visualize the interconnected systems of life, from organelles to ecosystems.</p>
+                    </div>
+                    <div class="tree-container glass-card"
+                        style="height: 600px; margin-top:30px; position:relative; overflow:hidden;">
+                        <svg id="knowledge-svg" width="100%" height="100%" style="cursor:grab;"></svg>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- AI Tutor Sidebar -->
+        <aside class="tutor-sidebar glass" id="ai-tutor-sidebar">
+            <div class="tutor-header">
+                <div class="tutor-avatar">
+                    <div class="avatar-glow" style="background:var(--accent-emerald)"></div>
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="tutor-info">
+                    <h3>Bio Tutor <span style="font-size:0.6rem; color:var(--accent-emerald);">Elite 5.3</span></h3>
+                    <span class="status-pulse"></span> <span class="status-text">Neural Link Active</span>
+                </div>
+            </div>
+
+            <div class="tutor-content">
+                <div class="chat-bubble glass" id="tutor-message">
+                    <span class="terminal-prefix">></span> Welcome Sabrina. Biological systems online. Ready to analyze
+                    life at the molecular level!
+                </div>
+            </div>
+
+            <div class="tutor-chat-input">
+                <div style="display:flex; gap:8px;">
+                    <input type="text" id="tutor-chat-input" class="glass" placeholder="Ask Bio Tutor...">
+                    <button class="glass" onclick="window.submitTutorChat()"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </aside>
+
+        <button id="tutor-toggle" class="glass toggle-btn" onclick="document.body.classList.toggle('tutor-open')">
+            <i class="fas fa-robot"></i>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="data/chapters/ch1.js"></script>
+    <script src="data/chapters/ch2_5.js"></script>
+    <script src="ui-render.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

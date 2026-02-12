@@ -854,10 +854,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 2500);
         } else {
             feedback.style.color = "var(--accent-magenta)";
-            feedback.innerHTML = `<i class="fas fa-times-circle"></i> Discrepancy detected. Neural link suggests reviewing the intuition box.`;
+            feedback.innerHTML = `
+                <div style="text-align:center;">
+                    <p style="margin-bottom:20px;"><i class="fas fa-times-circle"></i> Discrepancy detected. Neural link suggests reviewing the intuition box.</p>
+                    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+                        <button class="glass quiz-btn" style="padding:12px 28px; cursor:pointer; border:1px solid var(--accent-cyan); color:var(--accent-cyan);"
+                            onclick="window.showUnitQuiz('${subjectId}', ${unitIdx})">
+                            <i class="fas fa-redo"></i> Try Again
+                        </button>
+                        <button class="glass quiz-btn" style="padding:12px 28px; cursor:pointer; border:1px solid var(--accent-magenta); color:var(--accent-magenta);"
+                            onclick="window.showSubjectDetail('${subjectId}')">
+                            <i class="fas fa-arrow-left"></i> Review Lessons
+                        </button>
+                    </div>
+                </div>
+            `;
             const card = document.querySelector('.quiz-standalone-card');
-            card.classList.add('animate__shakeX');
-            setTimeout(() => card.classList.remove('animate__shakeX'), 500);
+            if (card) {
+                card.classList.add('animate__shakeX');
+                setTimeout(() => card.classList.remove('animate__shakeX'), 500);
+            }
         }
     };
 

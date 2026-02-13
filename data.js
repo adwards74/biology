@@ -105,7 +105,9 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "What is the start codon and which amino acid does it code for?", answer: "AUG — Methionine", options: ["UAA — Stop", "AUG — Methionine", "GCA — Alanine"], explanation: "AUG is both the universal start codon and codes for the amino acid methionine." }
+                            { title: "L1: Intuition", question: "What is the start codon and which amino acid does it code for?", answer: "AUG — Methionine", options: ["UAA — Stop", "AUG — Methionine", "GCA — Alanine"], explanation: "AUG is both the universal start codon and codes for the amino acid methionine." },
+                            { title: "L2: Analysis", question: "If a DNA mutation changes the third base of a codon but the amino acid remains the same, what is this called?", answer: "Silent Mutation", options: ["Missense Mutation", "Silent Mutation", "Nonsense Mutation"], explanation: "Due to the redundancy of the genetic code, some base changes don't affect the final protein." },
+                            { title: "L3: Mastery", question: "In mRNA processing, what is the role of the 5' cap and Poly-A tail?", answer: "Protection and export", options: ["To code for amino acids", "To stop translation", "Protection and export"], explanation: "These modifications protect mRNA from degradation in the cytoplasm and facilitate its export from the nucleus." }
                         ]
                     }
                 }
@@ -129,7 +131,9 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "Where does the oxygen released during photosynthesis come from?", answer: "From the splitting of water (photolysis)", options: ["From CO₂", "From glucose breakdown", "From the splitting of water (photolysis)"], explanation: "Water is split in PSII: 2H₂O → 4H⁺ + 4e⁻ + O₂. The oxygen you breathe comes from water, not CO₂." }
+                            { title: "L1: Intuition", question: "Where does the oxygen released during photosynthesis come from?", answer: "From the splitting of water (photolysis)", options: ["From CO₂", "From glucose breakdown", "From the splitting of water (photolysis)"], explanation: "Water is split in PSII: 2H₂O → 4H⁺ + 4e⁻ + O₂. The oxygen you breathe comes from water, not CO₂." },
+                            { title: "L2: Analysis", question: "What is the primary function of the Calvin Cycle?", answer: "To synthesize G3P (sugar)", options: ["To split water", "To produce ATP", "To synthesize G3P (sugar)"], explanation: "The Calvin Cycle uses ATP and NADPH from the light reactions to fix CO2 into organic molecules (G3P)." },
+                            { title: "L3: Mastery", question: "How does the pH gradient across the thylakoid membrane drive ATP synthesis?", answer: "Via ATP Synthase", options: ["Through active transport", "Via ATP Synthase", "By diffusion of water"], explanation: "High H+ concentration inside the thylakoid lumen flows through ATP Synthase, powering the phosphorylation of ADP." }
                         ]
                     }
                 },
@@ -142,7 +146,9 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "How much ATP does aerobic respiration produce per glucose compared to fermentation?", answer: "~30-32 vs. 2", options: ["2 vs. 2", "~30-32 vs. 2", "~30-32 vs. 18"], explanation: "Without oxygen, only glycolysis can run (2 ATP). With oxygen, the full pathway yields ~30-32 ATP — about 15x more efficient." }
+                            { title: "L1: Intuition", question: "How much ATP does aerobic respiration produce per glucose compared to fermentation?", answer: "~30-32 vs. 2", options: ["2 vs. 2", "~30-32 vs. 2", "~30-32 vs. 18"], explanation: "Without oxygen, only glycolysis can run (2 ATP). With oxygen, the full pathway yields ~30-32 ATP — about 15x more efficient." },
+                            { title: "L2: Analysis", question: "Which molecule is the final electron acceptor in the Electron Transport Chain?", answer: "Oxygen", options: ["Water", "Carbon Dioxide", "Oxygen"], explanation: "Oxygen accepts electrons and protons to form water, preventing the 'traffic jam' in the ETC." },
+                            { title: "L3: Mastery", question: "Why is the Krebs cycle considered an aerobic process, even though it doesn't use oxygen directly?", answer: "It depends on NAD+ from ETC", options: ["It uses O2 in the first step", "It depends on NAD+ from ETC", "It occurs only in plants"], explanation: "The cycle needs a constant supply of NAD+ and FAD, which are only recycled from NADH/FADH2 when the ETC has oxygen to receive electrons." }
                         ]
                     }
                 }
@@ -166,7 +172,9 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "What phenotype ratio do you expect from a monohybrid cross Aa × Aa?", answer: "3:1", options: ["1:1", "3:1", "9:3:3:1"], explanation: "A monohybrid cross of two heterozygotes produces 1 AA : 2 Aa : 1 aa genotype, which gives a 3:1 dominant:recessive phenotype ratio." }
+                            { title: "L1: Intuition", question: "What phenotype ratio do you expect from a monohybrid cross Aa × Aa?", answer: "3:1", options: ["1:1", "3:1", "9:3:3:1"], explanation: "A monohybrid cross of two heterozygotes produces 1 AA : 2 Aa : 1 aa genotype, which gives a 3:1 dominant:recessive phenotype ratio." },
+                            { title: "L2: Analysis", question: "If a baby has Type O blood and the mother has Type A, what are the possible genotypes for the father?", answer: "i i, I^A i, or I^B i", options: ["I^A I^B", "i i, I^A i, or I^B i", "Only i i"], explanation: "The father must provide one 'i' allele. Therefore, he can be O (ii), heterozygous A (Ai), or heterozygous B (Bi)." },
+                            { title: "L3: Mastery", question: "Which Mendelian law states that alleles for different traits are distributed to sex cells independently of one another?", answer: "Law of Independent Assortment", options: ["Law of Segregation", "Law of Dominance", "Law of Independent Assortment"], explanation: "Independent Assortment only applies to genes on different chromosomes (or far apart on the same one)." }
                         ]
                     }
                 },
@@ -179,7 +187,9 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "If two genes have a recombination frequency of 50%, what does that tell you?", answer: "They are on different chromosomes (unlinked)", options: ["They are very close together", "They are on different chromosomes (unlinked)", "They never recombine"], explanation: "RF of 50% means genes assort independently — they behave as if on different chromosomes. Linked genes always have RF < 50%." }
+                            { title: "L1: Intuition", question: "If two genes have a recombination frequency of 50%, what does that tell you?", answer: "They are on different chromosomes (unlinked)", options: ["They are very close together", "They are on different chromosomes (unlinked)", "They never recombine"], explanation: "RF of 50% means genes assort independently — they behave as if on different chromosomes. Linked genes always have RF < 50%." },
+                            { title: "L2: Analysis", question: "A recombination frequency of 1% is equal to how many map units (centimorgans)?", answer: "1 cM", options: ["10 cM", "1 cM", "100 cM"], explanation: "By definition, 1% RF = 1 map unit or 1 centimorgan." },
+                            { title: "L3: Mastery", question: "Why is the recombination frequency between two genes on the same chromosome limited to 50%?", answer: "Multiple crossovers cancel out", options: ["Genes are too small", "Chromosomes don't break", "Multiple crossovers cancel out"], explanation: "Even for genes very far apart, multiple crossovers ensure that half the gametes remain parental and half become recombinant, mirroring independent assortment." }
                         ]
                     }
                 }
@@ -342,7 +352,16 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
         "Homeostasis": "The maintenance of a stable internal environment despite external changes.",
         "Prokaryote": "A single-celled organism that lacks a nucleus and membrane-bound organelles.",
         "Eukaryote": "An organism whose cells contain a nucleus and other membrane-bound organelles.",
-        "Endomembrane System": "A group of membranes and organelles in eukaryotic cells that work together to modify, package, and transport lipids and proteins."
+        "Endomembrane System": "A group of membranes and organelles in eukaryotic cells that work together to modify, package, and transport lipids and proteins.",
+        "Rough ER": "Studded with ribosomes; synthesizes proteins destined for secretion or membrane insertion.",
+        "Smooth ER": "Synthesizes lipids, detoxifies chemicals, and stores calcium ions (no ribosomes).",
+        "Golgi Apparatus": "The shipping & receiving center; modifies, sorts, and packages proteins from the ER.",
+        "Mitochondria": "The power plant of the cell; site of cellular respiration and ATP production.",
+        "Ribosome": "The protein factory; translates mRNA into polypeptide chains.",
+        "Lysosome": "The recycling crew; contains digestive enzymes to break down macromolecules.",
+        "Central Dogma": "The flow of genetic information: DNA $\rightarrow$ RNA $\rightarrow$ Protein.",
+        "Chi-Square Test": "A statistical test used to determine if the observed data deviates significantly from the expected values.",
+        "Null Hypothesis": "A statement that there is no significant difference between the observed and expected results."
     }
 };
 

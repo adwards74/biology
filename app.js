@@ -561,21 +561,54 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleGlobalSearch(term) {
-        const filteredSubjects = MATH_DATA.subjects.filter(s =>
+        let correctionTerm = "";
+        let filteredSubjects = MATH_DATA.subjects.filter(s =>
             s.title.toLowerCase().includes(term) ||
             s.description.toLowerCase().includes(term) ||
             s.code.toLowerCase().includes(term) ||
             s.units.some(u => u.title.toLowerCase().includes(term) || u.topics?.some(t => t.toLowerCase().includes(term)))
         );
 
+        // Alpha-Fuzzy: If no results, try fuzzy matching
+        if (filteredSubjects.length === 0 && term.length > 2 && window.TutorEngine && window.TutorEngine.fuzzyMatch) {
+            const threshold = Math.max(2, Math.floor(term.length * 0.3));
+            let bestMatch = null;
+            let minDistance = threshold + 1;
+
+            MATH_DATA.subjects.forEach(s => {
+                const words = [s.title, ...s.units.map(u => u.title)];
+                words.forEach(word => {
+                    const cleanWord = word.toLowerCase().replace(/[^a-z0-9]/g, '');
+                    const cleanTerm = term.replace(/[^a-z0-9]/g, '');
+                    const distance = window.TutorEngine.fuzzyMatch(cleanTerm, cleanWord);
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        bestMatch = s;
+                        correctionTerm = word;
+                    }
+                });
+            });
+
+            if (bestMatch) {
+                filteredSubjects = [bestMatch];
+            }
+        }
+
         const container = document.getElementById('subject-cards-container') || document.getElementById('subjects-grid-full');
         if (container) {
             if (filteredSubjects.length > 0) {
                 window.renderSubjectGrid(filteredSubjects, container);
+                if (correctionTerm) {
+                    const notice = document.createElement('div');
+                    notice.className = 'fadeIn';
+                    notice.style.cssText = "grid-column: 1/-1; padding:10px; border-radius:10px; background:rgba(0,210,255,0.05); color:var(--accent-cyan); font-size:0.85rem; margin-bottom:15px; border:1px solid rgba(0,210,255,0.2);";
+                    notice.innerHTML = `<i class="fas fa-magic"></i> Biometric Correction: Auto-correcting "<strong>${term}</strong>" to "<strong>${correctionTerm}</strong>"`;
+                    container.prepend(notice);
+                }
             } else {
                 container.innerHTML = `<div class="glass-card fadeIn" style="grid-column: 1/-1; text-align:center; padding:50px; border: 1px dashed var(--glass-border);">
                     <i class="fas fa-search-minus" style="font-size:3rem; opacity:0.1; margin-bottom:20px;"></i>
-                    <p style="opacity:0.6;">No neural matches found for "${term}". Try another biological focus.</p>
+                    <p style="opacity:0.6;">No neural matches found for "${term}". Try another focus.</p>
                 </div>`;
             }
         }

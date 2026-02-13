@@ -363,6 +363,7 @@ window.TutorEngine = (function () {
         typeTerminalMessage,
         getConceptMatrix,
         getNextRecommendation,
+        fuzzyMatch: (s1, s2) => KnowledgeMap.getLevenshtein(s1, s2),
         buildNeuralMap: () => KnowledgeMap.build()
     };
 })();

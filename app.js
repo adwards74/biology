@@ -721,20 +721,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     <article class="lesson-content">
                         ${(() => {
                     let content = lessonData.content;
-                    // Terminology Tooltips
-                    if (window.UIEngine && window.UIEngine.applyTerminologyTooltips) {
-                        content = window.UIEngine.applyTerminologyTooltips(content);
-                    }
-                    // Modern Image Captions
+                    // 1. Modern Image Captions (process FIRST)
                     content = content.replace(/<neo-img src="(.*)" caption="(.*)" source="(.*)"><\/neo-img>/g, (match, src, cap, srcName) => {
                         return `
                                     <div class="lesson-image-wrap fadeIn">
                                         <img src="${src}" alt="${cap}">
-                                        <span class="image-caption">${cap}</span>
+                                        <p class="image-caption">${cap}</p>
                                         <span class="image-source">Source: ${srcName}</span>
                                     </div>
                                 `;
                     });
+                    // 2. Terminology Tooltips (process LAST)
+                    if (window.UIEngine && window.UIEngine.applyTerminologyTooltips) {
+                        content = window.UIEngine.applyTerminologyTooltips(content);
+                    }
                     return content;
                 })()}
                     </article>

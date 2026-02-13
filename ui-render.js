@@ -260,24 +260,20 @@ window.UIEngine = (function () {
     function applyTerminologyTooltips(html) {
         if (!window.MATH_DATA || !window.MATH_DATA.glossary) return html;
         let enhancedHtml = html;
-        const terms = Object.keys(window.MATH_DATA.glossary);
+        const glossaryEntries = Object.entries(window.MATH_DATA.glossary);
 
-        // Sort terms by length (descending) to avoid partial matches on longer terms
-        terms.sort((a, b) => b.length - a.length);
+        // Sort terms by length (descending) to avoid partial matches
+        glossaryEntries.sort((a, b) => b[0].length - a[0].length);
 
-        terms.forEach(term => {
-            // Regex to find the term not inside a tag or another tooltip
-            // Using a simple boundary check. We avoid replacing terms inside <a> or other <span> tags if possible.
-            // This is a basic implementation; more complex parsing might be needed for nested HTML.
-            const definition = window.MATH_DATA.glossary[term];
+        glossaryEntries.forEach(([term, definition]) => {
             const escapedTerm = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            // Regex matches any HTML tag OR the term as a whole word
+            const regex = new RegExp(`(<[^>]*>)|(\\b${escapedTerm}\\b)`, 'gi');
 
-            // Negative lookbehind/ahead for already existing tooltips or tags is hard in JS without proper DOM parsing.
-            // We'll use a simpler approach: only replace if not preceded by =" (like in an attribute)
-            const regex = new RegExp(`(?<!=")(?<![a-zA-Z0-9])${escapedTerm}(?![a-zA-Z0-9])`, 'g');
-
-            // To prevent double wrapping, we'll use a marker and then clean up
-            enhancedHtml = enhancedHtml.replace(regex, `<span class="term-tooltip" data-definition="${definition}">${term}</span>`);
+            enhancedHtml = enhancedHtml.replace(regex, (match, tag, termMatch) => {
+                if (tag) return tag; // Return tag unchanged
+                return `<span class="term-tooltip" data-definition="${definition}">${termMatch}</span>`;
+            });
         });
 
         return enhancedHtml;

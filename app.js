@@ -701,7 +701,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (e) {
             console.error("FATAL LESSON ERROR:", e);
-            alert("CRITICAL ERROR:\n" + e.message + "\n\nSee console for details.");
+            alert("CRITICAL ERROR:\\n" + e.message + "\\n\\nSee console for details.");
         }
     }
     window.finishLesson = (key, subId) => {
@@ -827,7 +827,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetLevel = isMultiLevel ? quiz.levels[quiz.levels.length - 1] : quiz;
 
         const feedback = document.getElementById('final-quiz-feedback');
-        const isCorrect = selected === targetLevel.answer;
+        const normalize = (s) => s.toString().trim().replace(/\\s+/g, ' ').replace(/[\\u223C\\u223D\\u223E\\u2241\\u2242\\u2243\\u2244\\u2245\\u2246\\u2247\\u2248\\u2249\\u224A\\u224B\\u224C\\u224D\\u224E\\u224F\\u223B\\u223A\\u2239\\u2238\\u2237\\u2236]/g, '~');
+        const isCorrect = normalize(selected) === normalize(targetLevel.answer);
 
         saveQuizAttempt({
             chapter: unit.title,
@@ -1091,7 +1092,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.checkQuizAnswer = (uIdx, sel, corr, expl, chapterTitle, questionText) => {
-        const isCorrect = sel === corr;
+        const normalize = (s) => s.toString().trim().replace(/\\s+/g, ' ').replace(/[\\u223C\\u223D\\u223E\\u2241\\u2242\\u2243\\u2244\\u2245\\u2246\\u2247\\u2248\\u2249\\u224A\\u224B\\u224C\\u224D\\u224E\\u224F\\u223B\\u223A\\u2239\\u2238\\u2237\\u2236]/g, '~');
+        const isCorrect = normalize(sel) === normalize(corr);
         const f = document.getElementById(`feedback-${uIdx}`);
         f.style.display = 'block';
 
@@ -1344,7 +1346,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="display:flex; justify-content:space-around; font-size:0.8rem;">
                     <span style="color:#ff007f;"><i class="fas fa-minus"></i> Exponential ($2^x$)</span>
                     <span style="color:#ffffff;"><i class="fas fa-minus"></i> Linear ($x$)</span>
-                    <span style="color:#00d2ff;"><i class="fas fa-minus"></i> Log ($\log_2 x$)</span>
+                    <span style="color:#00d2ff;"><i class="fas fa-minus"></i> Log ($\\log_2 x$)</span>
                 </div>
             </div>
         `;

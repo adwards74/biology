@@ -70,11 +70,11 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                             
                             <!-- Left Side (High WP) -->
                             <rect x="122" y="80" width="58" height="100" fill="rgba(6,182,212,0.2)" />
-                            <text x="150" y="70" fill="var(--accent-cyan)" font-size="10" text-anchor="middle" font-weight="bold">High $\Psi$ (0 MPa)</text>
+                            <text x="150" y="70" fill="var(--accent-cyan)" font-size="10" text-anchor="middle" font-weight="bold">High $\\Psi$ (0 MPa)</text>
                             
                             <!-- Right Side (Low WP) -->
                             <rect x="220" y="110" width="58" height="70" fill="rgba(16,185,129,0.3)" />
-                            <text x="250" y="100" fill="var(--accent-emerald)" font-size="10" text-anchor="middle" font-weight="bold">Low $\Psi$ (-1.0 MPa)</text>
+                            <text x="250" y="100" fill="var(--accent-emerald)" font-size="10" text-anchor="middle" font-weight="bold">Low $\\Psi$ (-1.0 MPa)</text>
                             
                             <!-- Solutes (Right) -->
                             <circle cx="230" cy="130" r="3" fill="var(--accent-amber)" />

@@ -26,10 +26,10 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                     examples: [
                         {
                             title: "Calculating SA/V for a Spherical Cell",
-                            problem: "If a cell's radius increases from $1 \mu m$ to $3 \mu m$, by what factor does the volume increase relative to the surface area?",
+                            problem: "If a cell's radius increases from $1 \\mu m$ to $3 \\mu m$, by what factor does the volume increase relative to the surface area?",
                             steps: [
-                                "Surface Area formula: $4\pi r^2$. $r=1 \rightarrow 4\pi$, $r=3 \rightarrow 36\pi$ (9x increase).",
-                                "Volume formula: $4/3 \pi r^3$. $r=1 \rightarrow 4/3\pi$, $r=3 \rightarrow 108/3\pi$ (27x increase).",
+                                "Surface Area formula: $4\\pi r^2$. $r=1 \\rightarrow 4\\pi$, $r=3 \\rightarrow 36\\pi$ (9x increase).",
+                                "Volume formula: $4/3 \\pi r^3$. $r=1 \\rightarrow 4/3\\pi$, $r=3 \\rightarrow 108/3\\pi$ (27x increase).",
                                 "Ratio check: Volume increased 3x MORE than surface area."
                             ],
                             intuition: "Growth causes 'internal stress'—the cell needs 27x more food but only has 9x more door space."
@@ -37,23 +37,23 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "Why do large cells often have highly folded membranes?", answer: "To maximize surface area without significantly increasing volume.", options: ["To look more complex", "To maximize surface area", "To store more energy"], explanation: "Folding increases the 'exchange surface' while keeping the total volume manageable." },
-                            { title: "L3: Mastery", question: "Which cell shape would be MOST efficient at nutrient absorption per unit volume?", answer: "A flat, thin disc (like a red blood cell).", options: ["A perfect sphere", "A long cylinder", "A flat thin disc"], explanation: "Extremely thin shapes minimize the distance to the center, maximizing the SA/V ratio." }
+                            { title: "L1: Intuition", question: "Why do large cells often have highly folded membranes?", answer: "To maximize surface area", options: ["To look more complex", "To maximize surface area", "To store more energy"], explanation: "Folding increases the 'exchange surface' while keeping the total volume manageable." },
+                            { title: "L3: Mastery", question: "Which cell shape would be MOST efficient at nutrient absorption per unit volume?", answer: "A flat thin disc", options: ["A perfect sphere", "A long cylinder", "A flat thin disc"], explanation: "Extremely thin shapes minimize the distance to the center, maximizing the SA/V ratio." }
                         ]
                     }
                 },
                 {
                     title: "Unit 2: The Semi-Permeable Gate",
                     intuition: "Transport is not just moving things; it is a battle against gradients and water potential.",
-                    topics: ["Water Potential ($\Psi$)", "Osmoregulation", "Active Transport Kinetics"],
+                    topics: ["Water Potential ($\\Psi$)", "Osmoregulation", "Active Transport Kinetics"],
                     lectures: [
                         { name: "2.1: Water Potential Logic", url: "lesson:bio:ch1-3" },
                         { name: "2.2: Active Loading Systems", url: "lesson:bio:ch1-4" }
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "In which direction does water move regarding $\Psi$?", answer: "From High $\Psi$ to Low $\Psi$.", options: ["High to Low", "Low to High", "Against the gradient"], explanation: "Free energy dictates water moves from areas of high potential to low potential." },
-                            { title: "L2: Analysis", question: "If $\Psi_s = -0.5$ and $\Psi_p = +0.2$, what is total $\Psi$?", answer: "-0.3 MPa", options: ["-0.7 MPa", "-0.3 MPa", "+0.3 MPa"], explanation: "$\Psi = \Psi_s + \Psi_p = -0.5 + 0.2 = -0.3$." }
+                            { title: "L1: Intuition", question: "In which direction does water move regarding $\\Psi$?", answer: "High to Low", options: ["High to Low", "Low to High", "Against the gradient"], explanation: "Free energy dictates water moves from areas of high potential to low potential." },
+                            { title: "L2: Analysis", question: "If $\\Psi_s = -0.5$ and $\\Psi_p = +0.2$, what is total $\\Psi$?", answer: "-0.3 MPa", options: ["-0.7 MPa", "-0.3 MPa", "+0.3 MPa"], explanation: "$\\Psi = \\Psi_s + \\Psi_p = -0.5 + 0.2 = -0.3$." }
                         ]
                     }
                 },
@@ -67,7 +67,7 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "What happens to the rate of reaction if you add a non-competitive inhibitor?", answer: "The $V_{max}$ decreases regardless of substrate concentration.", options: ["Rate increases", "$V_{max}$ decreases", "Reaction stops"], explanation: "Non-competitive inhibitors change the enzyme's shape, making it less effective even if plenty of substrate is present." }
+                            { title: "L1: Intuition", question: "What happens to the rate of reaction if you add a non-competitive inhibitor?", answer: "$V_{max}$ decreases", options: ["Rate increases", "$V_{max}$ decreases", "Reaction stops"], explanation: "Non-competitive inhibitors change the enzyme's shape, making it less effective even if plenty of substrate is present." }
                         ]
                     }
                 }
@@ -92,7 +92,7 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "Why is one DNA strand built in fragments (Okazaki)?", answer: "DNA Polymerase can only build in the 5'→3' direction.", options: ["Because it is faster", "5'→3' constraint", "To prevent mutations"], explanation: "As the fork opens, the lagging strand must wait for enough space to build 'forward' in small chunks." }
+                            { title: "L1: Intuition", question: "Why is one DNA strand built in fragments (Okazaki)?", answer: "5'→3' constraint", options: ["Because it is faster", "5'→3' constraint", "To prevent mutations"], explanation: "As the fork opens, the lagging strand must wait for enough space to build 'forward' in small chunks." }
                         ]
                     }
                 },
@@ -142,7 +142,7 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "How much ATP does aerobic respiration produce per glucose compared to fermentation?", answer: "~30-32 ATP (aerobic) vs. 2 ATP (fermentation)", options: ["2 vs. 2", "~30-32 vs. 2", "~30-32 vs. 18"], explanation: "Without oxygen, only glycolysis can run (2 ATP). With oxygen, the full pathway yields ~30-32 ATP — about 15x more efficient." }
+                            { title: "L1: Intuition", question: "How much ATP does aerobic respiration produce per glucose compared to fermentation?", answer: "~30-32 vs. 2", options: ["2 vs. 2", "~30-32 vs. 2", "~30-32 vs. 18"], explanation: "Without oxygen, only glycolysis can run (2 ATP). With oxygen, the full pathway yields ~30-32 ATP — about 15x more efficient." }
                         ]
                     }
                 }
@@ -166,7 +166,7 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "What phenotype ratio do you expect from a monohybrid cross Aa × Aa?", answer: "3 dominant : 1 recessive", options: ["1:1", "3:1", "9:3:3:1"], explanation: "A monohybrid cross of two heterozygotes produces 1 AA : 2 Aa : 1 aa genotype, which gives a 3:1 dominant:recessive phenotype ratio." }
+                            { title: "L1: Intuition", question: "What phenotype ratio do you expect from a monohybrid cross Aa × Aa?", answer: "3:1", options: ["1:1", "3:1", "9:3:3:1"], explanation: "A monohybrid cross of two heterozygotes produces 1 AA : 2 Aa : 1 aa genotype, which gives a 3:1 dominant:recessive phenotype ratio." }
                         ]
                     }
                 },
@@ -215,7 +215,7 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                     ],
                     quiz: {
                         levels: [
-                            { title: "L3: Mastery", question: "What does it mean if your 95% Confidence Interval error bars for two groups OVERLAP?", answer: "The difference between the groups is likely NOT statistically significant.", options: ["Data is perfect", "Difference is significant", "Not statistically significant"], explanation: "Overlapping error bars suggest the real means could be the same." }
+                            { title: "L3: Mastery", question: "What does it mean if your 95% Confidence Interval error bars for two groups OVERLAP?", answer: "Not statistically significant", options: ["Data is perfect", "Difference is significant", "Not statistically significant"], explanation: "Overlapping error bars suggest the real means could be the same." }
                         ]
                     }
                 },
@@ -228,7 +228,87 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "Why must an experiment have a negative control?", answer: "To establish a baseline showing what happens without the treatment", options: ["To save money", "To establish a baseline without treatment", "To increase sample size"], explanation: "A negative control receives no treatment, establishing the baseline against which experimental results are compared." }
+                            { title: "L1: Intuition", question: "Why must an experiment have a negative control?", answer: "To establish a baseline without treatment", options: ["To save money", "To establish a baseline without treatment", "To increase sample size"], explanation: "A negative control receives no treatment, establishing the baseline against which experimental results are compared." }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            id: "bio-data-science",
+            title: "Bio-Data Science & Research",
+            code: "BIO-600",
+            icon: "fas fa-laptop-code",
+            color: "#6366f1",
+            difficulty: "advanced",
+            description: "Advanced bioinformatics and research logic. Integrating Python/R for biological data analysis and meta-analysis protocols.",
+            units: [
+                {
+                    title: "Unit 13: Bioinformatics with Python",
+                    intuition: "Modern biology is high-throughput. We use code to find patterns in billions of base pairs that the human eye would miss.",
+                    topics: ["Sequence Alignment Algorithms", "Biopython Foundations", "Statistical Analysis with R"],
+                    lectures: [
+                        { name: "13.1: Python for Biologists", url: "lesson:bio:ch6-1" },
+                        { name: "13.2: BLAST & Sequence Alignment", url: "lesson:bio:ch6-2" }
+                    ],
+                    examples: [
+                        {
+                            title: "Simulating GC Content Analysis",
+                            problem: "Write a Python snippet to calculate the GC content of a DNA sequence string.",
+                            steps: ["Define the sequence string.", "Count 'G' and 'c' occurrences.", "Divide by total length.", "Multiply by 100."],
+                            intuition: "GC content is a proxy for thermal stability. High GC means the DNA stays together in hotter environments."
+                        }
+                    ],
+                    quiz: {
+                        levels: [
+                            {
+                                title: "L1: Conceptual Intuition",
+                                question: "What is the fundamental benefit of using Python over manual analysis in genomics?",
+                                answer: "Scale and reproducibility",
+                                options: ["Speed only", "Scale and reproducibility", "More colorful plots", "Simpler formulas"],
+                                explanation: "The ability to process millions of sequences consistently and reproduce the same logic is the core of bio-data science."
+                            },
+                            {
+                                title: "L2: Algorithmic Understanding",
+                                question: "In a BLAST result, what does an E-value of $10^{-10}$ signify?",
+                                answer: "Alignment unlikely by chance",
+                                options: ["High probability of chance", "Alignment unlikely by chance", "Sequence length is 10", "An error occurred"],
+                                explanation: "E-value represents the 'Expectation' of random hits. Closer to 0 means true Homology."
+                            },
+                            {
+                                title: "L3: Elite Application",
+                                question: "Which scoring matrix is used to account for biological mutation probabilities?",
+                                answer: "BLOSUM62",
+                                options: ["PAM1", "BLOSUM62", "Identity Matrix", "Zero Matrix"],
+                                explanation: "BLOSUM62 is the standard statistical matrix for biological substitutions."
+                            }
+                        ]
+                    }
+                },
+                {
+                    title: "Unit 14: The Research Literature Review",
+                    intuition: "Science is a conversation. A literature review is how you map out that conversation before adding your own voice through experiments.",
+                    topics: ["Meta-Analysis Protocols", "P-Hacking Awareness", "Database Mining (PubMed/NCBI)"],
+                    lectures: [
+                        { name: "14.1: Systematic Review Logic", url: "lesson:bio:ch7-1" },
+                        { name: "14.2: Evaluating Scientific Rigor", url: "lesson:bio:ch7-2" }
+                    ],
+                    quiz: {
+                        levels: [
+                            {
+                                title: "L1: Research Ethics",
+                                question: "What is the term for manipulating variables until a desired p-value is reached?",
+                                answer: "P-Hacking",
+                                options: ["Data Mining", "P-Hacking", "Peer Review", "Meta-Analysis"],
+                                explanation: "P-Hacking is an unethical practice of processing data to force statistical significance ($p < 0.05$)."
+                            },
+                            {
+                                title: "L2: Critical Analysis",
+                                question: "What is the primary reason for using the PRISMA protocol in a Systematic Review?",
+                                answer: "Transparency and reproducibility",
+                                options: ["To speed up writing", "Transparency and reproducibility", "To correct typos", "To auto-generate citations"],
+                                explanation: "Clearly defining selection criteria allows other researchers to trust and replicate the results."
+                            }
                         ]
                     }
                 }

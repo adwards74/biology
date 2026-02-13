@@ -133,15 +133,15 @@ window.TutorEngine = (function () {
         "membrane": "Membranes are 'Fluid Mosaics'. Think of them as a sea of oil with protein icebergs floating in them. They are selectively permeable!",
         "osmosis": "Osmosis is just the diffusion of water. Remember: Water moves to where the solute (salt/sugar) is higher, to dilute it.",
         "diffusion": "Passive transport. Molecules move down their concentration gradient (High to Low) until equilibrium is reached. No ATP required!",
-        "enzyme": "Enzymes are biological catalysts. They lower the 'Activation Energy' ($\Delta E_a$) required for a reaction without being consumed.",
+        "enzyme": "Enzymes are biological catalysts. They lower the 'Activation Energy' ($\\Delta E_a$) required for a reaction without being consumed.",
         "ratio": "The SA/V Ratio is the law of cell size. As a cell grows, its volume (needs) increases faster than its surface area (supply). Small is efficient!",
         "nucleus": "The control center. It protects the DNA source code and coordinates all 'urban' activities within the cell.",
         "mitochondria": "The power plant. It performs cellular respiration to convert glucose into ATP energy currency.",
 
         // Genetics
-        "dna": "The master code. $A$ pairs with $T$, $C$ pairs with $G$. Its anti-parallel structure ($5' \rightarrow 3'$) defines how it is replicated.",
+        "dna": "The master code. $A$ pairs with $T$, $C$ pairs with $G$. Its anti-parallel structure ($5' \\rightarrow 3'$) defines how it is replicated.",
         "replication": "Semi-conservative. Half of the original DNA is 'saved' in each new double-helix to ensure high-fidelity copying.",
-        "dogma": "The Central Dogma: DNA $\rightarrow$ RNA $\rightarrow$ Protein. It's the one-way flow of biological information.",
+        "dogma": "The Central Dogma: DNA $\\rightarrow$ RNA $\\rightarrow$ Protein. It's the one-way flow of biological information.",
         "transcription": "Copying DNA into mRNA in the nucleus. It's like copying a master file into a temporary 'executable' format.",
         "translation": "Reading mRNA to build a protein chain at the ribosome. Converting 4-base language into 20-amino acid language.",
         "allele": "Different versions of a gene. You have two for every trait—one from each parent.",
@@ -152,12 +152,18 @@ window.TutorEngine = (function () {
         "photosynthesis": "Converting solar flux into chemical storage. It's high-tech environmental engineering at the leaf level!",
 
         // Statistics
-        "chisquare": "The $\chi^2$ test tells us if 'Difference = Luck'. If your calculated value is higher than the critical value, the difference is real!",
+        "chisquare": "The $\\chi^2$ test tells us if 'Difference = Luck'. If your calculated value is higher than the critical value, the difference is real!",
         "control": "Controls are the baseline. Without a negative control, you can't be sure your independent variable caused the effect.",
         "null": "The Null Hypothesis ($H_0$) states that there is NO real difference, and any variation is just random chance.",
 
         "tjhsst": "For TJ Biology, focus on the 'Mechanism'. Don't just memorize what an organelle is—understand HOW it contributes to homeostasis.",
-        "version": "I am Bio Tutor 5.3. Optimized for Sabrina's TJHSST IBET Preparation. Neural Link Status: Emerald-Active."
+        "version": "I am Bio Tutor 5.3. Optimized for Sabrina's TJHSST IBET Preparation. Neural Link Status: Emerald-Active.",
+        // 2028 Elite Expansion: Biology
+        "bioinformatics": "바이오정보학은 생물학적 데이터를 분석하기 위해 연산 도구를 사용하는 학문입니다. 게놈 데이터에서 '의미'를 찾아내는 핵심 기술이죠.",
+        "python": "파이썬은 생물학 데이터 처리에 가장 널리 쓰이는 언어입니다. Biopython을 사용하면 서열 정렬과 같은 복잡한 작업을 자동화할 수 있습니다.",
+        "blast": "BLAST는 미지의 염기서열을 거대한 데이터베이스에서 검색하여 가장 유사한 서열을 찾아내는 생물학적 Google과 같습니다.",
+        "prisma": "PRISMA는 체계적 문헌 검토를 위한 표준 프로토콜입니다. 연구의 투명성과 재현성을 높여줍니다.",
+        "phacking": "P-Hacking은 통계적으로 유의미한 결과를 내기 위해 데이터를 조작하는 행위입니다. 비판적 사고를 통해 이를 식별하는 것이 중요합니다."
     };
 
     function handleChatInput(query) {
@@ -173,14 +179,14 @@ window.TutorEngine = (function () {
             const bestMatch = neuralMatches[0];
 
             if (bestMatch.type === 'unit' && bestMatch.insight) {
-                response += `💡 **Intuition:** ${bestMatch.insight}\n\n`;
+                response += `💡 **Intuition:** ${bestMatch.insight}\\n\\n`;
             } else if (HINT_DATABASE[lowerQuery]) {
                 response += `💡 **Intuition:** ${HINT_DATABASE[lowerQuery]}\n\n`;
             } else {
                 // Fallback to searching database for keywords in query
                 for (const [keyword, hint] of Object.entries(HINT_DATABASE)) {
                     if (lowerQuery.includes(keyword)) {
-                        response += `💡 **Insight:** ${hint}\n\n`;
+                        response += `💡 **Insight:** ${hint}\\n\\n`;
                         break;
                     }
                 }
@@ -192,7 +198,7 @@ window.TutorEngine = (function () {
                 response += `⚙️ **Mechanism:** This covers core topics like: ${bestMatch.topics.join(', ')}. `;
             }
 
-            response += `\n\n🤔 **Bio-Inquiry:** How does this specific mechanism contribute to the overall homeostasis of the organism?`;
+            response += `\\n\\n🤔 **Bio-Inquiry:** How does this specific mechanism contribute to the overall homeostasis of the organism?`;
             return response;
         }
 
@@ -281,6 +287,29 @@ window.TutorEngine = (function () {
     window.getSocraticAdvice = getSocraticAdvice;
     window.recordQuizResult = recordQuizResult;
     window.typeTerminalMessage = typeTerminalMessage;
+    window.analyzePattern = (userInput) => {
+        const weak = window.getWeakTopics ? window.getWeakTopics() : [];
+        let analysis = "🧪 **Bio-Neural Pattern Analysis:**\\n";
+        if (weak.length > 0) {
+            analysis += `Your analysis of **${weak[0].topic}** shows some variance. Research suggests reinforcing the underlying biochemical principles.`;
+        } else {
+            analysis += "Your research logic is consistent. You are exhibiting high experimental precision.";
+        }
+        return analysis;
+    };
+
+    window.renderLogicMap = (topic) => {
+        const matrix = getConceptMatrix(topic);
+        return `<div class="logic-map-viz glass" style="padding:20px; border:1px solid var(--accent-emerald); border-radius:15px; margin-top:15px;">
+            <h5 style="color:var(--accent-emerald); margin-bottom:15px;"><i class="fas fa-project-diagram"></i> Bio-Logic Map: ${topic}</h5>
+            <div style="display:flex; justify-content:center; align-items:center; gap:20px;">
+                ${matrix.parents.map(p => `<div class="node glass" style="font-size:0.7rem; padding:5px 10px;">${p}</div>`).join('')}
+                <div class="node glass active" style="border-color:var(--accent-emerald); font-weight:bold; padding:10px 15px;">${topic}</div>
+                ${matrix.children.map(c => `<div class="node glass" style="font-size:0.7rem; padding:5px 10px;">${c}</div>`).join('')}
+            </div>
+        </div>`;
+    };
+
     window.buildNeuralMap = () => KnowledgeMap.build();
     window.getNextRecommendation = getNextRecommendation;
 

@@ -64,7 +64,20 @@ window.TutorEngine = (function () {
                             subtitle: lesson.subtitle,
                             content: lesson.content
                         });
+                        // NEW: Pre-index content keywords for faster deep-scan
+                        const textContent = lesson.content.replace(/<[^>]*>/g, ' ');
+                        this.addtoIndex(lesson.title, { type: 'content_ref', id: lessonId });
                     }
+                }
+            }
+
+            // NEW: Automatically integrate Glossary into Knowledge Map
+            if (window.MATH_DATA && window.MATH_DATA.glossary) {
+                for (const [term, def] of Object.entries(window.MATH_DATA.glossary)) {
+                    this.addtoIndex(term, {
+                        type: 'glossary',
+                        definition: def
+                    });
                 }
             }
 
@@ -98,6 +111,26 @@ window.TutorEngine = (function () {
                     });
                 }
             }
+
+            // NEW: Deep Content Scanning (Elite 5.5 Feature)
+            // If no high-quality match (score < 10), scan inner lesson strings
+            if (results.length === 0 || results[0].score < 10) {
+                for (const [chId, lessons] of Object.entries(window.CHAPTER_DATA || {})) {
+                    for (const [lessonId, lesson] of Object.entries(lessons)) {
+                        const plainContent = lesson.content.replace(/<[^>]*>/g, ' ').toLowerCase();
+                        if (plainContent.includes(lowerQuery)) {
+                            results.push({
+                                type: 'content',
+                                title: lesson.title,
+                                subtitle: lesson.subtitle,
+                                content: lesson.content,
+                                score: 7 // Medium score for deep content discovery
+                            });
+                        }
+                    }
+                }
+            }
+
             return results.sort((a, b) => b.score - a.score);
         },
 
@@ -137,6 +170,13 @@ window.TutorEngine = (function () {
         "ratio": "The SA/V Ratio is the law of cell size. As a cell grows, its volume (needs) increases faster than its surface area (supply). Small is efficient!",
         "nucleus": "The control center. It protects the DNA source code and coordinates all 'urban' activities within the cell.",
         "mitochondria": "The power plant. It performs cellular respiration to convert glucose into ATP energy currency.",
+        "ribosome": "The protein factory. Ribosomes translate mRNA instructions into polypeptide chains. They can be 'free' or attached to the ER.",
+        "rough er": "The export factory. Studded with ribosomes, it synthesizes proteins destined for secretion or membrane insertion.",
+        "smooth er": "The metabolic hub. It synthesizes lipids, detoxifies chemicals, and stores calcium ions.",
+        "golgi": "The shipping & receiving center. It modifies, sorts, and packages proteins from the ER for final transport.",
+        "lysosome": "The recycling crew. Contains digestive enzymes to break down macromolecules and old organelles.",
+        "vacuole": "The storage vault. In plants, the large Central Vacuole maintains turgor pressure; in animals, they handle transport.",
+        "cell wall": "The structural barricade. A rigid outer layer made of cellulose (in plants) that provides protection and shape.",
 
         // Genetics
         "dna": "The master code. $A$ pairs with $T$, $C$ pairs with $G$. Its anti-parallel structure ($5' \\rightarrow 3'$) defines how it is replicated.",
@@ -180,6 +220,8 @@ window.TutorEngine = (function () {
 
             if (bestMatch.type === 'unit' && bestMatch.insight) {
                 response += `💡 **Intuition:** ${bestMatch.insight}\\n\\n`;
+            } else if (bestMatch.type === 'glossary') {
+                response += `📖 **Definition:** ${bestMatch.definition}\\n\\n`;
             } else if (HINT_DATABASE[lowerQuery]) {
                 response += `💡 **Intuition:** ${HINT_DATABASE[lowerQuery]}\n\n`;
             } else {
@@ -196,6 +238,8 @@ window.TutorEngine = (function () {
                 response += `⚙️ **Mechanism:** This relates to *${bestMatch.subtitle}*. `;
             } else if (bestMatch.type === 'unit') {
                 response += `⚙️ **Mechanism:** This covers core topics like: ${bestMatch.topics.join(', ')}. `;
+            } else if (bestMatch.type === 'glossary') {
+                response += `⚙️ **Mechanism:** This is a vital term in our biological framework. `;
             }
 
             response += `\\n\\n🤔 **Bio-Inquiry:** How does this specific mechanism contribute to the overall homeostasis of the organism?`;

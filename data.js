@@ -331,7 +331,19 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
     external_resources: [
         { title: "Khan Academy Bio", url: "https://www.khanacademy.org/science/biology", icon: "fas fa-leaf", desc: "Foundational concepts for supplemental review." },
         { title: "Bozeman Science", url: "http://www.bozemanscience.com/biology", icon: "fas fa-video", desc: "In-depth video lectures on AP/Honors Bio topics." }
-    ]
+    ],
+    glossary: {
+        "SA:V Ratio": "Surface Area to Volume Ratio. Explains why cells must remain small to maintain efficient nutrient/waste exchange.",
+        "Organelle": "A membrane-bound structure within a cell that performs a specific function (e.g., mitochondria, nucleus).",
+        "Osmosis": "The diffusion of water molecules across a semi-permeable membrane from high to low water potential.",
+        "Water Potential": "A measure of the free energy of water in a solution; water moves from high potential ($\Psi$) to low potential.",
+        "Enzyme": "A biological catalyst (usually a protein) that speeds up chemical reactions by lowering activation energy.",
+        "Active Transport": "The movement of molecules across a cell membrane against a concentration gradient, requiring ATP (energy).",
+        "Homeostasis": "The maintenance of a stable internal environment despite external changes.",
+        "Prokaryote": "A single-celled organism that lacks a nucleus and membrane-bound organelles.",
+        "Eukaryote": "An organism whose cells contain a nucleus and other membrane-bound organelles.",
+        "Endomembrane System": "A group of membranes and organelles in eukaryotic cells that work together to modify, package, and transport lipids and proteins."
+    }
 };
 
 if (typeof module !== 'undefined') module.exports = window.MATH_DATA;

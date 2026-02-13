@@ -405,6 +405,29 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
+    function showGlossary() {
+        const container = document.getElementById('view-container');
+        if (!container) return;
+
+        const glossary = window.MATH_DATA.glossary || {};
+        const terms = Object.keys(glossary).sort();
+
+        container.innerHTML = `
+            <div class="hero">
+                <h1>Biological <span class="gradient-text">Dictionary</span></h1>
+                <p>A comprehensive glossary of TJHSST 9th Grade IBET terminology.</p>
+            </div>
+            <div class="glossary-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:20px; margin-top:30px;">
+                ${terms.map(term => `
+                    <div class="glass-card fadeIn" style="padding:20px; border-left:3px solid var(--accent-blue);">
+                        <h3 style="color:var(--accent-blue); margin-bottom:8px;">${term}</h3>
+                        <p style="font-size:0.9rem; opacity:0.8; line-height:1.5;">${glossary[term]}</p>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+
     function showResources() {
         const container = document.getElementById('resources-container');
         if (!container) return;
@@ -502,13 +525,68 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Neo 5.5: Theme Engine ---
+    const initTheme = () => {
+        const savedTheme = localStorage.getItem('genius_math_theme') || 'dark';
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            const icon = document.querySelector('#theme-toggle i');
+            if (icon) icon.className = 'fas fa-sun';
+        }
+    };
+
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const isLight = document.body.classList.toggle('light-mode');
+            localStorage.setItem('genius_math_theme', isLight ? 'light' : 'dark');
+            const icon = themeToggle.querySelector('i');
+            if (icon) icon.className = isLight ? 'fas fa-sun' : 'fas fa-moon';
+        });
+    }
+    initTheme();
+
+    // --- Neo 5.5: Global Search Engine ---
+    const searchInput = document.getElementById('global-search');
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase().trim();
+            if (!term) {
+                if (window.AppRouter.currentView === 'dashboard') window.showDashboard();
+                else if (window.AppRouter.currentView === 'subjects') window.showSubjects();
+                return;
+            }
+            handleGlobalSearch(term);
+        });
+    }
+
+    function handleGlobalSearch(term) {
+        const filteredSubjects = MATH_DATA.subjects.filter(s =>
+            s.title.toLowerCase().includes(term) ||
+            s.description.toLowerCase().includes(term) ||
+            s.code.toLowerCase().includes(term) ||
+            s.units.some(u => u.title.toLowerCase().includes(term) || u.topics?.some(t => t.toLowerCase().includes(term)))
+        );
+
+        const container = document.getElementById('subject-cards-container') || document.getElementById('subjects-grid-full');
+        if (container) {
+            if (filteredSubjects.length > 0) {
+                window.renderSubjectGrid(filteredSubjects, container);
+            } else {
+                container.innerHTML = `<div class="glass-card fadeIn" style="grid-column: 1/-1; text-align:center; padding:50px; border: 1px dashed var(--glass-border);">
+                    <i class="fas fa-search-minus" style="font-size:3rem; opacity:0.1; margin-bottom:20px;"></i>
+                    <p style="opacity:0.6;">No neural matches found for "${term}". Try another biological focus.</p>
+                </div>`;
+            }
+        }
+    }
+
     // Note: renderSubjectGrid moved to ui-render.js
 
     window.showDashboard = showDashboard;
     window.showSubjects = showSubjects;
     window.showStrategy = showStrategy;
-    window.showResources = showResources;
-    window.showReviewHub = showReviewHub;
+    window.showGlossary = showGlossary;
     window.showKnowledgeTree = showKnowledgeTree;
 
     window.getProgress = getProgress;
@@ -641,7 +719,24 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p class="subtitle">${lessonData.subtitle}</p>
                     </header>
                     <article class="lesson-content">
-                        ${lessonData.content}
+                        ${(() => {
+                    let content = lessonData.content;
+                    // Terminology Tooltips
+                    if (window.UIEngine && window.UIEngine.applyTerminologyTooltips) {
+                        content = window.UIEngine.applyTerminologyTooltips(content);
+                    }
+                    // Modern Image Captions
+                    content = content.replace(/<neo-img src="(.*)" caption="(.*)" source="(.*)"><\/neo-img>/g, (match, src, cap, srcName) => {
+                        return `
+                                    <div class="lesson-image-wrap fadeIn">
+                                        <img src="${src}" alt="${cap}">
+                                        <span class="image-caption">${cap}</span>
+                                        <span class="image-source">Source: ${srcName}</span>
+                                    </div>
+                                `;
+                    });
+                    return content;
+                })()}
                     </article>
                     <div class="lesson-footer" style="margin-top: 50px; text-align: right; padding-bottom: 60px;">
                         ${nextButtonHtml ?

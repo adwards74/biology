@@ -29,8 +29,10 @@ window.CHAPTER_DATA["ch1"] = {
                 <!-- BIG IDEA -->
                 <div class="intuition-box glass">
                     <h3><i class="fas fa-lightbulb"></i> Big Idea: Why Are Cells Small?</h3>
-                    <p>Every living cell faces a fundamental physical constraint: as it grows larger, its internal <strong>needs</strong> (determined by volume) grow much faster than its ability to <strong>supply</strong> those needs (determined by surface area). This is the single most important geometric principle in all of cell biology. It explains why cells are microscopic, why organelles exist, and why evolution invented membrane folding.</p>
+                    <p>Every living cell faces a fundamental physical constraint: as it grows larger, its internal <strong>needs</strong> (determined by volume) grow much faster than its ability to <strong>supply</strong> those needs (determined by surface area). This is the single most important geometric principle in all of cell biology. It explains why cells are microscopic, why an <strong>Organelle</strong> exists, and why evolution invented membrane folding. Most efficient cells maintain a high <strong>SA:V Ratio</strong>.</p>
                 </div>
+
+                <neo-img src="../assets/cell_diagram_pro.png" caption="Comprehensive Eukaryotic Cell Architecture mapping the Endomembrane System." source="Elite Biology Research Lab"></neo-img>
 
                 <!-- SECTION I -->
                 <h2>I. The SA/V Ratio: The Law of Cell Size</h2>

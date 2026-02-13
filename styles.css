@@ -1,24 +1,47 @@
 :root {
-    --bg-dark: #05070a;
-    --sidebar-bg: rgba(13, 17, 23, 0.7);
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
+    /* Constants */
     --accent-blue: #00d2ff;
     --accent-purple: #9d50bb;
     --accent-green: #38ef7d;
     --accent-emerald: #10b981;
     --accent-cyan: #06b6d4;
-    --text-primary: #ffffff;
     --accent-magenta: #f5576c;
     --accent-orange: #ff9d00;
     --accent-teal: #14b8a6;
     --accent-amber: #f59e0b;
     --accent-red: #ef4444;
-    --neon-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
-    --neon-magenta: 0 0 15px rgba(245, 87, 108, 0.3);
-    --neon-blue-glow: 0 0 20px rgba(0, 210, 255, 0.4);
-    --neon-magenta-glow: 0 0 20px rgba(245, 87, 108, 0.4);
     --standard-radius: 20px;
+
+    /* Dark Mode Defaults */
+    --bg-dark: #05070a;
+    --sidebar-bg: rgba(13, 17, 23, 0.7);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --header-bg: rgba(5, 7, 10, 0.8);
+
+    --neon-blue: rgba(0, 210, 255, 0.3);
+    --neon-magenta: rgba(245, 87, 108, 0.3);
+    --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+body.light-mode {
+    --bg-dark: #f0f4f8;
+    --sidebar-bg: rgba(255, 255, 255, 0.8);
+    --glass-bg: rgba(255, 255, 255, 0.6);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --header-bg: rgba(240, 244, 248, 0.8);
+
+    --accent-blue: #0284c7;
+    --accent-purple: #7c3aed;
+    --accent-magenta: #e11d48;
+
+    --neon-blue: rgba(2, 132, 199, 0.1);
+    --neon-magenta: rgba(225, 29, 72, 0.1);
+    --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
 * {
@@ -351,16 +374,29 @@ em {
 /* Main Content */
 .content-area {
     flex: 1;
-    padding: 30px 40px;
     overflow-y: auto;
     background: radial-gradient(circle at top right, rgba(157, 80, 187, 0.05), transparent 600px);
+    display: flex;
+    flex-direction: column;
+}
+
+#view-container {
+    padding: 0 40px 40px 40px;
 }
 
 .top-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 40px;
+    padding: 20px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--header-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--glass-border);
+    margin-bottom: 20px;
 }
 
 .search-bar {
@@ -1391,4 +1427,92 @@ em {
 .next-btn-large:hover {
     transform: translateY(-2px);
     box-shadow: 0 0 35px rgba(0, 210, 255, 0.8) !important;
+}
+/* --- Terminology Tooltip System --- */
+.term-tooltip {
+    position: relative;
+    border-bottom: 2px dotted var(--accent-blue);
+    cursor: help;
+    color: var(--accent-blue) !important;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.term-tooltip::before {
+    content: attr(data-definition);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    padding: 12px;
+    background: var(--sidebar-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--accent-blue);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+.term-tooltip:hover::before {
+    visibility: visible;
+    opacity: 1;
+    bottom: 140%;
+}
+
+/* Light mode adjustments for tooltips */
+body.light-mode .term-tooltip::before {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: var(--accent-blue);
+    color: var(--text-primary);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Professional Image Captions --- */
+.lesson-image-wrap {
+    margin: 35px 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lesson-image-wrap img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--standard-radius);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.lesson-image-wrap img:hover {
+    transform: scale(1.01);
+}
+
+.image-caption {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    max-width: 80%;
+    line-height: 1.5;
+}
+
+.image-source {
+    font-size: 0.75rem;
+    opacity: 0.6;
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }

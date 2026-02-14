@@ -48,6 +48,30 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.updateStabilityUI) window.updateStabilityUI();
     }
 
+    // NEW: Image Lightbox Functionality
+    const lightboxHtml = `
+        <div id="image-lightbox" class="glass" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:9999; backdrop-filter:blur(15px); -webkit-backdrop-filter:blur(15px); background:rgba(0,0,0,0.8); cursor:zoom-out; align-items:center; justify-content:center; padding:40px;">
+            <img id="lightbox-img" src="" style="max-width:100%; max-height:100%; border-radius:15px; box-shadow:0 0 50px rgba(0,0,0,0.5); object-fit:contain;">
+            <div style="position:absolute; top:30px; right:30px; color:white; font-size:2rem; cursor:pointer;" onclick="document.getElementById('image-lightbox').style.display='none'"><i class="fas fa-times"></i></div>
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', lightboxHtml);
+
+    window.showImageModal = (src) => {
+        const lb = document.getElementById('image-lightbox');
+        const img = document.getElementById('lightbox-img');
+        img.src = src;
+        lb.style.display = 'flex';
+        lb.onclick = (e) => { if (e.target !== img) lb.style.display = 'none'; };
+    };
+
+    // Auto-attach lightbox to lesson images
+    document.addEventListener('click', (e) => {
+        if (e.target.tagName === 'IMG' && e.target.closest('.lesson-content')) {
+            window.showImageModal(e.target.src);
+        }
+    });
+
     // Kernel Initialization: Link Modules
     if (window.AppRouter) window.AppRouter.initialize();
 
@@ -787,10 +811,8 @@ document.addEventListener('DOMContentLoaded', () => {
     async function showLesson(lessonKey, subjectId) {
         window.currentLessonKey = lessonKey;
         if (typeof lessonStartTime !== 'undefined') lessonStartTime = Date.now();
-        console.log("SHOW LESSON TRIGGERED:", lessonKey, subjectId); // Debug
+        console.log("SHOW LESSON TRIGGERED:", lessonKey, subjectId);
         try {
-
-            // ... (loading logic)
             const chapterId = lessonKey.split('-')[0];
             try {
                 await loadChapterData(chapterId);
@@ -804,22 +826,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const chapterData = window.CHAPTER_DATA[chapterId];
             if (!chapterData) {
-                console.error("Available Chapters:", Object.keys(window.CHAPTER_DATA));
                 throw new Error(`Chapter data for '${chapterId}' failed to load.`);
             }
 
             const lessonData = chapterData[lessonKey];
             if (!lessonData) {
-                // Simplified error handling
                 throw new Error(`Lesson content for '${lessonKey}' not found.`);
             }
 
-            // Restore missing definition
             const nextLesson = findNextLesson(lessonKey, subjectId);
             const nextButtonHtml = nextLesson
                 ? `<button class="glass next-btn" onclick="window.finishLesson('${lessonKey}', '${subjectId}'); window.showLesson('${nextLesson.key}', '${subjectId}')" style="padding: 10px 20px; font-weight: 600; color: var(--accent-cyan); display: flex; align-items: center; gap: 8px;">
-                 Next <i class="fas fa-arrow-right"></i>
-               </button>`
+                     Next <i class="fas fa-arrow-right"></i>
+                   </button>`
                 : '';
 
             const appContainer = document.getElementById('dashboard-view');
@@ -849,7 +868,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     <article class="lesson-content">
                         ${(() => {
                     let content = lessonData.content;
-                    // 1. Modern Image Captions (process FIRST)
                     content = content.replace(/<neo-img src="(.*)" caption="(.*)" source="(.*)"><\/neo-img>/g, (match, src, cap, srcName) => {
                         return `
                                     <div class="lesson-image-wrap fadeIn">
@@ -859,12 +877,31 @@ document.addEventListener('DOMContentLoaded', () => {
                                     </div>
                                 `;
                     });
-                    // 2. Terminology Tooltips (process LAST)
                     if (window.UIEngine && window.UIEngine.applyTerminologyTooltips) {
                         content = window.UIEngine.applyTerminologyTooltips(content);
                     }
                     return content;
                 })()}
+
+                        <div class="references-section glass" style="margin-top:50px; padding:25px; border-radius:15px; border:1px solid rgba(255,255,255,0.05); background:rgba(0,0,0,0.2);">
+                            <h4 style="color:var(--accent-blue); display:flex; align-items:center; gap:10px; margin-bottom:15px;">
+                                <i class="fas fa-graduation-cap"></i> Scholarly References & Further Reading
+                            </h4>
+                            <ul style="list-style:none; padding:0; font-size:0.9rem; line-height:1.8; opacity:0.8;">
+                                <li style="margin-bottom:8px;">
+                                    <i class="fas fa-link" style="font-size:0.7rem;"></i> 
+                                    <a href="https://www.nature.com/scitable" target="_blank" style="color:var(--text-primary); text-decoration:none; border-bottom:1px solid var(--accent-blue);">Nature Scitable: Library of Life Sciences</a>
+                                </li>
+                                <li style="margin-bottom:8px;">
+                                    <i class="fas fa-link" style="font-size:0.7rem;"></i> 
+                                    <a href="https://amzn.to/3Z0Bv8z" target="_blank" style="color:var(--text-primary); text-decoration:none; border-bottom:1px solid var(--accent-magenta);">Campbell Biology (12th Edition)</a>
+                                </li>
+                                <li style="margin-bottom:8px;">
+                                    <i class="fas fa-link" style="font-size:0.7rem;"></i> 
+                                    <a href="https://en.wikipedia.org/wiki/Biology" target="_blank" style="color:var(--text-primary); text-decoration:none; border-bottom:1px solid var(--accent-green);">Wikipedia: Biological Frameworks</a>
+                                </li>
+                            </ul>
+                        </div>
                     </article>
                     <div class="lesson-footer" style="margin-top: 50px; text-align: right; padding-bottom: 60px;">
                         ${nextButtonHtml ?
@@ -878,53 +915,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             </div>
-        `;
+            `;
 
-            // Fix: Scroll the actual content container to top
-            document.querySelector('.content-area')?.scrollTo(0, 0);
+            document.querySelector('.page-content')?.scrollTo(0, 0);
+            if (window.MathJax) window.MathJax.typesetPromise();
+            if (lessonData.vizConfig) window.initDesmosLab(lessonData.vizConfig);
 
-            // Re-trigger MathJax
-            if (window.MathJax) {
-                MathJax.typesetPromise();
-            }
-
-            // --- Elite 3.0: Interactive Graphics Lab (Desmos) ---
-            if (lessonData.vizConfig) {
-                window.initDesmosLab(lessonData.vizConfig);
-            }
-
-            // --- Legacy Triggers (Keep for compatibility) ---
             if (lessonKey === 'ch3-4') setTimeout(renderLPViz, 500);
-            if (lessonKey === 'ch4-2') setTimeout(renderMatrixViz, 500);
-            if (lessonKey === 'ch4-3') setTimeout(renderMatrixViz, 500);
-
-            // Interactive Engine: Matrix Collapse Viz (Ch 4.4)
-            if (lessonKey.includes('ch4-4')) {
-                setTimeout(renderMatrixCollapseViz, 500);
-            }
-            // Interactive Engine: Parabola Viz (Ch 5.6)
-            if (lessonKey.includes('ch5-6')) {
-                setTimeout(renderParabolaViz, 500);
-            }
-
-            // Interactive Engine: Synthetic Division Viz (Ch 6.3)
-            if (lessonKey.includes('ch6-3')) {
-                setTimeout(renderSyntheticDivisionViz, 500);
-            }
-
-            // Interactive Engine: Root Curvature Slider (Ch 7.7)
-            if (lessonKey.includes('ch7-7')) {
-                setTimeout(renderRootSliderViz, 500);
-            }
-
-            // Interactive Engine: Log Chart Viz (Ch 8.3)
-            if (lessonKey.includes('ch8-3')) {
-                setTimeout(renderLogChartViz, 500);
-            }
+            if (lessonKey === 'ch4-2' || lessonKey === 'ch4-3') setTimeout(renderMatrixViz, 500);
+            if (lessonKey.includes('ch4-4')) setTimeout(renderMatrixCollapseViz, 500);
+            if (lessonKey.includes('ch5-6')) setTimeout(renderParabolaViz, 500);
+            if (lessonKey.includes('ch6-3')) setTimeout(renderSyntheticDivisionViz, 500);
+            if (lessonKey.includes('ch7-7')) setTimeout(renderRootSliderViz, 500);
+            if (lessonKey.includes('ch8-3')) setTimeout(renderLogChartViz, 500);
 
         } catch (e) {
             console.error("FATAL LESSON ERROR:", e);
-            alert("CRITICAL ERROR:\\n" + e.message + "\\n\\nSee console for details.");
+            alert("CRITICAL ERROR:\n" + e.message);
         }
     }
     window.finishLesson = (key, subId) => {

@@ -1781,10 +1781,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 50);
     }
 
-    window.toggleLessonTool = () => {
-        const panel = document.getElementById('lesson-tool-panel');
-        if (panel) {
-            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+    window.toggleLessonTool = (type) => {
+        if (window.UIEngine && window.UIEngine.toggleCalculator) {
+            window.UIEngine.toggleCalculator(type);
         }
     };
 

@@ -32,6 +32,7 @@ window.AppRouter = (function () {
         if (viewId === 'strategy' && window.showStrategy) window.showStrategy();
         if (viewId === 'resources' && window.showResources) window.showResources();
         if (viewId === 'review' && window.showReviewHub) window.showReviewHub();
+        if (viewId === 'atlas' && window.showAtlas) window.showAtlas();
     }
 
     // Expose switchView to window for legacy compatibility

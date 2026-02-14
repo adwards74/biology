@@ -491,6 +491,31 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('');
     }
 
+    function showAtlas(modelId = 'plant-cell') {
+        const container = document.getElementById('view-container');
+        if (!container) return;
+
+        container.innerHTML = `
+            <div class="hero">
+                <h1>Bio-Anatomical <span class="gradient-text">Atlas</span></h1>
+                <p>Interactive neural mapping of biological structures.</p>
+                <div style="margin-top:20px; display:flex; gap:15px;">
+                    <button class="glass" style="padding:10px 20px; border-radius:10px; color:var(--accent-emerald);" onclick="window.showAtlas('plant-cell')">
+                        <i class="fas fa-leaf"></i> Plant Cell
+                    </button>
+                    <button class="glass" style="padding:10px 20px; border-radius:10px; color:var(--accent-magenta);" onclick="window.showAtlas('animal-cell')">
+                        <i class="fas fa-dog"></i> Animal Cell
+                    </button>
+                </div>
+            </div>
+            <div id="atlas-mount-point" style="margin-top:30px;"></div>
+        `;
+
+        if (window.NeoAtlas) {
+            window.NeoAtlas.render(modelId, 'atlas-mount-point');
+        }
+    }
+
     function switchView(viewName) {
         if (window.AppRouter) window.AppRouter.switchView(viewName);
     }
@@ -621,6 +646,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.showStrategy = showStrategy;
     window.showGlossary = showGlossary;
     window.showKnowledgeTree = showKnowledgeTree;
+    window.showAtlas = showAtlas;
 
     window.getProgress = getProgress;
     window.saveProgress = saveProgress;

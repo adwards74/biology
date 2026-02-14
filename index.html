@@ -149,24 +149,100 @@
                 </div>
             </div>
 
+            <!-- Stats Display (Elite 5.3) -->
+            <div id="tutor-stats-display" class="glass"
+                style="padding:12px; border-radius:12px; margin-top:15px; background:rgba(0,0,0,0.3); border:1px solid rgba(0,255,100,0.2);">
+                <div style="display:flex; justify-content:space-between; font-size:0.75rem; margin-bottom:8px;">
+                    <span>Streak: 0</span>
+                    <span>Accuracy: --</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; font-size:0.7rem; opacity:0.7;">
+                    <span>Best: 0</span>
+                    <span>Today: 0/5</span>
+                </div>
+                <div style="margin-top:8px;">
+                    <div style="height:4px; background:rgba(255,255,255,0.1); border-radius:2px;">
+                        <div
+                            style="height:100%; width:0%; background:linear-gradient(90deg, var(--accent-emerald), var(--accent-cyan)); border-radius:2px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="tutor-content">
                 <div class="chat-bubble glass" id="tutor-message">
                     <span class="terminal-prefix">></span> Welcome Sabrina. Biological systems online. Ready to analyze
                     life at the molecular level!
                 </div>
+
+                <!-- Stability Tracker -->
+                <div class="stability-tracker glass" id="stability-section"
+                    style="margin-top:15px; padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
+                    <div
+                        style="display:flex; justify-content:space-between; font-size:0.65rem; margin-bottom:8px; opacity:0.6;">
+                        <span>NEURAL STABILITY</span>
+                        <span id="stability-percent">98%</span>
+                    </div>
+                    <canvas id="stability-graph" width="230" height="40" style="width:100%; height:40px;"></canvas>
+                </div>
+
+                <!-- Next Recommendation -->
+                <div id="tutor-recommendation" class="glass"
+                    style="margin-top:15px; padding:12px; border-radius:12px; border-left:3px solid var(--accent-emerald); font-size:0.8rem; display:none;">
+                    <div style="font-size:0.65rem; opacity:0.6; margin-bottom:5px;">NEXT UP</div>
+                    <div id="recommendation-content"></div>
+                </div>
             </div>
 
-            <div class="tutor-chat-input">
+            <div class="tutor-chat-input" style="padding-top:10px; border-top: 1px solid rgba(255,255,255,0.05);">
                 <div style="display:flex; gap:8px;">
-                    <input type="text" id="tutor-chat-input" class="glass" placeholder="Ask Bio Tutor...">
-                    <button class="glass" onclick="window.submitTutorChat()"><i class="fas fa-paper-plane"></i></button>
+                    <input type="text" id="tutor-chat-input" class="glass" placeholder="Ask Bio Tutor..."
+                        style="flex:1; padding:10px 15px; border-radius:12px; background:rgba(0,0,0,0.3); border:1px solid rgba(0,255,100,0.2); color:white; font-size:0.85rem;"
+                        onkeypress="if(event.key==='Enter')window.submitTutorChat()">
+                    <button class="glass" onclick="window.submitTutorChat()"
+                        style="padding:10px 15px; border-radius:12px; color:var(--accent-emerald); cursor:pointer;">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
                 </div>
+            </div>
+
+            <div class="tutor-footer" style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
+                <button class="glass tutor-btn" onclick="window.askTutorTip()"
+                    style="flex:1; min-width:80px; padding: 10px; font-size: 0.8rem;">
+                    <i class="fas fa-lightbulb"></i> Get Trick
+                </button>
+                <button class="glass tutor-btn" onclick="window.summarizeLesson()"
+                    style="flex:1; min-width:80px; padding: 10px; font-size: 0.8rem;">
+                    <i class="fas fa-list-ul"></i> Summarize
+                </button>
+                <button class="glass tutor-btn" onclick="window.showNeuralMap()"
+                    style="flex:100%; margin-top:5px; border-color:var(--accent-magenta); padding: 10px; font-size: 0.8rem;">
+                    <i class="fas fa-project-diagram"></i> Bio-Logic Map
+                </button>
             </div>
         </aside>
 
         <button id="tutor-toggle" class="glass toggle-btn" onclick="document.body.classList.toggle('tutor-open')">
             <i class="fas fa-robot"></i>
         </button>
+
+        <!-- Neural Map Modal (Elite 5.3) -->
+        <div id="neural-map-modal" class="glass"
+            style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); width:90%; max-width:600px; height:70vh; z-index:2000; border-radius:20px; padding:25px; border:1px solid rgba(0, 255, 100, 0.3); overflow:hidden;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                <h2 style="margin:0; font-size:1.2rem; color:var(--accent-emerald);">
+                    <i class="fas fa-project-diagram"></i> Bio-Logic Map
+                </h2>
+                <button class="glass" onclick="document.getElementById('neural-map-modal').style.display='none'"
+                    style="border:none; color:white; cursor:pointer; font-size:1.2rem; background:transparent;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="neural-map-canvas-container"
+                style="height:calc(100% - 60px); position:relative; display:flex; flex-direction:column; gap:20px; align-items:center; justify-content:center;">
+                <!-- Concept nodes will be injected here -->
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->

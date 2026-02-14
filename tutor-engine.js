@@ -301,20 +301,133 @@ window.TutorEngine = (function () {
     // ========================================
     // ANALYTICS & STATS (Simplified for Bio)
     // ========================================
+    // ========================================
+    // ANALYTICS & STATS (Elite 5.3)
+    // ========================================
+    const STATS_KEY = 'neo_tutor_stats';
+
+    function getStats() {
+        const saved = localStorage.getItem(STATS_KEY);
+        return saved ? JSON.parse(saved) : {
+            currentStreak: 0,
+            bestStreak: 0,
+            totalCorrect: 0,
+            totalAttempts: 0,
+            topicAccuracy: {},
+            dailyGoal: 5,
+            dailyProgress: 0,
+            lastActiveDate: null
+        };
+    }
+
+    function saveStats(stats) {
+        localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+    }
+
     function recordQuizResult(topic, isCorrect) {
-        // Logic for tracking progress - preserved for UI compatibility
-        const stats = window.getTutorStats ? window.getTutorStats() : { totalAttempts: 0, totalCorrect: 0, currentStreak: 0 };
+        const stats = getStats();
+        const today = new Date().toDateString();
+
+        if (stats.lastActiveDate !== today) {
+            stats.dailyProgress = 0;
+            stats.lastActiveDate = today;
+        }
+
         stats.totalAttempts++;
+        stats.dailyProgress++;
+
         if (isCorrect) {
             stats.totalCorrect++;
             stats.currentStreak++;
+            if (stats.currentStreak > stats.bestStreak) {
+                stats.bestStreak = stats.currentStreak;
+            }
         } else {
             stats.currentStreak = 0;
         }
-        localStorage.setItem('neo_tutor_stats', JSON.stringify(stats));
-        if (window.updateTutorUI) window.updateTutorUI(stats, isCorrect);
+
+        if (topic) {
+            const normalizedTopic = topic.toLowerCase();
+            if (!stats.topicAccuracy[normalizedTopic]) {
+                stats.topicAccuracy[normalizedTopic] = { correct: 0, total: 0 };
+            }
+            stats.topicAccuracy[normalizedTopic].total++;
+            if (isCorrect) stats.topicAccuracy[normalizedTopic].correct++;
+        }
+
+        saveStats(stats);
+        updateTutorUI(stats, isCorrect);
         return stats;
     }
+
+    function updateTutorUI(stats, justAnsweredCorrect) {
+        const statsDisplay = document.getElementById('tutor-stats-display');
+        if (statsDisplay) {
+            const accuracy = stats.totalAttempts > 0 ? Math.round((stats.totalCorrect / stats.totalAttempts) * 100) : 0;
+            let streakEmoji = stats.currentStreak >= 10 ? '🔥🔥🔥' : stats.currentStreak >= 5 ? '🔥🔥' : stats.currentStreak >= 3 ? '🔥' : '';
+
+            statsDisplay.innerHTML = `
+                <div style="display:flex; justify-content:space-between; font-size:0.75rem; margin-bottom:8px;">
+                    <span>Streak: ${stats.currentStreak} ${streakEmoji}</span>
+                    <span>Accuracy: ${accuracy}%</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; font-size:0.7rem; opacity:0.7;">
+                    <span>Best: ${stats.bestStreak}</span>
+                    <span>Today: ${stats.dailyProgress}/${stats.dailyGoal}</span>
+                </div>
+                <div style="margin-top:8px;">
+                    <div style="height:4px; background:rgba(255,255,255,0.1); border-radius:2px;">
+                        <div style="height:100%; width:${Math.min((stats.dailyProgress / stats.dailyGoal) * 100, 100)}%; background:linear-gradient(90deg, var(--accent-emerald), var(--accent-cyan)); border-radius:2px; transition:width 0.5s;"></div>
+                    </div>
+                </div>
+            `;
+            statsDisplay.classList.add('updated');
+            setTimeout(() => statsDisplay.classList.remove('updated'), 500);
+        }
+
+        if (justAnsweredCorrect && stats.currentStreak > 0) {
+            if (stats.currentStreak === 3) typeTerminalMessage("⚡ BIOLOGICAL MOMENTUM! 3 in a row. Your synapses are synchronizing!");
+            else if (stats.currentStreak === 5) typeTerminalMessage("🧬 GENETIC FLOW! 5 streak achieved. Your logic is matching the precision of CRISPR!");
+            else if (stats.currentStreak === 10) {
+                typeTerminalMessage("🌟 EVOLUTIONARY LEAP! 10-STREAK! You've optimized your cognitive genome!");
+                triggerCelebration();
+            }
+        }
+    }
+
+    function triggerCelebration() {
+        const overlay = document.createElement('div');
+        overlay.style.cssText = "position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9999;";
+        overlay.innerHTML = `<div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:var(--accent-emerald); font-size:2rem; font-weight:bold; text-shadow:0 0 20px var(--accent-emerald);">BIOLOGY MASTER!</div>`;
+        document.body.appendChild(overlay);
+        setTimeout(() => overlay.remove(), 3000);
+    }
+
+    function updateStabilityUI() {
+        const stats = getStats();
+        const canvas = document.getElementById('stability-graph');
+        const percentDisplay = document.getElementById('stability-percent');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        const accuracy = stats.totalAttempts > 0 ? Math.round((stats.totalCorrect / stats.totalAttempts) * 100) : 98;
+        if (percentDisplay) percentDisplay.textContent = `${accuracy}%`;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = accuracy > 80 ? '#38ef7d' : accuracy > 60 ? '#ffd700' : '#f5576c';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        for (let x = 0; x < canvas.width; x++) {
+            const normalizedAccuracy = accuracy / 100;
+            const wave = Math.sin(x * 0.05 + Date.now() * 0.002) * (1 - normalizedAccuracy) * 15;
+            const baseline = canvas.height / 2;
+            const y = baseline + wave + (Math.random() - 0.5) * 5 * (1 - normalizedAccuracy);
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+    }
+    setInterval(updateStabilityUI, 100);
 
     function typeTerminalMessage(html, delay = 20) {
         const bubble = document.getElementById('tutor-message');
@@ -338,77 +451,74 @@ window.TutorEngine = (function () {
         type();
     }
 
+    function getNextRecommendation(subjectId, progress) {
+        const subject = window.MATH_DATA && window.MATH_DATA.subjects.find(s => s.id === subjectId);
+        if (!subject) return { message: "Biological sensors calibrated. Ready for next inquiry." };
+
+        let nextLecture = null;
+        for (const unit of subject.units) {
+            for (const lecture of unit.lectures) {
+                const id = lecture.url.split(':').pop();
+                if (!(progress && progress[id] && progress[id].completed)) {
+                    nextLecture = lecture;
+                    break;
+                }
+            }
+            if (nextLecture) break;
+        }
+
+        const panel = document.getElementById('tutor-recommendation');
+        const content = document.getElementById('recommendation-content');
+        if (nextLecture && panel && content) {
+            content.innerHTML = `🔬 Next Up: **${nextLecture.name}**. Ready to analyze?`;
+            panel.style.display = 'block';
+            return { message: content.innerHTML };
+        }
+        return { message: "Curriculum mastered. Ready for experimental expansion." };
+    }
+
     // Initialize map
     setTimeout(() => KnowledgeMap.build(), 1000);
 
-    function getConceptMatrix(lessonKey) {
-        const normalized = (lessonKey || "general").toLowerCase();
-        const results = KnowledgeMap.search(normalized);
-        const best = results.length > 0 ? results[0] : null;
-
-        return {
-            current: best ? (best.title || best.name || normalized) : normalized,
-            parents: [], // Placeholder for future graph logic
-            children: []
-        };
-    }
-
-    function getNextRecommendation(subjectId, progress) {
-        const subject = window.MATH_DATA && window.MATH_DATA.subjects.find(s => s.id === subjectId);
-        if (!subject) return { message: "Sync complete. Ready for new input." };
-
-        // Find first incomplete unit
-        const nextUnit = subject.units.find(u => {
-            return u.lectures.some(l => {
-                const id = l.url.split(':').pop();
-                return !(progress && progress[id] && progress[id].completed);
-            });
-        });
-
-        if (nextUnit) {
-            return { message: `Recommended: Focus on **${nextUnit.title}** to strengthen your ${subject.title} foundation.` };
-        }
-        return { message: "Current pillar mastered. Neural link suggests proceeding to the next complexity level." };
-    }
+    // Initial UI Update
+    setTimeout(() => updateTutorUI(getStats(), false), 1500);
 
     // Public API
     window.handleChatInput = handleChatInput;
     window.getSocraticAdvice = getSocraticAdvice;
     window.recordQuizResult = recordQuizResult;
     window.typeTerminalMessage = typeTerminalMessage;
+    window.getTutorStats = getStats;
+    window.updateTutorUI = updateTutorUI;
+    window.getNextRecommendation = getNextRecommendation;
+
     window.analyzePattern = (userInput) => {
-        const weak = window.getWeakTopics ? window.getWeakTopics() : [];
+        const stats = getStats();
         let analysis = "🧪 **Bio-Neural Pattern Analysis:**\\n";
-        if (weak.length > 0) {
-            analysis += `Your analysis of **${weak[0].topic}** shows some variance. Research suggests reinforcing the underlying biochemical principles.`;
-        } else {
-            analysis += "Your research logic is consistent. You are exhibiting high experimental precision.";
-        }
+        analysis += stats.totalAttempts > 0 ? `Current precision delta is ${Math.round((stats.totalCorrect / stats.totalAttempts) * 100)}%. ` : "Sensors idle. ";
+        analysis += "Your research logic is consistent.";
         return analysis;
     };
 
     window.renderLogicMap = (topic) => {
-        const matrix = getConceptMatrix(topic);
         return `<div class="logic-map-viz glass" style="padding:20px; border:1px solid var(--accent-emerald); border-radius:15px; margin-top:15px;">
             <h5 style="color:var(--accent-emerald); margin-bottom:15px;"><i class="fas fa-project-diagram"></i> Bio-Logic Map: ${topic}</h5>
             <div style="display:flex; justify-content:center; align-items:center; gap:20px;">
-                ${matrix.parents.map(p => `<div class="node glass" style="font-size:0.7rem; padding:5px 10px;">${p}</div>`).join('')}
                 <div class="node glass active" style="border-color:var(--accent-emerald); font-weight:bold; padding:10px 15px;">${topic}</div>
-                ${matrix.children.map(c => `<div class="node glass" style="font-size:0.7rem; padding:5px 10px;">${c}</div>`).join('')}
             </div>
         </div>`;
     };
 
     window.buildNeuralMap = () => KnowledgeMap.build();
-    window.getNextRecommendation = getNextRecommendation;
 
     return {
         handleChatInput,
         recordQuizResult,
         typeTerminalMessage,
-        getConceptMatrix,
         getNextRecommendation,
-        fuzzyMatch: (s1, s2) => KnowledgeMap.getLevenshtein(s1, s2),
+        getStats,
+        updateTutorUI,
+        updateStabilityUI,
         buildNeuralMap: () => KnowledgeMap.build()
     };
 })();

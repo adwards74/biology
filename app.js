@@ -85,17 +85,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const bubble = document.getElementById('tutor-message');
         if (!bubble) return;
 
-        bubble.style.borderColor = "var(--accent-blue)";
-        bubble.innerHTML = `<span class="status-pulse"></span> <span style="font-size:0.7rem; opacity:0.6; font-family:monospace;">ANALYZING MATRIX...</span>`;
+        bubble.style.borderColor = "var(--accent-emerald)";
+        bubble.innerHTML = `<span class="status-pulse" style="background:var(--accent-emerald)"></span> <span style="font-size:0.7rem; opacity:0.6; font-family:monospace;">ANALYZING BIOLOGICAL MATRIX...</span>`;
 
         setTimeout(() => {
             const lessonKey = window.currentLessonKey || "";
-            const subjectId = window.currentSubjectId || "algebra2";
-            const rawMessage = window.getSocraticAdvice ? window.getSocraticAdvice(lessonKey, subjectId) : "Manual override required.";
-
-            bubble.style.borderColor = "var(--accent-magenta)";
-            if (window.typeTerminalMessage) window.typeTerminalMessage(rawMessage);
-
+            const subjectId = window.currentSubjectId || "";
+            const tip = window.TutorEngine ? window.TutorEngine.getSocraticAdvice(lessonKey, subjectId) : "Ready for focus.";
+            window.typeTerminalMessage(tip);
             // Show recommendation after tip
             showRecommendation();
         }, 800);

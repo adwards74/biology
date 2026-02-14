@@ -22,7 +22,28 @@ window.NeoAtlas = (function () {
                 <div class="atlas-content">
                     <div class="atlas-visual">
                         <div class="visual-container glass-card">
-                            <img src="${data.image}" alt="${data.title}" id="atlas-main-image" onerror="this.src='https://via.placeholder.com/800x600?text=Neural+Image+Offline'">
+                            <div id="atlas-neural-fallback" class="neural-vis-fallback fadeIn">
+                                <div class="core-pulse"></div>
+                                <div class="orbit-layer layer-1"></div>
+                                <div class="orbit-layer layer-2"></div>
+                                <div class="orbit-layer layer-3"></div>
+                                <div class="matrix-text">NEURAL SIMULATION ACTIVE</div>
+                            </div>
+                            
+                            <img src="${data.image}" alt="${data.title}" id="atlas-main-image" onload="document.getElementById('atlas-neural-fallback').style.display='none'" onerror="NeoAtlas.handleImageError(this)">
+                            
+                            <div class="hotspot-layer" id="hotspot-mount">
+                                ${data.parts.map(part => `
+                                    <div class="hotspot pulse" 
+                                         style="left: ${part.coords.x}%; top: ${part.coords.y}%;" 
+                                         data-id="${part.id}"
+                                         onclick="NeoAtlas.focusPart('${part.id}')">
+                                        <div class="hotspot-inner"></div>
+                                        <div class="hotspot-label">${part.name}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            
                             <div class="visual-glow-layer"></div>
                         </div>
                     </div>
@@ -47,8 +68,8 @@ window.NeoAtlas = (function () {
                 </div>
                 
                 <div class="atlas-footer">
-                    <span><i class="fas fa-shield-virus"></i> High-Fidelity Anatomical Simulation v1.0</span>
-                    <button class="btn-primary" onclick="window.showDashboard()"><i class="fas fa-home"></i> Exit Atlas</button>
+                    <span><i class="fas fa-shield-virus"></i> High-Fidelity Anatomical Simulation v1.1 Hotspot Edition</span>
+                    <button class="btn-primary" onclick="window.switchView('dashboard')"><i class="fas fa-home"></i> Exit Atlas</button>
                 </div>
             </div>
         `;
@@ -79,18 +100,131 @@ window.NeoAtlas = (function () {
                 .visual-container {
                     position: sticky;
                     top: 100px;
-                    padding: 20px;
-                    background: #000;
+                    padding: 0;
+                    background: radial-gradient(circle at center, #0f172a 0%, #000 100%);
                     border-radius: 15px;
                     overflow: hidden;
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    min-height: 500px;
+                    border: 1px solid rgba(255,255,255,0.05);
                 }
+                
+                /* Hotspot Styling */
+                .hotspot-layer {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    z-index: 10;
+                    pointer-events: none;
+                }
+                .hotspot {
+                    position: absolute;
+                    width: 20px;
+                    height: 20px;
+                    transform: translate(-50%, -50%);
+                    pointer-events: auto;
+                    cursor: pointer;
+                    z-index: 20;
+                }
+                .hotspot-inner {
+                    width: 100%;
+                    height: 100%;
+                    background: var(--accent-cyan);
+                    border: 2px solid #fff;
+                    border-radius: 50%;
+                    box-shadow: 0 0 10px var(--accent-cyan);
+                    transition: all 0.3s ease;
+                }
+                .hotspot-label {
+                    position: absolute;
+                    top: 25px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: rgba(0,0,0,0.8);
+                    color: #fff;
+                    padding: 4px 10px;
+                    border-radius: 5px;
+                    font-size: 0.7rem;
+                    white-space: nowrap;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                    border: 1px solid var(--accent-cyan);
+                    pointer-events: none;
+                }
+                .hotspot:hover .hotspot-label, .hotspot.active .hotspot-label {
+                    opacity: 1;
+                }
+                .hotspot.active .hotspot-inner {
+                    background: #fff;
+                    transform: scale(1.3);
+                    box-shadow: 0 0 20px var(--accent-cyan);
+                }
+                
+                .pulse::before {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    background: var(--accent-cyan);
+                    opacity: 0.6;
+                    animation: hotspot-pulse 2s infinite;
+                }
+                @keyframes hotspot-pulse {
+                    0% { transform: scale(1); opacity: 0.6; }
+                    100% { transform: scale(3); opacity: 0; }
+                }
+
+                .neural-vis-fallback {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                }
+                .core-pulse {
+                    width: 100px;
+                    height: 100px;
+                    background: var(--accent-cyan);
+                    border-radius: 50%;
+                    filter: blur(40px);
+                    opacity: 0.3;
+                    animation: pulse 4s infinite ease-in-out;
+                }
+                .orbit-layer {
+                    position: absolute;
+                    border: 1px dashed rgba(0, 210, 255, 0.2);
+                    border-radius: 50%;
+                    animation: rotate 20s infinite linear;
+                }
+                .layer-1 { width: 250px; height: 180px; }
+                .layer-2 { width: 320px; height: 240px; animation-duration: 30s; animation-direction: reverse; }
+                .layer-3 { width: 200px; height: 300px; animation-duration: 40s; }
+                
+                .matrix-text {
+                    position: absolute;
+                    bottom: 20px;
+                    font-family: monospace;
+                    font-size: 0.6rem;
+                    letter-spacing: 2px;
+                    opacity: 0.4;
+                    color: var(--accent-cyan);
+                }
+
+                @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+                @keyframes pulse { 0%, 100% { opacity: 0.2; transform: scale(0.8); } 50% { opacity: 0.5; transform: scale(1.2); } }
+                
                 #atlas-main-image {
                     max-width: 100%;
                     border-radius: 10px;
-                    transition: transform 0.3s ease;
+                    transition: all 0.5s ease;
+                    z-index: 5;
                 }
                 
                 .atlas-accordion {
@@ -182,6 +316,7 @@ window.NeoAtlas = (function () {
     }
 
     function focusPart(partId) {
+        // Toggle Accordion
         document.querySelectorAll('.atlas-item').forEach(el => {
             if (el.dataset.id === partId) {
                 el.classList.toggle('active');
@@ -193,7 +328,16 @@ window.NeoAtlas = (function () {
             }
         });
 
-        // Visual Interaction Placeholder
+        // Toggle Hotspots
+        document.querySelectorAll('.hotspot').forEach(hs => {
+            if (hs.dataset.id === partId) {
+                hs.classList.toggle('active');
+            } else {
+                hs.classList.remove('active');
+            }
+        });
+
+        // Visual Interaction
         const img = document.getElementById('atlas-main-image');
         if (img) {
             img.style.transform = "scale(1.05)";
@@ -201,9 +345,20 @@ window.NeoAtlas = (function () {
         }
     }
 
+    function handleImageError(img) {
+        console.warn("NeoAtlas: Asset sync failed. Activating Neural Fallback.");
+        img.style.display = 'none';
+        const fallback = document.getElementById('atlas-neural-fallback');
+        if (fallback) fallback.style.display = 'flex';
+        // Hide hotspots if image fails
+        const hs = document.getElementById('hotspot-mount');
+        if (hs) hs.style.display = 'none';
+    }
+
     return {
         render: renderAtlas,
-        focusPart: focusPart
+        focusPart: focusPart,
+        handleImageError: handleImageError
     };
 
 })();

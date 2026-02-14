@@ -406,7 +406,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showGlossary() {
-        const container = document.getElementById('view-container');
+        const container = document.getElementById('glossary-view');
         if (!container) return;
 
         const glossary = window.MATH_DATA.glossary || {};
@@ -416,16 +416,85 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="hero">
                 <h1>Biological <span class="gradient-text">Dictionary</span></h1>
                 <p>A comprehensive glossary of TJHSST 9th Grade IBET terminology.</p>
+                
+                <div class="glossary-search-container glass-card" style="margin-top:30px; display:flex; align-items:center; padding:5px 15px; border-radius:15px; width:100%; max-width:600px;">
+                    <i class="fas fa-search" style="opacity:0.5; margin-right:15px;"></i>
+                    <input type="text" id="glossary-internal-search" placeholder="Search for a term..." 
+                           style="background:none; border:none; color:white; padding:12px 0; width:100%; outline:none; font-size:1rem;">
+                </div>
             </div>
-            <div class="glossary-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:20px; margin-top:30px;">
-                ${terms.map(term => `
-                    <div class="glass-card fadeIn" style="padding:20px; border-left:3px solid var(--accent-blue);">
-                        <h3 style="color:var(--accent-blue); margin-bottom:8px;">${term}</h3>
-                        <p style="font-size:0.9rem; opacity:0.8; line-height:1.5;">${glossary[term]}</p>
-                    </div>
-                `).join('')}
+
+            <div id="glossary-accordion-container" class="glossary-accordion" style="margin-top:40px; display:flex; flex-direction:column; gap:12px;">
+                ${renderGlossaryItems(terms, glossary)}
             </div>
+
+            <style>
+                .glossary-item-box {
+                    cursor: pointer;
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                    border: 1px solid rgba(255,255,255,0.05);
+                    border-left: 4px solid var(--accent-blue);
+                }
+                .glossary-item-box:hover {
+                    background: rgba(0, 210, 255, 0.05);
+                    transform: translateX(5px);
+                    border-color: var(--accent-blue);
+                }
+                .glossary-item-box.active {
+                    background: rgba(0, 210, 255, 0.1);
+                    border-color: var(--accent-blue);
+                    box-shadow: 0 0 20px rgba(0, 210, 255, 0.1);
+                }
+                .glossary-header {
+                    padding: 15px 25px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                .glossary-header h3 { font-size: 1.1rem; color: var(--accent-blue); margin: 0; }
+                .glossary-content {
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: all 0.3s ease-out;
+                    padding: 0 25px;
+                    font-size: 0.95rem;
+                    line-height: 1.6;
+                    opacity: 0.8;
+                }
+                .glossary-item-box.active .glossary-content {
+                    max-height: 200px;
+                    padding-bottom: 20px;
+                }
+                .glossary-item-box .chevron { transition: transform 0.3s ease; opacity: 0.5; }
+                .glossary-item-box.active .chevron { transform: rotate(180deg); opacity: 1; }
+            </style>
         `;
+
+        // Search logic
+        const searchInput = document.getElementById('glossary-internal-search');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                const filtered = terms.filter(t => t.toLowerCase().includes(query) || glossary[t].toLowerCase().includes(query));
+                document.getElementById('glossary-accordion-container').innerHTML = renderGlossaryItems(filtered, glossary);
+            });
+        }
+    }
+
+    function renderGlossaryItems(terms, glossary) {
+        if (terms.length === 0) return `<div class="glass-card" style="padding:40px; text-align:center; opacity:0.5;">No matching biological terms found in the matrix.</div>`;
+
+        return terms.map(term => `
+            <div class="glass-card glossary-item-box fadeIn" onclick="this.classList.toggle('active')">
+                <div class="glossary-header">
+                    <h3>${term}</h3>
+                    <i class="fas fa-chevron-down chevron"></i>
+                </div>
+                <div class="glossary-content">
+                    ${window.UIEngine && window.UIEngine.applyTerminologyTooltips ? window.UIEngine.applyTerminologyTooltips(glossary[term]) : glossary[term]}
+                </div>
+            </div>
+        `).join('');
     }
 
     function showResources() {
@@ -492,7 +561,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showAtlas(modelId = 'plant-cell') {
-        const container = document.getElementById('view-container');
+        const container = document.getElementById('atlas-view');
         if (!container) return;
 
         container.innerHTML = `
@@ -1921,5 +1990,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (window.updateStabilityUI) window.updateStabilityUI(); // Initial draw
+
+    // Globally expose navigation functions
+    window.showDashboard = showDashboard;
+    window.showSubjects = showSubjects;
+    window.showStrategy = showStrategy;
+    window.showResources = showResources;
+    window.showGlossary = showGlossary;
+    window.showAtlas = showAtlas;
+    window.showReviewHub = showReviewHub;
+
     showDashboard();
 });

@@ -4,7 +4,7 @@
  */
 
 window.AppRouter = (function () {
-    const views = ['subjects', 'tree', 'drill', 'profile'];
+    const views = ['subjects', 'tree', 'drill', 'profile', 'glossary'];
 
     function switchView(viewId) {
         console.log("ROUTING TO:", viewId);
@@ -33,6 +33,7 @@ window.AppRouter = (function () {
         if (viewId === 'resources' && window.showResources) window.showResources();
         if (viewId === 'review' && window.showReviewHub) window.showReviewHub();
         if (viewId === 'atlas' && window.showAtlas) window.showAtlas();
+        if (viewId === 'glossary' && window.showGlossary) window.showGlossary();
     }
 
     // Expose switchView to window for legacy compatibility

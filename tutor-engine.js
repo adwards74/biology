@@ -71,12 +71,32 @@ window.TutorEngine = (function () {
                 }
             }
 
-            // NEW: Automatically integrate Glossary into Knowledge Map
+            // NEW: Automatically integrate Glossary into Knowledge Map with Unit Mapping
             if (window.MATH_DATA && window.MATH_DATA.glossary) {
                 for (const [term, def] of Object.entries(window.MATH_DATA.glossary)) {
+                    const relatedUnits = [];
+                    const termLower = term.toLowerCase();
+
+                    window.MATH_DATA.subjects.forEach(sub => {
+                        sub.units.forEach((unit, uIdx) => {
+                            const inTitle = unit.title.toLowerCase().includes(termLower);
+                            const inTopics = unit.topics && unit.topics.some(t => t.toLowerCase().includes(termLower));
+                            const inIntuition = unit.intuition && unit.intuition.toLowerCase().includes(termLower);
+
+                            if (inTitle || inTopics || inIntuition) {
+                                relatedUnits.push({
+                                    subjectId: sub.id,
+                                    unitTitle: unit.title,
+                                    unitIdx: uIdx
+                                });
+                            }
+                        });
+                    });
+
                     this.addtoIndex(term, {
                         type: 'glossary',
-                        definition: def
+                        definition: def,
+                        relatedUnits: relatedUnits.slice(0, 3) // Keep top 3 for brevity
                     });
                 }
             }
@@ -92,16 +112,32 @@ window.TutorEngine = (function () {
         },
 
         search(query) {
-            const lowerQuery = query.toLowerCase().trim();
+            const lowerQuery = query.toLowerCase().trim().replace(/[?!.,]/g, '');
+            const tokens = lowerQuery.split(/\s+/).filter(t => t.length > 2); // Extract meaningful tokens
+            const stopWords = ['what', 'is', 'how', 'about', 'the', 'tell', 'define', 'meaning', 'concept', 'where', 'why'];
+            const keywords = tokens.filter(t => !stopWords.includes(t));
+
             const results = [];
 
             for (const [key, items] of Object.entries(this.index)) {
                 let score = 0;
-                if (key === lowerQuery) score = 15;
-                else if (key.includes(lowerQuery) || lowerQuery.includes(key)) score = 8;
-                else {
-                    const distance = this.getLevenshtein(key, lowerQuery);
-                    const threshold = Math.max(2, Math.floor(key.length * 0.3));
+                const cleanKey = key.toLowerCase().trim();
+
+                // 1. Direct/Substring match (Highest Priority)
+                if (cleanKey === lowerQuery) score = 20;
+                else if (lowerQuery.includes(cleanKey)) score = 15;
+                else if (cleanKey.includes(lowerQuery)) score = 10;
+
+                // 2. Token-based match (Mid Priority)
+                keywords.forEach(kw => {
+                    if (cleanKey === kw) score += 12;
+                    else if (cleanKey.includes(kw)) score += 5;
+                });
+
+                // 3. Fuzzy Match (Fallback)
+                if (score === 0) {
+                    const distance = this.getLevenshtein(cleanKey, lowerQuery);
+                    const threshold = Math.max(2, Math.floor(cleanKey.length * 0.3));
                     if (distance <= threshold) score = 5 - distance;
                 }
 
@@ -113,18 +149,18 @@ window.TutorEngine = (function () {
             }
 
             // NEW: Deep Content Scanning (Elite 5.5 Feature)
-            // If no high-quality match (score < 10), scan inner lesson strings
-            if (results.length === 0 || results[0].score < 10) {
+            if (results.length === 0 || results[0].score < 5) {
+                const searchTarget = keywords.length > 0 ? keywords[0] : lowerQuery;
                 for (const [chId, lessons] of Object.entries(window.CHAPTER_DATA || {})) {
                     for (const [lessonId, lesson] of Object.entries(lessons)) {
                         const plainContent = lesson.content.replace(/<[^>]*>/g, ' ').toLowerCase();
-                        if (plainContent.includes(lowerQuery)) {
+                        if (plainContent.includes(searchTarget)) {
                             results.push({
                                 type: 'content',
                                 title: lesson.title,
                                 subtitle: lesson.subtitle,
                                 content: lesson.content,
-                                score: 7 // Medium score for deep content discovery
+                                score: 4
                             });
                         }
                     }
@@ -185,6 +221,7 @@ window.TutorEngine = (function () {
         "transcription": "Copying DNA into mRNA in the nucleus. It's like copying a master file into a temporary 'executable' format.",
         "translation": "Reading mRNA to build a protein chain at the ribosome. Converting 4-base language into 20-amino acid language.",
         "allele": "Different versions of a gene. You have two for every trait—one from each parent.",
+        "genome": "The complete set of genetic material in an organism. Think of it as the ultimate biological architect's blueprint!",
 
         // Metabolism
         "atp": "The energy currency of the cell. Breaking the last phosphate bond releases the kinetic energy needed for cellular work.",
@@ -208,7 +245,7 @@ window.TutorEngine = (function () {
 
     function handleChatInput(query) {
         if (!query || query.trim().length === 0) {
-            return "Sabrina, type a concept like 'DNA', 'Osmosis', or 'Enzymes' to begin analysis.";
+            return "Sabrina, type a concept like 'DNA', 'Genome', or 'CRISPR' to begin analysis.";
         }
 
         const lowerQuery = query.toLowerCase().trim();
@@ -219,38 +256,46 @@ window.TutorEngine = (function () {
             const bestMatch = neuralMatches[0];
 
             if (bestMatch.type === 'unit' && bestMatch.insight) {
-                response += `💡 **Intuition:** ${bestMatch.insight}\\n\\n`;
+                response += `<div style="color:var(--accent-magenta); font-weight:bold; margin-bottom:5px;">💡 INTUITION:</div> ${bestMatch.insight}<br><br>`;
             } else if (bestMatch.type === 'glossary') {
-                response += `📖 **Definition:** ${bestMatch.definition}\\n\\n`;
+                response += `<div style="color:var(--accent-blue); font-weight:bold; margin-bottom:5px;">📖 DEFINITION:</div> ${bestMatch.definition}<br><br>`;
+
+                if (bestMatch.relatedUnits && bestMatch.relatedUnits.length > 0) {
+                    response += `<div style="color:var(--accent-cyan); font-weight:bold; margin-bottom:5px;">🎯 RELATED IBET MODULES:</div>`;
+                    bestMatch.relatedUnits.forEach(unit => {
+                        response += `• <a href="#" onclick="window.showSubjectDetail('${unit.subjectId}', ${unit.unitIdx}); return false;" style="color:var(--accent-cyan); text-decoration:underline; font-size:0.9rem;">${unit.unitTitle}</a><br>`;
+                    });
+                    response += `<br>`;
+                }
             } else if (HINT_DATABASE[lowerQuery]) {
-                response += `💡 **Intuition:** ${HINT_DATABASE[lowerQuery]}\n\n`;
+                response += `<div style="color:var(--accent-magenta); font-weight:bold; margin-bottom:5px;">💡 INSIGHT:</div> ${HINT_DATABASE[lowerQuery]}<br><br>`;
             } else {
-                // Fallback to searching database for keywords in query
+                // Keyword partial match fallback
                 for (const [keyword, hint] of Object.entries(HINT_DATABASE)) {
                     if (lowerQuery.includes(keyword)) {
-                        response += `💡 **Insight:** ${hint}\\n\\n`;
+                        response += `<div style="color:var(--accent-magenta); font-weight:bold; margin-bottom:5px;">💡 INSIGHT:</div> ${hint}<br><br>`;
                         break;
                     }
                 }
             }
 
             if (bestMatch.type === 'content' && bestMatch.subtitle) {
-                response += `⚙️ **Mechanism:** This relates to *${bestMatch.subtitle}*. `;
+                response += `<div style="color:var(--accent-emerald); font-weight:bold; margin-bottom:5px;">⚙️ MECHANISM:</div> This relates to <em>${bestMatch.subtitle}</em>. `;
             } else if (bestMatch.type === 'unit') {
-                response += `⚙️ **Mechanism:** This covers core topics like: ${bestMatch.topics.join(', ')}. `;
+                response += `<div style="color:var(--accent-emerald); font-weight:bold; margin-bottom:5px;">⚙️ MECHANISM:</div> Covers: ${bestMatch.topics.join(', ')}. `;
             } else if (bestMatch.type === 'glossary') {
-                response += `⚙️ **Mechanism:** This is a vital term in our biological framework. `;
+                response += `<div style="color:var(--accent-emerald); font-weight:bold; margin-bottom:5px;">⚙️ MECHANISM:</div> Core structural term for TJHSST Biological Framework. `;
             }
 
-            response += `\\n\\n🤔 **Bio-Inquiry:** How does this specific mechanism contribute to the overall homeostasis of the organism?`;
+            response += `<br><br><div style="font-size:0.8rem; opacity:0.6; border-top:1px solid rgba(255,255,255,0.1); padding-top:10px;">🤔 **Bio-Inquiry:** How does this specific mechanism contribute to the overall homeostasis of the organism?</div>`;
             return response;
         }
 
         for (const [keyword, hint] of Object.entries(HINT_DATABASE)) {
-            if (lowerQuery.includes(keyword)) return hint;
+            if (lowerQuery.includes(keyword)) return `<div style="color:var(--accent-magenta); font-weight:bold; margin-bottom:5px;">💡 INSIGHT:</div> ${hint}`;
         }
 
-        return `I don't have deep-scan data on "${query}" yet. Try asking about a core biological system or a specific chapter topic!`;
+        return `Neo-Sense: No deep-scan data on "<strong>${query}</strong>" yet. Try searching the specialized Bio-Dictionary or curriculum modules.`;
     }
 
     // ========================================

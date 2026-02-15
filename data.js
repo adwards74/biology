@@ -461,12 +461,12 @@ window.MATH_DATA = {
                     intuition: "Science is a conversation. A literature review is how you map out that conversation before adding your own voice through experiments.",
                     topics: ["Meta-Analysis Protocols", "P-Hacking Awareness", "Database Mining (PubMed/NCBI)"],
                     lectures: [
-                        { title: "16.1 체계적 문헌고찰 프로토콜", url: "lesson:bio:ch9-1" },
-                        { title: "16.2 고급 통계: P-Hacking 및 메타 분석", url: "lesson:bio:ch9-2" },
-                        { title: "16.3 카이제곱 검정 (Chi-Square)", url: "lesson:bio:ch9-3" },
-                        { title: "16.4 표준 오차(SEM) 및 신뢰 구간", url: "lesson:bio:ch9-4" },
-                        { title: "16.5 실험 설계 및 변수 통제", url: "lesson:bio:ch9-5" },
-                        { title: "16.6 FRQ 프로토콜 (CER)", url: "lesson:bio:ch9-6" }
+                        { name: "16.1: Systematic Review Protocol", url: "lesson:bio:ch9-1" },
+                        { name: "16.2: Advanced Stats: P-Hacking & Meta-Analysis", url: "lesson:bio:ch9-2" },
+                        { name: "16.3: Chi-Square Distribution & Testing", url: "lesson:bio:ch9-3" },
+                        { name: "16.4: Standard Error (SEM) & Confidence Intervals", url: "lesson:bio:ch9-4" },
+                        { name: "16.5: Experimental Design & Variable Control", url: "lesson:bio:ch9-5" },
+                        { name: "16.6: FRQ Protocol: Claims, Evidence, Reasoning", url: "lesson:bio:ch9-6" }
                     ],
                     quiz: {
                         levels: [

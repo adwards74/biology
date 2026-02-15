@@ -1999,6 +1999,155 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function showLab() {
+        const container = document.getElementById('lab-view');
+        if (!container) return;
+
+        container.innerHTML = `
+            <div class="hero">
+                <h1>Scientific <span class="gradient-text">Lab & Stats</span></h1>
+                <p>Experimental data analysis and statistical significance testing for AP Biology.</p>
+            </div>
+            <div class="lab-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:25px; margin-top:30px; padding-bottom:50px;">
+                <!-- Chi-Square Card -->
+                <div class="glass-card" style="padding:25px; border:1px solid var(--accent-emerald); display:flex; flex-direction:column; gap:15px;">
+                    <h3 style="color:var(--accent-emerald); display:flex; align-items:center; gap:10px;">
+                        <i class="fas fa-microchip"></i> Chi-Square Analysis
+                    </h3>
+                    <p style="font-size:0.85rem; opacity:0.8;">Determine if observed deviations are statistically significant (Null Hypothesis Testing).</p>
+                    <div class="lab-input-group">
+                        <label style="display:block; font-size:0.75rem; margin-bottom:5px; opacity:0.6;">Observed Values (e.g. 310, 90)</label>
+                        <input type="text" id="chi-obs" placeholder="310, 90" 
+                               style="width:100%; background:rgba(255,255,255,0.05); border:1px solid var(--accent-emerald); color:white; padding:10px; border-radius:8px;">
+                    </div>
+                    <div class="lab-input-group">
+                        <label style="display:block; font-size:0.75rem; margin-bottom:5px; opacity:0.6;">Expected Ratios/Values (e.g. 300, 100)</label>
+                        <input type="text" id="chi-exp" placeholder="300, 100" 
+                               style="width:100%; background:rgba(255,255,255,0.05); border:1px solid var(--accent-emerald); color:white; padding:10px; border-radius:8px;">
+                    </div>
+                    <button class="glass" onclick="window.runChiSquare()" 
+                            style="padding:12px; border:1px solid var(--accent-emerald); color:var(--accent-emerald); font-weight:bold; cursor:pointer;">
+                        Analyze Variance
+                    </button>
+                    <div id="chi-result" style="margin-top:10px; font-family:monospace; font-size:0.85rem; line-height:1.5;"></div>
+                </div>
+
+                <!-- Standard Error Card -->
+                <div class="glass-card" style="padding:25px; border:1px solid var(--accent-cyan); display:flex; flex-direction:column; gap:15px;">
+                    <h3 style="color:var(--accent-cyan); display:flex; align-items:center; gap:10px;">
+                        <i class="fas fa-chart-line"></i> Error Bars (SEM)
+                    </h3>
+                    <p style="font-size:0.85rem; opacity:0.8;">Calculate Mean, SD, and 95% Confidence Intervals for experimental data.</p>
+                    <div class="lab-input-group">
+                        <label style="display:block; font-size:0.75rem; margin-bottom:5px; opacity:0.6;">Data Points (e.g. 5.2, 5.1, 4.8)</label>
+                        <input type="text" id="stats-data" placeholder="5.2, 5.1, 4.8" 
+                               style="width:100%; background:rgba(255,255,255,0.05); border:1px solid var(--accent-cyan); color:white; padding:10px; border-radius:8px;">
+                    </div>
+                    <button class="glass" onclick="window.runSE()" 
+                            style="padding:12px; border:1px solid var(--accent-cyan); color:var(--accent-cyan); font-weight:bold; cursor:pointer;">
+                        Calculate Precision
+                    </button>
+                    <div id="stats-result" style="margin-top:10px; font-family:monospace; font-size:0.85rem; line-height:1.5;"></div>
+                </div>
+
+                <!-- Water Potential Card -->
+                <div class="glass-card" style="padding:25px; border:1px solid var(--accent-blue); display:flex; flex-direction:column; gap:15px;">
+                    <h3 style="color:var(--accent-blue); display:flex; align-items:center; gap:10px;">
+                        <i class="fas fa-droplet"></i> Water Potential Pro
+                    </h3>
+                    <p style="font-size:0.85rem; opacity:0.8;">Calculate Solute Potential ($\\Psi_s = -iCRT$) for osmotic analysis.</p>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                        <div class="lab-input-group">
+                            <label style="display:block; font-size:0.7rem; margin-bottom:5px; opacity:0.6;">i (Ionization)</label>
+                            <input type="number" id="psi-i" value="1" 
+                                   style="width:100%; background:rgba(255,255,255,0.05); border:1px solid var(--accent-blue); color:white; padding:10px; border-radius:8px;">
+                        </div>
+                        <div class="lab-input-group">
+                            <label style="display:block; font-size:0.7rem; margin-bottom:5px; opacity:0.6;">C (Molarity)</label>
+                            <input type="number" id="psi-c" value="0.5" step="0.1" 
+                                   style="width:100%; background:rgba(255,255,255,0.05); border:1px solid var(--accent-blue); color:white; padding:10px; border-radius:8px;">
+                        </div>
+                    </div>
+                    <div class="lab-input-group">
+                        <label style="display:block; font-size:0.7rem; margin-bottom:5px; opacity:0.6;">T (Celsius)</label>
+                        <input type="number" id="psi-t" value="22" 
+                               style="width:100%; background:rgba(255,255,255,0.05); border:1px solid var(--accent-blue); color:white; padding:10px; border-radius:8px;">
+                    </div>
+                    <button class="glass" onclick="window.runPsi()" 
+                            style="padding:12px; border:1px solid var(--accent-blue); color:var(--accent-blue); font-weight:bold; cursor:pointer;">
+                        Solve $\\Psi_s$
+                    </button>
+                    <div id="psi-result" style="margin-top:10px; font-family:monospace; font-size:0.85rem; line-height:1.5;"></div>
+                </div>
+            </div>
+        `;
+    }
+
+    window.runChiSquare = () => {
+        const obsRaw = document.getElementById('chi-obs').value;
+        const expRaw = document.getElementById('chi-exp').value;
+        const resEl = document.getElementById('chi-result');
+
+        try {
+            const obs = obsRaw.split(',').map(n => parseFloat(n.trim()));
+            const exp = expRaw.split(',').map(n => parseFloat(n.trim()));
+            const result = window.ScienceTools.chiSquare(obs, exp);
+
+            if (!result) throw new Error("Input parity error.");
+
+            const isSig = parseFloat(result.value) > result.criticalValue5;
+            resEl.innerHTML = `
+                <div style="color:var(--accent-emerald); font-weight:bold;">\u03c7\u00b2 = ${result.value}</div>
+                <div style="opacity:0.7;">Degrees of Freedom: ${result.df}</div>
+                <div style="opacity:0.7;">Critical Value (0.05): ${result.criticalValue5}</div>
+                <div style="margin-top:8px; color:${isSig ? 'var(--accent-orange)' : 'var(--accent-emerald)'}">
+                    ${isSig ? 'Significant Deviation (Reject Null)' : 'Insignificant Deviation (Support Null)'}
+                </div>
+            `;
+        } catch (e) {
+            resEl.innerHTML = '<span style="color:var(--accent-orange)">Invalid Data Input.</span>';
+        }
+    };
+
+    window.runSE = () => {
+        const dataRaw = document.getElementById('stats-data').value;
+        const resEl = document.getElementById('stats-result');
+        try {
+            const data = dataRaw.split(',').map(n => parseFloat(n.trim()));
+            const s = window.ScienceTools.stats(data);
+            resEl.innerHTML = `
+                <div style="color:var(--accent-cyan); font-weight:bold;">Mean (x\u0304): ${s.mean}</div>
+                <div style="opacity:0.7;">Std Deviation (s): ${s.sd}</div>
+                <div style="opacity:0.7;">Std Error (SEM): ${s.se}</div>
+                <div style="margin-top:8px; border-top:1px solid rgba(255,255,255,0.1); padding-top:5px;">
+                    95% CI: ${s.mean} \u00b1 ${s.ci95}
+                </div>
+            `;
+        } catch (e) {
+            resEl.innerHTML = '<span style="color:var(--accent-orange)">Invalid Data Input.</span>';
+        }
+    };
+
+    window.runPsi = () => {
+        const i = parseFloat(document.getElementById('psi-i').value);
+        const c = parseFloat(document.getElementById('psi-c').value);
+        const t = parseFloat(document.getElementById('psi-t').value);
+        const resEl = document.getElementById('psi-result');
+
+        try {
+            const R = 0.0831; // L*bar/mol*K
+            const psi_s = window.ScienceTools.solutePotential(i, c, R, t);
+            resEl.innerHTML = `
+                <div style="color:var(--accent-blue); font-weight:bold;">\u03a8s = ${psi_s} bars</div>
+                <div style="font-size:0.75rem; opacity:0.6; margin-top:5px;">
+                    *Calculated using R = 0.0831 and T = ${t + 273}K.
+                </div>
+            `;
+        } catch (e) {
+            resEl.innerHTML = '<span style="color:var(--accent-orange)">Calculation Error.</span>';
+        }
+    };
+
     if (window.updateStabilityUI) window.updateStabilityUI(); // Initial draw
 
     // Globally expose navigation functions
@@ -2009,6 +2158,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.showGlossary = showGlossary;
     window.showAtlas = showAtlas;
     window.showReviewHub = showReviewHub;
+    window.showLab = showLab;
 
     showDashboard();
 });

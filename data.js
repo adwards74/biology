@@ -97,17 +97,58 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                     }
                 },
                 {
-                    title: "Unit 5: Gene Expression",
-                    intuition: "The Central Dogma: DNA is transcribed to RNA, which is translated into protein. One gene, one polypeptide.",
-                    topics: ["Transcription", "mRNA Processing", "Translation", "Codon Table"],
+                    title: "Unit 5: Gene Expression & Regulation",
+                    intuition: "The Central Dogma is the starting point. Regulation is where the complexity of life arises—choosing which 'apps' (genes) to run at the right time.",
+                    topics: ["Transcription Factors", "mRNA Processing (Splicing/Capping)", "Ribosome Translation Logic", "Epigenetic Methylation"],
                     lectures: [
-                        { name: "5.1: Transcription & Translation", url: "lesson:bio:ch2-3" }
+                        { name: "5.1: Transcription Machinery", url: "lesson:bio:ch2-3" },
+                        { name: "5.2: RNA Processing & Splicing", url: "lesson:bio:ch2-4" },
+                        { name: "5.3: Translation & Polypeptide Logic", url: "lesson:bio:ch2-5" }
+                    ],
+                    examples: [
+                        {
+                            title: "Interpreting Splicing Variants",
+                            problem: "How can a single gene produce five different proteins in different tissues?",
+                            steps: [
+                                "Identify the exons and introns in the pre-mRNA.",
+                                "Analyze 'Alternative Splicing' patterns.",
+                                "Different tissues select different combinations of exons to join.",
+                                "Result: Unique mRNA sequences from a single DNA source."
+                            ],
+                            intuition: "Alternative splicing is like having a modular LEGO set where the same pieces can build a car or a plane."
+                        }
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "What is the start codon and which amino acid does it code for?", answer: "AUG — Methionine", options: ["UAA — Stop", "AUG — Methionine", "GCA — Alanine"], explanation: "AUG is both the universal start codon and codes for the amino acid methionine." },
-                            { title: "L2: Analysis", question: "If a DNA mutation changes the third base of a codon but the amino acid remains the same, what is this called?", answer: "Silent Mutation", options: ["Missense Mutation", "Silent Mutation", "Nonsense Mutation"], explanation: "Due to the redundancy of the genetic code, some base changes don't affect the final protein." },
-                            { title: "L3: Mastery", question: "In mRNA processing, what is the role of the 5' cap and Poly-A tail?", answer: "Protection and export", options: ["To code for amino acids", "To stop translation", "Protection and export"], explanation: "These modifications protect mRNA from degradation in the cytoplasm and facilitate its export from the nucleus." }
+                            { title: "L1: Intuition", question: "What is the primary benefit of the 5' G-cap and 3' Poly-A tail?", answer: "Protection and Export", options: ["Encoding amino acids", "Protection and Export", "DNA Replication"], explanation: "These modifications protect mRNA from enzymatic degradation and signal the cell that it's ready for export to the cytoplasm." },
+                            { title: "L3: Mastery", question: "In eukaryotes, what is the role of transcription factors?", answer: "To allow RNA Polymerase to bind to the promoter", options: ["To build the ribosome", "To allow RNA Polymerase to bind to the promoter", "To synthesize introns"], explanation: "RNA Polymerase II cannot initiate transcription alone; it requires a suite of transcription factors to recognize the TATA box." }
+                        ]
+                    }
+                },
+                {
+                    title: "Unit 6: Control Systems (Operons & Biotech)",
+                    intuition: "Genes are rarely 'always on'. In bacteria, they use elegant on/off switches called Operons to conserve energy.",
+                    topics: ["lac/trp Operons", "Repressor Logic", "PCR & Gel Electrophoresis", "CRISPR/Cas9 Basics"],
+                    lectures: [
+                        { name: "6.1: Bacterial Operon Logic", url: "lesson:bio:ch2-6" },
+                        { name: "6.2: Molecular Cloning & PCR", url: "lesson:bio:ch2-7" }
+                    ],
+                    examples: [
+                        {
+                            title: "The lac Operon Scenario",
+                            problem: "If Glucose is absent but Lactose is present, is the lac operon ON or OFF?",
+                            steps: [
+                                "Lactose binds to the repressor, inactivating it.",
+                                "Low glucose leads to high cAMP, which activates CAP.",
+                                "The combination triggers high-level transcription.",
+                                "Result: The operon is ON."
+                            ],
+                            intuition: "Operons are the 'Smart Thermostats' of the bacterial world—they only run the heater when it's cold AND power is available."
+                        }
+                    ],
+                    quiz: {
+                        levels: [
+                            { title: "L2: Analysis", question: "What happens to the trp operon when tryptophan levels are HIGH?", answer: "Repressor binds, stopping transcription", options: ["Transcription increases", "Repressor binds, stopping transcription", "DNA is degraded"], explanation: "The trp operon is repressible. High levels of the product activate the repressor to stop further production (Feedback Inhibition)." }
                         ]
                     }
                 }
@@ -205,11 +246,12 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
             description: "Scientific method mastery. Statistical significance testing and IBET experimental design protocols.",
             units: [
                 {
-                    title: "Unit 11: Statistical Power",
-                    intuition: "Is your data significant or just noise? Statistics provides the mathematical threshold for proof.",
-                    topics: ["Chi-Square Analysis", "SEM & Error Bars", "Null Hypothesis Testing"],
+                    title: "Unit 11: Statistical Power & Inference",
+                    intuition: "Is your data significant or just noise? Statistics provides the mathematical threshold for proof. In IBET, we don't guess; we test.",
+                    topics: ["Chi-Square Analysis", "SEM & 95% Confidence Intervals", "Null Hypothesis Significance Testing (NHST)"],
                     lectures: [
-                        { name: "11.1: The Chi-Square Test", url: "lesson:bio:ch5-1" }
+                        { name: "11.1: The Chi-Square Test", url: "lesson:bio:ch11-1" },
+                        { name: "11.2: Error Analysis & SE", url: "lesson:bio:ch11-2" }
                     ],
                     examples: [
                         {
@@ -218,27 +260,80 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                             steps: [
                                 "Expected: Tall = 300, Short = 100.",
                                 "χ² = (310-300)²/300 + (90-100)²/100.",
-                                "χ² = 100/300 + 100/100 = 0.33 + 1.0 = 1.33."
+                                "χ² = 100/300 + 100/100 = 1.33.",
+                                "Critical Value (df=1, p=0.05) is 3.84."
                             ],
-                            intuition: "Since 1.33 < 3.84 (critical value for df=1), we fail to reject the null. The data supports the 3:1 ratio."
+                            intuition: "Since 1.33 < 3.84, we fail to reject the null. The deviation is due to chance, and the hypothesis is supported."
                         }
                     ],
                     quiz: {
                         levels: [
-                            { title: "L3: Mastery", question: "What does it mean if your 95% Confidence Interval error bars for two groups OVERLAP?", answer: "Not statistically significant", options: ["Data is perfect", "Difference is significant", "Not statistically significant"], explanation: "Overlapping error bars suggest the real means could be the same." }
+                            { title: "L1: Intuition", question: "What is the primary role of a p-value in AP Biology?", answer: "Probability that results are due to chance", options: ["The percentage of accuracy", "Probability that results are due to chance", "The number of samples"], explanation: "A p-value measures the evidence against the null hypothesis." }
                         ]
                     }
                 },
                 {
-                    title: "Unit 12: Experimental Design",
-                    intuition: "A well-designed experiment eliminates all alternative explanations for the results.",
-                    topics: ["Variables & Controls", "Sample Size", "Replication", "IBET Protocols"],
+                    title: "Unit 12: Experimental Design & FRQ Logic",
+                    intuition: "A well-designed experiment eliminates alternative explanations. AP FRQs often ask you to identify the independent variable and predict the effect of a treatment.",
+                    topics: ["Variables & Controls", "Hypothesis Selection", "Data Interpretation Modeling"],
                     lectures: [
-                        { name: "12.1: Designing the Lab", url: "lesson:bio:ch5-3" }
+                        { name: "12.1: Designing the Lab", url: "lesson:bio:ch12-1" },
+                        { name: "12.2: FRQ Writing Protocols (CER)", url: "lesson:bio:ch12-2" }
                     ],
                     quiz: {
                         levels: [
                             { title: "L1: Intuition", question: "Why must an experiment have a negative control?", answer: "To establish a baseline without treatment", options: ["To save money", "To establish a baseline without treatment", "To increase sample size"], explanation: "A negative control receives no treatment, establishing the baseline against which experimental results are compared." }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            id: "evolution-ecology",
+            title: "Evolution & Ecology",
+            code: "BIO-700",
+            icon: "fas fa-tree",
+            color: "#65a30d",
+            difficulty: "intermediate",
+            description: "The big picture. How populations change over time and how energy flows through the biosphere.",
+            units: [
+                {
+                    title: "Unit 15: Natural Selection & Phylogeny",
+                    intuition: "Evolution is the unifying theory of biology. It explains how diversity arises from common ancestry through survival of the fittest.",
+                    topics: ["Darwinian Selection", "Hardy-Weinberg Equilibrium", "Cladistics & Mapping"],
+                    lectures: [
+                        { name: "15.1: The Mechanism of Change", url: "lesson:bio:ch7-1" },
+                        { name: "15.2: Population Genetics (H-W)", url: "lesson:bio:ch7-2" }
+                    ],
+                    examples: [
+                        {
+                            title: "Calculating Allele Frequencies",
+                            problem: "In a population in H-W equilibrium, 16% of individuals show a recessive trait (aa). Calculate the frequency of the dominant allele (A).",
+                            steps: [
+                                "$q^2 = 0.16 \\rightarrow q = \\sqrt{0.16} = 0.4$.",
+                                "$p + q = 1 \\rightarrow p = 1 - 0.4 = 0.6$.",
+                                "Result: Frequency of A is 0.6 (60%)."
+                            ],
+                            intuition: "Once you find 'q' (the frequency of the invisible recessive guy), you can find everything else in the population."
+                        }
+                    ],
+                    quiz: {
+                        levels: [
+                            { title: "L2: Analysis", question: "Which of these is NOT a requirement for Hardy-Weinberg equilibrium?", answer: "Small population size", options: ["No mutations", "Random mating", "Small population size"], explanation: "Small populations are subject to genetic drift, which causes evolution. H-W requires a large population." }
+                        ]
+                    }
+                },
+                {
+                    title: "Unit 16: Ecosystem Dynamics",
+                    intuition: "Energy flows, but matter cycles. Understanding the 10% rule explains why top predators are rare.",
+                    topics: ["Trophic Levels", "Nutrient Cycling", "Community Interactions"],
+                    lectures: [
+                        { name: "16.1: Energy Flow Networks", url: "lesson:bio:ch8-1" },
+                        { name: "16.2: Biodiversity & Resilience", url: "lesson:bio:ch8-2" }
+                    ],
+                    quiz: {
+                        levels: [
+                            { title: "L1: Intuition", question: "In a food web, if 10,000 kJ of energy is available at the producer level, how much is likely available to a tertiary consumer?", answer: "10 kJ", options: ["1,000 kJ", "100 kJ", "10 kJ"], explanation: "The 10% rule means energy decreases by an order of magnitude at each step: 10,000 $\\rightarrow$ 1,000 $\\rightarrow$ 100 $\\rightarrow$ 10." }
                         ]
                     }
                 }
@@ -392,7 +487,16 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
         "Chi-Square Test": "A statistical test used to determine if the observed data deviates significantly from the expected values.",
         "Null Hypothesis": "A statement that there is no significant difference between the observed and expected results.",
         "P-Value": "The probability of obtaining test results at least as extreme as the observed results, assuming the null hypothesis is correct (usually $p < 0.05$ is significant).",
-        "Homeostasis": "The maintenance of a stable internal environment despite external changes."
+        "Homeostasis": "The maintenance of a stable internal environment despite external changes.",
+
+        // --- Evolution & Ecology ---
+        "Natural Selection": "The process by which organisms with favorable traits are more likely to survive and reproduce.",
+        "Hardy-Weinberg Equilibrium": "A principle stating that allele frequencies in a population will remain constant provided specific conditions are met.",
+        "Genetic Drift": "Change in the allele frequency of a population due to random chance events, rather than natural selection.",
+        "Phylogeny": "The evolutionary history of a species or group of related species.",
+        "Cladogram": "A diagram used in cladistics to show relations among organisms.",
+        "Trophic Level": "The position an organism occupies in a food web (e.g., producer, primary consumer).",
+        "Keystone Species": "A species on which other species in an ecosystem largely depend, such that if it were removed the ecosystem would change drastically."
     }
 };
 

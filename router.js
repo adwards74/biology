@@ -4,19 +4,19 @@
  */
 
 window.AppRouter = (function () {
-    const views = ['subjects', 'tree', 'drill', 'profile', 'glossary'];
+    const views = ['dashboard', 'subjects', 'strategy', 'knowledge', 'glossary', 'atlas', 'lab', 'resources', 'review', 'tree', 'drill', 'profile'];
 
     function switchView(viewId) {
         console.log("ROUTING TO:", viewId);
 
         // Hide all views
-        document.querySelectorAll('section').forEach(section => {
-            section.style.display = 'none';
+        document.querySelectorAll('.view').forEach(view => {
+            view.classList.remove('active');
         });
 
         // Show target view
         const targetView = document.getElementById(`${viewId}-view`);
-        if (targetView) targetView.style.display = 'block';
+        if (targetView) targetView.classList.add('active');
 
         // Update sidebar state
         document.querySelectorAll('.nav-links .nav-item').forEach(li => {
@@ -34,6 +34,7 @@ window.AppRouter = (function () {
         if (viewId === 'review' && window.showReviewHub) window.showReviewHub();
         if (viewId === 'atlas' && window.showAtlas) window.showAtlas();
         if (viewId === 'glossary' && window.showGlossary) window.showGlossary();
+        if (viewId === 'lab' && window.showLab) window.showLab();
     }
 
     // Expose switchView to window for legacy compatibility

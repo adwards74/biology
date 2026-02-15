@@ -105,5 +105,75 @@ window.ATLAS_DATA = {
                 insight: "Fueling the cell's metabolic activity through aerobic respiration."
             }
         ]
+    },
+    "phylogeny": {
+        title: "The Tree of Life (Universal Phylogeny)",
+        description: "Mapping the evolutionary relationships between all three domains of life based on rRNA analysis.",
+        image: "assets/phylogeny-header.png",
+        parts: [
+            {
+                id: "bacteria",
+                name: "Domain Bacteria",
+                icon: "fas fa-microbe",
+                coords: { x: 20, y: 30 },
+                description: "Prokaryotic organisms with peptidoglycan cell walls.",
+                insight: "The oldest and most diverse domain. Includes everything from beneficial gut flora to pathogens."
+            },
+            {
+                id: "archaea",
+                name: "Domain Archaea",
+                icon: "fas fa-volcano",
+                coords: { x: 45, y: 70 },
+                description: "Prokaryotes found in extreme environments (extremophiles).",
+                insight: "More closely related to Eukarya than Bacteria in terms of molecular machinery (DNA Polymerase)."
+            },
+            {
+                id: "eukarya",
+                name: "Domain Eukarya",
+                icon: "fas fa-tree",
+                coords: { x: 80, y: 40 },
+                description: "Organisms with complex cells containing a nucleus and organelles.",
+                insight: "Divided into kingdoms: Protista, Fungi, Plantae, and Animalia. Defined by the Endosymbiotic Theory."
+            }
+        ]
+    },
+    "lac-operon": {
+        title: "The lac Operon Logic Model",
+        description: "A regulatory switch in E. coli used to coordinate enzyme production based on lactose availability.",
+        image: "assets/operon-logic.png",
+        parts: [
+            {
+                id: "promoter",
+                name: "Promoter (P)",
+                icon: "fas fa-bolt",
+                coords: { x: 10, y: 50 },
+                description: "The binding site for RNA Polymerase.",
+                insight: "The 'Start Switch'. Transcription begins here if not blocked."
+            },
+            {
+                id: "operator",
+                name: "Operator (O)",
+                icon: "fas fa-lock",
+                coords: { x: 30, y: 50 },
+                description: "The control toggle where the repressor protein binds.",
+                insight: "The 'Security Gate'. If the repressor is parked here, RNA Polymerase cannot pass."
+            },
+            {
+                id: "repressor",
+                name: "Repressor Protein",
+                icon: "fas fa-hand",
+                coords: { x: 30, y: 80 },
+                description: "Protein that binds to the operator to block transcription.",
+                insight: "Inhibited by Allolactose. When lactose is present, this 'guard' leaves the gate."
+            },
+            {
+                id: "z-gene",
+                name: "lacZ Gene",
+                icon: "fas fa-dna",
+                coords: { x: 60, y: 50 },
+                description: "Codes for Beta-galactosidase which breaks down lactose.",
+                insight: "The first structural gene. Its goal is to turn lactose into energy."
+            }
+        ]
     }
 };

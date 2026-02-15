@@ -171,6 +171,26 @@ window.TutorEngine = (function () {
             return results.sort((a, b) => b.score - a.score);
         },
 
+        summarize(lessonKey) {
+            const data = this.index[lessonKey.toLowerCase()];
+            if (!data) return "Bio-Sense: No local data for summarization.";
+
+            const contentItem = data.find(i => i.type === 'content');
+            if (!contentItem) return "Bio-Sense: Research stream too fragmented for summary.";
+
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = contentItem.content;
+
+            const headings = Array.from(tempDiv.querySelectorAll('h2')).map(h => h.innerText);
+            const intuition = tempDiv.querySelector('.intuition-box p')?.innerText;
+
+            return {
+                title: contentItem.title,
+                points: headings,
+                intuition: intuition
+            };
+        },
+
         getLevenshtein(s1, s2) {
             const m = s1.length, n = s2.length;
             const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
@@ -538,6 +558,8 @@ window.TutorEngine = (function () {
     window.getTutorStats = getStats;
     window.updateTutorUI = updateTutorUI;
     window.getNextRecommendation = getNextRecommendation;
+    window.summarizeContent = (key) => KnowledgeMap.summarize(key);
+    window.buildNeuralMap = () => KnowledgeMap.build();
 
     window.analyzePattern = (userInput) => {
         const stats = getStats();
@@ -568,6 +590,8 @@ window.TutorEngine = (function () {
         getStats,
         updateTutorUI,
         updateStabilityUI,
+        summarizeContent: (key) => KnowledgeMap.summarize(key),
+        analyzePattern: window.analyzePattern,
         buildNeuralMap: () => KnowledgeMap.build()
     };
 })();

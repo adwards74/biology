@@ -477,6 +477,16 @@ window.TutorEngine = (function () {
         return { message: "Curriculum mastered. Ready for experimental expansion." };
     }
 
+    function getConceptMatrix(lessonKey) {
+        const normalized = (lessonKey || "general").toLowerCase();
+        // Fallback or search in KnowledgeMap if available
+        return {
+            current: normalized,
+            parents: [],
+            children: []
+        };
+    }
+
     // Initialize map
     setTimeout(() => KnowledgeMap.build(), 1000);
 
@@ -515,6 +525,7 @@ window.TutorEngine = (function () {
         handleChatInput,
         recordQuizResult,
         typeTerminalMessage,
+        getConceptMatrix,
         getNextRecommendation,
         getStats,
         updateTutorUI,

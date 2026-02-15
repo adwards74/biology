@@ -12,6 +12,7 @@ window.TutorEngine = (function () {
         index: {},
         isMapped: false,
         conversationBuffer: [],
+        lastQueryTopic: null,
 
         addToBuffer(query, response) {
             this.conversationBuffer.push({ query, response });
@@ -251,6 +252,9 @@ window.TutorEngine = (function () {
         const lowerQuery = query.toLowerCase().trim();
         const neuralMatches = KnowledgeMap.search(lowerQuery);
 
+        // Elite 5.3: Track last queried topic for Contextual Logic Mapping
+        KnowledgeMap.lastQueryTopic = lowerQuery;
+
         let response = "";
         if (neuralMatches.length > 0) {
             const bestMatch = neuralMatches[0];
@@ -478,13 +482,46 @@ window.TutorEngine = (function () {
     }
 
     function getConceptMatrix(lessonKey) {
-        const normalized = (lessonKey || "general").toLowerCase();
-        // Fallback or search in KnowledgeMap if available
-        return {
+        let normalized = (lessonKey || "general").toLowerCase();
+
+        // Elite 5.3: If on dashboard (general), use the last searched topic as "Focus"
+        if (normalized === "general" && KnowledgeMap.lastQueryTopic) {
+            normalized = KnowledgeMap.lastQueryTopic;
+        }
+
+        const neuralMatches = KnowledgeMap.search(normalized);
+        const matrix = {
             current: normalized,
             parents: [],
             children: []
         };
+
+        if (neuralMatches.length > 0) {
+            const best = neuralMatches[0];
+            matrix.current = best.title || best.name || best.id || normalized;
+
+            // Parents: If it's a glossary term, parents are related units. If lecture, parent is unit.
+            if (best.type === 'glossary' && best.relatedUnits) {
+                matrix.parents = best.relatedUnits.map(u => u.unitTitle);
+            } else if (best.type === 'lecture' && best.subjectId) {
+                const sub = window.MATH_DATA && window.MATH_DATA.subjects.find(s => s.id === best.subjectId);
+                if (sub) {
+                    const unit = sub.units.find(u => u.lectures.some(l => l.url.includes(normalized)));
+                    if (unit) matrix.parents = [unit.title];
+                }
+            } else if (best.type === 'unit') {
+                const sub = window.MATH_DATA && window.MATH_DATA.subjects.find(s => s.id === best.subjectId);
+                if (sub) matrix.parents = [sub.title];
+                matrix.children = best.topics.slice(0, 3);
+            }
+
+            // Children fallback: If we have multiple matches, add them as related children
+            if (matrix.children.length === 0 && neuralMatches.length > 1) {
+                matrix.children = neuralMatches.slice(1, 4).map(m => m.title || m.name || m.id);
+            }
+        }
+
+        return matrix;
     }
 
     // Initialize map

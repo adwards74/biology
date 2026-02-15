@@ -184,9 +184,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 padding: 12px 20px;
                 border-radius: 12px;
                 font-size: 0.9rem;
-                border: 1px solid ${type === 'current' ? 'var(--accent-magenta)' : 'rgba(255,255,255,0.1)'};
-                background: ${type === 'current' ? 'rgba(255,0,255,0.1)' : 'rgba(255,255,255,0.05)'};
-                box-shadow: ${type === 'current' ? '0 0 15px rgba(255,0,255,0.2)' : 'none'};
+                border: 1px solid ${type === 'current' ? 'var(--accent-emerald)' : 'rgba(255,255,255,0.1)'};
+                background: ${type === 'current' ? 'rgba(0,255,100,0.1)' : 'rgba(255,255,255,0.05)'};
+                box-shadow: ${type === 'current' ? '0 0 15px rgba(0,255,100,0.2)' : 'none'};
                 color: ${type === 'current' ? 'white' : 'rgba(255,255,255,0.7)'};
                 text-align: center;
                 min-width: 120px;
@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
             arrow.style.cssText = `
                 width: 2px;
                 height: 30px;
-                background: linear-gradient(to bottom, transparent, var(--accent-magenta), transparent);
+                background: linear-gradient(to bottom, transparent, var(--accent-emerald), transparent);
                 position: relative;
             `;
             return arrow;
@@ -231,7 +231,12 @@ document.addEventListener('DOMContentLoaded', () => {
             matrix.children.forEach(c => childRow.appendChild(createNode(c, 'child')));
             container.appendChild(childRow);
         } else if (matrix.current === "general") {
-            container.innerHTML = `<div style="opacity:0.6; font-size:0.9rem;">Navigate to a specific lesson to see the Neural Map connections!</div>`;
+            container.innerHTML = `
+                <div style="text-align:center; padding:20px;">
+                    <i class="fas fa-brain" style="font-size:2rem; color:var(--accent-emerald); opacity:0.3; margin-bottom:15px;"></i>
+                    <div style="opacity:0.6; font-size:0.9rem;">Ask a question or enter a lesson to generate a **Bio-Logic Map**!</div>
+                </div>
+            `;
         } else {
             const endNode = document.createElement('div');
             endNode.style.cssText = "font-size:0.7rem; opacity:0.4; margin-top:10px;";

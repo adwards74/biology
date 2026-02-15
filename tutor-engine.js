@@ -562,6 +562,7 @@ window.TutorEngine = (function () {
         handleChatInput,
         recordQuizResult,
         typeTerminalMessage,
+        getSocraticAdvice,
         getConceptMatrix,
         getNextRecommendation,
         getStats,

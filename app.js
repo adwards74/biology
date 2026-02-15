@@ -67,8 +67,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Auto-attach lightbox to lesson images
     document.addEventListener('click', (e) => {
-        if (e.target.tagName === 'IMG' && e.target.closest('.lesson-content')) {
-            window.showImageModal(e.target.src);
+        const target = e.target;
+
+        // 1. Image Lightbox
+        if (target.tagName === 'IMG' && target.closest('.lesson-content')) {
+            window.showImageModal(target.src);
+        }
+
+        // 2. Terminology Click-to-Explain
+        const termTooltip = target.closest('.term-tooltip');
+        if (termTooltip) {
+            const term = termTooltip.innerText;
+            const definition = termTooltip.getAttribute('data-definition');
+
+            // Open tutor if closed
+            if (!document.body.classList.contains('tutor-open')) {
+                const sidebar = document.querySelector('.tutor-sidebar');
+                if (sidebar) {
+                    document.body.classList.add('tutor-open');
+                }
+            }
+
+            // Trigger AI Explanation
+            if (window.typeTerminalMessage) {
+                const message = `<div style="color:var(--accent-blue); font-weight:bold; margin-bottom:8px;"><i class="fas fa-brain"></i> Neural Insight: ${term}</div><div>${definition}</div>`;
+                window.typeTerminalMessage(message);
+            }
         }
     });
 

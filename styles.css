@@ -1565,6 +1565,12 @@ em {
     bottom: 140%;
 }
 
+.term-tooltip:active {
+    filter: brightness(1.5);
+    transform: scale(1.05);
+    transition: transform 0.1s ease;
+}
+
 /* Light mode adjustments for tooltips */
 body.light-mode .term-tooltip::before {
     background: rgba(255, 255, 255, 0.95);

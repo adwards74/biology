@@ -17,9 +17,9 @@ window.UIEngine = (function () {
         // Difficulty badge helper
         const getDifficultyBadge = (diff) => {
             switch (diff) {
-                case 'basic': return '<span class="difficulty-badge neon-blue">🟢 기초</span>';
-                case 'intermediate': return '<span class="difficulty-badge" style="background:#f9d42322; color:#f9d423; padding:3px 8px; border-radius:8px; font-size:0.7rem; margin-left:8px;">🟡 중급</span>';
-                case 'advanced': return '<span class="difficulty-badge" style="background:#ff416c22; color:#ff416c; padding:3px 8px; border-radius:8px; font-size:0.7rem; margin-left:8px;">🔴 고급</span>';
+                case 'basic': return '<span class="difficulty-badge neon-blue">🟢 Basic</span>';
+                case 'intermediate': return '<span class="difficulty-badge" style="background:#f9d42322; color:#f9d423; padding:3px 8px; border-radius:8px; font-size:0.7rem; margin-left:8px;">🟡 Intermediate</span>';
+                case 'advanced': return '<span class="difficulty-badge" style="background:#ff416c22; color:#ff416c; padding:3px 8px; border-radius:8px; font-size:0.7rem; margin-left:8px;">🔴 Advanced</span>';
                 default: return '';
             }
         };
@@ -309,7 +309,10 @@ window.UIEngine = (function () {
 
             enhancedHtml = enhancedHtml.replace(regex, (match, tag, termMatch) => {
                 if (tag) return tag; // Return tag unchanged
-                return `<span class="term-tooltip" data-definition="${definition}">${termMatch}</span>`;
+
+                // Handle object-based definitions
+                const cleanDef = typeof definition === 'object' ? definition.def : definition;
+                return `<span class="term-tooltip" data-definition="${cleanDef.replace(/"/g, '&quot;')}">${termMatch}</span>`;
             });
         });
 

@@ -232,16 +232,29 @@ window.TutorEngine = (function () {
 
         const lowerQuery = query.toLowerCase().trim();
 
-        // --- 1. FRQ Intelligence ---
+        // --- 1. IBET & AP High-Intelligence Filters ---
+        if (lowerQuery.includes('crispr') || lowerQuery.includes('biotech') || lowerQuery.includes('recombinant')) {
+            return `
+                <div style="color:var(--accent-orange); font-weight:bold; margin-bottom:10px;"><i class="fas fa-microchip"></i> TJHSST IBET INSIGHT: Biotechnology & Evolution</div>
+                Modern genetics (CRISPR/Cas9) is not just a tool; it represents **Artificial Selection 2.0**. 
+                <ul style="margin-top:10px; padding-left:20px; font-size:0.85rem; line-height:1.6;">
+                    <li><strong style="color:var(--accent-cyan)">The Link:</strong> While *Natural Selection* relies on random mutations over geological time, *CRISPR* allows for targeted genomic changes in a single generation.</li>
+                    <li><strong style="color:var(--accent-cyan)">IBET Perspective:</strong> Consider the ethical and ecological implications of "Gene Drives"—using biotech to bypass traditional Mendelian inheritance.</li>
+                </ul>
+                <div style="font-size:0.8rem; opacity:0.6; margin-top:10px; border-top:1px dashed rgba(255,255,255,0.1); padding-top:10px;">🧬 **Mastery Tip:** DNA recombination is to human technology what cross-over is to meiosis: the ultimate driver of variation.</div>
+            `;
+        }
+
         if (lowerQuery.includes('frq') || lowerQuery.includes('experiment') || lowerQuery.includes('cer') || lowerQuery.includes('lab')) {
             return `
-                <div style="color:var(--accent-emerald); font-weight:bold; margin-bottom:10px;"><i class="fas fa-vial"></i> FRQ LOGIC ENGINE:</div>
-                Apply the **CER Model** for high-score research analysis:
+                <div style="color:var(--accent-emerald); font-weight:bold; margin-bottom:10px;"><i class="fas fa-vial"></i> FRQ/IBET LOGIC ENGINE:</div>
+                For **TJHSST Lab Reports** and AP FRQs, precision is mandatory. Use the **CER Model**:
                 <ul style="margin-top:10px; padding-left:20px; font-size:0.85rem; line-height:1.6;">
-                    <li><strong style="color:var(--accent-cyan)">Claim:</strong> Direct answer (e.g. <em>"The pH affected enzyme rate..."</em>)</li>
-                    <li><strong style="color:var(--accent-cyan)">Evidence:</strong> Quote data from the Scientific Lab.</li>
-                    <li><strong style="color:var(--accent-cyan)">Reasoning:</strong> Explain the mechanism (e.g. <em>"Hydrogen bonds were disrupted..."</em>).</li>
+                    <li><strong style="color:var(--accent-cyan)">Claim:</strong> A one-sentence answer that addresses the prompt directly. No "I think".</li>
+                    <li><strong style="color:var(--accent-cyan)">Evidence:</strong> Specific numerical values (Means, $\chi^2$, SEM) from your analysis.</li>
+                    <li><strong style="color:var(--accent-cyan)">Reasoning:</strong> The "Why". Connect the data to a biological principle (e.g., *Natural Selection* or *Protein Folding*).</li>
                 </ul>
+                <div style="font-size:0.8rem; opacity:0.6; margin-top:10px; border-top:1px dashed rgba(255,255,255,0.1); padding-top:10px;">📊 **STAT TIP:** Always mention if your error bars (SEM) overlap. No overlap = likely Significance.</div>
             `;
         }
 

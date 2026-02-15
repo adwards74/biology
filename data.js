@@ -249,6 +249,19 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                     title: "Unit 11: Statistical Power & Inference",
                     intuition: "Is your data significant or just noise? Statistics provides the mathematical threshold for proof. In IBET, we don't guess; we test.",
                     topics: ["Chi-Square Analysis", "SEM & 95% Confidence Intervals", "Null Hypothesis Significance Testing (NHST)"],
+                    labProtocol: {
+                        title: "IBET Experimental Design Protocol",
+                        preLab: [
+                            "Identify the **Null Hypothesis ($H_0$)**: No significant difference between observed and expected.",
+                            "Determine **Degrees of Freedom ($df$)**: $n - 1$.",
+                            "Establish the **P-Value threshold**: Standard is $0.05$ (5%)."
+                        ],
+                        postLab: [
+                            "Calculate $\\chi^2$ using the Scientific Lab tool.",
+                            "Compare $\\chi^2$ to critical values. If $\\chi^2 > CV$, **Reject $H_0$**.",
+                            "Apply CER: Use data to justify your conclusion on biological significance."
+                        ]
+                    },
                     lectures: [
                         { name: "11.1: The Chi-Square Test", url: "lesson:bio:ch11-1" },
                         { name: "11.2: Error Analysis & SE", url: "lesson:bio:ch11-2" }
@@ -301,6 +314,7 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
                     title: "Unit 15: Natural Selection & Phylogeny",
                     intuition: "Evolution is the unifying theory of biology. It explains how diversity arises from common ancestry through survival of the fittest.",
                     topics: ["Darwinian Selection", "Hardy-Weinberg Equilibrium", "Cladistics & Mapping"],
+                    evolutionLink: "Biotechnology (CRISPR/Recombinant DNA) represents human-driven rapid evolution, a shift from geological timescales to technological timescales.",
                     lectures: [
                         { name: "15.1: The Mechanism of Change", url: "lesson:bio:ch7-1" },
                         { name: "15.2: Population Genetics (H-W)", url: "lesson:bio:ch7-2" }
@@ -439,13 +453,13 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
     ],
     glossary: {
         // --- Cell Systems & Architecture ---
-        "SA:V Ratio": "Surface Area to Volume Ratio. Explains why cells must remain small to maintain efficient nutrient/waste exchange.",
+        "SA:V Ratio": { def: "Surface Area to Volume Ratio. Explains why cells must remain small to maintain efficient nutrient/waste exchange.", highFrequency: true },
         "Organelle": "A membrane-bound structure within a cell that performs a specific function (e.g., mitochondria, nucleus).",
         "Endomembrane System": "A group of membranes and organelles in eukaryotic cells that work together to modify, package, and transport lipids and proteins.",
         "Rough ER": "Studded with ribosomes; synthesizes proteins destined for secretion or membrane insertion.",
         "Smooth ER": "Synthesizes lipids, detoxifies chemicals, and stores calcium ions (no ribosomes).",
         "Golgi Apparatus": "The shipping & receiving center; modifies, sorts, and packages proteins from the ER.",
-        "Mitochondria": "The power plant of the cell; site of cellular respiration and ATP production.",
+        "Mitochondria": { def: "The power plant of the cell; site of cellular respiration and ATP production.", highFrequency: true },
         "Ribosome": "The protein factory; translates mRNA into polypeptide chains.",
         "Lysosome": "The recycling crew; contains digestive enzymes to break down macromolecules.",
         "Prokaryote": "A single-celled organism that lacks a nucleus and membrane-bound organelles.",
@@ -454,20 +468,20 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
 
         // --- Transport & Energetics ---
         "Osmosis": "The diffusion of water molecules across a semi-permeable membrane from high to low water potential.",
-        "Water Potential": "A measure of the free energy of water in a solution; water moves from high potential ($\Psi$) to low potential.",
+        "Water Potential": { def: "A measure of the free energy of water in a solution; water moves from high potential ($\Psi$) to low potential.", highFrequency: true },
         "Active Transport": "The movement of molecules across a cell membrane against a concentration gradient, requiring ATP (energy).",
         "Facilitated Diffusion": "Passive transport of molecules across a membrane through specific transmembrane integral proteins.",
         "Endocytosis": "Process by which a cell takes in materials by folding its membrane around them to form a vesicle.",
         "Exocytosis": "The release of substances from a cell via the fusion of a vesicle with the plasma membrane.",
-        "Chemiosmosis": "The movement of ions across a semipermeable membrane down their electrochemical gradient to generate ATP.",
+        "Chemiosmosis": { def: "The movement of ions across a semipermeable membrane down their electrochemical gradient to generate ATP.", highFrequency: true },
         "Calvin Cycle": "The light-independent reactions of photosynthesis that fix CO2 into organic molecules like G3P.",
         "Krebs Cycle": "Also known as the Citric Acid Cycle; a series of reactions that harvest high-energy electrons from glucose derivatives.",
         "Oxidative Phosphorylation": "The production of ATP using energy derived from the redox reactions of an electron transport chain.",
         "Vmax": "The maximum reaction rate in an enzyme-catalyzed reaction when the enzyme is saturated with substrate.",
-        "Enzyme": "A biological catalyst (usually a protein) that speeds up chemical reactions by lowering activation energy.",
+        "Enzyme": { def: "A biological catalyst (usually a protein) that speeds up chemical reactions by lowering activation energy.", highFrequency: true },
 
         // --- Molecular Genetics ---
-        "Central Dogma": "The fundamental flow of genetic information: DNA $\rightarrow$ RNA $\rightarrow$ Protein.",
+        "Central Dogma": { def: "The fundamental flow of genetic information: DNA $\rightarrow$ RNA $\rightarrow$ Protein.", highFrequency: true },
         "Transcription": "The synthesis of an RNA molecule from a DNA template.",
         "Translation": "The process by which a ribosome builds a polypeptide chain using the genetic code from mRNA.",
         "Okazaki Fragments": "Short, newly synthesized DNA fragments that are formed on the lagging template strand during replication.",
@@ -477,6 +491,7 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
         "Intron": "A segment of a DNA or RNA molecule which does not code for proteins and interrupts the sequence of genes.",
         "Exon": "A segment of a DNA or RNA molecule containing information coding for a protein or peptide sequence.",
         "Plasmid": "A small, circular, double-stranded DNA molecule that is distinct from a cell's chromosomal DNA (common in bacteria).",
+        "Allosteric Regulation": { def: "The binding of a regulatory molecule to a protein at one site that affects the function of the protein at a different site.", highFrequency: true },
 
         // --- Heredity & Biostatistics ---
         "Phenotype": "The set of observable characteristics of an individual resulting from the interaction of its genotype with the environment.",
@@ -484,19 +499,20 @@ window.MATH_DATA = { // Keeping variable name for compatibility with copied ui-r
         "Allele": "One of two or more alternative forms of a gene that arise by mutation and are found at the same place on a chromosome.",
         "Linked Genes": "Genes located close together on the same chromosome that tend to be inherited together.",
         "Recombination Frequency": "A measure of genetic linkage used in the creation of a genetic linkage map (1% RF = 1 centimorgan).",
-        "Chi-Square Test": "A statistical test used to determine if the observed data deviates significantly from the expected values.",
-        "Null Hypothesis": "A statement that there is no significant difference between the observed and expected results.",
-        "P-Value": "The probability of obtaining test results at least as extreme as the observed results, assuming the null hypothesis is correct (usually $p < 0.05$ is significant).",
+        "Chi-Square Test": { def: "A statistical test used to determine if the observed data deviates significantly from the expected values.", highFrequency: true },
+        "Null Hypothesis": { def: "A statement that there is no significant difference between the observed and expected results.", highFrequency: true },
+        "P-Value": { def: "The probability of obtaining test results at least as extreme as the observed results, assuming the null hypothesis is correct (usually $p < 0.05$ is significant).", highFrequency: true },
         "Homeostasis": "The maintenance of a stable internal environment despite external changes.",
 
         // --- Evolution & Ecology ---
-        "Natural Selection": "The process by which organisms with favorable traits are more likely to survive and reproduce.",
-        "Hardy-Weinberg Equilibrium": "A principle stating that allele frequencies in a population will remain constant provided specific conditions are met.",
+        "Natural Selection": { def: "The process by which organisms with favorable traits are more likely to survive and reproduce.", highFrequency: true },
+        "Hardy-Weinberg Equilibrium": { def: "A principle stating that allele frequencies in a population will remain constant provided specific conditions are met.", highFrequency: true },
         "Genetic Drift": "Change in the allele frequency of a population due to random chance events, rather than natural selection.",
         "Phylogeny": "The evolutionary history of a species or group of related species.",
         "Cladogram": "A diagram used in cladistics to show relations among organisms.",
-        "Trophic Level": "The position an organism occupies in a food web (e.g., producer, primary consumer).",
-        "Keystone Species": "A species on which other species in an ecosystem largely depend, such that if it were removed the ecosystem would change drastically."
+        "Trophic Level": { def: "The position an organism occupies in a food web (e.g., producer, primary consumer).", highFrequency: true },
+        "Keystone Species": { def: "A species on which other species in an ecosystem largely depend, such that if it were removed the ecosystem would change drastically.", highFrequency: true },
+        "Trophic Cascade": { def: "Powerful indirect interactions that can control entire ecosystems, occurring when a trophic level in a food web is suppressed.", highFrequency: true }
     }
 };
 

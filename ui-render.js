@@ -100,6 +100,41 @@ window.UIEngine = (function () {
     }
 
     function renderUnitCard(unit, subject, uIdx) {
+        let labProtocolHtml = '';
+        if (unit.labProtocol) {
+            labProtocolHtml = `
+                <div class="lab-protocol-box fadeIn">
+                    <h4 style="color:${subject.color};">
+                        <i class="fas fa-flask"></i> ${unit.labProtocol.title}
+                    </h4>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-top:15px;">
+                        <div>
+                            <span class="protocol-section-title" style="color:var(--accent-cyan);">Pre-Lab Logic</span>
+                            <ul style="padding-left:15px; margin-top:8px; font-size:0.85rem; color:#cbd5e1; list-style-type: '🔬';">
+                                ${unit.labProtocol.preLab.map(item => `<li style="margin-bottom:5px;">${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div>
+                            <span class="protocol-section-title" style="color:var(--accent-emerald);">Post-Lab Analysis</span>
+                            <ul style="padding-left:15px; margin-top:8px; font-size:0.85rem; color:#cbd5e1; list-style-type: '📈';">
+                                ${unit.labProtocol.postLab.map(item => `<li style="margin-bottom:5px;">${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        let evolutionLinkHtml = '';
+        if (unit.evolutionLink) {
+            evolutionLinkHtml = `
+                <div class="evolution-link-box fadeIn">
+                    <h5><i class="fas fa-project-diagram"></i> Bio-Logic Connectivity: Evolution</h5>
+                    <p style="font-size:0.85rem; font-style:italic; opacity:0.9;">${unit.evolutionLink}</p>
+                </div>
+            `;
+        }
+
         return `
             <div class="unit-card glass" style="padding:30px; border-radius:var(--standard-radius);">
                 <h3 style="margin-bottom:15px; border-left:4px solid ${subject.color}; padding-left:15px;">${unit.title}</h3>
@@ -107,6 +142,8 @@ window.UIEngine = (function () {
                 <div class="lectures" style="display:grid; gap:10px;">
                     ${unit.lectures.map(l => renderLectureLink(l, subject)).join('')}
                 </div>
+                ${labProtocolHtml}
+                ${evolutionLinkHtml}
                 ${unit.examples ? renderExamplesSection(unit.examples, subject) : ''}
                 ${unit.quiz ? renderQuizBox(unit.quiz, subject, uIdx, unit.title) : ''}
             </div>

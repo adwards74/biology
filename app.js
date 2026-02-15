@@ -512,17 +512,27 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderGlossaryItems(terms, glossary) {
         if (terms.length === 0) return `<div class="glass-card" style="padding:40px; text-align:center; opacity:0.5;">No matching biological terms found in the matrix.</div>`;
 
-        return terms.map(term => `
-            <div class="glass-card glossary-item-box fadeIn" onclick="this.classList.toggle('active')">
-                <div class="glossary-header">
-                    <h3>${term}</h3>
-                    <i class="fas fa-chevron-down chevron"></i>
+        return terms.map(term => {
+            const data = glossary[term];
+            const isObject = typeof data === 'object';
+            const definition = isObject ? data.def : data;
+            const isHighFreq = isObject && data.highFrequency;
+
+            return `
+                <div class="glass-card glossary-item-box fadeIn" onclick="this.classList.toggle('active')">
+                    <div class="glossary-header">
+                        <h3 style="display:flex; align-items:center; gap:10px;">
+                            ${term}
+                            ${isHighFreq ? '<span class="ap-master-badge">AP Focus</span>' : ''}
+                        </h3>
+                        <i class="fas fa-chevron-down chevron"></i>
+                    </div>
+                    <div class="glossary-content">
+                        ${window.UIEngine && window.UIEngine.applyTerminologyTooltips ? window.UIEngine.applyTerminologyTooltips(definition) : definition}
+                    </div>
                 </div>
-                <div class="glossary-content">
-                    ${window.UIEngine && window.UIEngine.applyTerminologyTooltips ? window.UIEngine.applyTerminologyTooltips(glossary[term]) : glossary[term]}
-                </div>
-            </div>
-        `).join('');
+            `;
+        }).join('');
     }
 
     function showResources() {

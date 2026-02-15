@@ -8,16 +8,28 @@ window.CHAPTER_DATA["ch9"] = {
 
     "ch9-1": {
         title: "16.1 Systematic Review (SR) Protocol",
-        subtitle: "PRISMA Guidelines and Data Filtering Logic",
+        subtitle: "Eliminating Researcher Bias and the PRISMA Logic",
         content: `
             <div class="lesson-section">
-                <div class="intuition-box glass" style="border-color: var(--accent-magenta);">
-                    <h3><i class="fas fa-microscope"></i> Section I: Data Purification (PRISMA Protocol)</h3>
-                    <p>Selecting only reliable data from a vast sea of research results is central to biological research. The PRISMA guidelines act like a 'sieve' to ensure transparency and reproducibility of research.</p>
+                <div class="intuition-box glass" style="border-left: 4px solid var(--accent-magenta);">
+                    <h3><i class="fas fa-brain"></i> The "Why": Dealing with Information Overload</h3>
+                    <p>In modern biology, thousands of papers are published monthly. If a scientist only picks papers that support their theory, that's <strong>Confirmation Bias</strong>. A <strong>Systematic Review</strong> is a protocol-driven search that forces the researcher to look at <em>every</em> relevant study, even ones they disagree with. This is how we reach a "Scientific Consensus."</p>
+                </div>
+
+                <h2>The "How": The PRISMA Sieve</h2>
+                <p>We use the <strong>PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-Analyses)</strong> protocol to filter data in four strict stages:</p>
+                
+                <div class="glass-card" style="margin:20px 0;">
+                    <ul style="line-height: 1.8;">
+                        <li><strong>1. Identification:</strong> Search databases (PubMed, Google Scholar) using fixed keywords (e.g., "p53 AND apoptosis").</li>
+                        <li><strong>2. Screening:</strong> Remove duplicates and read abstracts. If a paper studied mice but you're studying humans, discard it here.</li>
+                        <li><strong>3. Eligibility:</strong> Read the full text. Check if the methodology is sound. Did they have a control group?</li>
+                        <li><strong>4. Inclusion:</strong> The final "pure" datasets that will be used for your conclusion.</li>
+                    </ul>
                 </div>
 
                 <div class="visual-dynamics glass" style="margin:20px 0; padding:20px; text-align:center;">
-                    <h4><i class="fas fa-filter"></i> PRISMA Flow Chart Simulation</h4>
+                    <h4><i class="fas fa-filter"></i> PRISMA Flow Chart</h4>
                     <svg width="300" height="180" viewBox="0 0 300 180">
                         <rect x="100" y="10" width="100" height="25" rx="3" fill="rgba(255,255,255,0.05)" stroke="var(--accent-magenta)"/>
                         <rect x="100" y="55" width="100" height="25" rx="3" fill="rgba(255,255,255,0.05)" stroke="var(--accent-magenta)"/>
@@ -30,30 +42,73 @@ window.CHAPTER_DATA["ch9"] = {
                         <text x="120" y="72" fill="#fff" font-size="8">Screening</text>
                         <text x="122" y="117" fill="#fff" font-size="8">Eligibility</text>
                         <text x="125" y="162" fill="#fff" font-size="8" font-weight="bold">Included</text>
-                    </svg>\n                </div>\n            </div>\n        `
+                    </svg>
+                </div>
+            </div>
+        `
     },
 
     "ch9-2": {
         title: "16.2 Advanced Stats: P-Hacking & Meta-Analysis",
-        subtitle: "Preventing Data Distortion and Effect Size Analysis",
+        subtitle: "Truth in Numbers: Effect Size over P-Values",
         content: `
             <div class="lesson-section">
-                <div class="intuition-box glass">
-                    <h3><i class="fas fa-chart-line"></i> Section I: Pitfalls of Statistical Significance</h3>
-                    <p>A p-value < 0.05 result is not always the truth. <strong>P-Hacking</strong> refers to manipulating data until a desired result is achieved. To compensate for this, meta-analyses that integrate multiple studies focus on <strong>Effect Size</strong>.</p>
+                <div class="intuition-box glass" style="border-left-color: var(--accent-orange);">
+                    <h3><i class="fas fa-exclamation-triangle"></i> The "Why": The Replication Crisis</h3>
+                    <p>Many "breakthrough" study results cannot be reproduced by other scientists. Why? Because of <strong>P-Hacking</strong>. If you run 20 different tests on random data, by pure chance, one might show a p-value < 0.05. Reporting <em>only</em> that one result is scientific dishonesty.</p>
+                </div>
+
+                <h2>The "How": Beyond the P-Value</h2>
+                <p>To find the real truth, we focus on two things:</p>
+                <div class="glass-card" style="padding:20px;">
+                    <ol style="line-height: 1.8;">
+                        <li><strong>Effect Size:</strong> Instead of asking "Is there a difference?", ask "How <em>big</em> is the difference?" (e.g., does the drug lower blood pressure by 2mmHg or 20mmHg?).</li>
+                        <li><strong>Meta-Analysis:</strong> This is a statistical tool that combines the raw data from 50 different reviews. It treats 50 small studies as one giant experiment, giving us a "Forest Plot" of the true effect.</li>
+                    </ol>
                 </div>
             </div>
         `
     },
 
     "ch9-3": {
-        title: "16.3 Chi-Square Test",
-        subtitle: "Comparing Observed and Expected Values & Significance Testing",
+        title: "16.3 Chi-Square ($\\chi^2$) Test",
+        subtitle: "Goodness of Fit: Does Reality match our Hypothesis?",
         content: `
             <div class="lesson-section">
-                <div class="proof-box glass">
-                    <h4>$$\\chi^2 = \\sum \\frac{(O - E)^2}{E}$$</h4>
-                    <p>When observing Mendelian inheritance ratios or ecosystem distributions, we statistically verify if the actual data matches the hypothesis.</p>
+                <div class="intuition-box glass" style="border-left-color: var(--accent-blue);">
+                    <h3><i class="fas fa-dice"></i> The "Why": Is it Chance or a Law?</h3>
+                    <p>If you flip a coin 100 times and get 55 heads, is the coin biased? Or is that just random luck? The <strong>Chi-Square Test</strong> gives us a mathematical way to decide if the difference between <strong>Observed</strong> and <strong>Expected</strong> is too large to be just luck.</p>
+                </div>
+
+                <h2>The "How": Step-by-Step Mendelian Example</h2>
+                <div class="proof-box glass" style="margin:20px 0;">
+                    <h4>Formula: $\\chi^2 = \\sum \\frac{(O - E)^2}{E}$</h4>
+                </div>
+
+                <div class="glass-card" style="padding:20px;">
+                    <p><strong>Scenario:</strong> You cross two purple (Pp) plants. Mendel predicts a 3:1 ratio (75% Purple, 25% White). You observe 100 plants: 70 Purple, 30 White.</p>
+                    <table style="width:100%; border-collapse:collapse; margin:15px 0; font-size: 0.9rem;">
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <th style="padding:10px; text-align:left;">Phenotype</th>
+                            <th style="padding:10px;">Observed (O)</th>
+                            <th style="padding:10px;">Expected (E)</th>
+                            <th style="padding:10px;">(O-E)² / E</th>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px;">Purple</td>
+                            <td style="padding:10px; text-align:center;">70</td>
+                            <td style="padding:10px; text-align:center;">75</td>
+                            <td style="padding:10px; text-align:center;">25/75 = 0.33</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px;">White</td>
+                            <td style="padding:10px; text-align:center;">30</td>
+                            <td style="padding:10px; text-align:center;">25</td>
+                            <td style="padding:10px; text-align:center;">25/25 = 1.00</td>
+                        </tr>
+                    </table>
+                    <p><strong>Total $\\chi^2$:</strong> 1.33</p>
+                    <p><strong>Conclusion:</strong> With 1 Degree of Freedom (categories - 1), the critical value for $p=0.05$ is 3.84. Since $1.33 < 3.84$, we <strong>Fail to Reject the Null Hypothesis</strong>. The 70:30 result is close enough to 75:25 to be explained by random chance.</p>
                 </div>
             </div>
         `
@@ -61,12 +116,30 @@ window.CHAPTER_DATA["ch9"] = {
 
     "ch9-4": {
         title: "16.4 Standard Error (SEM) & Confidence Intervals",
-        subtitle: "Data Precision Measurement and Error Bar Analysis",
+        subtitle: "Visualizing Uncertainty in Biological Data",
         content: `
             <div class="lesson-section">
                 <div class="intuition-box glass" style="border-left-color: var(--accent-red);">
-                    <h3><i class="fas fa-lightbulb"></i> Big Idea: Precision vs. Variance</h3>
-                    <p>The Standard Error of the Mean (SEM) is a measure of how close the sample mean is to the actual population mean.</p>
+                    <h3><i class="fas fa-arrows-alt-v"></i> The "Why": Sample vs. Population</h3>
+                    <p>We can't measure every tree in the world. We measure 20. The <strong>Standard Error of the Mean (SEM)</strong> tells us how accurately that sample mean represents the true global average. It’s the "precision" of our measuring stick.</p>
+                </div>
+
+                <h2>The "How": Reading the Error Bars</h2>
+                <div class="glass-card" style="padding:20px;">
+                    <ul style="line-height: 1.8;">
+                        <li><strong>Standard Deviation (SD):</strong> Shows how much individual data points spread out around the mean.</li>
+                        <li><strong>Standard Error (SEM):</strong> $SEM = \\frac{SD}{\\sqrt{n}}$. As your sample size ($n$) increases, your error decreases.</li>
+                        <li><strong>Confidence Intervals (95% CI):</strong> Usually $Mean \\pm 2 \\times SEM$.</li>
+                    </ul>
+                </div>
+
+                <div class="key-terms-box glass" style="margin-top:20px; border-left: 4px solid var(--accent-cyan);">
+                    <h4><i class="fas fa-check-circle"></i> Quick Rule of Thumb</h4>
+                    <p>When comparing two bars in a graph:</p>
+                    <ul>
+                        <li>If the <strong>2xSEM error bars overlap</strong> $\rightarrow$ The difference is likely NOT significant.</li>
+                        <li>If the <strong>error bars do NOT overlap</strong> $\rightarrow$ There is a high probability the results are significantly different.</li>
+                    </ul>
                 </div>
             </div>
         `
@@ -74,20 +147,49 @@ window.CHAPTER_DATA["ch9"] = {
 
     "ch9-5": {
         title: "16.5 Experimental Design & Variable Controls",
-        subtitle: "Standards for Independent Variables, Dependent Variables, and Controls",
+        subtitle: "The Science of Isolation: Controlling the Variables",
         content: `
             <div class="lesson-section">
-                <p>A good experiment changes only one independent variable to eliminate alternative explanations for the result.</p>
+                <div class="intuition-box glass" style="border-left-color: var(--accent-emerald);">
+                    <h3><i class="fas fa-vial"></i> The "Why": Causality vs. Correlation</h3>
+                    <p>If you see that people who eat ice cream have higher sunburn rates, does ice cream cause sunburn? No, the <strong>Confounding Variable</strong> is the sun. A good experiment isolates the *cause* by controlling every other variable.</p>
+                </div>
+
+                <h2>The "How": Setup for a Perfect Lab</h2>
+                <div class="glass-card" style="padding:20px;">
+                    <ul style="line-height: 1.8;">
+                        <li><strong>Independent Variable ($X$):</strong> The thing I change (e.g., Concentration of Enzyme).</li>
+                        <li><strong>Dependent Variable ($Y$):</strong> The thing I measure (e.g., Rate of reaction).</li>
+                        <li><strong>Positive Control:</strong> A group where we *know* the result will be positive (ensures the equipment works).</li>
+                        <li><strong>Negative Control (Placebo):</strong> A group where no treatment is given (provides a baseline for comparison).</li>
+                        <li><strong>Constants:</strong> Factors that must stay the same (Temperature, pH, Volume) so they don't mess up the data.</li>
+                    </ul>
+                </div>
             </div>
         `
     },
 
     "ch9-6": {
-        title: "16.6 FRQ Protocol (CER)",
-        subtitle: "Claim-Evidence-Reasoning for AP Biology Responses",
+        title: "16.6 FRQ Protocol (CER Model)",
+        subtitle: "How to Answer Biology Questions like an Expert",
         content: `
             <div class="lesson-section">
-                <p>Answering like a scientist: Connecting clear Claims, specific Data (Evidence), and biological Principles (Reasoning).</p>
+                <div class="intuition-box glass" style="border-left-color: var(--accent-magenta);">
+                    <h3><i class="fas fa-pen-nib"></i> The "Why": Logic over Memorization</h3>
+                    <p>In the AP exam or IBET, you don't get points just for knowing terms. You get points for <strong>Linking</strong> concepts. The CER model is the engine of scientific communication.</p>
+                </div>
+
+                <h2>The "How": The CER Framework</h2>
+                <div class="glass-card" style="padding:20px; border-left: 5px solid var(--accent-magenta);">
+                    <p><strong>1. Claim:</strong> A one-sentence answer to the question. (Do not start with "I think").</p>
+                    <p><strong>2. Evidence:</strong> Specific data from the provided graph or table. (e.g., "At 40°C, the reaction rate dropped to zero").</p>
+                    <p><strong>3. Reasoning:</strong> Use biological laws to explain <em>why</em> the evidence supports the claim. (e.g., "This occurred because the high temperature disrupted the hydrogen bonds in the enzyme's active site, causing denaturation").</p>
+                </div>
+
+                <div class="key-terms-box glass" style="margin-top:20px; border-color: var(--accent-emerald);">
+                    <h4><i class="fas fa-lightbulb"></i> Pro-Tip</h4>
+                    <p>Always use 'if/then' logic in your reasoning. "If the enzyme is denatured, then the substrate can no longer bind, thus the reaction stops."</p>
+                </div>
             </div>
         `
     }

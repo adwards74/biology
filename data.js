@@ -472,17 +472,24 @@ window.MATH_DATA = {
                         levels: [
                             {
                                 title: "L1: Research Ethics",
-                                question: "What is the term for manipulating variables until a desired p-value is reached?",
-                                answer: "P-Hacking",
-                                options: ["Data Mining", "P-Hacking", "Peer Review", "Meta-Analysis"],
-                                explanation: "P-Hacking is an unethical practice of processing data to force statistical significance ($p < 0.05$)."
+                                question: "What is the primary danger of P-Hacking in biological research?",
+                                answer: "False positive results",
+                                options: ["Data loss", "False positive results", "High cost", "Slow publication"],
+                                explanation: "P-Hacking artificially forces a $p < 0.05$ result, leading to conclusions that aren't actually true or reproducible."
                             },
                             {
-                                title: "L2: Critical Analysis",
-                                question: "What is the primary reason for using the PRISMA protocol in a Systematic Review?",
-                                answer: "Transparency and reproducibility",
-                                options: ["To speed up writing", "Transparency and reproducibility", "To correct typos", "To auto-generate citations"],
-                                explanation: "Clearly defining selection criteria allows other researchers to trust and replicate the results."
+                                title: "L2: Quantitative Reasoning",
+                                question: "If the critical value for $\\chi^2$ is 3.84 and your calculated value is 4.52, what is your conclusion?",
+                                answer: "Reject the Null Hypothesis",
+                                options: ["Accept the Null Hypothesis", "Reject the Null Hypothesis", "Ignore the result", "Increase sample size"],
+                                explanation: "If calculated $\\chi^2 >$ critical value, the difference is statistically significant, so we reject the Null (chance) hypothesis."
+                            },
+                            {
+                                title: "L3: Experimental Mastery",
+                                question: "In a study on plant growth, why is a high sample size ($n$) preferred when calculating SEM?",
+                                answer: "Decreases uncertainty of the mean",
+                                options: ["Increases the mean", "Decreases uncertainty of the mean", "Changes the variable", "Speeds up growth"],
+                                explanation: "SEM is calculated as $SD / \\sqrt{n}$. As $n$ grows, SEM shrinks, meaning our sample mean is a much more precise estimate of the true population."
                             }
                         ]
                     }

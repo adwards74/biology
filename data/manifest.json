@@ -1,0 +1,129 @@
+{
+  "lessons": {
+    "ch1-1": {
+      "title": "1.1: The Geometry of Life",
+      "path": "data/content/bio/cells/ch1-1.md",
+      "viz": null
+    },
+    "ch1-2": {
+      "title": "1.2: Endomembrane Logistics",
+      "path": "data/content/bio/cells/ch1-2.md",
+      "viz": null
+    },
+    "ch11-1": {
+      "title": "11.1: The Chi-Square Test",
+      "path": "data/content/bio/cells/ch11-1.md",
+      "viz": null
+    },
+    "ch11-2": {
+      "title": "11.2: Error Analysis & Standard Error",
+      "path": "data/content/bio/cells/ch11-2.md",
+      "viz": null
+    },
+    "ch12-1": {
+      "title": "12.1: Designing the Lab",
+      "path": "data/content/bio/cells/ch12-1.md",
+      "viz": null
+    },
+    "ch12-2": {
+      "title": "12.2: FRQ Writing Protocols (CER)",
+      "path": "data/content/bio/cells/ch12-2.md",
+      "viz": null
+    },
+    "ch2-1": {
+      "title": "4.1: Source Code Structure",
+      "path": "data/content/bio/genetics/ch2-1.md",
+      "viz": null
+    },
+    "ch2-2": {
+      "title": "4.2: High-Fidelity Copying",
+      "path": "data/content/bio/genetics/ch2-2.md",
+      "viz": null
+    },
+    "ch2-3": {
+      "title": "5.1: Transcription & Translation",
+      "path": "data/content/bio/genetics/ch2-3.md",
+      "viz": null
+    },
+    "ch2-4": {
+      "title": "5.2: RNA Processing & Splicing",
+      "path": "data/content/bio/genetics/ch2-4.md",
+      "viz": null
+    },
+    "ch2-5": {
+      "title": "5.3: Translation & Polypeptide Logic",
+      "path": "data/content/bio/genetics/ch2-5.md",
+      "viz": null
+    },
+    "ch2-6": {
+      "title": "6.1: Bacterial Operon Logic",
+      "path": "data/content/bio/genetics/ch2-6.md",
+      "viz": null
+    },
+    "ch2-7": {
+      "title": "6.2: Molecular Cloning & PCR",
+      "path": "data/content/bio/genetics/ch2-7.md",
+      "viz": null
+    },
+    "ch3-1": {
+      "title": "7.1: The Solar Panel — Photosynthesis",
+      "path": "data/content/bio/metabolism/ch3-1.md",
+      "viz": null
+    },
+    "ch3-3": {
+      "title": "8.1: Cellular Respiration",
+      "path": "data/content/bio/metabolism/ch3-3.md",
+      "viz": null
+    },
+    "ch4-1": {
+      "title": "9.1: The Laws of Segregation",
+      "path": "data/content/bio/heredity/ch4-1.md",
+      "viz": null
+    },
+    "ch4-3": {
+      "title": "10.1: Chromosomal Linkage & Mapping",
+      "path": "data/content/bio/heredity/ch4-3.md",
+      "viz": null
+    },
+    "ch5-1": {
+      "title": "11.1: The Chi-Square Test",
+      "path": "data/content/bio/evolution/ch5-1.md",
+      "viz": null
+    },
+    "ch5-3": {
+      "title": "12.1: Designing the Lab",
+      "path": "data/content/bio/evolution/ch5-3.md",
+      "viz": null
+    },
+    "ch6-1": {
+      "title": "13.1 Pipeline Engineering: Handling Raw Bio-Data",
+      "path": "data/content/bio/misc/ch6-1.md",
+      "viz": null
+    },
+    "ch6-2": {
+      "title": "13.2 Comparative Analysis: The BLAST Algorithm",
+      "path": "data/content/bio/misc/ch6-2.md",
+      "viz": null
+    },
+    "ch7-1": {
+      "title": "14.1 Systematic Review (SR) & Mock Review",
+      "path": "data/content/bio/misc/ch7-1.md",
+      "viz": null
+    },
+    "ch7-2": {
+      "title": "14.2 Statistical Literacy: P-Hacking & Meta-Analysis",
+      "path": "data/content/bio/misc/ch7-2.md",
+      "viz": null
+    },
+    "ch8-1": {
+      "title": "16.1: Energy Flow Networks",
+      "path": "data/content/bio/misc/ch8-1.md",
+      "viz": null
+    },
+    "ch8-2": {
+      "title": "16.2: Biodiversity & Resilience",
+      "path": "data/content/bio/misc/ch8-2.md",
+      "viz": null
+    }
+  }
+}

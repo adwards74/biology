@@ -606,6 +606,43 @@ window.CHAPTER_DATA["ch2"] = {
                     <p>Bacteria are extreme economists. They won't spend energy making an enzyme if they don't need it. Operons act like <strong>Biological Transistors</strong>, turning metabolic pathways on or off based on chemical signals in the environment. This is the foundation of synthetic biology.</p>
                 </div>
 
+                <!-- PREMIUM CINEMATIC HEADER: OPERON LOGIC GATES -->
+                <div class="visual-dynamic glass" style="margin: 30px 0; padding: 40px; border-radius: var(--standard-radius); background: linear-gradient(135deg, #064e3b 0%, #052e16 100%); border: 2px solid var(--accent-emerald); overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(16,185,129,0.2);">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 30px; position: relative; z-index: 1;">
+                        <h4 style="color: var(--accent-emerald); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; border-bottom: 2px solid var(--accent-emerald); padding-bottom: 8px; margin: 0;">Gene Control Logic & Operons</h4>
+                        <svg viewBox="0 0 500 150" style="max-width: 600px; width: 100%; height: auto;">
+                            <!-- The Circuit Line -->
+                            <path d="M 50 75 L 150 75 M 200 75 L 300 75 M 350 75 L 450 75" fill="none" stroke="var(--accent-emerald)" stroke-width="2" opacity="0.4" />
+                            
+                            <!-- lac Operon (Inducible) -->
+                            <g transform="translate(150, 75)">
+                                <rect x="-20" y="-20" width="40" height="40" rx="4" fill="rgba(16,185,129,0.1)" stroke="var(--accent-emerald)" stroke-width="2" />
+                                <text x="0" y="35" fill="var(--accent-emerald)" font-size="8" text-anchor="middle" font-weight="bold">lac (ON/OFF)</text>
+                                <!-- Switch Handle -->
+                                <line x1="0" y1="-10" x2="15" y2="-30" stroke="var(--accent-amber)" stroke-width="3">
+                                    <animateTransform attributeName="transform" type="rotate" values="0 0 -10; 45 0 -10; 0 0 -10" dur="3s" repeatCount="indefinite" />
+                                </line>
+                            </g>
+                            
+                            <!-- trp Operon (Repressible) -->
+                            <g transform="translate(325, 75)">
+                                <circle cx="0" cy="0" r="20" fill="rgba(6,182,212,0.1)" stroke="var(--accent-cyan)" stroke-width="2" />
+                                <text x="0" y="35" fill="var(--accent-cyan)" font-size="8" text-anchor="middle" font-weight="bold">trp (STEADY)</text>
+                                <!-- Pulsing Core -->
+                                <circle cx="0" cy="0" r="5" fill="var(--accent-cyan)">
+                                    <animate attributeName="r" values="5;10;5" dur="4s" repeatCount="indefinite" />
+                                    <animate attributeName="opacity" values="1;0.4;1" dur="4s" repeatCount="indefinite" />
+                                </circle>
+                            </g>
+
+                            <!-- Flow Particles -->
+                            <circle r="3" fill="var(--accent-emerald)">
+                                <animateMotion path="M 50 75 L 450 75" dur="5s" repeatCount="indefinite" />
+                            </circle>
+                        </svg>
+                    </div>
+                </div>
+
                 <h2>I. The Lac Operon: Inducible Logic</h2>
                 <p>The <em>Lac</em> operon is an <strong>Inducible System</strong>. It is normally OFF and only turns ON when lactose is present and glucose is absent.</p>
                 
@@ -623,6 +660,24 @@ window.CHAPTER_DATA["ch2"] = {
                 <div class="tj-edge glass">
                     <h4><i class="fas fa-microchip"></i> TJ Honors Insight: Negative Feedback</h4>
                     <p>The Trp operon is a classic example of <strong>Negative Feedback</strong>. As Tryptophan levels rise, Tryptophan itself acts as a corepressor, shutting down its own production. This maintains the optimal concentration and prevents metabolic waste.</p>
+                </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (HYBRID LINK CARD) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-emerald); padding: 30px;">
+                    <h5 style="color: var(--accent-emerald); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Operon Logic (Lac & Trp)</h5>
+                    <a href="https://www.youtube.com/watch?v=h_1QLdtF8d0" target="_blank" style="text-decoration: none; display: block;">
+                        <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://img.youtube.com/vi/h_1QLdtF8d0/maxresdefault.jpg'); background-size: cover; background-position: center; border: 1px solid rgba(16,185,129,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s ease;">
+                            <!-- Floating Play Button -->
+                            <div style="width: 80px; height: 80px; background: var(--accent-emerald); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(16,185,129,0.6); z-index: 2;">
+                                <i class="fas fa-play" style="color: black; font-size: 2rem; margin-left: 5px;"></i>
+                            </div>
+                            <!-- Bottom Info Bar -->
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(16, 185, 129, 0.9); padding: 12px; text-align: center; backdrop-filter: blur(10px);">
+                                <p style="margin: 0; color: black; font-weight: 800; font-size: 0.9rem; letter-spacing: 1px;">WATCH ON YOUTUBE <i class="fas fa-external-link-alt" style="font-size: 0.8rem; margin-left: 8px;"></i></p>
+                            </div>
+                        </div>
+                    </a>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Gene Regulation (Amoeba Sisters / Advanced Curation)</p>
                 </div>
             </div>
         `
@@ -671,6 +726,24 @@ window.CHAPTER_DATA["ch2"] = {
                 <div class="tj-edge glass">
                     <h4><i class="fas fa-microchip"></i> TJ Honors Insight: Ethical Boundaries</h4>
                     <p>CRISPR technology raises profound ethical questions via <strong>Gene Drives</strong> and germline editing. If we "fix" a genetic disease in an embryo, that change is passed to ALL future generations. Investigating these trade-offs is a core component of modern IBET research.</p>
+                </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (HYBRID LINK CARD) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-amber); padding: 30px;">
+                    <h5 style="color: var(--accent-amber); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Biotech Tools (PCR, Gel, CRISPR)</h5>
+                    <a href="https://www.youtube.com/watch?v=yW0_Y6I8e2o" target="_blank" style="text-decoration: none; display: block;">
+                        <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://img.youtube.com/vi/yW0_Y6I8e2o/maxresdefault.jpg'); background-size: cover; background-position: center; border: 1px solid rgba(245,158,11,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s ease;">
+                            <!-- Floating Play Button -->
+                            <div style="width: 80px; height: 80px; background: var(--accent-amber); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(245,158,11,0.6); z-index: 2;">
+                                <i class="fas fa-play" style="color: black; font-size: 2rem; margin-left: 5px;"></i>
+                            </div>
+                            <!-- Bottom Info Bar -->
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(245, 158, 11, 0.9); padding: 12px; text-align: center; backdrop-filter: blur(10px);">
+                                <p style="margin: 0; color: black; font-weight: 800; font-size: 0.9rem; letter-spacing: 1px;">WATCH ON YOUTUBE <i class="fas fa-external-link-alt" style="font-size: 0.8rem; margin-left: 8px;"></i></p>
+                            </div>
+                        </div>
+                    </a>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Genetic Engineering (Bozeman Science / TJ Applied Biotech)</p>
                 </div>
             </div>
         `

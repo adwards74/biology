@@ -852,20 +852,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const match = videoRegex.exec(lessonData.html);
 
             if (match) {
-                const videoIframe = match[0];
-                videoHtml = `
-                    <div class="video-promo-top glass fadeIn" style="margin-bottom:25px; border-radius:15px; overflow:hidden; border:1px solid rgba(16, 185, 129, 0.3); background:rgba(0,0,0,0.5);">
-                        <div style="padding:15px 20px; background:rgba(16, 185, 129, 0.1); border-bottom:1px solid rgba(16, 185, 129, 0.2); display:flex; justify-content:space-between; align-items:center;">
-                            <span style="color:var(--accent-emerald); font-weight:800; font-size:0.75rem; letter-spacing:1px;"><i class="fab fa-youtube"></i> ELITE BIO-LECTURE</span>
-                            <span style="font-size:0.7rem; opacity:0.6; color:white;">Bio-Tech 6.0 Standard</span>
-                        </div>
-                        <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
-                            ${videoIframe.replace(/width="[^"]*"/, 'width="100%"').replace(/height="[^"]*"/, 'height="100%"').replace('<iframe', '<iframe style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"')}
-                        </div>
-                    </div>
-                `;
-                // Remove from main content to avoid duplication
-                cleanLessonHtml = lessonData.html.replace(videoIframe, '<div class="video-extracted-notice" style="padding:10px; font-size:0.75rem; opacity:0.4; font-style:italic; border-top:1px dashed rgba(255,255,255,0.1); text-align:center;">Interactive lecture moved to top performance sector.</div>');
+                // Video extraction logic disabled to fix missing video in lesson body
+                // The video will now render where it is placed in the chapter file
             }
 
             const subject = MATH_DATA.subjects.find(s => s.id === subjectId);

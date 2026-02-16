@@ -29,6 +29,38 @@ window.CHAPTER_DATA["ch8"] = {
                     <p>This is the most fundamental principle in ecology: <strong>Energy flows in one direction</strong> (sun → producers → consumers → heat) and cannot be recycled. <strong>Matter cycles</strong> — carbon, nitrogen, water, and phosphorus are continuously recycled through ecosystems. The 10% rule explains why top predators are rare: by the 4th trophic level, only 0.1% of the original energy remains.</p>
                 </div>
 
+                <!-- PREMIUM CINEMATIC HEADER: THE ENERGY pyramid -->
+                <div class="visual-dynamic glass" style="margin: 30px 0; padding: 40px; border-radius: var(--standard-radius); background: linear-gradient(135deg, #064e3b 0%, #020617 100%); border: 2px solid var(--accent-emerald); overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(16,185,129,0.2);">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 30px; position: relative; z-index: 1;">
+                        <h4 style="color: var(--accent-emerald); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; border-bottom: 2px solid var(--accent-emerald); padding-bottom: 8px; margin: 0;">Ecological Energy Dynamics</h4>
+                        <svg viewBox="0 0 400 200" style="max-width: 500px; width: 100%; height: auto;">
+                            <!-- Trophic Pyramid Layers -->
+                            <!-- Layer 1 (Producers) -->
+                            <path d="M 50 180 L 350 180 L 320 140 L 80 140 Z" fill="rgba(16,185,129,0.4)" stroke="var(--accent-emerald)" stroke-width="1" />
+                            <text x="50%" y="165" fill="white" font-size="10" text-anchor="middle" font-weight="bold">PRODUCERS (10,000 kJ)</text>
+                            
+                            <!-- Layer 2 (Primary) -->
+                            <path d="M 80 140 L 320 140 L 290 100 L 110 100 Z" fill="rgba(16,185,129,0.2)" stroke="var(--accent-emerald)" stroke-width="1" />
+                            <text x="50%" y="125" fill="white" font-size="9" text-anchor="middle">PRIMARY (1,000 kJ)</text>
+                            
+                            <!-- Layer 3 (Secondary) -->
+                            <path d="M 110 100 L 290 100 L 260 60 L 140 60 Z" fill="rgba(16,185,129,0.1)" stroke="var(--accent-emerald)" stroke-width="1" />
+                            <text x="50%" y="85" fill="white" font-size="8" text-anchor="middle">SECONDARY (100 kJ)</text>
+                            
+                            <!-- Layer 4 (Tertiary) -->
+                            <path d="M 140 60 L 260 60 L 200 20 Z" fill="rgba(245,158,11,0.2)" stroke="var(--accent-amber)" stroke-width="1" />
+                            <text x="50%" y="50" fill="var(--accent-amber)" font-size="8" text-anchor="middle" font-weight="bold">TERTIARY (10 kJ)</text>
+                            
+                            <!-- Energy Loss Arrows -->
+                            <path d="M 330 160 Q 380 150 380 120" fill="none" stroke="var(--accent-red)" stroke-width="1" stroke-dasharray="4 2">
+                                <animate attributeName="stroke-dashoffset" from="20" to="0" dur="1.5s" repeatCount="indefinite" />
+                            </path>
+                            <text x="385" y="115" fill="var(--accent-red)" font-size="8" transform="rotate(0)">HEAT LOSS (90%)</text>
+                        </svg>
+                        <p style="font-size: 0.85rem; color: #aaa; text-align: center; font-style: italic;">The 10% Rule: Thermodynamics dictates that entropy increases at every biological transfer point.</p>
+                    </div>
+                </div>
+
                 <h2>I. Energy Transfer Through Trophic Levels</h2>
                 <p>Consider a food chain: <strong>Grass → Grasshopper → Frog → Snake → Hawk</strong></p>
                 <ul style="line-height: 2;">
@@ -62,6 +94,24 @@ window.CHAPTER_DATA["ch8"] = {
                         <li>Keystone species have outsized effects on ecosystem structure.</li>
                         <li>Trophic cascades demonstrate top-down regulation of ecosystems.</li>
                     </ul>
+                </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (HYBRID LINK CARD) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-emerald); padding: 30px;">
+                    <h5 style="color: var(--accent-emerald); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Ecosystem Dynamics & Energy Flow</h5>
+                    <a href="https://www.youtube.com/watch?v=hPyT-5h8lIs" target="_blank" style="text-decoration: none; display: block;">
+                        <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://img.youtube.com/vi/hPyT-5h8lIs/maxresdefault.jpg'); background-size: cover; background-position: center; border: 1px solid rgba(16,185,129,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s ease;">
+                            <!-- Floating Play Button -->
+                            <div style="width: 80px; height: 80px; background: var(--accent-emerald); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(16,185,129,0.6); z-index: 2;">
+                                <i class="fas fa-play" style="color: black; font-size: 2rem; margin-left: 5px;"></i>
+                            </div>
+                            <!-- Bottom Info Bar -->
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(16, 185, 129, 0.9); padding: 12px; text-align: center; backdrop-filter: blur(10px);">
+                                <p style="margin: 0; color: black; font-weight: 800; font-size: 0.9rem; letter-spacing: 1px;">WATCH ON YOUTUBE <i class="fas fa-external-link-alt" style="font-size: 0.8rem; margin-left: 8px;"></i></p>
+                            </div>
+                        </div>
+                    </a>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Ecosystem Ecology (Bozeman Science / Advanced Curation)</p>
                 </div>
             </div>
         `

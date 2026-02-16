@@ -60,7 +60,8 @@ window.MATH_DATA = {
                             { title: "L1: Intuition", question: "Why do large cells often have highly folded membranes?", answer: "To maximize surface area", options: ["To look more complex", "To maximize surface area", "To store more energy"], explanation: "Folding increases the 'exchange surface' while keeping the total volume manageable." },
                             { title: "L2: Analysis", question: "If the linear dimensions of a cell double, how does the SA/V ratio change?", answer: "Decreases by half", options: ["Doubles", "Stays the same", "Decreases by half"], explanation: "SA/V for a cube is $6/s$. If $s$ goes from 1 to 2, the ratio goes from 6 to 3." },
                             { title: "L3: Mastery", question: "Which organelle synergy is primarily responsible for clearing misfolded proteins to restore homeostasis?", answer: "ER and Lysosome", options: ["Mitochondria and Nucleus", "ER and Lysosome", "Golgi and Vacuole"], explanation: "The ER quality control identifies misfolds, while the Lysosome (via autophagy) breaks them down." }
-                        ]
+                        ],
+                        "javaLogic": "cell_transport"
                     }
                 },
                 {
@@ -98,7 +99,8 @@ window.MATH_DATA = {
                             { title: "L1: Intuition", question: "In which direction does water move regarding $\\Psi$?", answer: "High to Low", options: ["High to Low", "Low to High", "Against the gradient"], explanation: "Free energy dictates water moves from areas of high potential to low potential." },
                             { title: "L2: Analysis", question: "If $\\Psi_s = -0.5$ and $\\Psi_p = +0.2$, what is total $\\Psi$?", answer: "-0.3 MPa", options: ["-0.7 MPa", "-0.3 MPa", "+0.3 MPa"], explanation: "$\\Psi = \\Psi_s + \\Psi_p = -0.5 + 0.2 = -0.3$." },
                             { title: "L3: Mastery", question: "In a drought, a plant cell accumulates sucrose. How does this affect its ability to survive?", answer: "Lowers solute potential, increasing water intake", options: ["Increases turgor pressure directly", "Lowers solute potential, increasing water intake", "It has no effect"], explanation: "By lowering $ \Psi_s $, the cell creates a steeper gradient to draw in any available water." }
-                        ]
+                        ],
+                        "javaLogic": "water_potential"
                     }
                 },
                 {
@@ -136,7 +138,8 @@ window.MATH_DATA = {
                             { title: "L1: Intuition", question: "What happens to the rate of reaction if you add a non-competitive inhibitor?", answer: "$V_{max}$ decreases", options: ["Rate increases", "$V_{max}$ decreases", "Reaction stops"], explanation: "Non-competitive inhibitors change the enzyme's shape, making it less effective even if plenty of substrate is present." },
                             { title: "L2: Analysis", question: "How can you tell the difference between competitive and non-competitive inhibition using a rate graph?", answer: "Competitive can still reach $V_{max}$ at high [S]", options: ["Both look identical", "Competitive can still reach $V_{max}$ at high [S]", "Non-competitive increases $K_m$"], explanation: "Increasing substrate concentration 'washes out' the effect of a competitive inhibitor but not a non-competitive one." },
                             { title: "L3: Mastery", question: "In feedback inhibition, which enzyme in a pathway is typically targeted by the final product?", answer: "The first enzyme in the pathway", options: ["The last enzyme", "The first enzyme in the pathway", "All enzymes equally"], explanation: "Inhibiting the first commitment step prevents the wasteful buildup of all metabolic intermediates." }
-                        ]
+                        ],
+                        "javaLogic": "enzyme_kinetics"
                     }
                 }
             ]
@@ -326,7 +329,8 @@ window.MATH_DATA = {
                             { title: "L1: Intuition", question: "What phenotype ratio do you expect from a monohybrid cross Aa × Aa?", answer: "3:1", options: ["1:1", "3:1", "9:3:3:1"], explanation: "A monohybrid cross of two heterozygotes produces 1 AA : 2 Aa : 1 aa genotype, which gives a 3:1 dominant:recessive phenotype ratio." },
                             { title: "L2: Analysis", question: "If a baby has Type O blood and the mother has Type A, what are the possible genotypes for the father?", answer: "i i, I^A i, or I^B i", options: ["I^A I^B", "i i, I^A i, or I^B i", "Only i i"], explanation: "The father must provide one 'i' allele. Therefore, he can be O (ii), heterozygous A (Ai), or heterozygous B (Bi)." },
                             { title: "L3: Mastery", question: "In a cross AaBb x AaBb, what is the probability of an offspring with genotype AAbb?", answer: "1/16", options: ["1/4", "1/8", "1/16"], explanation: "P(AA) = 1/4; P(bb) = 1/4. Multiplied: 1/4 * 1/4 = 1/16." }
-                        ]
+                        ],
+                        "javaLogic": "mendelian_genetics"
                     }
                 },
                 {

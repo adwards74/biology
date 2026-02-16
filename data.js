@@ -3,7 +3,6 @@
  * Modeling the TJHSST 9th Grade IBET Biology Curriculum
  */
 
-window.MATH_DATA = window.MATH_DATA || {};
 window.MATH_DATA = {
     subjects: [
         {

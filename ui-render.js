@@ -77,9 +77,7 @@ window.UIEngine = (function () {
         const subject = data.subjects.find(s => s.id === subjectId);
         if (!subject) return;
 
-        // CRITICAL: Ensure view is switched to dashboard where the detail is rendered
-        if (window.switchView) window.switchView('dashboard');
-        else if (window.AppRouter && window.AppRouter.switchView) window.AppRouter.switchView('dashboard');
+
 
         const main = document.getElementById('dashboard-view');
         main.innerHTML = `

@@ -32,6 +32,34 @@ window.CHAPTER_DATA["ch2"] = {
                     <p>Computers store information in binary (0, 1). DNA stores information in a <strong>quaternary code</strong> (A, T, C, G). This 4-letter alphabet encodes every protein your body can build, every enzyme, every structural component. A single human cell contains about <strong>6.4 billion base pairs</strong> — roughly 1.5 GB of data — compressed into a nucleus just 6 micrometers wide.</p>
                 </div>
 
+                <!-- PREMIUM CINEMATIC HEADER: THE DOUBLE HELIX -->
+                <div class="visual-dynamic glass" style="margin: 30px 0; padding: 40px; border-radius: var(--standard-radius); background: linear-gradient(135deg, #083344 0%, #0f172a 100%); border: 2px solid var(--accent-cyan); overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(6,182,212,0.2);">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 30px; position: relative; z-index: 1;">
+                        <h4 style="color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; border-bottom: 2px solid var(--accent-cyan); padding-bottom: 8px; margin: 0;">Genomic Architecture & Source Code</h4>
+                        <svg viewBox="0 0 500 150" style="max-width: 600px; width: 100%; height: auto;">
+                            <!-- Animated DNA Strand 1 -->
+                            <path d="M 50 75 Q 125 0 200 75 Q 275 150 350 75 Q 425 0 500 75" fill="none" stroke="var(--accent-cyan)" stroke-width="4" opacity="0.6">
+                                <animate attributeName="stroke-dashoffset" from="0" to="100" dur="4s" repeatCount="indefinite" />
+                            </path>
+                            <!-- Animated DNA Strand 2 -->
+                            <path d="M 50 75 Q 125 150 200 75 Q 275 0 350 75 Q 425 150 500 75" fill="none" stroke="var(--accent-cyan)" stroke-width="4" opacity="0.6" stroke-dasharray="8 4">
+                                <animate attributeName="stroke-dashoffset" from="0" to="-100" dur="4s" repeatCount="indefinite" />
+                            </path>
+                            
+                            <!-- Base Pair "Rungs" -->
+                            <g opacity="0.4">
+                                <line x1="125" y1="38" x2="125" y2="112" stroke="var(--accent-amber)" stroke-width="2" />
+                                <line x1="275" y1="38" x2="275" y2="112" stroke="var(--accent-emerald)" stroke-width="2" />
+                                <line x1="425" y1="38" x2="425" y2="112" stroke="var(--accent-red)" stroke-width="2" />
+                            </g>
+                            
+                            <!-- Floating Info Tags -->
+                            <text x="50" y="30" fill="var(--accent-cyan)" font-size="8" font-weight="bold">5' END</text>
+                            <text x="450" y="130" fill="var(--accent-cyan)" font-size="8" font-weight="bold">3' END</text>
+                        </svg>
+                    </div>
+                </div>
+
                 <h2>I. The Nucleotide: Building Block of DNA</h2>
 
                 <p>Each nucleotide has three components:</p>
@@ -136,6 +164,24 @@ window.CHAPTER_DATA["ch2"] = {
                     </ul>
                 </div>
 
+                <!-- VIDEO CURATION: MASTER CLASS (HYBRID LINK CARD) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-cyan); padding: 30px;">
+                    <h5 style="color: var(--accent-cyan); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: DNA Structure & Chemistry</h5>
+                    <a href="https://www.youtube.com/watch?v=_POdSeSnL2c" target="_blank" style="text-decoration: none; display: block;">
+                        <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://img.youtube.com/vi/_POdSeSnL2c/maxresdefault.jpg'); background-size: cover; background-position: center; border: 1px solid rgba(6,182,212,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s ease;">
+                            <!-- Floating Play Button -->
+                            <div style="width: 80px; height: 80px; background: var(--accent-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(6,182,212,0.6); z-index: 2;">
+                                <i class="fas fa-play" style="color: black; font-size: 2rem; margin-left: 5px;"></i>
+                            </div>
+                            <!-- Bottom Info Bar -->
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(6, 182, 212, 0.9); padding: 12px; text-align: center; backdrop-filter: blur(10px);">
+                                <p style="margin: 0; color: black; font-weight: 800; font-size: 0.9rem; letter-spacing: 1px;">WATCH ON YOUTUBE <i class="fas fa-external-link-alt" style="font-size: 0.8rem; margin-left: 8px;"></i></p>
+                            </div>
+                        </div>
+                    </a>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: DNA Structure & Replication (Amoeba Sisters / Science Curation)</p>
+                </div>
+
                 <!-- SECTION IV: INFORMATIONAL THERMODYNAMICS -->
                 <h2>IV. Informational Thermodynamics: Stability and Entropy</h2>
 
@@ -202,36 +248,42 @@ window.CHAPTER_DATA["ch2"] = {
                     </table>
                 </div>
 
-                <!-- VISUAL DYNAMIC: REPLICATION FORK -->
-                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
-                    <h5 style="color: var(--accent-cyan); margin-bottom: 20px; text-align: center;"><i class="fas fa-project-diagram"></i> Visual Dynamic: High-Fidelity Replication Machinery</h5>
-                    <div style="display: flex; justify-content: center; align-items: center; min-height: 250px;">
+                <!-- VISUAL DYNAMIC: REPLICATION FORK ANIMATION -->
+                <div class="visual-dynamic glass" style="padding: 30px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.4); border: 1px solid var(--accent-cyan);">
+                    <h5 style="color: var(--accent-cyan); margin-bottom: 25px; text-align: center;"><i class="fas fa-sync-alt"></i> Molecular Dynamic: The Replication Fork in Motion</h5>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
                         <svg viewBox="0 0 500 250" style="max-width: 600px; width: 100%; height: auto;">
-                            <!-- Parent Strands -->
-                            <path d="M 500 50 L 250 125 L 500 200" fill="none" stroke="white" stroke-width="1.5" opacity="0.3" />
+                            <!-- Unzipping Parent Strands -->
+                            <path d="M 500 50 Q 250 125 500 200" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2" />
                             
-                            <!-- Helicase -->
-                            <polygon points="230,110 270,125 230,140" fill="var(--accent-amber)" stroke="white" stroke-width="1" />
-                            <text x="250" y="100" fill="var(--accent-amber)" font-size="10" text-anchor="middle" font-weight="bold">HELICASE</text>
+                            <!-- Helicase Wedge -->
+                            <path d="M 230 110 L 270 125 L 230 140 Z" fill="var(--accent-amber)">
+                                <animate attributeName="transform" type="translate" values="0,0; 5,0; 0,0" dur="1s" repeatCount="indefinite" />
+                            </path>
+
+                            <!-- Continuous Leading Strand -->
+                            <path d="M 270 118 L 480 55" fill="none" stroke="var(--accent-cyan)" stroke-width="4">
+                                <animate attributeName="stroke-dasharray" from="0, 500" to="500, 0" dur="3s" repeatCount="indefinite" />
+                            </path>
                             
-                            <!-- Leading Strand -->
-                            <path d="M 270 118 L 480 55" fill="none" stroke="var(--accent-cyan)" stroke-width="4" />
-                            <text x="400" y="45" fill="var(--accent-cyan)" font-size="9">Leading Strand (Continuous)</text>
+                            <!-- Discontinuous Lagging Strand (Fragments) -->
+                            <g>
+                                <path d="M 280 140 L 340 160" fill="none" stroke="var(--accent-emerald)" stroke-width="4">
+                                    <animate attributeName="opacity" values="0;1;1;0" dur="4s" repeatCount="indefinite" />
+                                </path>
+                                <path d="M 360 165 L 420 185" fill="none" stroke="var(--accent-emerald)" stroke-width="4">
+                                    <animate attributeName="opacity" values="0;0;1;1;0" dur="4s" repeatCount="indefinite" />
+                                </path>
+                            </g>
                             
-                            <!-- Lagging Strand -->
-                            <path d="M 280 140 L 340 160" fill="none" stroke="var(--accent-emerald)" stroke-width="4" />
-                            <path d="M 360 165 L 420 185" fill="none" stroke="var(--accent-emerald)" stroke-width="4" />
-                            <path d="M 440 190 L 490 205" fill="none" stroke="var(--accent-emerald)" stroke-width="4" opacity="0.5" />
-                            <text x="400" y="220" fill="var(--accent-emerald)" font-size="9">Lagging Strand (Okazaki)</text>
+                            <!-- DNA Polymerase Dots -->
+                            <circle cx="280" cy="118" r="8" fill="rgba(6,182,212,0.4)" stroke="var(--accent-cyan)" stroke-width="2" />
+                            <circle cx="290" cy="145" r="8" fill="rgba(16,185,129,0.4)" stroke="var(--accent-emerald)" stroke-width="2" />
                             
-                            <!-- DNA Pol III -->
-                            <rect x="310" y="45" width="20" height="25" rx="5" fill="var(--accent-cyan)" opacity="0.8" />
-                            <rect x="340" y="150" width="20" height="25" rx="5" fill="var(--accent-emerald)" opacity="0.8" />
-                            
-                            <!-- Direction Arrows -->
-                            <path d="M 240 125 L 180 125" marker-end="url(#arrow)" stroke="white" stroke-width="2" />
-                            <text x="210" y="115" fill="white" font-size="8" text-anchor="middle">Fork Movement</text>
+                            <text x="50" y="30" fill="#888" font-size="9">TEMPLATE (3'→5')</text>
+                            <text x="450" y="230" fill="#888" font-size="9" text-anchor="end">TEMPLATE (5'→3')</text>
                         </svg>
+                        <p style="font-size: 0.85rem; color: #888; text-align: center; font-style: italic;">Asymmetry in action: The antiparallel nature of DNA forces the "Lagging Strand" to be built backward in fragments.</p>
                     </div>
                 </div>
 

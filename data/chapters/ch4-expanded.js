@@ -210,6 +210,46 @@ window.CHAPTER_DATA["ch4"] = {
                     <p>Mendel's Law of Independent Assortment only works for genes on <strong>different chromosomes</strong>. When two genes are on the <strong>same chromosome</strong>, they travel together unless crossing over physically separates them. The closer two genes are, the less likely crossing over occurs between them — and this gives us a way to <strong>map gene positions</strong>.</p>
                 </div>
 
+                <!-- PREMIUM CINEMATIC HEADER: GENETIC LINKAGE ARCHITECTURE -->
+                <div class="visual-dynamic glass" style="margin: 30px 0; padding: 40px; border-radius: var(--standard-radius); background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%); border: 2px solid var(--accent-cyan); overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(6,182,212,0.2);">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 30px; position: relative; z-index: 1;">
+                        <h4 style="color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; border-bottom: 2px solid var(--accent-cyan); padding-bottom: 8px; margin: 0;">Chromosomal Mapping & Linkage</h4>
+                        <svg viewBox="0 0 500 120" style="max-width: 600px; width: 100%; height: auto;">
+                            <!-- Chromosome Bar -->
+                            <rect x="50" y="50" width="400" height="20" rx="10" fill="rgba(255,255,255,0.05)" stroke="var(--accent-cyan)" stroke-width="1" />
+                            
+                            <!-- Gene Markers -->
+                            <g transform="translate(100, 60)">
+                                <circle r="6" fill="var(--accent-amber)">
+                                    <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                                </circle>
+                                <text x="0" y="-15" fill="var(--accent-amber)" font-size="9" text-anchor="middle" font-weight="bold">GENE A</text>
+                                <text x="0" y="25" fill="#888" font-size="7" text-anchor="middle">LOCUS 0</text>
+                            </g>
+                            
+                            <g transform="translate(160, 60)">
+                                <circle r="6" fill="var(--accent-emerald)" />
+                                <text x="0" y="-15" fill="var(--accent-emerald)" font-size="9" text-anchor="middle" font-weight="bold">GENE B</text>
+                                <text x="0" y="25" fill="#888" font-size="7" text-anchor="middle">LOCUS 12.5 cM</text>
+                            </g>
+                            
+                            <g transform="translate(380, 60)">
+                                <circle r="6" fill="var(--accent-red)" />
+                                <text x="0" y="-15" fill="var(--accent-red)" font-size="9" text-anchor="middle" font-weight="bold">GENE C</text>
+                                <text x="0" y="25" fill="#888" font-size="7" text-anchor="middle">LOCUS 45 cM</text>
+                            </g>
+                            
+                            <!-- Distance Bracket -->
+                            <path d="M 100 80 L 100 90 L 160 90 L 160 80" fill="none" stroke="var(--accent-cyan)" stroke-width="1" />
+                            <text x="130" y="105" fill="var(--accent-cyan)" font-size="8" text-anchor="middle">LOW RF (LINKED)</text>
+                            
+                            <path d="M 160 80 L 160 90 L 380 90 L 380 80" fill="none" stroke="#888" stroke-width="1" />
+                            <text x="270" y="105" fill="#888" font-size="8" text-anchor="middle">HIGH RF (LOOSELY LINKED)</text>
+                        </svg>
+                        <p style="font-size: 0.85rem; color: #aaa; text-align: center; font-style: italic;">Mapping logic: Probability of crossing over is proportional to the physical distance between loci.</p>
+                    </div>
+                </div>
+
                 <!-- VISUAL DYNAMIC: CHROMOSOMAL LINKAGE -->
                 <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
                     <h5 style="color: var(--accent-purple); margin-bottom: 20px; text-align: center;"><i class="fas fa-link"></i> Visual Dynamic: Genetic Linkage Architecture</h5>
@@ -292,6 +332,24 @@ window.CHAPTER_DATA["ch4"] = {
                         <li>1% RF = 1 map unit (centimorgan). Higher RF = genes are farther apart.</li>
                         <li>DCOs are used in 3-point crosses to determine the linear order of genes.</li>
                     </ul>
+                </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (HYBRID LINK CARD) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-cyan); padding: 30px;">
+                    <h5 style="color: var(--accent-cyan); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Linkage & Mapping Logic</h5>
+                    <a href="https://www.youtube.com/watch?v=TU44tR0hJ8A" target="_blank" style="text-decoration: none; display: block;">
+                        <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://img.youtube.com/vi/TU44tR0hJ8A/maxresdefault.jpg'); background-size: cover; background-position: center; border: 1px solid rgba(6,182,212,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s ease;">
+                            <!-- Floating Play Button -->
+                            <div style="width: 80px; height: 80px; background: var(--accent-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(6,182,212,0.6); z-index: 2;">
+                                <i class="fas fa-play" style="color: black; font-size: 2rem; margin-left: 5px;"></i>
+                            </div>
+                            <!-- Bottom Info Bar -->
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(6, 182, 212, 0.9); padding: 12px; text-align: center; backdrop-filter: blur(10px);">
+                                <p style="margin: 0; color: black; font-weight: 800; font-size: 0.9rem; letter-spacing: 1px;">WATCH ON YOUTUBE <i class="fas fa-external-link-alt" style="font-size: 0.8rem; margin-left: 8px;"></i></p>
+                            </div>
+                        </div>
+                    </a>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Genetic Linkage & Mapping (Bozeman Science / Advanced Curation)</p>
                 </div>
             </div>
         `

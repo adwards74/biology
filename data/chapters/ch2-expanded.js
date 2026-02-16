@@ -369,50 +369,65 @@ window.CHAPTER_DATA["ch2"] = {
                     <p>DNA is the master blueprint locked in the vault (nucleus). The cell never sends the original out — instead, it makes a disposable mRNA copy (transcription), sends it to the factory floor (ribosome), and assembles the product (translation). This is Francis Crick's <strong>Central Dogma</strong> of molecular biology.</p>
                 </div>
 
-                <!-- VISUAL DYNAMIC: CENTRAL DOGMA -->
-                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
-                    <h5 style="color: var(--accent-cyan); margin-bottom: 20px; text-align: center;"><i class="fas fa-microchip"></i> Visual Dynamic: Information Flow Architecture</h5>
+                <!-- VISUAL DYNAMIC: CENTRAL DOGMA PIPELINE (ENHANCED) -->
+                <div class="visual-dynamic glass" style="margin: 30px 0; padding: 40px; border-radius: var(--standard-radius); background: linear-gradient(135deg, #064e3b 0%, #0f172a 100%); border: 2px solid var(--accent-emerald); overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(16,185,129,0.2);">
+                    <h5 style="color: var(--accent-emerald); margin-bottom: 25px; text-align: center; text-transform: uppercase; letter-spacing: 2px;"><i class="fas fa-microchip"></i> Visual Dynamic: Information Flow Architecture</h5>
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-                        <svg viewBox="0 0 500 150" style="max-width: 600px; width: 100%; height: auto;">
-                            <!-- Stage 1: DNA -->
-                            <g transform="translate(40, 50)">
-                                <path d="M 0 0 Q 30 50 0 100" fill="none" stroke="var(--accent-cyan)" stroke-width="2" />
-                                <path d="M 30 0 Q 0 50 30 100" fill="none" stroke="var(--accent-cyan)" stroke-width="2" />
-                                <text x="15" y="-15" fill="var(--accent-cyan)" font-size="10" text-anchor="middle" font-weight="bold">DNA</text>
-                                <text x="15" y="115" fill="#aaa" font-size="8" text-anchor="middle">Nucleus</text>
+                        <svg viewBox="0 0 500 180" style="max-width: 600px; width: 100%; height: auto;">
+                            <!-- Stage 1: DNA (Nucleus) -->
+                            <g transform="translate(30, 60)">
+                                <rect x="-10" y="-30" width="80" height="120" rx="10" fill="rgba(6,182,212,0.1)" stroke="var(--accent-cyan)" stroke-width="1" stroke-dasharray="4 2" />
+                                <path d="M 10 10 Q 30 40 10 70" fill="none" stroke="var(--accent-cyan)" stroke-width="3">
+                                    <animate attributeName="stroke-dashoffset" from="0" to="20" dur="2s" repeatCount="indefinite" />
+                                </path>
+                                <path d="M 50 10 Q 30 40 50 70" fill="none" stroke="var(--accent-cyan)" stroke-width="3" opacity="0.6" />
+                                <text x="30" y="-10" fill="var(--accent-cyan)" font-size="9" text-anchor="middle" font-weight="bold">DNA (CORE)</text>
+                                <text x="30" y="105" fill="#888" font-size="7" text-anchor="middle">NUCLEUS</text>
                             </g>
                             
-                            <!-- Arrow 1 -->
-                            <path d="M 90 75 L 170 75" marker-end="url(#arrow)" stroke="white" stroke-width="2" stroke-dasharray="4,2">
-                                <animate attributeName="stroke-dashoffset" from="0" to="24" dur="2s" repeatCount="indefinite" />
-                            </path>
-                            <text x="130" y="65" fill="white" font-size="8" text-anchor="middle">Transcription</text>
-                            
-                            <!-- Stage 2: mRNA -->
-                            <g transform="translate(190, 50)">
-                                <path d="M 0 50 L 60 50" fill="none" stroke="var(--accent-amber)" stroke-width="3" />
-                                <text x="30" y="-15" fill="var(--accent-amber)" font-size="10" text-anchor="middle" font-weight="bold">mRNA</text>
+                            <!-- Flow Arrow: Transcription -->
+                            <g transform="translate(100, 90)">
+                                <path d="M 0 0 L 60 0" marker-end="url(#arrow-emerald)" stroke="var(--accent-emerald)" stroke-width="2" stroke-dasharray="5 3">
+                                    <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="1s" repeatCount="indefinite" />
+                                </path>
+                                <text x="30" y="-8" fill="var(--accent-emerald)" font-size="7" text-anchor="middle" font-weight="bold">TRANSCRIPTION</text>
                             </g>
                             
-                            <!-- Arrow 2 -->
-                            <path d="M 270 75 L 350 75" marker-end="url(#arrow)" stroke="white" stroke-width="2" stroke-dasharray="4,2">
-                                <animate attributeName="stroke-dashoffset" from="0" to="24" dur="2s" repeatCount="indefinite" />
-                            </path>
-                            <text x="310" y="65" fill="white" font-size="8" text-anchor="middle">Translation</text>
+                            <!-- Stage 2: mRNA (Interface) -->
+                            <g transform="translate(180, 60)">
+                                <rect x="0" y="35" width="80" height="10" rx="5" fill="var(--accent-amber)">
+                                    <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" />
+                                </rect>
+                                <text x="40" y="25" fill="var(--accent-amber)" font-size="9" text-anchor="middle" font-weight="bold">mRNA</text>
+                                <text x="40" y="60" fill="#888" font-size="7" text-anchor="middle">CYTOPLASM</text>
+                            </g>
                             
-                            <!-- Stage 3: Protein -->
-                            <g transform="translate(370, 50)">
-                                <circle cx="40" cy="50" r="25" fill="rgba(16,185,129,0.2)" stroke="var(--accent-emerald)" stroke-width="2" />
-                                <text x="40" y="-15" fill="var(--accent-emerald)" font-size="10" text-anchor="middle" font-weight="bold">PROTEIN</text>
-                                <text x="40" y="55" fill="white" font-size="8" text-anchor="middle">3D Structure</text>
+                            <!-- Flow Arrow: Translation -->
+                            <g transform="translate(260, 90)">
+                                <path d="M 0 0 L 60 0" marker-end="url(#arrow-emerald)" stroke="var(--accent-emerald)" stroke-width="2" stroke-dasharray="5 3">
+                                    <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="1s" repeatCount="indefinite" />
+                                </path>
+                                <text x="30" y="-8" fill="var(--accent-emerald)" font-size="7" text-anchor="middle" font-weight="bold">TRANSLATION</text>
+                            </g>
+                            
+                            <!-- Stage 3: Protein (Product) -->
+                            <g transform="translate(360, 60)">
+                                <circle cx="40" cy="40" r="30" fill="rgba(16,185,129,0.1)" stroke="var(--accent-emerald)" stroke-width="2">
+                                    <animate attributeName="stroke-width" values="2;4;2" dur="3s" repeatCount="indefinite" />
+                                </circle>
+                                <path d="M 25 40 C 25 20 55 20 55 40 S 25 60 25 40" fill="none" stroke="var(--accent-emerald)" stroke-width="2" opacity="0.6" />
+                                <text x="40" y="0" fill="var(--accent-emerald)" font-size="9" text-anchor="middle" font-weight="bold">PROTEIN</text>
+                                <text x="40" y="85" fill="#888" font-size="7" text-anchor="middle">3D FOLDED</text>
                             </g>
                             
                             <defs>
-                                <marker id="arrow" markerWidth="6" markerHeight="6" refX="0" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="white" /></marker>
+                                <marker id="arrow-emerald" markerWidth="6" markerHeight="6" refX="0" refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L6,3 z" fill="var(--accent-emerald)" />
+                                </marker>
                             </defs>
                         </svg>
                         <div style="font-size: 0.85rem; color: #aaa; text-align: center; font-style: italic;">
-                            Digital Code (DNA) → Analog Interface (mRNA) → Functional Product (Protein)
+                            The Central Dogma: Digital Source Code (DNA) $\to$ Analog Copy (mRNA) $\to$ Functional Machine (Protein)
                         </div>
                     </div>
                 </div>
@@ -471,6 +486,24 @@ window.CHAPTER_DATA["ch2"] = {
                         <li>AUG = start (Met); UAA/UAG/UGA = stop codons.</li>
                         <li>Alternative splicing allows one gene to produce multiple proteins.</li>
                     </ul>
+                </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (HYBRID LINK CARD) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-emerald); padding: 30px;">
+                    <h5 style="color: var(--accent-emerald); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Transcription & Translation</h5>
+                    <a href="https://www.youtube.com/watch?v=h5mJbP23Buo" target="_blank" style="text-decoration: none; display: block;">
+                        <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://img.youtube.com/vi/h5mJbP23Buo/maxresdefault.jpg'); background-size: cover; background-position: center; border: 1px solid rgba(16,185,129,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s ease;">
+                            <!-- Floating Play Button -->
+                            <div style="width: 80px; height: 80px; background: var(--accent-emerald); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(16,185,129,0.6); z-index: 2;">
+                                <i class="fas fa-play" style="color: black; font-size: 2rem; margin-left: 5px;"></i>
+                            </div>
+                            <!-- Bottom Info Bar -->
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(16, 185, 129, 0.9); padding: 12px; text-align: center; backdrop-filter: blur(10px);">
+                                <p style="margin: 0; color: black; font-weight: 800; font-size: 0.9rem; letter-spacing: 1px;">WATCH ON YOUTUBE <i class="fas fa-external-link-alt" style="font-size: 0.8rem; margin-left: 8px;"></i></p>
+                            </div>
+                        </div>
+                    </a>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Protein Synthesis (Amoeba Sisters / Advanced Curation)</p>
                 </div>
 
                 <!-- SECTION IV: TRANSLATIONAL KINETICS -->

@@ -823,13 +823,34 @@ document.addEventListener('DOMContentLoaded', () => {
     async function showLesson(lessonKey, subjectId) {
         window.currentLessonKey = lessonKey;
         if (typeof lessonStartTime !== 'undefined') lessonStartTime = Date.now();
-        console.log("SHOW LESSON (Bio Engine 4.0):", lessonKey, subjectId);
+        console.log("SHOW LESSON (Bio Engine 6.0):", lessonKey, subjectId);
 
         try {
-            // New Asynchronous Content Loading
             const lessonData = await window.ContentLoader.load(lessonKey);
 
-            // Calculate next lesson for navigation
+            // --- MASTER CLASS: Top-Level Video Injection ---
+            let videoHtml = "";
+            let cleanLessonHtml = lessonData.html;
+            const videoRegex = /<iframe[^>]*src="[^"]*youtube\.com\/embed\/[^"]*"[^>]*><\/iframe>/i;
+            const match = videoRegex.exec(lessonData.html);
+
+            if (match) {
+                const videoIframe = match[0];
+                videoHtml = `
+                    <div class="video-promo-top glass fadeIn" style="margin-bottom:25px; border-radius:15px; overflow:hidden; border:1px solid rgba(16, 185, 129, 0.3); background:rgba(0,0,0,0.5);">
+                        <div style="padding:15px 20px; background:rgba(16, 185, 129, 0.1); border-bottom:1px solid rgba(16, 185, 129, 0.2); display:flex; justify-content:space-between; align-items:center;">
+                            <span style="color:var(--accent-emerald); font-weight:800; font-size:0.75rem; letter-spacing:1px;"><i class="fab fa-youtube"></i> ELITE BIO-LECTURE</span>
+                            <span style="font-size:0.7rem; opacity:0.6; color:white;">Bio-Tech 6.0 Standard</span>
+                        </div>
+                        <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
+                            ${videoIframe.replace(/width="[^"]*"/, 'width="100%"').replace(/height="[^"]*"/, 'height="100%"').replace('<iframe', '<iframe style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"')}
+                        </div>
+                    </div>
+                `;
+                // Remove from main content to avoid duplication
+                cleanLessonHtml = lessonData.html.replace(videoIframe, '<div class="video-extracted-notice" style="padding:10px; font-size:0.75rem; opacity:0.4; font-style:italic; border-top:1px dashed rgba(255,255,255,0.1); text-align:center;">Interactive lecture moved to top performance sector.</div>');
+            }
+
             const subject = MATH_DATA.subjects.find(s => s.id === subjectId);
             let nextLesson = null;
             if (subject) {
@@ -837,10 +858,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 subject.units.forEach(u => {
                     u.lectures.forEach(l => {
                         if (l.url.startsWith('lesson:')) {
-                            allLectures.push({
-                                key: l.url.split(':').pop(),
-                                title: l.name
-                            });
+                            allLectures.push({ key: l.url.split(':').pop(), title: l.name });
                         }
                     });
                 });
@@ -848,7 +866,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 nextLesson = currentIdx !== -1 && currentIdx < allLectures.length - 1 ? allLectures[currentIdx + 1] : null;
             }
 
-            // --- Elite 5.6: Java Logic Integration ---
             const javaKey = Object.keys(window.JAVA_LOGIC_DATA || {}).find(k => {
                 const searchStr = k.replace(/_/g, ' ');
                 return lessonData.title.toLowerCase().includes(searchStr) ||
@@ -875,12 +892,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <button class="glass back-btn" onclick="window.showSubjectDetail('${subjectId}')" style="padding: 10px 18px; font-weight: 600; font-size: 0.9rem; color: var(--text-primary); display: flex; align-items: center; gap: 10px; border-radius: 12px;">
                             <i class="fas fa-arrow-left"></i> <span>Curriculum</span>
                         </button>
-                        
                         <div class="lesson-title-meta" style="text-align: center;">
                             <span class="lesson-badge" style="background: rgba(16, 185, 129, 0.1); color: var(--accent-emerald); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 800; letter-spacing: 1px;">${lessonKey.toUpperCase()}</span>
                             <h2 style="font-size:1.1rem; margin: 5px 0 0 0; color: var(--text-primary);">${lessonData.title}</h2>
                         </div>
-
                         <div class="lesson-actions" style="display:flex; gap:12px; align-items: center;">
                             ${javaButtonHtml}
                             <button class="glass tool-btn" onclick="window.switchView('atlas')" title="Bio Atlas" style="width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; color: var(--accent-emerald); border-radius: 12px;">
@@ -891,12 +906,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     </nav>
 
                     <div class="lesson-body-wrapper" style="padding: 0 25px 40px 25px;">
+                        ${videoHtml}
                         <div class="lesson-text-content glass" style="padding: 40px; border-radius: 20px; background: rgba(255,255,255,0.01);">
                             <article class="lesson-content">
-                                ${lessonData.html}
+                                ${cleanLessonHtml}
                             </article>
                         </div>
                         <div id="java-logic-view"></div>
+                        <div id="atlas-mount-point"></div>
                         
                         <div class="lesson-footer" style="margin-top: 50px; text-align: center; padding-bottom: 60px;">
                             ${nextButtonHtml ?
@@ -912,15 +929,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
 
-            // Fix: Scroll the actual content container to top
             document.querySelector('.content-area')?.scrollTo(0, 0);
-
-            // Re-trigger MathJax
-            if (window.MathJax) {
-                MathJax.typesetPromise();
-            }
-
-            // Neo-Atlas Trigger if config exists
+            if (window.MathJax) MathJax.typesetPromise();
             if (lessonData.vizConfig && window.NeoAtlas) {
                 window.NeoAtlas.render(lessonData.vizConfig, 'atlas-mount-point');
             }
@@ -1624,22 +1634,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Elite 3.0: Desmos Interactive Lab ---
-    window.initDesmosLab = async (config) => {
+    window.initDesmosLab = async (config = {}) => {
         const panel = document.getElementById('lesson-tool-panel');
         if (!panel) return;
 
+        if (window.desmosCalculator && !config.force) {
+            panel.style.display = 'block';
+            return window.desmosCalculator;
+        }
+
+        if (window.desmosFallbackActive && !config.force) {
+            panel.style.display = 'block';
+            panel.style.position = 'relative';
+            // Use the native Interactive Quantum Graph Engine
+            panel.innerHTML = window.UIEngine.renderQuantumGraph({
+                expressions: config.expressions || ['x^2'],
+                isTangentProblem: true
+            });
+            if (window.MathJax) window.MathJax.typesetPromise();
+            return null;
+        }
+
         panel.style.display = 'block';
         panel.innerHTML = `
-            <div id="desmos-loading" style="display:flex; align-items:center; justify-content:center; height:100%; color:var(--accent-cyan); flex-direction:column; padding: 20px; text-align: center;">
-                <i class="fas fa-spinner fa-spin" style="font-size:2.5rem; margin-bottom:15px;"></i>
-                <span style="font-weight:600; letter-spacing:1px;">SYNCHRONIZING VISUALIZATION ENGINE...</span>
+            <div id="desmos-loading" style="display:flex; align-items:center; justify-content:center; height:100%; color:var(--accent-emerald); flex-direction:column; padding: 20px; text-align: center;">
+                <i class="fas fa-circle-notch fa-spin" style="font-size:2.5rem; margin-bottom:15px;"></i>
+                <span style="font-weight:600; letter-spacing:1px;">SYNCHRONIZING BIO-VISUALIZATION ENGINE...</span>
                 <span style="font-size:0.7rem; opacity:0.6; margin-top:8px;">DESMOS CLOUD V1.10</span>
-                ${window.location.protocol === 'file:' ? `
-                    <div style="margin-top:15px; font-size:0.75rem; color:var(--accent-orange); border:1px solid rgba(255,157,0,0.2); padding:10px; border-radius:8px; background:rgba(255,157,0,0.05);">
-                        <i class="fas fa-exclamation-triangle"></i> Local File Protocol Detected.<br>
-                        Desmos API may require a local server (e.g. VS Code Live Server).
-                    </div>
-                ` : ''}
             </div>
             <div id="desmos-calculator" style="width: 100%; height: 100%; min-height: 400px; display:none;"></div>
         `;
@@ -1661,53 +1682,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             await waitForDesmos();
-            document.getElementById('desmos-loading').style.display = 'none';
+            const loading = document.getElementById('desmos-loading');
+            if (loading) loading.style.display = 'none';
             const elt = document.getElementById('desmos-calculator');
-            elt.style.display = 'block';
-
-            if (elt.offsetWidth === 0) elt.style.width = "100%";
-            if (elt.offsetHeight === 0) elt.style.height = "400px";
-
-            const calculator = Desmos.GraphingCalculator(elt, {
-                keypad: false,
-                expressions: true,
-                settingsMenu: false,
-                zoomButtons: true,
-                expressionsTopbar: false,
-                capExpressionSize: true
-            });
-
-            if (config.expressions) {
-                config.expressions.forEach((exp, idx) => {
-                    calculator.setExpression({ id: `exp${idx}`, latex: exp });
+            if (elt) {
+                elt.style.display = 'block';
+                const calculator = Desmos.GraphingCalculator(elt, {
+                    keypad: false,
+                    expressions: true,
+                    settingsMenu: false,
+                    zoomButtons: true,
+                    border: false
                 });
-            }
 
-            if (config.bounds) {
-                calculator.setMathBounds(config.bounds);
+                if (config && config.expressions) {
+                    config.expressions.forEach((exp, idx) => {
+                        calculator.setExpression({ id: `exp${idx}`, latex: exp });
+                    });
+                }
+                window.desmosCalculator = calculator;
+                return calculator;
             }
-
-            window.typeTerminalMessage("INTERACTIVE LAB ACTIVE: Biological visualization engine synchronized.");
         } catch (e) {
             console.error("Desmos Load Error:", e);
-            const isTimeout = e.message.includes("Timeout");
-            panel.innerHTML = `
-                <div style="padding:40px; color:var(--accent-red); text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%;">
-                    <i class="fas fa-bolt" style="font-size:3rem; margin-bottom:20px; color:var(--accent-orange); filter: drop-shadow(0 0 10px rgba(255,157,0,0.5));"></i>
-                    <h3 style="margin-bottom:10px; letter-spacing:1px;">ENGINE SYNCHRONIZATION FAILED</h3>
-                    <p style="font-size:0.9rem; opacity:0.8; max-width:400px; margin-bottom:25px;">
-                        ${isTimeout ?
-                    "The Desmos API could not be reached. Local files likely blocked. Use a local server or disable ad-blockers." :
-                    `Internal Error: ${e.message}`
-                }
-                    </p>
-                    <div style="display:flex; gap:15px;">
-                        <button class="glass" onclick="location.reload()" style="padding:10px 25px; cursor:pointer; color:var(--text-primary); border-radius:10px;">
-                            <i class="fas fa-redo"></i> Retry
-                        </button>
-                    </div>
-                </div>
-            `;
+            window.desmosFallbackActive = true;
+            panel.innerHTML = window.UIEngine.renderQuantumGraph({
+                expressions: config.expressions || ['x^2'],
+                isTangentProblem: true
+            });
+            if (window.MathJax) window.MathJax.typesetPromise();
+            return null;
         }
     };
 

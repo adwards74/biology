@@ -29,8 +29,11 @@ window.UIEngine = (function () {
             // Calculate actual progress %
             let totalLectures = 0;
             let completedLectures = 0;
+            let hasMasterClass = false;
+
             if (sub.units) {
                 sub.units.forEach(unit => {
+                    if (unit.masterClass) hasMasterClass = true;
                     if (unit.lectures) {
                         unit.lectures.forEach(lecture => {
                             totalLectures++;
@@ -49,7 +52,10 @@ window.UIEngine = (function () {
                 <div class="subject-card glass" style="animation-delay: ${idx * 0.1}s" onclick="window.showSubjectDetail('${sub.id}')">
                     <div class="card-icon" style="background: ${sub.color}20; color: ${sub.color}"><i class="${sub.icon}"></i></div>
                     <div class="card-content">
-                        <span class="code">${sub.code}${getDifficultyBadge(sub.difficulty)}</span>
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                            <span class="code">${sub.code}${getDifficultyBadge(sub.difficulty)}</span>
+                            ${hasMasterClass ? '<span style="font-size:0.6rem; background:rgba(255,0,0,0.15); color:#ff4b2b; padding:2px 6px; border-radius:4px; border:1px solid rgba(255,0,0,0.2); font-weight:bold;"><i class="fab fa-youtube"></i> MASTER</span>' : ''}
+                        </div>
                         <h3>${sub.title}</h3>
                         <p>${sub.description}</p>
                     </div>
@@ -135,10 +141,31 @@ window.UIEngine = (function () {
             `;
         }
 
+        let masterClassHtml = '';
+        if (unit.masterClass) {
+            masterClassHtml = `
+                <div class="master-class-promo glass fadeIn" style="margin-bottom:15px; padding:15px; border-radius:var(--standard-radius); border:1px solid rgba(255,75,43,0.3); background:rgba(255,75,43,0.05); cursor:pointer;" onclick="window.showLessonHandler('${unit.lectures[0].url}', '${subject.id}')">
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <div style="width:40px; height:40px; background:#ff4b2b; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; box-shadow:0 0 15px rgba(255,75,43,0.4);">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <div>
+                            <div style="font-size:0.65rem; color:#ff4b2b; font-weight:bold; text-transform:uppercase; letter-spacing:1px;">Advanced Tutorial</div>
+                            <div style="font-weight:700; color:white; font-size:0.9rem;">Master Class Available</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
         return `
             <div class="unit-card glass" style="padding:30px; border-radius:var(--standard-radius);">
-                <h3 style="margin-bottom:15px; border-left:4px solid ${subject.color}; padding-left:15px;">${unit.title}</h3>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                    <h3 style="margin:0; border-left:4px solid ${subject.color}; padding-left:15px;">${unit.title}</h3>
+                    ${unit.masterClass ? '<span class="pulse-badge-red" style="font-size:0.65rem; background:rgba(255,75,43,0.1); color:#ff4b2b; padding:4px 10px; border-radius:30px; border:1px solid #ff4b2b44; font-weight:800;">VIDEO</span>' : ''}
+                </div>
                 ${unit.intuition ? `<p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:15px;">${unit.intuition}</p>` : ''}
+                ${masterClassHtml}
                 <div class="lectures" style="display:grid; gap:10px;">
                     ${unit.lectures.map(l => renderLectureLink(l, subject)).join('')}
                 </div>
@@ -424,7 +451,7 @@ window.UIEngine = (function () {
         if (window.MathJax) window.MathJax.typesetPromise();
     }
 
-    function toggleCalculator(type) {
+    async function toggleCalculator(type) {
         const panel = document.getElementById('lesson-tool-panel');
         if (!panel) return;
 
@@ -432,6 +459,14 @@ window.UIEngine = (function () {
 
         if (!type && isCurrentOpen) {
             panel.style.display = 'none';
+            return;
+        }
+
+        // Direct routing to Quantum Engine for any graphing request
+        if (type === 'desmos' || type === 'graph') {
+            panel.style.display = 'block';
+            panel.innerHTML = renderQuantumGraph({ expressions: ['x^2'] });
+            if (window.MathJax) window.MathJax.typesetPromise();
             return;
         }
 
@@ -454,39 +489,174 @@ window.UIEngine = (function () {
         if (window.MathJax) window.MathJax.typesetPromise();
     }
 
-    function renderDynamicGraph(config = {}) {
-        const width = config.width || 400;
-        const height = config.height || 200;
-        const type = config.type || 'sine';
+    function renderQuantumGraph(config = {}) {
+        const width = config.width || 600;
+        const height = config.height || 400;
+        const expressions = config.expressions || [];
+        const padding = 40;
 
-        let pathData = "";
-        if (type === 'sine') {
-            pathData = "M 0 " + (height / 2);
-            for (let x = 0; x <= width; x++) {
-                const y = (height / 2) - Math.sin((x / width) * Math.PI * 4) * (height / 3);
-                pathData += ` L ${x} ${y}`;
+        // Coordinate system bounds
+        const minX = -10;
+        const maxX = 10;
+        const minY = -10;
+        const maxY = 10;
+
+        const toX = (val) => padding + ((val - minX) / (maxX - minX)) * (width - 2 * padding);
+        const toY = (val) => (height - padding) - ((val - minY) / (maxY - minY)) * (height - 2 * padding);
+
+        // Safe evaluation function for manual input
+        const evaluate = (expr, x) => {
+            try {
+                // Pre-process expression
+                let safeExpr = expr.toLowerCase();
+                safeExpr = safeExpr.replace(/sin/g, 'Math.sin');
+                safeExpr = safeExpr.replace(/cos/g, 'Math.cos');
+                safeExpr = safeExpr.replace(/tan/g, 'Math.tan');
+                safeExpr = safeExpr.replace(/sqrt/g, 'Math.sqrt');
+                safeExpr = safeExpr.replace(/pow/g, 'Math.pow');
+                safeExpr = safeExpr.replace(/abs/g, 'Math.abs');
+                safeExpr = safeExpr.replace(/log/g, 'Math.log');
+                safeExpr = safeExpr.replace(/exp/g, 'Math.exp');
+                safeExpr = safeExpr.replace(/pi/g, 'Math.PI');
+                safeExpr = safeExpr.replace(/\^/g, '**');
+
+                // Allow simple multiplication like 2x -> 2*x
+                safeExpr = safeExpr.replace(/(\d)(x)/g, '$1*$2');
+
+                const fn = new Function('x', `return ${safeExpr};`);
+                return fn(x);
+            } catch (e) {
+                return NaN;
             }
-        } else if (type === 'parabola') {
-            pathData = "M 0 " + height;
-            for (let x = 0; x <= width; x++) {
-                const normalizedX = (x / width) * 2 - 1;
-                const y = height - (normalizedX * normalizedX) * (height * 0.8);
-                pathData += ` L ${x} ${y}`;
+        };
+
+        let paths = "";
+        const colors = ['var(--accent-blue)', 'var(--accent-green)', 'var(--accent-orange)', 'var(--accent-magenta)'];
+
+        expressions.forEach((expr, idx) => {
+            if (!expr) return;
+            const color = colors[idx % colors.length];
+            let d = "";
+            let first = true;
+
+            for (let x = minX; x <= maxX; x += 0.1) {
+                const y = evaluate(expr, x);
+                if (isNaN(y) || !isFinite(y)) {
+                    first = true;
+                    continue;
+                }
+                const screenX = toX(x);
+                const screenY = toY(y);
+
+                if (screenY < -100 || screenY > height + 100) {
+                    first = true;
+                    continue;
+                }
+
+                if (first) {
+                    d += `M ${screenX} ${screenY}`;
+                    first = false;
+                } else {
+                    d += ` L ${screenX} ${screenY}`;
+                }
             }
-        }
+            if (d) {
+                paths += `<path d="${d}" fill="none" stroke="${color}" stroke-width="3" filter="drop-shadow(0 0 5px ${color})" />`;
+            }
+        });
+
+        const currentExpr = expressions[0] || "";
 
         return `
-            <div class="dynamic-graph-container glass" style="padding:20px; text-align:center; margin:20px 0;">
-                <h5 style="color:var(--accent-blue); margin-bottom:15px;">Visual Dynamics: ${type.toUpperCase()}</h5>
-                <svg width="${width}" height="${height}" style="background:rgba(0,0,0,0.3); border-radius:10px; border:1px solid var(--glass-border);">
-                    <line x1="0" y1="${height / 2}" x2="${width}" y2="${height / 2}" stroke="rgba(255,255,255,0.1)" />
-                    <line x1="${width / 2}" y1="0" x2="${width / 2}" y2="${height}" stroke="rgba(255,255,255,0.1)" />
-                    <path d="${pathData}" fill="none" stroke="var(--accent-blue)" stroke-width="3" />
-                </svg>
-                <p style="font-size:0.8rem; opacity:0.6; margin-top:10px;">Generated via Neo-Graph Engine 5.5</p>
+            <div class="quantum-graph glass" style="width:100%; height:100%; min-height:450px; display:flex; flex-direction:column; background:rgba(5,7,10,0.98); border-radius:15px; overflow:hidden; position:relative; border:1px solid rgba(0,210,255,0.15);">
+                <!-- Header -->
+                <div style="padding:15px 20px; background:rgba(0,0,0,0.5); border-bottom:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between; align-items:center;">
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <i class="fas fa-atom" style="color:var(--accent-cyan); animation: spin 4s linear infinite;"></i>
+                        <span style="font-weight:800; font-size:0.9rem; letter-spacing:2px; color:var(--accent-cyan); text-shadow:0 0 10px rgba(0,210,255,0.3);">QUANTUM GRAPH ENGINE 6.0</span>
+                    </div>
+                </div>
+
+                <div style="display:flex; flex:1; overflow:hidden;">
+                    <!-- Expression Sidebar -->
+                    <div style="width:220px; background:rgba(0,0,0,0.3); border-right:1px solid rgba(255,255,255,0.05); padding:15px; display:flex; flex-direction:column; gap:15px;">
+                        <div>
+                            <div style="font-size:0.7rem; color:var(--accent-cyan); font-weight:bold; letter-spacing:1px; margin-bottom:10px;">EXPRESSIONS</div>
+                            <div class="glass" style="padding:12px; border-radius:10px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05);">
+                                <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                                    <div style="width:10px; height:10px; border-radius:50%; background:var(--accent-blue);"></div>
+                                    <span style="font-size:0.75rem; color:#888;">y₁ = f(x)</span>
+                                </div>
+                                <input type="text" id="quantum-input-0" class="glass-input" 
+                                       style="width:100%; background:transparent; border:none; color:white; font-family:'JetBrains Mono', monospace; font-size:0.9rem; outline:none;" 
+                                       placeholder="Enter formula..." value="${currentExpr}"
+                                       onkeyup="if(event.key==='Enter') window.UIEngine.updateQuantumPlot()">
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top:auto; display:flex; flex-direction:column; gap:10px;">
+                        <button class="glass-btn solve-btn" style="width:100%; padding:12px; background:var(--accent-blue); color:black; font-weight:bold; border-radius:8px; cursor:pointer;" onclick="window.UIEngine.updateQuantumPlot()">
+                            <i class="fas fa-sync-alt"></i> RE-PLOT
+                        </button>
+                        <button class="glass-btn" style="width:100%; padding:10px; background:rgba(255,255,255,0.05); color:#888; font-size:0.75rem; border:1px solid rgba(255,255,255,0.1); border-radius:8px; cursor:pointer; transition:all 0.3s;" 
+                                onclick="window.UIEngine.switchToDesmos()"
+                                onmouseover="this.style.color='white'; this.style.borderColor='var(--accent-cyan)'"
+                                onmouseout="this.style.color='#888'; this.style.borderColor='rgba(255,255,255,0.1)'">
+                            <i class="fas fa-external-link-alt"></i> SWITCH TO DESMOS
+                        </button>
+                    </div>
+                </div>
+
+                    <!-- SVG Canva -->
+                    <div style="flex:1; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:10px; background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);">
+                        <svg width="100%" height="100%" viewBox="0 0 ${width} ${height}" preserveAspectRatio="xMidYMid meet">
+                            <!-- Grid -->
+                            ${[-5, 0, 5].map(x => `<line x1="${toX(x)}" y1="${toY(minY)}" x2="${toX(x)}" y2="${toY(maxY)}" stroke="rgba(255,255,255,0.05)" stroke-width="1" />`).join('')}
+                            ${[-5, 0, 5].map(y => `<line x1="${toX(minX)}" y1="${toY(y)}" x2="${toX(maxX)}" y2="${toY(y)}" stroke="rgba(255,255,255,0.05)" stroke-width="1" />`).join('')}
+                            
+                            <!-- Axes -->
+                            <line x1="${toX(minX)}" y1="${toY(0)}" x2="${toX(maxX)}" y2="${toY(0)}" stroke="rgba(255,255,255,0.2)" stroke-width="2" />
+                            <line x1="${toX(0)}" y1="${toY(minY)}" x2="${toX(0)}" y2="${toY(maxY)}" stroke="rgba(255,255,255,0.2)" stroke-width="2" />
+                            
+                            <!-- Plot -->
+                            ${paths}
+                        </svg>
+                    </div>
+                </div>
+
+                <div style="padding:10px 20px; background:rgba(0,0,0,0.5); border-top:1px solid rgba(255,255,255,0.1); font-size:0.75rem; color:#888; display:flex; justify-content:space-between;">
+                    <span><i class="fas fa-keyboard"></i> Use ^ for power, sqrt() for roots</span>
+                    <span style="color:var(--accent-cyan); font-weight:bold;">BYPASSING EXTERNAL DEPENDENCIES</span>
+                </div>
             </div>
         `;
     }
+
+    // Expose update helper
+    window.UIEngine = window.UIEngine || {};
+    window.UIEngine.updateQuantumPlot = function () {
+        const input = document.getElementById('quantum-input-0');
+        if (!input) return;
+        const expr = input.value;
+        const panel = document.getElementById('lesson-tool-panel');
+        if (!panel) return;
+        panel.innerHTML = renderQuantumGraph({ expressions: [expr] });
+        if (window.MathJax) window.MathJax.typesetPromise();
+    };
+
+    // --- Elite 6.1: Plan B Engine Switcher ---
+    window.UIEngine.switchToDesmos = () => {
+        const input = document.getElementById('quantum-input-0');
+        const expressions = input ? [input.value] : ['x^2'];
+
+        // Clear old instance and force Desmos
+        window.desmosCalculator = null;
+        window.desmosFallbackActive = false;
+
+        if (window.initDesmosLab) {
+            window.initDesmosLab({ expressions: expressions, force: true });
+        }
+    };
 
     return {
         renderSubjectGrid,
@@ -496,6 +666,8 @@ window.UIEngine = (function () {
         toggleCalculator,
         solveEquation,
         solveQuadratic,
-        renderDynamicGraph
+        renderQuantumGraph,
+        updateQuantumPlot: window.UIEngine.updateQuantumPlot,
+        switchToDesmos: window.UIEngine.switchToDesmos
     };
 })();

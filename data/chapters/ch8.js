@@ -99,18 +99,14 @@ window.CHAPTER_DATA["ch8"] = {
                 <!-- VIDEO CURATION: MASTER CLASS (HYBRID LINK CARD) -->
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-emerald); padding: 30px;">
                     <h5 style="color: var(--accent-emerald); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Ecosystem Dynamics & Energy Flow</h5>
-                    <a href="https://www.youtube.com/watch?v=v6mtJbB5C28" target="_blank" style="text-decoration: none; display: block;">
-                        <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://img.youtube.com/vi/v6mtJbB5C28/maxresdefault.jpg'); background-size: cover; background-position: center; border: 1px solid rgba(16,185,129,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s ease;">
-                            <!-- Floating Play Button -->
-                            <div style="width: 80px; height: 80px; background: var(--accent-emerald); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(16,185,129,0.6); z-index: 2;">
-                                <i class="fas fa-play" style="color: black; font-size: 2rem; margin-left: 5px;"></i>
-                            </div>
-                            <!-- Bottom Info Bar -->
-                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(16, 185, 129, 0.9); padding: 12px; text-align: center; backdrop-filter: blur(10px);">
-                                <p style="margin: 0; color: black; font-weight: 800; font-size: 0.9rem; letter-spacing: 1px;">WATCH ON YOUTUBE <i class="fas fa-external-link-alt" style="font-size: 0.8rem; margin-left: 8px;"></i></p>
-                            </div>
-                        </div>
-                    </a>
+                    <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(16,185,129,0.3);">
+                        <iframe 
+                            src="https://www.youtube.com/embed/v6mtJbB5C28" 
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
                     <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Ecosystem Ecology (Bozeman Science / Advanced Curation)</p>
                 </div>
             </div>

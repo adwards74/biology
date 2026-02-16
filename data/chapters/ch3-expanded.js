@@ -29,36 +29,82 @@ window.CHAPTER_DATA["ch3"] = {
                     <p>Photosynthesis is NOT just "plants making food from sunlight." It is a sophisticated <strong>electron relay system</strong> where photons excite electrons, which are then passed through protein complexes to pump H⁺ ions and generate ATP. The "light reactions" capture energy; the "Calvin Cycle" uses that energy to build sugar from CO₂.</p>
                 </div>
 
-                <!-- VISUAL DYNAMIC: PHOTOSYNTHESIS OVERVIEW -->
-                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
-                    <h5 style="color: var(--accent-orange); margin-bottom: 20px; text-align: center;"><i class="fas fa-sun"></i> Visual Dynamic: The Chloroplast Energy Cycle</h5>
-                    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-                        <svg viewBox="0 0 500 200" style="max-width: 600px; width: 100%; height: auto;">
-                            <!-- Light Reactions (Left) -->
-                            <rect x="20" y="40" width="180" height="120" rx="15" fill="rgba(16,185,129,0.1)" stroke="var(--accent-emerald)" stroke-width="2" />
-                            <text x="110" y="30" fill="var(--accent-emerald)" font-size="12" font-weight="bold" text-anchor="middle">LIGHT REACTIONS</text>
-                            <text x="110" y="100" fill="white" font-size="10" text-anchor="middle">Thylakoids</text>
+                <!-- PREMIUM CINEMATIC HEADER: THE Z-SCHEME (SOLAR CAPTURE) -->
+                <div class="visual-dynamic glass" style="margin: 30px 0; padding: 40px; border-radius: var(--standard-radius); background: linear-gradient(135deg, #064e3b 0%, #065f46 100%); border: 2px solid var(--accent-orange); overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(251,146,60,0.2);">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 30px; position: relative; z-index: 1;">
+                        <h4 style="color: var(--accent-orange); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; border-bottom: 2px solid var(--accent-orange); padding-bottom: 8px; margin: 0;">Solar Energy Capture & Flux</h4>
+                        <svg viewBox="0 0 500 180" style="max-width: 600px; width: 100%; height: auto; filter: drop-shadow(0 0 10px rgba(251,146,60,0.3));">
+                            <!-- Axis -->
+                            <line x1="40" y1="20" x2="40" y2="160" stroke="#888" stroke-width="1" marker-end="url(#arrow-head)" />
+                            <text x="30" y="90" fill="#888" font-size="8" transform="rotate(-90 30,90)" text-anchor="middle">REDUX POTENTIAL</text>
                             
-                            <!-- Calvin Cycle (Right) -->
-                            <circle cx="380" cy="100" r="60" fill="rgba(251,146,60,0.1)" stroke="var(--accent-orange)" stroke-width="2" />
-                            <text x="380" y="30" fill="var(--accent-orange)" font-size="12" font-weight="bold" text-anchor="middle">CALVIN CYCLE</text>
-                            <text x="380" y="105" fill="white" font-size="10" text-anchor="middle">Stroma</text>
+                            <!-- PSII -->
+                            <g transform="translate(100, 130)">
+                                <rect x="-20" y="-20" width="40" height="40" rx="4" fill="var(--accent-emerald)" opacity="0.8" />
+                                <text x="0" y="30" fill="white" font-size="8" text-anchor="middle" font-weight="bold">PSII</text>
+                                <!-- Excitation Arrow -->
+                                <path d="M 0 0 L 0 -80" stroke="var(--accent-amber)" stroke-width="3" stroke-dasharray="4 2">
+                                    <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="1s" repeatCount="indefinite" />
+                                </path>
+                                <circle cx="0" cy="-80" r="5" fill="var(--accent-amber)">
+                                    <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite" />
+                                </circle>
+                            </g>
                             
-                            <!-- Connectors -->
-                            <path d="M 200 80 L 320 80" marker-end="url(#arrow)" stroke="var(--accent-cyan)" stroke-width="2" />
-                            <text x="260" y="70" fill="var(--accent-cyan)" font-size="9" text-anchor="middle">ATP + NADPH</text>
+                            <!-- ETC Relay -->
+                            <path d="M 100 50 L 250 100" fill="none" stroke="white" stroke-width="2" stroke-dasharray="5 5">
+                                <animate attributeName="stroke-dashoffset" from="0" to="20" dur="2s" repeatCount="indefinite" />
+                            </path>
                             
-                            <path d="M 320 120 L 200 120" marker-end="url(#arrow)" stroke="#888" stroke-width="2" />
-                            <text x="260" y="140" fill="#888" font-size="9" text-anchor="middle">ADP + NADP⁺</text>
+                            <!-- PSI -->
+                            <g transform="translate(300, 100)">
+                                <rect x="-20" y="-20" width="40" height="40" rx="4" fill="var(--accent-emerald)" />
+                                <text x="0" y="30" fill="white" font-size="8" text-anchor="middle" font-weight="bold">PSI</text>
+                                <!-- Second Excitation -->
+                                <path d="M 0 0 L 0 -70" stroke="var(--accent-amber)" stroke-width="3" stroke-dasharray="4 2">
+                                    <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="1s" repeatCount="indefinite" />
+                                </path>
+                            </g>
                             
-                            <!-- Inputs/Outputs -->
-                            <text x="40" y="180" fill="var(--accent-cyan)" font-size="9">H₂O → O₂</text>
-                            <text x="400" y="180" fill="var(--accent-amber)" font-size="9">CO₂ → SUGAR</text>
-                            
-                            <defs>
-                                <marker id="arrow" markerWidth="6" markerHeight="6" refX="0" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="context-stroke" /></marker>
-                            </defs>
+                            <!-- NADPH End -->
+                            <g transform="translate(420, 40)">
+                                <circle cx="0" cy="0" r="15" fill="rgba(6,182,212,0.2)" stroke="var(--accent-cyan)" stroke-width="1" />
+                                <text x="0" y="5" fill="var(--accent-cyan)" font-size="8" text-anchor="middle" font-weight="bold">NADPH</text>
+                            </g>
                         </svg>
+                        <p style="font-size: 0.85rem; color: #aaa; text-align: center; font-style: italic;">The Non-Cyclic Electron Flow: A journey from low-energy water to high-energy sugar precursors.</p>
+                    </div>
+                </div>
+
+                <!-- VISUAL DYNAMIC: CALVIN CYCLE DYNAMICS -->
+                <div class="visual-dynamic glass" style="padding: 30px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.4); border: 1px solid var(--accent-orange);">
+                    <h5 style="color: var(--accent-orange); margin-bottom: 25px; text-align: center;"><i class="fas fa-redo"></i> Molecular Dynamic: The Calvin Cycle "Gear"</h5>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                        <svg viewBox="0 0 400 200" style="max-width: 500px; width: 100%; height: auto;">
+                            <!-- Central Cycle -->
+                            <circle cx="200" cy="100" r="60" fill="none" stroke="rgba(251,146,60,0.3)" stroke-width="8" stroke-dasharray="20 10">
+                                <animateTransform attributeName="transform" type="rotate" from="0 200 100" to="360 200 100" dur="10s" repeatCount="indefinite" />
+                            </circle>
+                            
+                            <!-- Input: CO2 -->
+                            <g transform="translate(200, 20)">
+                                <circle r="10" fill="var(--accent-amber)" />
+                                <text x="0" y="-15" fill="var(--accent-amber)" font-size="10" text-anchor="middle" font-weight="bold">CO₂ IN</text>
+                                <animateTransform attributeName="transform" type="translate" values="200,0; 200,40" dur="2s" repeatCount="indefinite" />
+                            </g>
+                            
+                            <!-- Output: G3P -->
+                            <g transform="translate(300, 150)">
+                                <polygon points="0,-10 10,10 -10,10" fill="var(--accent-emerald)" />
+                                <text x="0" y="25" fill="var(--accent-emerald)" font-size="10" text-anchor="middle" font-weight="bold">G3P OUT</text>
+                                <animateTransform attributeName="transform" type="translate" values="260,100; 340,150" dur="3s" repeatCount="indefinite" />
+                            </g>
+                            
+                            <!-- Regeneration Loop -->
+                            <path d="M 140 100 A 60 60 0 1 1 260 100" fill="none" stroke="var(--accent-amber)" stroke-width="2" opacity="0.4" />
+                            <text x="120" y="105" fill="#888" font-size="8" text-anchor="middle">RuBP REGEN</text>
+                        </svg>
+                        <p style="font-size: 0.85rem; color: #888; text-align: center; font-style: italic;">RuBisCO efficiency: For every 3 CO₂ entered, only 1 G3P molecule survives as Net Gain. The rest feeds the machine.</p>
                     </div>
                 </div>
 
@@ -108,6 +154,24 @@ window.CHAPTER_DATA["ch3"] = {
                         <li>6 CO₂ + 18 ATP + 12 NADPH → 1 glucose (requires 6 turns of Calvin Cycle).</li>
                         <li>O₂ comes from water splitting, NOT from CO₂.</li>
                     </ul>
+                </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (HYBRID LINK CARD) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-orange); padding: 30px;">
+                    <h5 style="color: var(--accent-orange); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Photosynthesis Deep Dive</h5>
+                    <a href="https://www.youtube.com/watch?v=sQK3Yr4Sc_k" target="_blank" style="text-decoration: none; display: block;">
+                        <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://img.youtube.com/vi/sQK3Yr4Sc_k/maxresdefault.jpg'); background-size: cover; background-position: center; border: 1px solid rgba(251,146,60,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s ease;">
+                            <!-- Floating Play Button -->
+                            <div style="width: 80px; height: 80px; background: var(--accent-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(251,146,60,0.6); z-index: 2;">
+                                <i class="fas fa-play" style="color: black; font-size: 2rem; margin-left: 5px;"></i>
+                            </div>
+                            <!-- Bottom Info Bar -->
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(251, 146, 60, 0.9); padding: 12px; text-align: center; backdrop-filter: blur(10px);">
+                                <p style="margin: 0; color: black; font-weight: 800; font-size: 0.9rem; letter-spacing: 1px;">WATCH ON YOUTUBE <i class="fas fa-external-link-alt" style="font-size: 0.8rem; margin-left: 8px;"></i></p>
+                            </div>
+                        </div>
+                    </a>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Light Reactions & Calvin Cycle (Amoeba Sisters / Advanced Curation)</p>
                 </div>
             </div>
         `

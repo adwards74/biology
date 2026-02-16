@@ -1,7 +1,7 @@
 window.CHAPTER_DATA = window.CHAPTER_DATA || {};
 window.CHAPTER_DATA["ch6"] = {
     "ch6-1": {
-        title: "13.1 Pipeline Engineering: Handling Raw Bio-Data",
+        title: "15.1 Pipeline Engineering: Handling Raw Bio-Data",
         subtitle: "High-Throughput Sequencing Workflow",
         content: `
             <div class="lesson-section">
@@ -39,7 +39,7 @@ if motif:
         `
     },
     "ch6-2": {
-        title: "13.2 Comparative Analysis: The BLAST Algorithm",
+        title: "15.2 Comparative Analysis: The BLAST Algorithm",
         subtitle: "Uncovering Homology & Evolutionary Links",
         content: `
             <div class="lesson-section">

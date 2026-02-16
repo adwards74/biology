@@ -29,7 +29,7 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                     <p>Without enzymes, the chemical reactions needed for life would occur so slowly that organisms could not survive. For example, the decomposition of hydrogen peroxide in your body would take <strong>years</strong> without the enzyme catalase — with catalase, it happens in <strong>milliseconds</strong>. Enzymes don't change what is thermodynamically possible; they change how <em>fast</em> it happens.</p>
                 </div>
 
-                <h2>I. What Do Enzymes Actually Do?</h2>
+                <h2>I. The Why: Activation Energy & Metabolic Control</h2>
 
                 <p>Every chemical reaction has an energy barrier called the <strong>activation energy ($E_a$)</strong> — the minimum energy molecules must have to react. Think of it as the hill you must push a boulder over before it rolls downhill on the other side.</p>
 
@@ -79,7 +79,7 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                     </div>
                 </div>
 
-                <h2>II. How Enzymes Work: The Induced Fit Model</h2>
+                <h2>II. The How: Induced Fit & Active Site Tension</h2>
 
                 <p>The old "Lock and Key" model suggested that the enzyme's active site was a rigid shape that perfectly matched the substrate, like a key fitting into a lock. While useful as an introduction, this model is <strong>incomplete</strong>.</p>
 
@@ -141,6 +141,21 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                     </table>
                 </div>
 
+                <!-- SECTION IV: ALLOSTERIC COOPERATIVITY -->
+                <h2>IV. Allosteric Cooperativity: The Teamwork Effect</h2>
+
+                <p>Some enzymes are multi-subunit proteins (made of several polypeptide chains). In these enzymes, the binding of a substrate molecule to one active site can trigger a shape change in <em>all</em> other subunits, making them more receptive to the substrate. This is called <strong>Cooperativity</strong>.</p>
+
+                <div class="glass-card" style="border-left: 4px solid var(--accent-purple); padding: 20px; margin: 20px 0;">
+                    <h4>The Sigmoidal "S-Curve"</h4>
+                    <p>Enzymes with cooperativity do not follow the standard Michaelis-Menten hyperbola. Instead, they produce a <strong>Sigmoidal (S-shaped) curve</strong>. This allows the enzyme to be highly sensitivity to small changes in substrate concentration near a specific threshold – it acts like a sensitive switch rather than a gradual dimmer.</p>
+                </div>
+
+                <div class="tj-edge glass">
+                    <h4><i class="fas fa-microchip"></i> TJ Honors Insight: Hemoglobin as a Model</h4>
+                    <p>While Hemoglobin is a transport protein, not an enzyme, it is the classic example of cooperativity. Once the first Oxygen molecule binds, the other three subunits "snap" into the high-affinity state, allowing for rapid loading in the lungs and rapid unloading in the tissues. In IBET, understanding this "snap" is key to understanding complex regulatory systems.</p>
+                </div>
+
                 <div class="example-card glass" style="padding:20px; border-radius:var(--standard-radius); margin:25px 0; border-left:3px solid var(--accent-purple);">
                     <h5 style="color: var(--accent-purple); margin-bottom:8px;"><i class="fas fa-pencil-alt"></i> Worked Example: Interpreting an Enzyme Graph</h5>
                     <p style="font-family:'JetBrains Mono', monospace; background:rgba(0,0,0,0.2); padding:10px; border-radius:8px; margin-bottom:12px;">An enzyme has $V_{max} = 200$ μmol/min and $K_m = 5$ mM. At $[S] = 5$ mM, what is the reaction velocity?</p>
@@ -190,7 +205,7 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                     <p>A cell producing unlimited amounts of every possible product would be catastrophically wasteful. Enzyme inhibition is the cell's <strong>precision brake system</strong> — it allows cells to regulate which pathways are active, how fast they run, and when to shut them down. Understanding inhibition is also key to understanding how <strong>drugs</strong> work — most pharmaceuticals are enzyme inhibitors.</p>
                 </div>
 
-                <h2>I. Competitive vs. Non-Competitive Inhibition</h2>
+                <h2>I. The Competitive Threshold: $V_{max}$ vs. $K_m$</h2>
 
                 <p>These are the two fundamental types of reversible inhibition:</p>
 
@@ -210,7 +225,7 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                     </table>
                 </div>
 
-                <h2>II. Allosteric Regulation: The On/Off Switch</h2>
+                <h2>II. Allosteric Regulation: The Logic Gates of Life</h2>
 
                 <p>Many enzymes exist in two states:</p>
                 <ul style="line-height: 2;">
@@ -226,7 +241,7 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
 
                 <p>This is fundamentally different from competitive inhibition: the allosteric regulator doesn't compete with the substrate — it changes the enzyme's <em>shape</em> remotely.</p>
 
-                <h2>III. Feedback Inhibition: The Thermostat of Metabolism</h2>
+                <h2>III. Feedback Logic: The Thermostat of Metabolism</h2>
 
                 <p>In a metabolic pathway with multiple steps:</p>
                 <div style="font-family:'JetBrains Mono',monospace; background:rgba(0,0,0,0.3); padding:15px; border-radius:8px; margin:15px 0; text-align:center; font-size:0.95rem;">
@@ -249,6 +264,21 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                         <div style="margin-top:10px; padding-left:15px; border-left:1px solid rgba(255,255,255,0.1); line-height:2;">
                             <div><strong>Inhibitor X:</strong> $V_{max}$ unchanged, $K_m$ increased → <strong>Competitive</strong>. The inhibitor blocks the active site, so the enzyme needs more substrate to reach half-max velocity. But given enough substrate, you can still reach full speed.</div>
                             <div style="margin-top:8px;"><strong>Inhibitor Y:</strong> $V_{max}$ decreased, $K_m$ unchanged → <strong>Non-competitive</strong>. The inhibitor reduces the number of functional enzyme molecules (by distorting some of them), so the maximum rate drops. But the remaining active enzymes still have normal substrate affinity.</div>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- WORKED EXAMPLE 2 -->
+                <div class="example-card glass" style="padding:20px; border-radius:var(--standard-radius); margin:25px 0; border-left:3px solid var(--accent-purple);">
+                    <h5 style="color: var(--accent-purple); margin-bottom:8px;"><i class="fas fa-pencil-alt"></i> Worked Example 2: Double-Reciprocal (Lineweaver-Burk) Logic</h5>
+                    <p style="font-family:'JetBrains Mono', monospace; background:rgba(0,0,0,0.2); padding:10px; border-radius:8px; margin-bottom:12px;">In a Lineweaver-Burk plot (1/v vs 1/[S]), two lines are plotted. Line A (no inhibitor) and Line B (+ inhibitor). If the two lines intersect on the <strong>Y-axis</strong>, what type of inhibition is occurring?</p>
+                    <details>
+                        <summary style="font-size:0.85rem; color:var(--accent-purple); font-weight:600; cursor:pointer;">View Step-by-Step Solution</summary>
+                        <div style="margin-top:10px; padding-left:15px; border-left:1px solid rgba(255,255,255,0.1);">
+                            <div style="margin-bottom:8px;"><strong>Logic:</strong> The Y-intercept of a Lineweaver-Burk plot is $1/V_{max}$.</div>
+                            <div style="margin-bottom:8px;"><strong>Analysis:</strong> If the lines intersect on the Y-axis, it means $1/V_{max}$ is the <strong>same</strong> for both. Therefore, $V_{max}$ is unchanged.</div>
+                            <div style="margin-bottom:8px;"><strong>Conclusion:</strong> $V_{max}$ unchanged + different X-intercept ($1/K_m$) = <strong>Competitive Inhibition</strong>.</div>
+                            <div style="margin-top:12px; color:var(--accent-cyan); font-style:italic;"><strong>Elite Insight:</strong> This is a classic IBET/AP Bio "trick" question. Always look at the intercepts: Y-axis = $V_{max}$ info; X-axis = $K_m$ info.</div>
                         </div>
                     </details>
                 </div>

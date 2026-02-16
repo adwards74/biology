@@ -28,17 +28,38 @@ window.MATH_DATA = {
                             title: "Calculating SA/V for a Spherical Cell",
                             problem: "If a cell's radius increases from $1 \\mu m$ to $3 \\mu m$, by what factor does the volume increase relative to the surface area?",
                             steps: [
-                                "Surface Area formula: $4\\pi r^2$. $r=1 \\rightarrow 4\\pi$, $r=3 \\rightarrow 36\\pi$ (9x increase).",
-                                "Volume formula: $4/3 \\pi r^3$. $r=1 \\rightarrow 4/3\\pi$, $r=3 \\rightarrow 108/3\\pi$ (27x increase).",
-                                "Ratio check: Volume increased 3x MORE than surface area."
+                                "Surface Area: $4\\pi r^2$. $r=1 \\rightarrow 4\\pi$; $r=3 \\rightarrow 36\\pi$ (9x increase).",
+                                "Volume: $4/3\\pi r^3$. $r=1 \\rightarrow 4/3\\pi$; $r=3 \\rightarrow 108/3\\pi$ (27x increase).",
+                                "Calculated factor: $27 / 9 = 3$."
                             ],
-                            intuition: "Growth causes 'internal stress'—the cell needs 27x more food but only has 9x more door space."
+                            intuition: "As the cell triples in size, its internal volume (needs) explodes 3x faster than its membrane (supply). This is geometric stress."
+                        },
+                        {
+                            title: "The Biconcave Disc Advantage",
+                            problem: "Why are red blood cells (RBCs) shaped like flattened discs instead of spheres?",
+                            steps: [
+                                "Spheres have the minimum surface area for a given volume.",
+                                "Flattening the shape increases surface area without changing volume.",
+                                "Result: Higher SA/V ratio for faster Oxygen diffusion."
+                            ],
+                            intuition: "In biology, a sphere is a 'fortress' (low exchange), while a flat disc is a 'trading post' (high exchange)."
+                        },
+                        {
+                            title: "Analyzing the Alveoli Surface Area",
+                            problem: "Humans have ~300 million alveoli ($r = 100 \\mu m$). What is the total surface area? How does this relate to SA/V logic?",
+                            steps: [
+                                "Area of 1 alveolus: $4 \\pi (10^{-4})^2 \\approx 1.25 \\times 10^{-7} m^2$.",
+                                "Total Area for 300M: $(1.25 \\times 10^{-7}) \\times (3 \\times 10^8) = 37.5 m^2$.",
+                                "Total for both lungs: $\\approx 75 m^2$."
+                            ],
+                            intuition: "A single lung 'sac' would have tiny surface area. By fragmenting the volume into 300 million micro-spheres, we create a surface area the size of a tennis court."
                         }
                     ],
                     quiz: {
                         levels: [
                             { title: "L1: Intuition", question: "Why do large cells often have highly folded membranes?", answer: "To maximize surface area", options: ["To look more complex", "To maximize surface area", "To store more energy"], explanation: "Folding increases the 'exchange surface' while keeping the total volume manageable." },
-                            { title: "L3: Mastery", question: "Which cell shape would be MOST efficient at nutrient absorption per unit volume?", answer: "A flat thin disc", options: ["A perfect sphere", "A long cylinder", "A flat thin disc"], explanation: "Extremely thin shapes minimize the distance to the center, maximizing the SA/V ratio." }
+                            { title: "L2: Analysis", question: "If the linear dimensions of a cell double, how does the SA/V ratio change?", answer: "Decreases by half", options: ["Doubles", "Stays the same", "Decreases by half"], explanation: "SA/V for a cube is $6/s$. If $s$ goes from 1 to 2, the ratio goes from 6 to 3." },
+                            { title: "L3: Mastery", question: "Which organelle synergy is primarily responsible for clearing misfolded proteins to restore homeostasis?", answer: "ER and Lysosome", options: ["Mitochondria and Nucleus", "ER and Lysosome", "Golgi and Vacuole"], explanation: "The ER quality control identifies misfolds, while the Lysosome (via autophagy) breaks them down." }
                         ]
                     }
                 },
@@ -50,10 +71,33 @@ window.MATH_DATA = {
                         { name: "2.1: Water Potential Logic", url: "lesson:bio:ch1-3" },
                         { name: "2.2: Active Loading Systems", url: "lesson:bio:ch1-4" }
                     ],
+                    examples: [
+                        {
+                            title: "Calculating $\\Psi_s$ for a Root Cell",
+                            problem: "A cell contains 0.3 M glucose at $20 ^\\circ C$. Calculate its solute potential $(\\Psi_s)$. Is it likely high or low relative to pure water?",
+                            steps: [
+                                "Equation: $\\Psi_s = -iCRT$.",
+                                "Values: $i=1$ (glucose), $C=0.3$, $R=0.0831$, $T=273+20=293$.",
+                                "Calculation: $-(1)(0.3)(0.0831)(293) = -7.3 \\text{ bars} \\approx -0.73 \\text{ MPa}$."
+                            ],
+                            intuition: "The value is negative (-0.73), meaning the solutes inside 'pull' water from the environment (where $\\Psi$ is closer to 0)."
+                        },
+                        {
+                            title: "Drought Resistance & Osmotic Adjustment",
+                            problem: "If soil $\\Psi = -0.8$ MPa, will water enter a root cell with $\\Psi_s = -1.2$ MPa and $\\Psi_p = +0.2$ MPa?",
+                            steps: [
+                                "Calculate tissue potential: $\\Psi = -1.2 + 0.2 = -1.0$ MPa.",
+                                "Compare: Soil (-0.8) > Root (-1.0).",
+                                "Result: Water enters the roots."
+                            ],
+                            intuition: "Plants survive dry soil by 'racing to the bottom' – dropping their solute potential lower than the soil's total potential."
+                        }
+                    ],
                     quiz: {
                         levels: [
                             { title: "L1: Intuition", question: "In which direction does water move regarding $\\Psi$?", answer: "High to Low", options: ["High to Low", "Low to High", "Against the gradient"], explanation: "Free energy dictates water moves from areas of high potential to low potential." },
-                            { title: "L2: Analysis", question: "If $\\Psi_s = -0.5$ and $\\Psi_p = +0.2$, what is total $\\Psi$?", answer: "-0.3 MPa", options: ["-0.7 MPa", "-0.3 MPa", "+0.3 MPa"], explanation: "$\\Psi = \\Psi_s + \\Psi_p = -0.5 + 0.2 = -0.3$." }
+                            { title: "L2: Analysis", question: "If $\\Psi_s = -0.5$ and $\\Psi_p = +0.2$, what is total $\\Psi$?", answer: "-0.3 MPa", options: ["-0.7 MPa", "-0.3 MPa", "+0.3 MPa"], explanation: "$\\Psi = \\Psi_s + \\Psi_p = -0.5 + 0.2 = -0.3$." },
+                            { title: "L3: Mastery", question: "In a drought, a plant cell accumulates sucrose. How does this affect its ability to survive?", answer: "Lowers solute potential, increasing water intake", options: ["Increases turgor pressure directly", "Lowers solute potential, increasing water intake", "It has no effect"], explanation: "By lowering $ \Psi_s $, the cell creates a steeper gradient to draw in any available water." }
                         ]
                     }
                 },
@@ -65,9 +109,33 @@ window.MATH_DATA = {
                         { name: "3.1: The Activation Barrier", url: "lesson:bio:ch1-5" },
                         { name: "3.2: Control Systems (Feedback)", url: "lesson:bio:ch1-6" }
                     ],
+                    examples: [
+                        {
+                            title: "Interpreting $K_m$ and $V_{max}$",
+                            problem: "Enzyme A has a $K_m$ of 2 mM. Enzyme B has a $K_m$ of 10 mM. Which enzyme has a higher affinity for its substrate?",
+                            steps: [
+                                "Identify: $K_m$ is inversely proportional to affinity.",
+                                "Analysis: Enzyme A reaches half-max speed at a much lower concentration.",
+                                "Conclusion: Enzyme A has a HIGHER affinity."
+                            ],
+                            intuition: "A low $K_m$ means the enzyme 'grabs' its substrate easily, even when very few molecules are around."
+                        },
+                        {
+                            title: "Competitive vs. Non-Competitive Inhibition Data",
+                            problem: "If an inhibitor keeps $V_{max}$ the same but increases $K_m$, what is the inhibition type? How do you overcome it?",
+                            steps: [
+                                "Same $V_{max}$: The enzyme can still reach full speed given enough substrate.",
+                                "Higher $K_m$: The enzyme's affinity appears lower (needs more [S]).",
+                                "Conclusion: Competitive Inhibition. Overcome by adding excess substrate."
+                            ],
+                            intuition: "Competitive inhibitors are like a 'distraction' at the front door. If you crowd the door with workers, the distraction is overwhelmed."
+                        }
+                    ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "What happens to the rate of reaction if you add a non-competitive inhibitor?", answer: "$V_{max}$ decreases", options: ["Rate increases", "$V_{max}$ decreases", "Reaction stops"], explanation: "Non-competitive inhibitors change the enzyme's shape, making it less effective even if plenty of substrate is present." }
+                            { title: "L1: Intuition", question: "What happens to the rate of reaction if you add a non-competitive inhibitor?", answer: "$V_{max}$ decreases", options: ["Rate increases", "$V_{max}$ decreases", "Reaction stops"], explanation: "Non-competitive inhibitors change the enzyme's shape, making it less effective even if plenty of substrate is present." },
+                            { title: "L2: Analysis", question: "How can you tell the difference between competitive and non-competitive inhibition using a rate graph?", answer: "Competitive can still reach $V_{max}$ at high [S]", options: ["Both look identical", "Competitive can still reach $V_{max}$ at high [S]", "Non-competitive increases $K_m$"], explanation: "Increasing substrate concentration 'washes out' the effect of a competitive inhibitor but not a non-competitive one." },
+                            { title: "L3: Mastery", question: "In feedback inhibition, which enzyme in a pathway is typically targeted by the final product?", answer: "The first enzyme in the pathway", options: ["The last enzyme", "The first enzyme in the pathway", "All enzymes equally"], explanation: "Inhibiting the first commitment step prevents the wasteful buildup of all metabolic intermediates." }
                         ]
                     }
                 }
@@ -90,9 +158,23 @@ window.MATH_DATA = {
                         { name: "4.1: Source Code Structure", url: "lesson:bio:ch2-1" },
                         { name: "4.2: High-Fidelity Copying", url: "lesson:bio:ch2-2" }
                     ],
+                    examples: [
+                        {
+                            title: "DNA Density Analysis",
+                            problem: "How many base pairs are contained in a 1 micrometer length of double-stranded DNA? (Assume 0.34 nm per bp).",
+                            steps: [
+                                "1 micrometer = 1000 nm.",
+                                "Density = Total Length / Distance per bp.",
+                                "Calculation: 1000 nm / 0.34 nm/bp ≈ 2,941 bp."
+                            ],
+                            intuition: "DNA is incredibly information-dense. A tiny fragment you can't even see with a light microscope already contains nearly 3000 letters of code."
+                        }
+                    ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "Why is one DNA strand built in fragments (Okazaki)?", answer: "5'→3' constraint", options: ["Because it is faster", "5'→3' constraint", "To prevent mutations"], explanation: "As the fork opens, the lagging strand must wait for enough space to build 'forward' in small chunks." }
+                            { title: "L1: Intuition", question: "Why is one DNA strand built in fragments (Okazaki)?", answer: "5'→3' constraint", options: ["Because it is faster", "5'→3' constraint", "To prevent mutations"], explanation: "As the fork opens, the lagging strand must wait for enough space to build 'forward' in small chunks." },
+                            { title: "L2: Analysis", question: "A sample has 20% Adenine. What is the % of Guanine?", answer: "30%", options: ["20%", "30%", "80%"], explanation: "A=20% -> T=20% (Total 40%). Remaining 60% is G+C, so G=30%." },
+                            { title: "L3: Mastery", question: "In the Meselson-Stahl experiment, if DNA replication were CONSERVATIVE, what would be seen after one generation of growth in N14?", answer: "One heavy band and one light band", options: ["One intermediate band", "One heavy band and one light band", "Only one light band"], explanation: "Conservative replication keeps the original heavy parent together and makes a completely new light daughter, resulting in two distinct outer bands." }
                         ]
                     }
                 },
@@ -121,7 +203,8 @@ window.MATH_DATA = {
                     quiz: {
                         levels: [
                             { title: "L1: Intuition", question: "What is the primary benefit of the 5' G-cap and 3' Poly-A tail?", answer: "Protection and Export", options: ["Encoding amino acids", "Protection and Export", "DNA Replication"], explanation: "These modifications protect mRNA from enzymatic degradation and signal the cell that it's ready for export to the cytoplasm." },
-                            { title: "L3: Mastery", question: "In eukaryotes, what is the role of transcription factors?", answer: "To allow RNA Polymerase to bind to the promoter", options: ["To build the ribosome", "To allow RNA Polymerase to bind to the promoter", "To synthesize introns"], explanation: "RNA Polymerase II cannot initiate transcription alone; it requires a suite of transcription factors to recognize the TATA box." }
+                            { title: "L2: Analysis", question: "In a gene with 4 exons and 3 introns, how many unique mRNA configurations are possible if all exons can be alternatively spliced?", answer: "15", options: ["4", "7", "15"], explanation: "Possible combinations of 4 distinct items = $2^4 - 1$ (excluding the empty set) = 15." },
+                            { title: "L3: Mastery", question: "Which epigenetic modification is most likely associated with X-inactivation in female mammals?", answer: "Heavy DNA Methylation", options: ["Histone Acetylation", "Heavy DNA Methylation", "Telomere shortening"], explanation: "Methylation adds a 'lock' to the DNA, condensing it into a Barr body to prevent transcription." }
                         ]
                     }
                 },
@@ -148,7 +231,9 @@ window.MATH_DATA = {
                     ],
                     quiz: {
                         levels: [
-                            { title: "L2: Analysis", question: "What happens to the trp operon when tryptophan levels are HIGH?", answer: "Repressor binds, stopping transcription", options: ["Transcription increases", "Repressor binds, stopping transcription", "DNA is degraded"], explanation: "The trp operon is repressible. High levels of the product activate the repressor to stop further production (Feedback Inhibition)." }
+                            { title: "L1: Intuition", question: "In the lac operon, what molecule acts as the 'inducer'?", answer: "Allolactose", options: ["Glucose", "Allolactose", "cAMP"], explanation: "Allolactose (a derivative of lactose) binds to the repressor and removes it from the operator." },
+                            { title: "L2: Analysis", question: "What happens to the trp operon when tryptophan levels are HIGH?", answer: "Repressor binds, stopping transcription", options: ["Transcription increases", "Repressor binds, stopping transcription", "DNA is degraded"], explanation: "The trp operon is repressible. High levels of the product activate the repressor to stop further production (Feedback Inhibition)." },
+                            { title: "L3: Mastery", question: "In CRISPR-Cas9, what determines the SPECIFICITY of the cut?", answer: "The 20-nucleotide sequence of the gRNA", options: ["The Cas9 enzyme itself", "The PAM sequence only", "The 20-nucleotide sequence of the gRNA"], explanation: "The guide RNA (gRNA) is complementary to the target DNA; if this match is perfect, the nuclease will cut." }
                         ]
                     }
                 }
@@ -224,11 +309,23 @@ window.MATH_DATA = {
                     lectures: [
                         { name: "9.1: The Laws of Segregation", url: "lesson:bio:ch4-1" }
                     ],
+                    examples: [
+                        {
+                            title: "Bayesian Carrier Risk",
+                            problem: "Two carriers of Cystic Fibrosis (Aa x Aa) have two children. Both are healthy. What is the probability that the first child is a carrier?",
+                            steps: [
+                                "Observed: Child is healthy. Sample space reduced to {AA, Aa, aA}.",
+                                "Probability of Aa in healthy set = 2 out of 3.",
+                                "Result: 2/3 ≈ 67%."
+                            ],
+                            intuition: "The fact that the child is healthy ELIMINATES the possibility of 'aa', changing the denominator from 4 to 3."
+                        }
+                    ],
                     quiz: {
                         levels: [
                             { title: "L1: Intuition", question: "What phenotype ratio do you expect from a monohybrid cross Aa × Aa?", answer: "3:1", options: ["1:1", "3:1", "9:3:3:1"], explanation: "A monohybrid cross of two heterozygotes produces 1 AA : 2 Aa : 1 aa genotype, which gives a 3:1 dominant:recessive phenotype ratio." },
                             { title: "L2: Analysis", question: "If a baby has Type O blood and the mother has Type A, what are the possible genotypes for the father?", answer: "i i, I^A i, or I^B i", options: ["I^A I^B", "i i, I^A i, or I^B i", "Only i i"], explanation: "The father must provide one 'i' allele. Therefore, he can be O (ii), heterozygous A (Ai), or heterozygous B (Bi)." },
-                            { title: "L3: Mastery", question: "Which Mendelian law states that alleles for different traits are distributed to sex cells independently of one another?", answer: "Law of Independent Assortment", options: ["Law of Segregation", "Law of Dominance", "Law of Independent Assortment"], explanation: "Independent Assortment only applies to genes on different chromosomes (or far apart on the same one)." }
+                            { title: "L3: Mastery", question: "In a cross AaBb x AaBb, what is the probability of an offspring with genotype AAbb?", answer: "1/16", options: ["1/4", "1/8", "1/16"], explanation: "P(AA) = 1/4; P(bb) = 1/4. Multiplied: 1/4 * 1/4 = 1/16." }
                         ]
                     }
                 },
@@ -237,7 +334,8 @@ window.MATH_DATA = {
                     intuition: "Genes on the same chromosome break Mendel's second law — unless crossing over separates them.",
                     topics: ["Linked Genes", "Recombination Frequency", "Gene Mapping"],
                     lectures: [
-                        { name: "10.1: Chromosomal Linkage & Mapping", url: "lesson:bio:ch4-3" }
+                        { name: "10.1: Chromosomal Linkage & Mapping", url: "lesson:bio:ch4-3" },
+                        { name: "10.2: Epistasis & Non-Mendelian Flow", url: "lesson:bio:ch4-4" }
                     ],
                     examples: [
                         {
@@ -255,8 +353,8 @@ window.MATH_DATA = {
                     quiz: {
                         levels: [
                             { title: "L1: Intuition", question: "If two genes have a recombination frequency of 50%, what does that tell you?", answer: "They are on different chromosomes (unlinked)", options: ["They are very close together", "They are on different chromosomes (unlinked)", "They never recombine"], explanation: "RF of 50% means genes assort independently — they behave as if on different chromosomes. Linked genes always have RF < 50%." },
-                            { title: "L2: Analysis", question: "A recombination frequency of 1% is equal to how many map units (centimorgans)?", answer: "1 cM", options: ["10 cM", "1 cM", "100 cM"], explanation: "By definition, 1% RF = 1 map unit or 1 centimorgan." },
-                            { title: "L3: Mastery", question: "Why is the recombination frequency between two genes on the same chromosome limited to 50%?", answer: "Multiple crossovers cancel out", options: ["Genes are too small", "Chromosomes don't break", "Multiple crossovers cancel out"], explanation: "Even for genes very far apart, multiple crossovers ensure that half the gametes remain parental and half become recombinant, mirroring independent assortment." }
+                            { title: "L2: Analysis", question: "If the recombination frequency between A and B is 10%, and B and C is 5%, what is the possible distance between A and C?", answer: "5% or 15%", options: ["15% only", "5% only", "5% or 15%"], explanation: "The order could be A-C-B (10-5=5) or A-B-C (10+5=15)." },
+                            { title: "L3: Mastery", question: "In a 3-point cross, which offspring class is used to determine the middle gene?", answer: "The Double Crossover (DCO) class", options: ["The Parental class", "The Double Crossover (DCO) class", "The single crossover between A and B"], explanation: "The DCO class is the least frequent and shows a 'swap' of only the middle gene relative to the parents." }
                         ]
                     }
                 }
@@ -289,8 +387,8 @@ window.MATH_DATA = {
                         ]
                     },
                     lectures: [
-                        { name: "11.1: The Chi-Square Test", url: "lesson:bio:ch11-1" },
-                        { name: "11.2: Error Analysis & SE", url: "lesson:bio:ch11-2" }
+                        { name: "11.1: The Chi-Square Test", url: "lesson:bio:u11-1" },
+                        { name: "11.2: Error Analysis & SE", url: "lesson:bio:u11-2" }
                     ],
                     examples: [
                         {
@@ -316,8 +414,8 @@ window.MATH_DATA = {
                     intuition: "A well-designed experiment eliminates alternative explanations. AP FRQs often ask you to identify the independent variable and predict the effect of a treatment.",
                     topics: ["Variables & Controls", "Hypothesis Selection", "Data Interpretation Modeling"],
                     lectures: [
-                        { name: "12.1: Designing the Lab", url: "lesson:bio:ch12-1" },
-                        { name: "12.2: FRQ Writing Protocols (CER)", url: "lesson:bio:ch12-2" }
+                        { name: "12.1: Designing the Lab", url: "lesson:bio:u12-1" },
+                        { name: "12.2: FRQ Writing Protocols (CER)", url: "lesson:bio:u12-2" }
                     ],
                     examples: [
                         {

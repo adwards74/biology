@@ -112,6 +112,26 @@ window.CHAPTER_DATA["ch4"] = {
                         <li>Law of Independent Assortment: genes on different chromosomes sort independently.</li>
                     </ul>
                 </div>
+
+                <!-- SECTION III: BAYESIAN GENETICS -->
+                <h2>III. Bayesian Genetics: Conditional Probability</h2>
+
+                <p>In advanced genetics, we often need to calculate the probability of a genotype <strong>given</strong> certain observed information. This is <strong>Conditional Probability</strong>.</p>
+
+                <div class="glass-card" style="border-left: 4px solid var(--accent-blue); padding: 20px; margin: 20px 0;">
+                    <h4>The Carrier Logic</h4>
+                    <p>If two carriers (Aa × Aa) have a child who <strong>does NOT</strong> show the recessive phenotype (i.e., they are healthy), what is the probability that the child is a carrier (Aa)?</p>
+                    <ul style="line-height: 1.8;">
+                        <li><strong>Standard Sample Space:</strong> {AA, Aa, aA, aa}</li>
+                        <li><strong>Reduced Sample Space (Known Healthy):</strong> {AA, Aa, aA}</li>
+                        <li><strong>Probability:</strong> 2 options (Aa, aA) out of 3 total = <strong>2/3</strong>.</li>
+                    </ul>
+                </div>
+
+                <div class="tj-edge glass">
+                    <h4><i class="fas fa-microchip"></i> TJ Honors Insight: Pedigree Bayesian Analysis</h4>
+                    <p>In complex pedigrees, we use Bayesian analysis to update risk. If a person has a 50% chance of being a carrier but has already had 4 healthy children, the probability that they are a carrier actually <em>decreases</em> with each healthy child. This "Neural Update" is a key distinction of the Elite 4.0 curriculum.</p>
+                </div>
             </div>
         `
     },
@@ -129,6 +149,8 @@ window.CHAPTER_DATA["ch4"] = {
                         <div><strong>Crossing Over</strong> — Exchange of genetic material between homologous chromosomes during meiosis I; separates linked genes.</div>
                         <div><strong>Recombination Frequency (RF)</strong> — Percentage of offspring showing recombinant phenotypes; indicates distance between genes.</div>
                         <div><strong>Map Unit (centimorgan, cM)</strong> — 1% recombination frequency = 1 map unit of distance between genes.</div>
+                        <div><strong>CIS Configuration</strong> — Dominant alleles are on the same chromosome ($AB/ab$).</div>
+                        <div><strong>TRANS Configuration</strong> — Dominant alleles are on opposite chromosomes ($Ab/aB$).</div>
                     </div>
                 </div>
 
@@ -192,19 +214,22 @@ window.CHAPTER_DATA["ch4"] = {
                     <p style="margin-top:10px; color:var(--accent-cyan); font-style:italic;">1% RF = 1 centimorgan (cM) = 1 map unit.</p>
                 </div>
 
-                <div class="example-card glass" style="padding:20px; border-radius:var(--standard-radius); margin:25px 0; border-left:3px solid var(--accent-purple);">
-                    <h5 style="color: var(--accent-purple); margin-bottom:8px;"><i class="fas fa-pencil-alt"></i> Worked Example: Gene Mapping</h5>
-                    <p style="font-family:'JetBrains Mono', monospace; background:rgba(0,0,0,0.2); padding:10px; border-radius:8px; margin-bottom:12px;">In a testcross of AaBb × aabb: 410 AaBb, 395 aabb, 48 Aabb, 47 aaBb. (a) Are genes A and B linked? (b) What is the map distance?</p>
-                    <details>
-                        <summary style="font-size:0.85rem; color:var(--accent-purple); font-weight:600; cursor:pointer;">View Solution</summary>
-                        <div style="margin-top:10px; padding-left:15px; border-left:1px solid rgba(255,255,255,0.1); line-height:2;">
-                            <div><strong>Step 1:</strong> Identify recombinants: Aabb (48) and aaBb (47) = 95 recombinants.</div>
-                            <div><strong>Step 2:</strong> Total offspring: 410 + 395 + 48 + 47 = 900.</div>
-                            <div><strong>Step 3:</strong> RF = 95/900 × 100 = <strong>10.6%</strong></div>
-                            <div><strong>(a)</strong> Yes, linked — RF < 50% means the genes are on the same chromosome.</div>
-                            <div><strong>(b)</strong> Map distance = <strong>10.6 cM</strong> apart.</div>
-                        </div>
-                    </details>
+                <!-- SECTION III: THE 3-POINT CROSS LOGIC -->
+                <h2>III. The 3-Point Cross: Determining Gene Order</h2>
+                <p>When studying three linked genes (e.g., A, B, and C), a simple dihybrid cross isn't enough to determine the <strong>Order</strong>. We need a 3-point cross.</p>
+                
+                <div class="glass-card" style="border-left: 4px solid var(--accent-red); padding: 20px; margin: 20px 0;">
+                    <h4>Identifying the Middle Gene</h4>
+                    <ol>
+                        <li>Identify the <strong>Parental classes</strong> (most frequent).</li>
+                        <li>Identify the <strong>Double Crossover (DCO)</strong> classes (least frequent).</li>
+                        <li>Compare DCO to Parental. The gene that "swaps" relative to the others in the DCO is the <strong>Middle Gene</strong>.</li>
+                    </ol>
+                </div>
+
+                <div class="tj-edge glass">
+                    <h4><i class="fas fa-microchip"></i> TJ Honors Insight: Interference</h4>
+                    <p>In reality, a crossover in one region of the chromosome often inhibits a second crossover nearby. This is called <strong>Interference</strong>. If the observed DCO frequency is less than expected (Calculated RF1 × RF2), the interference is positive.</p>
                 </div>
 
                 <div class="glass-card" style="border-left: 4px solid var(--accent-purple); padding: 20px; margin-top: 30px;">
@@ -214,7 +239,63 @@ window.CHAPTER_DATA["ch4"] = {
                         <li>Crossing over during meiosis I can separate linked genes → recombinant offspring.</li>
                         <li>RF = (recombinants / total) × 100%. Max RF = 50% (behaves as if unlinked).</li>
                         <li>1% RF = 1 map unit (centimorgan). Higher RF = genes are farther apart.</li>
+                        <li>DCOs are used in 3-point crosses to determine the linear order of genes.</li>
                     </ul>
+                </div>
+            </div>
+        `
+    },
+
+    "ch4-4": {
+        title: "10.2: Non-Mendelian Patterns",
+        subtitle: "Incomplete Dominance, Codominance, Epistasis, and Polygenic Traits",
+        content: `
+            <div class="lesson-section">
+                <div class="key-terms-box glass" style="border-left: 4px solid var(--accent-orange); padding: 20px; margin-bottom: 30px; border-radius: var(--standard-radius);">
+                    <h4 style="color: var(--accent-orange); margin-bottom: 12px;"><i class="fas fa-key"></i> Key Terms</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.9rem;">
+                        <div><strong>Incomplete Dominance</strong> — F1 hybrid has a phenotype intermediate between parents (e.g., Red x White = Pink).</div>
+                        <div><strong>Codominance</strong> — Both alleles are expressed equally in the phenotype (e.g., AB Blood type).</div>
+                        <div><strong>Epistasis</strong> — One gene masks or interferes with the expression of another gene.</div>
+                        <div><strong>Polygenic Inheritance</strong> — Multiple genes determine a single trait (e.g., height, skin color).</div>
+                        <div><strong>Pleiotropy</strong> — One gene affects multiple seemingly unrelated phenotypic traits.</div>
+                    </div>
+                </div>
+
+                <div class="intuition-box glass" style="border-left-color: var(--accent-orange);">
+                    <h3><i class="fas fa-lightbulb"></i> Big Idea: Complexity Beyond the 3:1 Ratio</h3>
+                    <p>Mendel was lucky (or selective) that he chose traits controlled by single genes with clear dominance. Most biological traits are the result of <strong>Complex Interactions</strong>. Phenotype is the emergent result of an entire network of genes and environmental factors.</p>
+                </div>
+
+                <h2>I. Dominance Variations</h2>
+                <div style="overflow-x: auto; margin: 25px 0;">
+                    <table class="glass-table" style="width:100%; border-collapse:collapse; font-size:0.88rem;">
+                        <tr style="background: rgba(249,115,22,0.2);">
+                            <th style="padding:12px; text-align:left;">Pattern</th>
+                            <th style="padding:12px; text-align:left;">Heterozygote Phenotype</th>
+                            <th style="padding:12px; text-align:left;">Example</th>
+                        </tr>
+                        <tr><td><strong>Complete</strong></td><td>Same as dominant parent</td><td>Pea seed color (Yellow)</td></tr>
+                        <tr style="background:rgba(255,255,255,0.03);"><td><strong>Incomplete</strong></td><td>Blend/Intermediate</td><td>Snapdragons (Pink)</td></tr>
+                        <tr><td><strong>Codominant</strong></td><td>Both show simultaneously</td><td>Roan cattle (Red & White hair)</td></tr>
+                    </table>
+                </div>
+
+                <h2>II. Epistasis: The Genetic Mask</h2>
+                <p>In <strong>Epistasis</strong>, the genotype at one locus can override the genotype at another. This is essentially a <strong>Biological IF-THEN statement</strong>.</p>
+                
+                <div class="example-card glass" style="border-left-color: var(--accent-orange);">
+                    <h4>Example: Labrador Coat Color</h4>
+                    <p>Gene B (Black/Brown) and Gene E (Pigment deposition).</p>
+                    <ul style="line-height: 1.8;">
+                        <li>If genotype is <strong>ee</strong>, the dog will be <strong>Yellow</strong> regardless of the B gene (the pigment never reaches the hair).</li>
+                        <li>Ratio for a dihybrid cross: <strong>9 Black : 3 Brown : 4 Yellow</strong>.</li>
+                    </ul>
+                </div>
+
+                <div class="tj-edge glass">
+                    <h4><i class="fas fa-microchip"></i> TJ Honors Insight: Mitochondrial Inheritance</h4>
+                    <p>Not all DNA is in the nucleus! <strong>Mitochondrial DNA (mtDNA)</strong> is inherited exclusively from the mother. This means traits linked to mtDNA do not follow Mendelian segregation at all – they show a <strong>Matrilineal Pattern</strong>. This is used in "Mitochondrial Eve" research in IBET evolutionary studies.</p>
                 </div>
             </div>
         `

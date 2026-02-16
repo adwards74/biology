@@ -35,7 +35,7 @@ window.CHAPTER_DATA["ch1"] = {
                 <neo-img src="assets/cell-architecture.png" caption="Comprehensive Eukaryotic Cell Architecture mapping the Endomembrane System." source="Elite Biology Research Lab"></neo-img>
 
                 <!-- SECTION I -->
-                <h2>I. The SA/V Ratio: The Law of Cell Size</h2>
+                <h2>I. The Why: Scaling Laws & Geometric Stress</h2>
 
                 <p>Imagine a cell as a tiny factory. The <strong>surface area</strong> of the cell membrane is like the number of doors and windows — it controls how much raw material can enter and how much waste can leave. The <strong>volume</strong> of the cell is like the factory floor — it determines how many workers need to be fed and how much waste they produce.</p>
 
@@ -109,7 +109,7 @@ window.CHAPTER_DATA["ch1"] = {
                 </div>
 
                 <!-- SECTION II -->
-                <h2>II. Evolution's Solution: Compartmentalization & Folding</h2>
+                <h2>II. The How: Compartmentalization Strategy</h2>
 
                 <p>If being big is so inefficient, how do organisms like humans exist? The answer is two evolutionary breakthroughs:</p>
 
@@ -117,13 +117,13 @@ window.CHAPTER_DATA["ch1"] = {
 
                 <p><strong>2. Membrane Folding:</strong> Cells that need high metabolic rates dramatically increase their internal surface area through <strong>folding</strong>. This is one of the most elegant solutions in biology:</p>
 
-                <div class="glass-card" style="border-left: 4px solid var(--accent-cyan); padding: 20px; margin: 20px 0;">
-                    <h4>Examples of Membrane Folding in Biology</h4>
-                    <ul style="line-height: 2;">
-                        <li><strong>Mitochondrial cristae:</strong> The inner membrane folds inward to create a massive surface for the electron transport chain. More cristae = more ATP production. Muscle cells have mitochondria with extremely dense cristae.</li>
-                        <li><strong>Intestinal microvilli:</strong> The cells lining your small intestine have thousands of tiny finger-like projections. This increases the absorptive surface area of the intestine to approximately <strong>32 m²</strong> — roughly the area of a studio apartment.</li>
-                        <li><strong>Root hairs:</strong> Plant root cells extend thin projections into the soil to maximize water and mineral absorption, increasing surface area by 100x or more.</li>
-                        <li><strong>Thylakoid grana:</strong> In chloroplasts, stacked disc-like membranes provide enormous surface area for capturing light energy during photosynthesis.</li>
+                <div class="glass-card elite-border" style="margin: 25px 0;">
+                    <h4 style="color: var(--accent-cyan);"><i class="fas fa-microchip"></i> Systemic Mastery Protocol: SA/V Engineering</h4>
+                    <p>On the IBET/AP exam, you must be able to link physical structure to biological function using the SA/V ratio. Use these three "Logic Gates" to evaluate any cell:</p>
+                    <ul style="line-height: 1.8; font-size: 0.9rem;">
+                        <li><strong>Gate 1: The Import/Export Limit</strong> — If the cell size ($r$) increases, the efficiency of diffusion $(\propto \frac{1}{r})$ decreases. A large cell will eventually "choke" on its own waste.</li>
+                        <li><strong>Gate 2: Complexity via Compartments</strong> — Internal membranes (ER, Golgi) allow a large cell to behave like a collection of small, efficient volumes, effectively bypassing the geometric limit.</li>
+                        <li><strong>Gate 3: Strategic Geometry</strong> — Look for non-spherical shapes. Discs (RBCs), ribbons, and highly folded surfaces (lungs) are evolutionary "hacks" to maximize SA without exploding Volume.</li>
                     </ul>
                 </div>
 
@@ -198,6 +198,25 @@ window.CHAPTER_DATA["ch1"] = {
                     <p>On the IBET exam, you may be asked to compare these two cell types. The key distinction is <strong>compartmentalization</strong>. Prokaryotes perform all chemical reactions in the cytoplasm. Eukaryotes separate incompatible reactions into organelles (e.g., the acidic pH of lysosomes would destroy proteins if not enclosed in a membrane). This compartmentalization is what allows eukaryotes to achieve far greater metabolic complexity.</p>
                 </div>
 
+                <!-- SECTION IV: ORGANELLE SYNERGY -->
+                <h2>IV. Organelle Synergy: The Integrated Network</h2>
+
+                <p>Organelles do not function in isolation; they form an <strong>Integrated Network</strong> where the output of one is the input of another. This synergy is what allows a cell to maintain homeostasis and respond to its environment.</p>
+
+                <div class="glass-card" style="border-left: 4px solid var(--accent-cyan); padding: 20px; margin: 20px 0;">
+                    <h4>Key System Couplings</h4>
+                    <ul style="line-height: 2;">
+                        <li><strong>The Energetic Coupling:</strong> Mitochondria provide the ATP (energy) that the Rough ER needs to fold proteins. Without mitochondrial flux, the entire endomembrane system stalls.</li>
+                        <li><strong>The Informational Coupling:</strong> The Nucleus sends mRNA "instructions" to Ribosomes on the ER. Feedback molecules from the cytoplasm (like transcription factors) return to the nucleus to regulate gene expression based on current cell needs.</li>
+                        <li><strong>The Waste-Recycling Coupling:</strong> Lysosomes digest damaged mitochondria (<strong>Mitophagy</strong>). This prevents the build-up of toxic reactive oxygen species (ROS) and recycles raw materials for new organelle synthesis.</li>
+                    </ul>
+                </div>
+
+                <div class="tj-edge glass">
+                    <h4><i class="fas fa-microchip"></i> TJ Honors Insight: The Endosymbiotic Theory</h4>
+                    <p>Evidence for the bacterial origin of <strong>Mitochondria</strong> and <strong>Chloroplasts</strong> is a favorite IBET topic. Both organelles contain their own circular DNA, 70S ribosomes (like bacteria), and reproduce via binary fission. This "cell-within-a-cell" relationship is the ultimate example of biological synergy.</p>
+                </div>
+
                 <!-- WORKED EXAMPLE 1 -->
                 <div class="example-card glass" style="padding:20px; border-radius:var(--standard-radius); margin:25px 0; border-left:3px solid var(--accent-emerald);">
                     <h5 style="color: var(--accent-emerald); margin-bottom:8px;"><i class="fas fa-pencil-alt"></i> Worked Example 1: Calculating SA/V for a Growing Cell</h5>
@@ -220,13 +239,21 @@ window.CHAPTER_DATA["ch1"] = {
                 <div class="example-card glass" style="padding:20px; border-radius:var(--standard-radius); margin:25px 0; border-left:3px solid var(--accent-emerald);">
                     <h5 style="color: var(--accent-emerald); margin-bottom:8px;"><i class="fas fa-pencil-alt"></i> Worked Example 2: Which Cell Shape Is Most Efficient?</h5>
                     <p style="font-family:'JetBrains Mono', monospace; background:rgba(0,0,0,0.2); padding:10px; border-radius:8px; margin-bottom:12px;">Three cells have the same volume of $8 \\mu m^3$. Cell A is a cube ($s = 2$). Cell B is a flat rectangular prism ($1 \\times 2 \\times 4$). Cell C is a sphere ($r \\approx 1.24$). Which has the highest SA/V ratio?</p>
+                    </details>
+                </div>
+
+                <!-- WORKED EXAMPLE 3 -->
+                <div class="example-card glass" style="padding:20px; border-radius:var(--standard-radius); margin:25px 0; border-left:3px solid var(--accent-emerald);">
+                    <h5 style="color: var(--accent-emerald); margin-bottom:8px;"><i class="fas fa-pencil-alt"></i> Worked Example 3: Analyzing the Alveoli Surface Area</h5>
+                    <p style="font-family:'JetBrains Mono', monospace; background:rgba(0,0,0,0.2); padding:10px; border-radius:8px; margin-bottom:12px;">Human lungs contain ~300 million alveoli, each roughly a sphere with $r = 100 \mu m$. Calculate the total surface area ($m^2$) available for gas exchange. (Assume $SA_{sphere} = 4\pi r^2$)</p>
                     <details>
                         <summary style="font-size:0.85rem; color:var(--accent-emerald); font-weight:600; cursor:pointer;">View Step-by-Step Solution</summary>
                         <div style="margin-top:10px; padding-left:15px; border-left:1px solid rgba(255,255,255,0.1);">
-                            <div style="margin-bottom:8px;"><strong>Cell A (Cube):</strong> $SA = 6(2)^2 = 24$. SA/V $= 24/8 = 3.0$</div>
-                            <div style="margin-bottom:8px;"><strong>Cell B (Flat prism):</strong> $SA = 2(1 \\times 2 + 2 \\times 4 + 1 \\times 4) = 2(2 + 8 + 4) = 28$. SA/V $= 28/8 = 3.5$</div>
-                            <div style="margin-bottom:8px;"><strong>Cell C (Sphere):</strong> $SA = 4\\pi(1.24)^2 \\approx 19.3$. SA/V $= 19.3/8 \\approx 2.4$</div>
-                            <div style="margin-top:12px; color:var(--accent-cyan); font-style:italic;"><strong>Answer:</strong> <strong>Cell B (the flat shape)</strong> has the highest SA/V ratio. This is why red blood cells are biconcave discs, not spheres — the flat shape maximizes surface area for gas exchange. The sphere is actually the <em>least</em> efficient shape for the same volume.</div>
+                            <div style="margin-bottom:8px;"><strong>Step 1:</strong> Calculate SA of a single alveolus ($r = 10^{-4} m$):</div>
+                            <div style="margin-bottom:8px; padding-left:15px;">$SA_1 = 4 \pi (10^{-4})^2 = 4 \pi \times 10^{-8} \approx 1.25 \times 10^{-7} m^2$</div>
+                            <div style="margin-bottom:8px;"><strong>Step 2:</strong> Multiply by total number (300 million = $3 \times 10^8$):</div>
+                            <div style="margin-bottom:8px; padding-left:15px;">$SA_{total} = (1.25 \times 10^{-7}) \times (3 \times 10^8) = 1.25 \times 3 \times 10^1 = 37.5 \times 10 = 37.5 m^2 \times \text{factor of 2 lungs} \approx 70-100 m^2$</div>
+                            <div style="margin-top:12px; color:var(--accent-cyan); font-style:italic;"><strong>Answer:</strong> The total surface area is approximately $75 m^2$ — roughly the size of a tennis court. This massive SA/V optimization is what allows humans to sustain high metabolic oxygen demands.</div>
                         </div>
                     </details>
                 </div>
@@ -274,7 +301,7 @@ window.CHAPTER_DATA["ch1"] = {
                 </div>
 
                 <!-- SECTION I -->
-                <h2>I. The Protein Export Pipeline</h2>
+                <h2>I. The Why: The Logistics Constraint</h2>
 
                 <p>When a cell needs to produce a protein that will be exported (like a digestive enzyme or a hormone), that protein must pass through a specific series of organelles. This is the <strong>secretory pathway</strong>.</p>
 
@@ -307,7 +334,7 @@ window.CHAPTER_DATA["ch1"] = {
                 <p><strong>Why does this matter?</strong> In cystic fibrosis, a single misfolded protein (CFTR) gets stuck in Step 3 — the ER recognizes it as defective and destroys it. The protein never reaches the cell membrane, so chloride channels don't function properly, leading to thick mucus buildup in the lungs.</p>
 
                 <!-- SECTION II -->
-                <h2>II. The Smooth ER: The Other Half</h2>
+                <h2>II. The How: The Secretory Pathway</h2>
 
                 <p>While the Rough ER specializes in proteins, the <strong>Smooth ER</strong> handles a completely different set of tasks:</p>
 
@@ -328,7 +355,7 @@ window.CHAPTER_DATA["ch1"] = {
                 <p>The Smooth ER in liver cells contains enzymes that <strong>detoxify drugs and alcohol</strong>. Heavy drinkers develop enlarged Smooth ER in their liver cells as the body adapts to process more toxins — a clear example of how cell structure responds to environmental demands.</p>
 
                 <!-- SECTION III -->
-                <h2>III. Endocytosis: The Reverse Pipeline</h2>
+                <h2>III. Reverse Logistics: Endocytosis</h2>
 
                 <p>The endomembrane system doesn't just export — it also <strong>imports</strong>. Endocytosis is the process by which cells take in large molecules or even entire cells by wrapping them in a portion of the plasma membrane.</p>
 

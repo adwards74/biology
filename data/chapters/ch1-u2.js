@@ -29,7 +29,7 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                     <p>A common misconception is that "water follows salt." The precise truth is: water moves from areas of <strong>higher water potential</strong> to areas of <strong>lower water potential</strong>. Dissolved solutes <em>reduce</em> water potential, which is why water tends to move toward solutes. Understanding this distinction is critical for IBET-level analysis.</p>
                 </div>
 
-                <h2>I. Diffusion and Osmosis: The Fundamentals</h2>
+                <h2>I. The Why: Free Energy & Water Potential Flux</h2>
 
                 <p><strong>Diffusion</strong> is the net movement of molecules from an area of higher concentration to an area of lower concentration. It is a <em>passive</em> process — it requires no energy input because it is driven by the natural random motion (kinetic energy) of molecules.</p>
 
@@ -37,7 +37,7 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
 
                 <p>The key question is always: <strong>Which direction does water move?</strong> The answer depends on the relative water potential on either side of the membrane.</p>
 
-                <h2>II. The Water Potential Equation</h2>
+                <h2>II. The How: Mastering the $\Psi$ Equation</h2>
 
                 <div class="proof-box glass">
                     <h4>The Master Equation</h4>
@@ -128,6 +128,25 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
 
                 <p><strong>Critical Difference:</strong> Plant cells have a rigid <strong>cell wall</strong> that prevents lysis. When water rushes in, the cell wall pushes back, creating <strong>turgor pressure</strong> ($\\Psi_p > 0$). This is why plants are firm and upright. When a plant wilts, it has lost turgor pressure because the cells became flaccid or plasmolyzed.</p>
 
+                <!-- SECTION IV: WATER POTENTIAL GRADIENTS -->
+                <h2>IV. The Water Potential Gradient in Tissues</h2>
+
+                <p>In a multicellular organism, water potential isn't just about a single cell – it's about the <strong>Gradients</strong> across entire tissues. For example, in a tree, water moves from the soil ($ \Psi \approx -0.1$ MPa) up to the leaves ($ \Psi \approx -1.5$ MPa) and finally to the air ($ \Psi \approx -100$ MPa).</p>
+
+                <div class="glass-card" style="border-left: 4px solid var(--accent-cyan); padding: 20px; margin: 20px 0;">
+                    <h4>Factors Influencing Tissue Gradient</h4>
+                    <ul style="line-height: 2;">
+                        <li><strong>Evaporative Demand:</strong> Transpiration at the leaf surface lowers $ \Psi $ significantly, creating the "pull" that moves columns of water hundreds of feet upward.</li>
+                        <li><strong>Solute Accumulation:</strong> Root cells actively pump minerals into their xylem to lower $ \Psi_s $, ensuring water flows into the roots from the soil even in dry conditions.</li>
+                        <li><strong>Wall Elasticity:</strong> The pressure potential ($ \Psi_p $) is limited by the strength of the cellulose cell wall. If the wall is weak, the cell cannot maintain high turgor even in a hypotonic environment.</li>
+                    </ul>
+                </div>
+
+                <div class="tj-edge glass">
+                    <h4><i class="fas fa-microchip"></i> TJ Honors Insight: Equilibrium vs. Dynamic Flow</h4>
+                    <p>When you calculate $ \Psi $ in a textbook problem, you are usually looking for <strong>Equilibrium</strong> (where $ \Psi_{cell} = \Psi_{solution} $). In a living IBET lab experiment, however, you are often looking at <strong>Dynamic Flow</strong>. If $ \Delta\Psi \neq 0 $, water is currently moving, and the rate of that movement is determined by the permeability of the membrane (the number of <strong>Aquaporins</strong> active).</p>
+                </div>
+
                 <!-- WORKED EXAMPLE 1 -->
                 <div class="example-card glass" style="padding:20px; border-radius:var(--standard-radius); margin:25px 0; border-left:3px solid var(--accent-cyan);">
                     <h5 style="color: var(--accent-cyan); margin-bottom:8px;"><i class="fas fa-pencil-alt"></i> Worked Example 1: Calculating Solute Potential</h5>
@@ -157,6 +176,21 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                             <div style="margin-bottom:8px;"><strong>Step 2:</strong> Calculate $\\Psi_B$: $\\Psi_B = -0.4 + 0.3 = -0.1$ MPa</div>
                             <div style="margin-bottom:8px;"><strong>Step 3:</strong> Compare: $\\Psi_B (-0.1) > \\Psi_A (-0.2)$</div>
                             <div style="margin-top:12px; color:var(--accent-cyan); font-style:italic;"><strong>Answer:</strong> Water flows from <strong>Cell B → Cell A</strong> (from high $\\Psi$ to low $\\Psi$). Even though Cell A has more turgor pressure, its overall water potential is lower because of its high solute concentration.</div>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- WORKED EXAMPLE 3 -->
+                <div class="example-card glass" style="padding:20px; border-radius:var(--standard-radius); margin:25px 0; border-left:3px solid var(--accent-cyan);">
+                    <h5 style="color: var(--accent-cyan); margin-bottom:8px;"><i class="fas fa-pencil-alt"></i> Worked Example 3: Drought Stress in Xylem</h5>
+                    <p style="font-family:'JetBrains Mono', monospace; background:rgba(0,0,0,0.2); padding:10px; border-radius:8px; margin-bottom:12px;">A plant is experiencing drought. Soil $\Psi = -0.8$ MPa. To keep water flowing into the roots, the plant actively pumps solutes to reach $\Psi_s = -1.2$ MPa. If the root cells' turgor pressure is currently $\Psi_p = +0.2$ MPa, will water enter the roots?</p>
+                    <details>
+                        <summary style="font-size:0.85rem; color:var(--accent-cyan); font-weight:600; cursor:pointer;">View Step-by-Step Solution</summary>
+                        <div style="margin-top:10px; padding-left:15px; border-left:1px solid rgba(255,255,255,0.1);">
+                            <div style="margin-bottom:8px;"><strong>Step 1:</strong> Identify Soil Potential: $\Psi_{soil} = -0.8$ MPa</div>
+                            <div style="margin-bottom:8px;"><strong>Step 2:</strong> Calculate Root Potential: $\Psi_{root} = \Psi_s + \Psi_p = -1.2 + 0.2 = -1.0$ MPa</div>
+                            <div style="margin-bottom:8px;"><strong>Step 3:</strong> Compare: Since $\Psi_{soil} (-0.8) > \Psi_{root} (-1.0)$, water flows from Soil → Root.</div>
+                            <div style="margin-top:12px; color:var(--accent-cyan); font-style:italic;"><strong>Elite Insight:</strong> This is "osmotic adjustment." Plants survive drought by dropping their internal water potential even lower than the dry soil, maintaining the gradient needed for life.</div>
                         </div>
                     </details>
                 </div>
@@ -200,7 +234,7 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                     <p>Diffusion is free — molecules naturally spread from crowded areas to empty areas. But life often needs molecules moved the <em>wrong way</em> — concentrated where they're already abundant. This is like pushing a boulder uphill. It requires the cell to spend its energy currency: <strong>ATP</strong>. The Na⁺/K⁺ pump alone consumes about 30% of your total resting energy budget.</p>
                 </div>
 
-                <h2>I. The Transport Spectrum</h2>
+                <h2>I. The Why: Fighting Entropy & Concentration Gradients</h2>
 
                 <p>All membrane transport falls on a spectrum from completely passive to fully active:</p>
 
@@ -258,7 +292,7 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                     </table>
                 </div>
 
-                <h2>II. The Na⁺/K⁺ Pump: Life's Most Important Pump</h2>
+                <h2>II. The How: Primary Active Transport (The Na⁺/K⁺ Engine)</h2>
 
                 <p>The <strong>Sodium-Potassium ATPase</strong> is found in virtually every animal cell. It is essential for maintaining the cell's <strong>resting membrane potential</strong> (~-70mV), which is required for nerve impulses, muscle contractions, and nutrient absorption.</p>
 
@@ -291,7 +325,7 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                     </div>
                 </div>
 
-                <h2>III. Co-Transport: Hitchhiking on the Gradient</h2>
+                <h2>III. Secondary Systems: Co-Transport Logistics</h2>
 
                 <p>The Na⁺/K⁺ pump creates a steep Na⁺ gradient (high outside, low inside). Other transport proteins can harness this gradient to move a second molecule "uphill" — this is called <strong>co-transport</strong> or <strong>secondary active transport</strong>.</p>
 
@@ -315,6 +349,17 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                             <div>(d) <strong>Secondary active transport</strong> — Glucose moves against its gradient, powered by the Na⁺ gradient (not ATP directly).</div>
                         </div>
                     </details>
+                </div>
+
+                <!-- SECTION IV -->
+                <h2>IV. Advanced Kinetics: The Sodium-Potassium Exchange Mechanism</h2>
+                <div class="glass-card elite-border" style="margin: 20px 0;">
+                    <p>On the molecular level, the Na⁺/K⁺ pump is an <strong>E1-E2 ATPase</strong>. It switches between two primary states:</p>
+                    <ul style="line-height: 1.8; font-size: 0.9rem;">
+                        <li><strong>E1 State (High affinity for Na⁺)</strong>: The pump is open to the inside. Binding of Na⁺ triggers phosphorylation by ATP.</li>
+                        <li><strong>E2 State (High affinity for K⁺)</strong>: After phosphorylation, the pump flips outside. Na⁺ leaves, and K⁺ binds, triggering the release of the phosphate and flipping the pump back to E1.</li>
+                    </ul>
+                    <p style="margin-top:10px; font-style:italic; opacity:0.8;">This "Ping-Pong" mechanism ensures that ions never "leak" in the wrong direction during the change, preserving the gradient with 100% efficiency.</p>
                 </div>
 
                 <div class="glass-card" style="border-left: 4px solid var(--accent-cyan); padding: 20px; margin-top: 30px;">

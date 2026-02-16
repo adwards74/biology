@@ -7,7 +7,7 @@ window.CHAPTER_DATA = window.CHAPTER_DATA || {};
 window.CHAPTER_DATA["ch8"] = {
 
     "ch8-1": {
-        title: "16.1: Energy Flow Networks",
+        title: "14.1: Energy Flow Networks",
         subtitle: "Trophic Levels, Food Webs, and the 10% Rule",
         content: `
             <div class="lesson-section">
@@ -68,7 +68,7 @@ window.CHAPTER_DATA["ch8"] = {
     },
 
     "ch8-2": {
-        title: "16.2: Biodiversity & Resilience",
+        title: "14.2: Biodiversity & Resilience",
         subtitle: "Species Diversity, Community Interactions, and Ecosystem Stability",
         content: `
             <div class="lesson-section">

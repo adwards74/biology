@@ -135,6 +135,21 @@ window.CHAPTER_DATA["ch2"] = {
                         <li>The genetic code uses 4 bases to encode 20 amino acids via triplet codons.</li>
                     </ul>
                 </div>
+
+                <!-- SECTION IV: INFORMATIONAL THERMODYNAMICS -->
+                <h2>IV. Informational Thermodynamics: Stability and Entropy</h2>
+
+                <p>Why is DNA the master copy while RNA is the disposable copy? The answer lies in <strong>Structural Stability</strong>.</p>
+
+                <div class="glass-card" style="border-left: 4px solid var(--accent-purple); padding: 20px; margin: 20px 0;">
+                    <h4>The 2'-OH Vulnerability</h4>
+                    <p>RNA contains a hydroxyl (-OH) group at the 2' position of the ribose sugar. This group is chemically reactive and can participate in auto-catalytic cleavage. DNA lacks this group (De-oxy), making it significantly more resistant to hydrolysis. This allows DNA to persist for thousands of years (as seen in fossil DNA), whereas mRNA typically degrades within minutes or hours.</p>
+                </div>
+
+                <div class="tj-edge glass">
+                    <h4><i class="fas fa-microchip"></i> TJ Honors Insight: The GC-Clamp</h4>
+                    <p>In PCR and molecular biology, we often look at <strong>Melting Temperature ($T_m$)</strong>. Because G-C pairs have 3 hydrogen bonds while A-T pairs have only 2, regions of DNA with high GC content are more thermally stable. This is why extremophiles living in thermal vents often have genomes with high GC bias – it's an adaptation to prevent their "source code" from melting at $100^\circ C$.</p>
+                </div>
             </div>
         `
     },
@@ -256,6 +271,24 @@ window.CHAPTER_DATA["ch2"] = {
                         <li>Proofreading (DNA Pol III exonuclease) + mismatch repair → ~1 error per billion bp.</li>
                         <li>Telomeres shorten with each division; telomerase extends them in stem/cancer cells.</li>
                     </ul>
+                </div>
+
+                <!-- SECTION IV: REPLICATION FIDELITY LOGIC -->
+                <h2>IV. The Math of Fidelity: Probability and Proofreading</h2>
+
+                <p>Replication is a race against <strong>Stochastic Noise</strong>. DNA Polymerase makes a mistake about once every 100,000 nucleotides. Without repair, a human cell would accrue 60,000 mutations per division.</p>
+
+                <div class="glass-card" style="border-left: 4px solid var(--accent-emerald); padding: 20px; margin: 20px 0;">
+                    <h4>Two-Step Error Correction</h4>
+                    <ol style="line-height: 1.8;">
+                        <li><strong>Proofreading (Real-time):</strong> DNA Pol III has a 3' to 5' exonuclease "delete key". If it adds the wrong base, the geometry shift triggers the enzyme to pause, move backward, and snip out the error. This improves fidelity 100x.</li>
+                        <li><strong>Mismatch Repair (Post-replication):</strong> Specialized proteins (like MutS/MutL) scan the new DNA for "bulges" caused by improper pairing. They cut out the new strand and let DNA Pol I refill it. This improves fidelity another 100x.</li>
+                    </ol>
+                </div>
+
+                <div class="tj-edge glass">
+                    <h4><i class="fas fa-microchip"></i> TJ Honors Insight: The Fidelity-Speed Tradeoff</h4>
+                    <p>Viruses like HIV or Influenza evolve rapidly because their replication enzymes (Reverse Transcriptase or RNA Replicase) lack proofreading ability. They trade <strong>Stability</strong> for <strong>Variation</strong>, allowing them to outrun the immune system. Eukaryotes, however, prioritize stability to prevent the accumulation of lethal mutations (Cancer).</p>
                 </div>
             </div>
         `
@@ -386,6 +419,173 @@ window.CHAPTER_DATA["ch2"] = {
                         <li>AUG = start (Met); UAA/UAG/UGA = stop codons.</li>
                         <li>Alternative splicing allows one gene to produce multiple proteins.</li>
                     </ul>
+                </div>
+
+                <!-- SECTION IV: TRANSLATIONAL KINETICS -->
+                <h2>IV. Translational Kinetics: The Polysome</h2>
+
+                <p>The cell does not translate one mRNA with one ribosome. To maximize output, multiple ribosomes bind to a single mRNA molecule simultaneously, forming a <strong>Polysome (Polyribosome)</strong>.</p>
+
+                <div class="glass-card" style="border-left: 4px solid var(--accent-amber); padding: 20px; margin: 20px 0;">
+                    <h4>Assembly Line Efficiency</h4>
+                    <p>As soon as the first ribosome has moved far enough from the start codon (AUG), a second ribosome can bind. This allows for the production of dozens of protein molecules from a single mRNA template in a very short time. In prokaryotes, because there is no nucleus, translation can start even <em>before</em> transcription is finished (Coupled Transcription-Translation).</p>
+                </div>
+            </div>
+        `
+    },
+
+    "ch2-4": {
+        title: "5.2: RNA Processing & Epigenetics",
+        subtitle: "The Complexity Layer — Splicing Mechanisms and Chromatin Modification",
+        content: `
+            <div class="lesson-section">
+                <div class="key-terms-box glass" style="border-left: 4px solid var(--accent-purple); padding: 20px; margin-bottom: 30px; border-radius: var(--standard-radius);">
+                    <h4 style="color: var(--accent-purple); margin-bottom: 12px;"><i class="fas fa-key"></i> Key Terms</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.9rem;">
+                        <div><strong>Epigenetics</strong> — Changes in organisms caused by modification of gene expression rather than alteration of the genetic code itself.</div>
+                        <div><strong>Histone Acetylation</strong> — Addition of acetyl groups to histones; loosens chromatin structure, promoting transcription.</div>
+                        <div><strong>DNA Methylation</strong> — Addition of methyl groups to DNA (usually Cytosine); typically silences gene expression.</div>
+                        <div><strong>snRNPs (snurps)</strong> — Small nuclear ribonucleoproteins; part of the spliceosome that removes introns.</div>
+                        <div><strong>Alternative Splicing</strong> — Joining different combinations of exons to produce varied protein isoforms from one gene.</div>
+                    </div>
+                </div>
+
+                <div class="intuition-box glass" style="border-left-color: var(--accent-purple);">
+                    <h3><i class="fas fa-lightbulb"></i> Big Idea: The Software vs. The Hardware</h3>
+                    <p>If DNA is the <strong>hardware</strong> (the raw code), epigenetics is the <strong>software</strong> (which parts of the code are currently running). Every cell in your body has the same DNA, but a neuron looks and acts differently from a muscle cell because they have different <strong>Epigenetic Profiles</strong> — different genes are "unlocked" or "locked away" in chromatin.</p>
+                </div>
+
+                <h2>I. The Mechanics of Splicing</h2>
+                <p>Introns are not just "junk". They allow for <strong>Alternative Splicing</strong>, which is the primary reason why humans can be so complex with relatively few genes (~20,000).</p>
+                
+                <div class="proof-box glass">
+                    <h4>The Spliceosome Logic</h4>
+                    <p>The spliceosome recognizes specific sequences at the 5' and 3' ends of an intron. It loops the intron into a "lariat" shape, snips it out, and ligates the adjacent exons. If the cell chooses to skip an exon (Exon Skipping), it creates a different version of the protein.</p>
+                </div>
+
+                <h2>II. Epigenetics: Regulating Access</h2>
+                <p>The cell controls gene expression by changing how tightly DNA is wrapped around <strong>Histone Proteins</strong>.</p>
+
+                <div style="overflow-x: auto; margin: 25px 0;">
+                    <table class="glass-table" style="width:100%; border-collapse:collapse; font-size:0.88rem;">
+                        <tr style="background: rgba(139,92,246,0.2);">
+                            <th style="padding:12px; text-align:left;">Modification</th>
+                            <th style="padding:12px; text-align:left;">Mechanism</th>
+                            <th style="padding:12px; text-align:left;">Effect on Transcription</th>
+                        </tr>
+                        <tr><td><strong>Acetylation</strong></td><td>Adds (-COCH3) to histone tails</td><td>Loosens DNA (Euchromatin) → <strong>Active</strong></td></tr>
+                        <tr style="background:rgba(255,255,255,0.03);"><td><strong>Methylation</strong></td><td>Adds (-CH3) to DNA/Histones</td><td>Tightens DNA (Heterochromatin) → <strong>Silenced</strong></td></tr>
+                    </table>
+                </div>
+
+                <div class="tj-edge glass">
+                    <h4><i class="fas fa-dna"></i> TJ Honors Insight: Environmental Epigenetics</h4>
+                    <p>Epigenetic marks can be influenced by diet, stress, and environmental toxins. Fascinatingly, some marks can be <strong>inherited</strong> (Transgenerational Epigenetic Inheritance). This means your lifestyle choices could potentially affect the gene expression patterns of your children and grandchildren without changing a single letter of your DNA code.</p>
+                </div>
+
+                <div class="example-card glass" style="padding:20px; border-radius:var(--standard-radius); margin:25px 0; border-left:3px solid var(--accent-purple);">
+                    <h5 style="color: var(--accent-purple); margin-bottom:8px;"><i class="fas fa-pencil-alt"></i> Worked Example: Splicing Math</h5>
+                    <p style="font-family:'JetBrains Mono', monospace; background:rgba(0,0,0,0.2); padding:10px; border-radius:8px; margin-bottom:12px;">A gene has 5 exons. If any combination of at least 3 consecutive exons can form a functional protein, how many isoforms are possible?</p>
+                    <details>
+                        <summary style="font-size:0.85rem; color:var(--accent-purple); font-weight:600; cursor:pointer;">View Solution</summary>
+                        <div style="margin-top:10px; padding-left:15px; border-left:1px solid rgba(255,255,255,0.1); line-height:2;">
+                            <div>Consecutive sets of 3: (1,2,3), (2,3,4), (3,4,5) = 3</div>
+                            <div>Consecutive sets of 4: (1,2,3,4), (2,3,4,5) = 2</div>
+                            <div>Consecutive sets of 5: (1,2,3,4,5) = 1</div>
+                            <div>Total = 3 + 2 + 1 = <strong>6 Isoforms</strong></div>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        `
+    },
+
+    "ch2-5": {
+        title: "6.1: Regulation & Operons",
+        subtitle: "The Logic Gates of Life — Lac/Trp Operons and Prokaryotic Gene Control",
+        content: `
+            <div class="lesson-section">
+                <div class="key-terms-box glass" style="border-left: 4px solid var(--accent-emerald); padding: 20px; margin-bottom: 30px; border-radius: var(--standard-radius);">
+                    <h4 style="color: var(--accent-emerald); margin-bottom: 12px;"><i class="fas fa-key"></i> Key Terms</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.9rem;">
+                        <div><strong>Operon</strong> — A cluster of genes under the control of a single promoter (prokaryotes only).</div>
+                        <div><strong>Operator</strong> — The "on/off switch" where a repressor binds.</div>
+                        <div><strong>Repressor</strong> — A protein that inhibits transcription by binding to the operator.</div>
+                        <div><strong>Inducer</strong> — A molecule that inactivates a repressor (e.g., Allolactose).</div>
+                        <div><strong>Corepressor</strong> — A molecule that activates a repressor (e.g., Tryptophan).</div>
+                    </div>
+                </div>
+
+                <div class="intuition-box glass" style="border-left-color: var(--accent-emerald);">
+                    <h3><i class="fas fa-lightbulb"></i> Big Idea: Genes Are NOT All-Or-Nothing</h3>
+                    <p>Bacteria are extreme economists. They won't spend energy making an enzyme if they don't need it. Operons act like <strong>Biological Transistors</strong>, turning metabolic pathways on or off based on chemical signals in the environment. This is the foundation of synthetic biology.</p>
+                </div>
+
+                <h2>I. The Lac Operon: Inducible Logic</h2>
+                <p>The <em>Lac</em> operon is an <strong>Inducible System</strong>. It is normally OFF and only turns ON when lactose is present and glucose is absent.</p>
+                
+                <div class="glass-card" style="border-left: 4px solid var(--accent-cyan); padding: 20px; margin: 20px 0;">
+                    <h4>How it works:</h4>
+                    <ul>
+                        <li><strong>No Lactose:</strong> Repressor binds to operator → RNA Pol blocked → No enzymes made.</li>
+                        <li><strong>Lactose Present:</strong> Allolactose binds repressor → Repressor changes shape and falls off → RNA Pol can transcribe.</li>
+                    </ul>
+                </div>
+
+                <h2>II. The Trp Operon: Repressible Logic</h2>
+                <p>The <em>Trp</em> operon is a <strong>Repressible System</strong>. It is normally ON and only turns OFF when the cell has enough tryptophan.</p>
+
+                <div class="tj-edge glass">
+                    <h4><i class="fas fa-microchip"></i> TJ Honors Insight: Negative Feedback</h4>
+                    <p>The Trp operon is a classic example of <strong>Negative Feedback</strong>. As Tryptophan levels rise, Tryptophan itself acts as a corepressor, shutting down its own production. This maintains the optimal concentration and prevents metabolic waste.</p>
+                </div>
+            </div>
+        `
+    },
+
+    "ch2-6": {
+        title: "6.2: Molecular Biotechnology",
+        subtitle: "The Genome Engineering Toolkit — PCR, Gel Electrophoresis, and CRISPR-Cas9",
+        content: `
+            <div class="lesson-section">
+                <div class="key-terms-box glass" style="border-left: 4px solid var(--accent-amber); padding: 20px; margin-bottom: 30px; border-radius: var(--standard-radius);">
+                    <h4 style="color: var(--accent-amber); margin-bottom: 12px;"><i class="fas fa-key"></i> Key Terms</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.9rem;">
+                        <div><strong>PCR (Polymerase Chain Reaction)</strong> — A method to amplify (copy) specific DNA segments billions of times.</div>
+                        <div><strong>Restriction Enzymes</strong> — Molecular scissors that cut DNA at specific palindromic sequences.</div>
+                        <div><strong>Gel Electrophoresis</strong> — Separates DNA fragments based on size using an electric field (DNA is negative).</div>
+                        <div><strong>Plasmid</strong> — Small, circular DNA used as a vector to transport genes into bacteria.</div>
+                        <div><strong>CRISPR-Cas9</strong> — A precision genome editing tool using guide RNA (gRNA) and the Cas9 nuclease.</div>
+                    </div>
+                </div>
+
+                <div class="intuition-box glass" style="border-left-color: var(--accent-amber);">
+                    <h3><i class="fas fa-lightbulb"></i> Big Idea: Reading, Writing, and Editing Life</h3>
+                    <p>For decades, we could only "read" DNA (sequencing) or "copy" it (cloning). With CRISPR, we can finally <strong>"Edit"</strong> it with word-processor precision. We have moved from observing biology to engineering it.</p>
+                </div>
+
+                <h2>I. PCR: The Molecular Xerox</h2>
+                <p>PCR uses three temperature-controlled steps to amplify DNA:</p>
+                <div class="glass-card" style="border-left: 4px solid var(--accent-blue); padding: 20px; margin: 20px 0;">
+                    <ol>
+                        <li><strong>Denaturation ($95^\circ C$):</strong> Heat breaks H-bonds, separating strands.</li>
+                        <li><strong>Annealing ($55^\circ C$):</strong> Primers bind to target sequences.</li>
+                        <li><strong>Extension ($72^\circ C$):</strong> Taq Polymerase (from hot springs bacteria!) builds new strands.</li>
+                    </ol>
+                    <p style="font-weight: bold; margin-top: 10px;">Exponential Growth: $N = N_0 \times 2^n$ where $n$ is the number of cycles.</p>
+                </div>
+
+                <h2>II. CRISPR-Cas9: The Precision Suture</h2>
+                <p>Unlike restriction enzymes which cut at fixed sites, CRISPR is <strong>Programmable</strong>.</p>
+                
+                <div class="proof-box glass">
+                    <h4>The Search and Cut Mechanism</h4>
+                    <p>The <strong>Guide RNA (gRNA)</strong> acts as a molecular GPS, searching the genome for a 20-base match. Once found, the <strong>Cas9 enzyme</strong> creates a double-strand break. The cell's repair mechanisms then either disable the gene (NHEJ) or insert a new sequence (HDR).</p>
+                </div>
+
+                <div class="tj-edge glass">
+                    <h4><i class="fas fa-microchip"></i> TJ Honors Insight: Ethical Boundaries</h4>
+                    <p>CRISPR technology raises profound ethical questions via <strong>Gene Drives</strong> and germline editing. If we "fix" a genetic disease in an embryo, that change is passed to ALL future generations. Investigating these trade-offs is a core component of modern IBET research.</p>
                 </div>
             </div>
         `

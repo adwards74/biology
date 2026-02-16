@@ -29,6 +29,38 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                     <p>A common misconception is that "water follows salt." The precise truth is: water moves from areas of <strong>higher water potential</strong> to areas of <strong>lower water potential</strong>. Dissolved solutes <em>reduce</em> water potential, which is why water tends to move toward solutes. Understanding this distinction is critical for IBET-level analysis.</p>
                 </div>
 
+                <!-- PREMIUM CINEMATIC HEADER: WATER POTENTIAL MASTER -->
+                <div class="visual-dynamic glass" style="margin: 30px 0; padding: 40px; border-radius: var(--standard-radius); background: linear-gradient(135deg, #0c4a6e 0%, #0f172a 100%); border: 2px solid var(--accent-cyan); overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(6,182,212,0.2);">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 30px; position: relative; z-index: 1;">
+                        <h4 style="color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; border-bottom: 2px solid var(--accent-cyan); padding-bottom: 8px; margin: 0;">Water Potential Equilibrium Logic</h4>
+                        
+                        <svg viewBox="0 0 500 150" style="max-width: 600px; width: 100%; height: auto; filter: drop-shadow(0 0 10px rgba(6,182,212,0.3));">
+                            <!-- Gradient Flow -->
+                            <defs>
+                                <linearGradient id="wp-flow" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:var(--accent-cyan); stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:var(--accent-emerald); stop-opacity:0.2" />
+                                </linearGradient>
+                            </defs>
+                            
+                            <!-- Pressure Vector -->
+                            <path d="M 50 75 Q 250 25 450 75" fill="none" stroke="url(#wp-flow)" stroke-width="4" stroke-dasharray="10,5">
+                                <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite" />
+                            </path>
+                            
+                            <!-- Particles -->
+                            <circle r="3" fill="var(--accent-cyan)">
+                                <animateMotion path="M 50 75 Q 250 25 450 75" dur="3s" repeatCount="indefinite" />
+                            </circle>
+                            
+                            <text x="50" y="110" fill="var(--accent-cyan)" font-size="12" font-weight="bold">HIGH $\Psi$ (0)</text>
+                            <text x="450" y="110" fill="var(--accent-emerald)" font-size="12" font-weight="bold" text-anchor="end">LOW $\Psi$ (-)</text>
+                            
+                            <text x="250" y="140" fill="white" font-size="10" text-anchor="middle" opacity="0.6">Movement Toward Negative Free Energy</text>
+                        </svg>
+                    </div>
+                </div>
+
                 <h2>I. The Why: Free Energy & Water Potential Flux</h2>
 
                 <p><strong>Diffusion</strong> is the net movement of molecules from an area of higher concentration to an area of lower concentration. It is a <em>passive</em> process — it requires no energy input because it is driven by the natural random motion (kinetic energy) of molecules.</p>
@@ -60,36 +92,49 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
 
                 <p><strong>The Golden Rule:</strong> Water ALWAYS moves from <strong>high $\\Psi$</strong> to <strong>low $\\Psi$</strong>. Pure water ($\\Psi = 0$) has the highest possible water potential.</p>
 
-                <!-- VISUAL DYNAMIC: WATER POTENTIAL LOGIC -->
-                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
-                    <h5 style="color: var(--accent-cyan); margin-bottom: 20px; text-align: center;"><i class="fas fa-faucet"></i> Visual Dynamic: Water Potential & Osmotic Pressure</h5>
-                    <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                        <svg viewBox="0 0 400 200" style="max-width: 500px; width: 100%; height: auto;">
+                <!-- VISUAL DYNAMIC: OSMOTIC PRESSURE SIMULATOR -->
+                <div class="visual-dynamic glass" style="padding: 30px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.4); border: 1px solid var(--accent-cyan);">
+                    <h5 style="color: var(--accent-cyan); margin-bottom: 25px; text-align: center;"><i class="fas fa-vial"></i> Osmotic Pressure Simulator</h5>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                        <svg viewBox="0 0 400 220" style="max-width: 500px; width: 100%; height: auto;">
                             <!-- U-Tube Glass -->
-                            <path d="M 120 40 L 120 160 Q 120 180 140 180 L 260 180 Q 280 180 280 160 L 280 40" fill="none" stroke="white" stroke-width="3" opacity="0.3" />
+                            <path d="M 120 40 V 160 Q 120 180 140 180 H 260 Q 280 180 280 160 V 40" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="4" />
                             
-                            <!-- Left Side (High WP) -->
-                            <rect x="122" y="80" width="58" height="100" fill="rgba(6,182,212,0.2)" />
-                            <text x="150" y="70" fill="var(--accent-cyan)" font-size="10" text-anchor="middle" font-weight="bold">High $\\Psi$ (0 MPa)</text>
+                            <!-- Water Level (Left) -->
+                            <rect x="122" y="100" width="58" height="80" fill="rgba(6,182,212,0.15)">
+                                <animate attributeName="y" values="100;120;100" dur="8s" repeatCount="indefinite" />
+                                <animate attributeName="height" values="80;60;80" dur="8s" repeatCount="indefinite" />
+                            </rect>
                             
-                            <!-- Right Side (Low WP) -->
-                            <rect x="220" y="110" width="58" height="70" fill="rgba(16,185,129,0.3)" />
-                            <text x="250" y="100" fill="var(--accent-emerald)" font-size="10" text-anchor="middle" font-weight="bold">Low $\\Psi$ (-1.0 MPa)</text>
+                            <!-- Water Level (Right) -->
+                            <rect x="220" y="70" width="58" height="110" fill="rgba(16,185,129,0.2)">
+                                <animate attributeName="y" values="70;50;70" dur="8s" repeatCount="indefinite" />
+                                <animate attributeName="height" values="110;130;110" dur="8s" repeatCount="indefinite" />
+                            </rect>
                             
-                            <!-- Solutes (Right) -->
-                            <circle cx="230" cy="130" r="3" fill="var(--accent-amber)" />
-                            <circle cx="260" cy="140" r="3" fill="var(--accent-amber)" />
-                            <circle cx="240" cy="160" r="3" fill="var(--accent-amber)" />
-                            <circle cx="265" cy="165" r="3" fill="var(--accent-amber)" />
+                            <!-- Semipermeable Membrane -->
+                            <line x1="200" y1="140" x2="200" y2="180" stroke="white" stroke-width="2" stroke-dasharray="2,2" />
                             
-                            <!-- Arrow (Flow) -->
-                            <path d="M 150 160 Q 200 190 250 160" fill="none" stroke="var(--accent-cyan)" stroke-width="4" stroke-linecap="round">
-                                <animate attributeName="stroke-dasharray" from="0,200" to="200,0" dur="2s" repeatCount="indefinite" />
-                            </path>
-                            <text x="200" y="175" fill="white" font-size="9" text-anchor="middle">NET FLOW</text>
+                            <!-- Solutes (Right only) -->
+                            <g>
+                                <circle cx="235" cy="110" r="3" fill="var(--accent-amber)" />
+                                <circle cx="260" cy="130" r="3" fill="var(--accent-amber)" />
+                                <circle cx="240" cy="155" r="3" fill="var(--accent-amber)" />
+                                <circle cx="265" cy="90" r="3" fill="var(--accent-amber)" />
+                            </g>
                             
-                            <text x="200" y="30" fill="white" font-size="11" text-anchor="middle" font-style="italic">Diffusion of water down the potential gradient</text>
+                            <!-- Moving Water Particles -->
+                            <circle r="2" fill="var(--accent-cyan)">
+                                <animateMotion path="M 160 140 Q 200 170 240 140" dur="2s" repeatCount="indefinite" />
+                            </circle>
+                            <circle r="2" fill="var(--accent-cyan)" opacity="0.5">
+                                <animateMotion path="M 140 150 H 260" dur="3s" repeatCount="indefinite" />
+                            </circle>
+
+                            <text x="150" y="30" fill="var(--accent-cyan)" font-size="9" text-anchor="middle">Pure Water (0)</text>
+                            <text x="250" y="30" fill="var(--accent-emerald)" font-size="9" text-anchor="middle">Solution (-1.2)</text>
                         </svg>
+                        <p style="font-size: 0.85rem; color: #888; text-align: center; font-style: italic;">Water moves toward the side with <strong>lower potential</strong> until pressure balances the osmotic pull.</p>
                     </div>
                 </div>
 
@@ -205,6 +250,24 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                         <li>Always calculate both sides and compare to determine water flow direction.</li>
                     </ul>
                 </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (HYBRID LINK CARD) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-cyan); padding: 30px;">
+                    <h5 style="color: var(--accent-cyan); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Water Potential & Osmoregulation</h5>
+                    <a href="https://www.youtube.com/watch?v=L-osuaqiX5A" target="_blank" style="text-decoration: none; display: block;">
+                        <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://img.youtube.com/vi/L-osuaqiX5A/maxresdefault.jpg'); background-size: cover; background-position: center; border: 1px solid rgba(6,182,212,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s ease;">
+                            <!-- Floating Play Button -->
+                            <div style="width: 80px; height: 80px; background: var(--accent-emerald); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(16,185,129,0.6); z-index: 2;">
+                                <i class="fas fa-play" style="color: black; font-size: 2rem; margin-left: 5px;"></i>
+                            </div>
+                            <!-- Bottom Info Bar -->
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(16, 185, 129, 0.9); padding: 12px; text-align: center; backdrop-filter: blur(10px);">
+                                <p style="margin: 0; color: black; font-weight: 800; font-size: 0.9rem; letter-spacing: 1px;">WATCH ON YOUTUBE <i class="fas fa-external-link-alt" style="font-size: 0.8rem; margin-left: 8px;"></i></p>
+                            </div>
+                        </div>
+                    </a>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Water Potential (Amoeba Sisters / Academic Curation)</p>
+                </div>
             </div>
         `
     },
@@ -234,45 +297,94 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                     <p>Diffusion is free — molecules naturally spread from crowded areas to empty areas. But life often needs molecules moved the <em>wrong way</em> — concentrated where they're already abundant. This is like pushing a boulder uphill. It requires the cell to spend its energy currency: <strong>ATP</strong>. The Na⁺/K⁺ pump alone consumes about 30% of your total resting energy budget.</p>
                 </div>
 
+                <!-- PREMIUM CINEMATIC HEADER: ACTIVE TRANSPORT -->
+                <div class="visual-dynamic glass" style="margin: 30px 0; padding: 40px; border-radius: var(--standard-radius); background: linear-gradient(135deg, #451a03 0%, #0f172a 100%); border: 2px solid var(--accent-amber); overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(245,158,11,0.2);">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 30px; position: relative; z-index: 1;">
+                        <h4 style="color: var(--accent-amber); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; border-bottom: 2px solid var(--accent-amber); padding-bottom: 8px; margin: 0;">Active Logistics & Ion Flux</h4>
+                        <svg viewBox="0 0 500 150" style="max-width: 600px; width: 100%; height: auto; filter: drop-shadow(0 0 10px rgba(245,158,11,0.3));">
+                            <!-- Pump Core -->
+                            <rect x="220" y="50" width="60" height="80" rx="10" fill="rgba(245,158,11,0.1)" stroke="var(--accent-amber)" stroke-width="3">
+                                <animate attributeName="stroke-width" values="3;5;3" dur="2s" repeatCount="indefinite" />
+                            </rect>
+                            
+                            <!-- ATP Input -->
+                            <circle cx="210" cy="90" r="12" fill="var(--accent-amber)" opacity="0.3">
+                                <animate attributeName="r" values="12;18;12" dur="1s" repeatCount="indefinite" />
+                            </circle>
+                            <text x="210" y="93" fill="var(--accent-amber)" font-size="8" text-anchor="middle" font-weight="bold">ATP</text>
+                            
+                            <!-- Sodium Flow (Out) -->
+                            <g>
+                                <circle r="4" fill="var(--accent-red)">
+                                    <animateMotion path="M 250 90 C 250 40 400 40 450 40" dur="2s" repeatCount="indefinite" />
+                                </circle>
+                                <text x="400" y="30" fill="var(--accent-red)" font-size="10" font-weight="bold">3 Na⁺ OUT</text>
+                            </g>
+                            
+                            <!-- Potassium Flow (In) -->
+                            <g>
+                                <circle r="4" fill="var(--accent-cyan)">
+                                    <animateMotion path="M 450 110 C 300 110 250 110 50 110" dur="2.5s" repeatCount="indefinite" />
+                                </circle>
+                                <text x="80" y="130" fill="var(--accent-cyan)" font-size="10" font-weight="bold">2 K⁺ IN</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+
                 <h2>I. The Why: Fighting Entropy & Concentration Gradients</h2>
 
                 <p>All membrane transport falls on a spectrum from completely passive to fully active:</p>
 
-                <!-- VISUAL DYNAMIC: TRANSPORT ANIMATION -->
-                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
-                    <h5 style="color: var(--accent-cyan); margin-bottom: 20px; text-align: center;"><i class="fas fa-bolt"></i> Visual Dynamic: Membrane Transport Energetics</h5>
-                    <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
-                        <!-- PASSIVE -->
-                        <div style="text-align: center;">
-                            <svg viewBox="0 0 150 200" width="150">
-                                <rect x="0" y="90" width="150" height="20" fill="rgba(255,255,255,0.1)" stroke="white" stroke-width="1" />
-                                <rect x="60" y="85" width="30" height="30" fill="#111" stroke="var(--accent-cyan)" stroke-width="2" />
-                                <!-- Channel Particles -->
-                                <circle cx="75" cy="40" r="4" fill="var(--accent-cyan)">
-                                    <animate attributeName="cy" from="30" to="170" dur="1.5s" repeatCount="indefinite" />
+                <!-- MOLECULAR SIMULATION: NA+/K+ PUMP (E1-E2 MECHANISM) -->
+                <div class="visual-dynamic glass" style="padding: 30px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.4); border: 1px solid var(--accent-amber);">
+                    <h5 style="color: var(--accent-amber); margin-bottom: 25px; text-align: center;"><i class="fas fa-microchip"></i> Na⁺/K⁺ Pump Molecular Dynamics</h5>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                        <svg viewBox="0 0 400 240" style="max-width: 500px; width: 100%; height: auto;">
+                            <!-- Membrane -->
+                            <rect x="0" y="100" width="400" height="40" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                            
+                            <!-- Pump Body (Animated transformation) -->
+                            <path d="M 170 80 Q 200 60 230 80 L 230 160 Q 200 180 170 160 Z" fill="#111" stroke="var(--accent-amber)" stroke-width="3">
+                                <animate attributeName="d" 
+                                    values="M 170 80 Q 200 60 230 80 L 230 160 Q 200 180 170 160 Z;
+                                            M 170 60 Q 200 80 230 60 L 230 140 Q 200 160 170 140 Z;
+                                            M 170 80 Q 200 60 230 80 L 230 160 Q 200 180 170 160 Z" 
+                                    dur="4s" repeatCount="indefinite" />
+                            </path>
+                            
+                            <!-- ATP Firing -->
+                            <circle cx="160" cy="120" r="0" fill="var(--accent-amber)">
+                                <animate attributeName="r" values="0;15;0" dur="4s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" values="0;1;0" dur="4s" repeatCount="indefinite" />
+                            </circle>
+                            
+                            <!-- Ion Pings -->
+                            <g>
+                                <!-- Na+ outgoing -->
+                                <circle r="3" fill="var(--accent-red)">
+                                    <animateMotion path="M 185 100 Q 200 40 250 40" dur="4s" repeatCount="indefinite" />
                                 </circle>
-                                <text x="75" y="20" fill="var(--accent-cyan)" font-size="10" text-anchor="middle" font-weight="bold">PASSIVE</text>
-                                <text x="75" y="190" fill="#aaa" font-size="8" text-anchor="middle">High → Low (Free)</text>
-                            </svg>
-                        </div>
-                        <!-- ACTIVE -->
-                        <div style="text-align: center;">
-                            <svg viewBox="0 0 150 200" width="150">
-                                <rect x="0" y="90" width="150" height="20" fill="rgba(255,255,255,0.1)" stroke="white" stroke-width="1" />
-                                <rect x="60" y="85" width="30" height="30" fill="#111" stroke="var(--accent-amber)" stroke-width="2" />
-                                <!-- ATP Spark -->
-                                <circle cx="95" cy="100" r="8" fill="rgba(245,158,11,0.2)">
-                                    <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite" />
+                                <circle r="3" fill="var(--accent-red)">
+                                    <animateMotion path="M 200 100 Q 200 20 280 40" dur="4s" begin="0.2s" repeatCount="indefinite" />
                                 </circle>
-                                <text x="105" y="105" fill="var(--accent-amber)" font-size="8">ATP</text>
-                                <!-- Pump Particles -->
-                                <circle cx="75" cy="170" r="4" fill="var(--accent-emerald)">
-                                    <animate attributeName="cy" from="170" to="30" dur="1.5s" repeatCount="indefinite" />
+                                <circle r="3" fill="var(--accent-red)">
+                                    <animateMotion path="M 215 100 Q 200 30 310 40" dur="4s" begin="0.4s" repeatCount="indefinite" />
                                 </circle>
-                                <text x="75" y="20" fill="var(--accent-amber)" font-size="10" text-anchor="middle" font-weight="bold">ACTIVE</text>
-                                <text x="75" y="190" fill="#aaa" font-size="8" text-anchor="middle">Low → High (Spent)</text>
-                            </svg>
-                        </div>
+                                
+                                <!-- K+ incoming -->
+                                <circle r="3" fill="var(--accent-cyan)">
+                                    <animateMotion path="M 230 40 Q 200 80 180 200" dur="4s" begin="2s" repeatCount="indefinite" />
+                                </circle>
+                                <circle r="3" fill="var(--accent-cyan)">
+                                    <animateMotion path="M 250 40 Q 200 100 220 200" dur="4s" begin="2.2s" repeatCount="indefinite" />
+                                </circle>
+                            </g>
+                            
+                            <text x="50" y="220" fill="#888" font-size="9">INTRACELLULAR (Negative)</text>
+                            <text x="350" y="40" fill="#888" font-size="9" text-anchor="end">EXTRACELLULAR</text>
+                        </svg>
+                        <p style="font-size: 0.85rem; color: #888; text-align: center; font-style: italic;">The "Ping-Pong" conformational change (E1 $\to$ E2) powered by ATP hydrolysis.</p>
                     </div>
                 </div>
 
@@ -371,6 +483,24 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                         <li>Co-transport uses the energy stored in one molecule's gradient to transport a different molecule uphill.</li>
                         <li>Small nonpolar molecules diffuse freely; large or charged molecules need protein channels or carriers.</li>
                     </ul>
+                </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (HYBRID LINK CARD) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-amber); padding: 30px;">
+                    <h5 style="color: var(--accent-amber); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Active Transport & Co-Transport</h5>
+                    <a href="https://www.youtube.com/watch?v=2Th0PuORsWY" target="_blank" style="text-decoration: none; display: block;">
+                        <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://img.youtube.com/vi/2Th0PuORsWY/maxresdefault.jpg'); background-size: cover; background-position: center; border: 1px solid rgba(245,158,11,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s ease;">
+                            <!-- Floating Play Button -->
+                            <div style="width: 80px; height: 80px; background: var(--accent-amber); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(245,158,11,0.6); z-index: 2;">
+                                <i class="fas fa-play" style="color: black; font-size: 2rem; margin-left: 5px;"></i>
+                            </div>
+                            <!-- Bottom Info Bar -->
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(245, 158, 11, 0.9); padding: 12px; text-align: center; backdrop-filter: blur(10px);">
+                                <p style="margin: 0; color: black; font-weight: 800; font-size: 0.9rem; letter-spacing: 1px;">WATCH ON YOUTUBE <i class="fas fa-external-link-alt" style="font-size: 0.8rem; margin-left: 8px;"></i></p>
+                            </div>
+                        </div>
+                    </a>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Active Transport & Na+/K+ Pump (Amoeba Sisters / Academic Curation)</p>
                 </div>
             </div>
         `

@@ -32,10 +32,92 @@ window.CHAPTER_DATA["ch1"] = {
                     <p>Every living cell faces a fundamental physical constraint: as it grows larger, its internal <strong>needs</strong> (determined by volume) grow much faster than its ability to <strong>supply</strong> those needs (determined by surface area). This is the single most important geometric principle in all of cell biology. It explains why cells are microscopic, why an <strong>Organelle</strong> exists, and why evolution invented membrane folding. Most efficient cells maintain a high <strong>SA:V Ratio</strong>.</p>
                 </div>
 
-                <neo-img src="assets/cell-architecture.png" caption="Comprehensive Eukaryotic Cell Architecture mapping the Endomembrane System." source="Elite Biology Research Lab"></neo-img>
+                <!-- PREMIUM CINEMATIC HEADER: THE GEOMETRY OF LIFE -->
+                <div class="visual-dynamic glass" style="margin: 30px 0; padding: 40px; border-radius: var(--standard-radius); background: linear-gradient(135deg, #0f172a 0%, #111827 100%); border: 2px solid var(--accent-emerald); overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(16,185,129,0.2);">
+                    <!-- Background Particles -->
+                    <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.2;">
+                        <circle cx="10%" cy="20%" r="2" fill="var(--accent-cyan)" />
+                        <circle cx="85%" cy="15%" r="3" fill="var(--accent-emerald)" />
+                        <circle cx="70%" cy="80%" r="2" fill="var(--accent-amber)" />
+                    </svg>
+                    
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 30px; position: relative; z-index: 1;">
+                        <h4 style="color: var(--accent-emerald); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; border-bottom: 2px solid var(--accent-emerald); padding-bottom: 8px; margin: 0;">Geometric Mastery Module</h4>
+                        
+                        <svg viewBox="0 0 500 200" style="max-width: 600px; width: 100%; height: auto; filter: drop-shadow(0 0 15px rgba(16,185,129,0.3));">
+                            <!-- stylized cell with extreme folding -->
+                            <path d="M 250 100 
+                                     M 150 100 C 150 40, 200 40, 200 100 S 250 160, 250 100 S 300 40, 300 100 S 350 160, 350 100" 
+                                  fill="rgba(6,182,212,0.1)" stroke="var(--accent-cyan)" stroke-width="3" stroke-dasharray="8 4" />
+                            
+                            <!-- Internal folding (Cristae-like) -->
+                            <path d="M 180 100 C 180 60, 220 60, 220 100 S 260 140, 260 100 S 300 60, 300 100 S 340 140, 340 100" 
+                                  fill="none" stroke="var(--accent-emerald)" stroke-width="2" opacity="0.6" />
+                            
+                            <!-- Diffusion Vectors -->
+                            <line x1="250" y1="100" x2="400" y2="100" stroke="var(--accent-amber)" stroke-width="2" marker-end="url(#premium-arrow)" opacity="0.8">
+                                <animate attributeName="x2" from="250" to="400" dur="2.5s" repeatCount="indefinite" />
+                            </line>
+                            
+                            <text x="50%" y="190" fill="white" font-size="14" font-weight="bold" text-anchor="middle">Surface Efficiency = Flux Capacity</text>
+                            
+                            <defs>
+                                <marker id="premium-arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+                                  <path d="M0,0 L0,6 L9,3 z" fill="var(--accent-amber)" />
+                                </marker>
+                            </defs>
+                        </svg>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%;">
+                            <div class="glass" style="padding: 15px; border-radius: 10px; text-align: center; border: 1px solid rgba(6,182,212,0.3);">
+                                <div style="color: var(--accent-cyan); font-size: 1.1rem; font-weight: bold;">$SA \propto r^2$</div>
+                                <div style="font-size: 0.75rem; color: #888; margin-top: 5px;">Absorption Limit</div>
+                            </div>
+                            <div class="glass" style="padding: 15px; border-radius: 10px; text-align: center; border: 1px solid rgba(245,158,11,0.3);">
+                                <div style="color: var(--accent-amber); font-size: 1.1rem; font-weight: bold;">$V \propto r^3$</div>
+                                <div style="font-size: 0.75rem; color: #888; margin-top: 5px;">Metabolic Demand</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- SECTION I -->
                 <h2>I. The Why: Scaling Laws & Geometric Stress</h2>
+
+                <!-- DYNAMIC SVG ANIMATION: SAV EFFICIENCY -->
+                <div class="visual-dynamic glass" style="margin: 30px 0; padding: 20px; border-radius: var(--standard-radius); background: rgba(0,0,0,0.4); border: 1px solid var(--accent-emerald);">
+                    <h5 style="color: var(--accent-emerald); margin-bottom: 20px; text-align: center;"><i class="fas fa-microchip"></i> Scalability Simulator: Cube Subdivision</h5>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                        <svg width="300" height="150" viewBox="0 0 300 150">
+                            <!-- Large Cube -->
+                            <rect id="large-cube" x="30" y="25" width="100" height="100" fill="rgba(6,182,212,0.1)" stroke="var(--accent-cyan)" stroke-width="2">
+                                <animate attributeName="opacity" values="1;0;1" dur="4s" repeatCount="indefinite" />
+                            </rect>
+                            <text x="80" y="140" fill="var(--accent-cyan)" font-size="10" text-anchor="middle">Large Cell (Low Efficiency)</text>
+                            
+                            <!-- Arrow -->
+                            <path d="M 140 75 L 170 75" stroke="white" stroke-width="2" marker-end="url(#arrow-head)" />
+                            
+                            <!-- Small Cubes (Grid) -->
+                            <g id="small-cubes">
+                                <rect x="180" y="25" width="23" height="23" fill="rgba(16,185,129,0.2)" stroke="var(--accent-emerald)" stroke-width="1" />
+                                <rect x="205" y="25" width="23" height="23" fill="rgba(16,185,129,0.2)" stroke="var(--accent-emerald)" stroke-width="1" />
+                                <rect x="180" y="50" width="23" height="23" fill="rgba(16,185,129,0.2)" stroke="var(--accent-emerald)" stroke-width="1" />
+                                <rect x="205" y="50" width="23" height="23" fill="rgba(16,185,129,0.2)" stroke="var(--accent-emerald)" stroke-width="1" />
+                                <!-- Simplified grid for visual clarity -->
+                                <animate attributeName="opacity" values="0;1;0" dur="4s" repeatCount="indefinite" />
+                            </g>
+                            <text x="235" y="140" fill="var(--accent-emerald)" font-size="10" text-anchor="middle">Small Cells (High Efficiency)</text>
+                            
+                            <defs>
+                                <marker id="arrow-head" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+                                  <path d="M0,0 L0,6 L9,3 z" fill="white" />
+                                </marker>
+                            </defs>
+                        </svg>
+                        <p style="font-size: 0.85rem; color: #ccc; text-align: center;">By dividing one large volume into many small compartments, the total <strong>Surface Area</strong> increases exponentially while <strong>Volume</strong> stays the same.</p>
+                    </div>
+                </div>
 
                 <p>Imagine a cell as a tiny factory. The <strong>surface area</strong> of the cell membrane is like the number of doors and windows — it controls how much raw material can enter and how much waste can leave. The <strong>volume</strong> of the cell is like the factory floor — it determines how many workers need to be fed and how much waste they produce.</p>
 
@@ -121,7 +203,7 @@ window.CHAPTER_DATA["ch1"] = {
                     <h4 style="color: var(--accent-cyan);"><i class="fas fa-microchip"></i> Systemic Mastery Protocol: SA/V Engineering</h4>
                     <p>On the IBET/AP exam, you must be able to link physical structure to biological function using the SA/V ratio. Use these three "Logic Gates" to evaluate any cell:</p>
                     <ul style="line-height: 1.8; font-size: 0.9rem;">
-                        <li><strong>Gate 1: The Import/Export Limit</strong> — If the cell size ($r$) increases, the efficiency of diffusion $(\propto \frac{1}{r})$ decreases. A large cell will eventually "choke" on its own waste.</li>
+                        <li><strong>Gate 1: The Import/Export Limit</strong> — If the cell size ($r$) increases, the efficiency of diffusion $(\\propto \\frac{1}{r})$ decreases. A large cell will eventually "choke" on its own waste.</li>
                         <li><strong>Gate 2: Complexity via Compartments</strong> — Internal membranes (ER, Golgi) allow a large cell to behave like a collection of small, efficient volumes, effectively bypassing the geometric limit.</li>
                         <li><strong>Gate 3: Strategic Geometry</strong> — Look for non-spherical shapes. Discs (RBCs), ribbons, and highly folded surfaces (lungs) are evolutionary "hacks" to maximize SA without exploding Volume.</li>
                     </ul>
@@ -268,6 +350,15 @@ window.CHAPTER_DATA["ch1"] = {
                         <li>Evolution solves the SA/V problem through <strong>multicellularity</strong> and <strong>membrane folding</strong> (cristae, microvilli).</li>
                         <li>Eukaryotic cells achieve complexity through <strong>compartmentalization</strong> into specialized organelles.</li>
                     </ul>
+                </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-emerald);">
+                    <h5 style="color: var(--accent-emerald); margin: 20px 0; text-align: center;"><i class="fab fa-youtube"></i> Master Class: The Limits of Life</h5>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--standard-radius);">
+                        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/H6L0G8Qiz6o" title="Cell Size Limits" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 15px; text-align: center; font-style: italic;">Reference: Why are Cells Small? (Bozeman Science / Academic Curation)</p>
                 </div>
             </div>
         `

@@ -16,6 +16,44 @@ window.CHAPTER_DATA["ch9"] = {
                     <p>In modern biology, thousands of papers are published monthly. If a scientist only picks papers that support their theory, that's <strong>Confirmation Bias</strong>. A <strong>Systematic Review</strong> is a protocol-driven search that forces the researcher to look at <em>every</em> relevant study, even ones they disagree with. This is how we reach a "Scientific Consensus."</p>
                 </div>
 
+                <!-- PREMIUM CINEMATIC HEADER: THE PRISMA DATA SIEVE -->
+                <div class="visual-dynamic glass" style="margin: 30px 0; padding: 40px; border-radius: var(--standard-radius); background: linear-gradient(135deg, #4c0519 0%, #0c0a09 100%); border: 2px solid var(--accent-magenta); overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(217,70,239,0.2);">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 30px; position: relative; z-index: 1;">
+                        <h4 style="color: var(--accent-magenta); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; border-bottom: 2px solid var(--accent-magenta); padding-bottom: 8px; margin: 0;">PRISMA Evidence Purification</h4>
+                        <svg viewBox="0 0 400 220" style="max-width: 500px; width: 100%; height: auto;">
+                            <!-- The Sieve Funnel -->
+                            <path d="M 50 20 L 350 20 L 250 180 L 150 180 Z" fill="rgba(217,70,239,0.05)" stroke="var(--accent-magenta)" stroke-width="1" stroke-dasharray="5 5" />
+                            
+                            <!-- Internal Filter Plates -->
+                            <line x1="100" y1="60" x2="300" y2="60" stroke="var(--accent-magenta)" stroke-width="2" opacity="0.3" />
+                            <line x1="130" y1="120" x2="270" y2="120" stroke="var(--accent-magenta)" stroke-width="2" opacity="0.5" />
+                            
+                            <!-- Falling "Study" Particles -->
+                            <g>
+                                <!-- Noisy Data (Red) - mostly filtered out -->
+                                <circle r="3" fill="var(--accent-red)">
+                                    <animateMotion path="M 120 0 L 140 58" dur="2s" repeatCount="indefinite" />
+                                </circle>
+                                <circle r="3" fill="var(--accent-red)">
+                                    <animateMotion path="M 280 0 L 260 58" dur="2.5s" repeatCount="indefinite" />
+                                </circle>
+                                
+                                <!-- Pure Data (Magenta) - passes through -->
+                                <circle r="4" fill="var(--accent-magenta)">
+                                    <animateMotion path="M 200 0 L 200 60 L 200 120 L 200 210" dur="3s" repeatCount="indefinite" />
+                                    <animate attributeName="opacity" values="1;1;1;0" dur="3s" repeatCount="indefinite" />
+                                </circle>
+                            </g>
+                            
+                            <!-- Labels -->
+                            <text x="50%" y="50" fill="white" font-size="8" text-anchor="middle" opacity="0.6">SCREENING (N=5,000)</text>
+                            <text x="50%" y="110" fill="white" font-size="8" text-anchor="middle" opacity="0.8">ELIGIBILITY (N=150)</text>
+                            <text x="50%" y="200" fill="var(--accent-magenta)" font-size="10" text-anchor="middle" font-weight="bold">INCLUDED (N=12)</text>
+                        </svg>
+                        <p style="font-size: 0.85rem; color: #aaa; text-align: center; font-style: italic;">Scientific validation is a reductionist process: stripping away noise until only reproducible truth remains.</p>
+                    </div>
+                </div>
+
                 <h2>The "How": The PRISMA Sieve</h2>
                 <p>We use the <strong>PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-Analyses)</strong> protocol to filter data in four strict stages:</p>
                 

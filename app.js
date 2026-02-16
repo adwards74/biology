@@ -13,6 +13,23 @@ window.onerror = function (msg, url, line, col, error) {
     alert("APPLICATION ERROR: " + msg + "\nLine: " + line + "\nFile: " + url + errorDetail);
 };
 
+// ═══════════════════════════════════════════════════════
+// SABRINA BIOLOGY PORTAL - MAIN APPLICATION ENTRY
+// ═══════════════════════════════════════════════════════
+
+// Version Control for Cache Busting
+const CURRENT_VERSION = "5.5.3_fix13.3";
+const savedVersion = localStorage.getItem("bio_portal_version");
+
+if (savedVersion !== CURRENT_VERSION) {
+    console.log(`Version mismatch: ${savedVersion} -> ${CURRENT_VERSION}. Clearing cache...`);
+    localStorage.setItem("bio_portal_version", CURRENT_VERSION);
+    // Force reload with cache busting query param
+    if (!window.location.search.includes("v=" + CURRENT_VERSION)) {
+        window.location.href = window.location.pathname + "?v=" + CURRENT_VERSION;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const PROGRESS_KEY = 'genius_bio_progress';
     const QUIZ_HISTORY_KEY = 'genius_bio_quiz_history';

@@ -31,6 +31,39 @@ window.CHAPTER_DATA["ch4"] = {
                     <p>Mendel's genius was treating inheritance as a <strong>statistical problem</strong>. A Punnett square doesn't tell you what a specific offspring WILL be — it tells you the <strong>probability distribution</strong> of all possible outcomes. With enough offspring, observed ratios converge on predicted ratios (Law of Large Numbers).</p>
                 </div>
 
+                <!-- PREMIUM CINEMATIC HEADER: PROBABILITY MATRIX -->
+                <div class="visual-dynamic glass" style="margin: 30px 0; padding: 40px; border-radius: var(--standard-radius); background: linear-gradient(135deg, #2e1065 0%, #0f172a 100%); border: 2px solid var(--accent-purple); overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(139,92,246,0.3);">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 30px; position: relative; z-index: 1;">
+                        <h4 style="color: var(--accent-purple); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; border-bottom: 2px solid var(--accent-purple); padding-bottom: 8px; margin: 0;">Inheritance Probability Flux</h4>
+                        <svg viewBox="0 0 400 200" style="max-width: 500px; width: 100%; height: auto;">
+                            <!-- The Matrix Grid -->
+                            <rect x="150" y="50" width="100" height="100" rx="8" fill="rgba(139,92,246,0.1)" stroke="var(--accent-purple)" stroke-width="2" />
+                            <line x1="200" y1="50" x2="200" y2="150" stroke="var(--accent-purple)" stroke-width="1" opacity="0.5" />
+                            <line x1="150" y1="100" x2="250" y2="100" stroke="var(--accent-purple)" stroke-width="1" opacity="0.5" />
+                            
+                            <!-- Parents -->
+                            <text x="200" y="35" fill="var(--accent-cyan)" font-size="10" text-anchor="middle" font-weight="bold">PARENT A (Aa)</text>
+                            <text x="130" y="100" fill="var(--accent-amber)" font-size="10" text-anchor="middle" font-weight="bold" transform="rotate(-90 130,100)">PARENT B (Aa)</text>
+                            
+                            <!-- Outcome Glows -->
+                            <circle cx="175" cy="75" r="15" fill="var(--accent-purple)" opacity="0.4">
+                                <animate attributeName="opacity" values="0.2;0.6;0.2" dur="2s" repeatCount="indefinite" />
+                            </circle>
+                            <text x="175" y="80" fill="white" font-size="12" text-anchor="middle" font-weight="bold">AA</text>
+                            
+                            <text x="225" y="80" fill="var(--accent-cyan)" font-size="12" text-anchor="middle" font-weight="bold">Aa</text>
+                            <text x="175" y="130" fill="var(--accent-cyan)" font-size="12" text-anchor="middle" font-weight="bold">Aa</text>
+                            <text x="225" y="130" fill="var(--accent-red)" font-size="12" text-anchor="middle" font-weight="bold">aa</text>
+                            
+                            <!-- Probability Particle -->
+                            <circle r="3" fill="var(--accent-amber)">
+                                <animateMotion path="M 200 10 L 175 75" dur="3s" repeatCount="indefinite" />
+                            </circle>
+                        </svg>
+                        <p style="font-size: 0.85rem; color: #aaa; text-align: center; font-style: italic;">The Punnett Square is a 2D projection of stochastic gamete combination.</p>
+                    </div>
+                </div>
+
                 <!-- VISUAL DYNAMIC: PUNNETT LOGIC -->
                 <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
                     <h5 style="color: var(--accent-purple); margin-bottom: 20px; text-align: center;"><i class="fas fa-th-large"></i> Visual Dynamic: Probability Matrix Logic</h5>
@@ -111,6 +144,24 @@ window.CHAPTER_DATA["ch4"] = {
                         <li>Law of Segregation: alleles separate during gamete formation.</li>
                         <li>Law of Independent Assortment: genes on different chromosomes sort independently.</li>
                     </ul>
+                </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (HYBRID LINK CARD) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-purple); padding: 30px;">
+                    <h5 style="color: var(--accent-purple); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Mendelian Genetics & Probability</h5>
+                    <a href="https://www.youtube.com/watch?v=Mehz7tCxjSE" target="_blank" style="text-decoration: none; display: block;">
+                        <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://img.youtube.com/vi/Mehz7tCxjSE/maxresdefault.jpg'); background-size: cover; background-position: center; border: 1px solid rgba(139,92,246,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s ease;">
+                            <!-- Floating Play Button -->
+                            <div style="width: 80px; height: 80px; background: var(--accent-purple); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(139,92,246,0.6); z-index: 2;">
+                                <i class="fas fa-play" style="color: black; font-size: 2rem; margin-left: 5px;"></i>
+                            </div>
+                            <!-- Bottom Info Bar -->
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(139, 92, 246, 0.9); padding: 12px; text-align: center; backdrop-filter: blur(10px);">
+                                <p style="margin: 0; color: black; font-weight: 800; font-size: 0.9rem; letter-spacing: 1px;">WATCH ON YOUTUBE <i class="fas fa-external-link-alt" style="font-size: 0.8rem; margin-left: 8px;"></i></p>
+                            </div>
+                        </div>
+                    </a>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Genetics & Probability (Amoeba Sisters / Advanced Curation)</p>
                 </div>
 
                 <!-- SECTION III: BAYESIAN GENETICS -->

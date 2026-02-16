@@ -26,6 +26,15 @@ window.CHAPTER_DATA["ch12"] = {
                         <li><strong>Constants:</strong> Factors that must stay the same (Temperature, pH, Volume) so they don't mess up the data.</li>
                     </ul>
                 </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (EMBEDDED) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-emerald); padding: 30px;">
+                    <h5 style="color: var(--accent-emerald); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Experimental Design</h5>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(16,185,129,0.3);">
+                        <iframe src="https://www.youtube.com/embed/5U7L_2VnS_k" title="Experimental Design" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Controlled Experiments (Bozeman Science)</p>
+                </div>
             </div>
         `
     },
@@ -49,6 +58,15 @@ window.CHAPTER_DATA["ch12"] = {
                 <div class="key-terms-box glass" style="margin-top:20px; border-color: var(--accent-emerald);">
                     <h4><i class="fas fa-lightbulb"></i> Pro-Tip</h4>
                     <p>Always use 'if/then' logic in your reasoning. "If the enzyme is denatured, then the substrate can no longer bind, thus the reaction stops."</p>
+                </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (EMBEDDED) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-magenta); padding: 30px;">
+                    <h5 style="color: var(--accent-magenta); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: The CER Model</h5>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(217,70,239,0.3);">
+                        <iframe src="https://www.youtube.com/embed/5KKsLuRPsvU" title="CER" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Evidence-Based Claims (Crash Course)</p>
                 </div>
             </div>
         `

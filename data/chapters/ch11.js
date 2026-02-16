@@ -46,6 +46,15 @@ window.CHAPTER_DATA["ch11"] = {
                     <p><strong>Total $\\chi^2$:</strong> 1.33</p>
                     <p><strong>Conclusion:</strong> With 1 Degree of Freedom (categories - 1), the critical value for $p=0.05$ is 3.84. Since $1.33 < 3.84$, we <strong>Fail to Reject the Null Hypothesis</strong>. The 70:30 result is close enough to 75:25 to be explained by random chance.</p>
                 </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (EMBEDDED) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-amber); padding: 30px;">
+                    <h5 style="color: var(--accent-amber); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: The Chi-Squared Test</h5>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(245,158,11,0.3);">
+                        <iframe src="https://www.youtube.com/embed/zOvUQWOzTlc" title="Pearson's chi square test (goodness of fit)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Pearson's chi square test (Khan Academy)</p>
+                </div>
             </div>
         `
     },
@@ -57,6 +66,32 @@ window.CHAPTER_DATA["ch11"] = {
                 <div class="intuition-box glass" style="border-left-color: var(--accent-red);">
                     <h3><i class="fas fa-arrows-alt-v"></i> The "Why": Sample vs. Population</h3>
                     <p>We can't measure every tree in the world. We measure 20. The <strong>Standard Error of the Mean (SEM)</strong> tells us how accurately that sample mean represents the true global average. It’s the "precision" of our measuring stick.</p>
+                </div>
+
+                <!-- PREMIUM CINEMATIC HEADER: THE SEM DISTRIBUTION -->
+                <div class="visual-dynamic glass" style="margin: 30px 0; padding: 40px; border-radius: var(--standard-radius); background: linear-gradient(135deg, #450a0a 0%, #0c0a09 100%); border: 2px solid var(--accent-red); overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(239,68,68,0.2);">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 30px; position: relative; z-index: 1;">
+                        <h4 style="color: var(--accent-red); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; border-bottom: 2px solid var(--accent-red); padding-bottom: 8px; margin: 0;">Uncertainty & SEM Architecture</h4>
+                        <svg viewBox="0 0 400 180" style="max-width: 500px; width: 100%; height: auto;">
+                            <!-- Bell Curve -->
+                            <path d="M 50 150 Q 200 20 350 150" fill="rgba(239,68,68,0.1)" stroke="var(--accent-red)" stroke-width="2" />
+                            
+                            <!-- Mean Line -->
+                            <line x1="200" y1="150" x2="200" y2="40" stroke="white" stroke-width="1" stroke-dasharray="4 4" />
+                            
+                            <!-- SEM Error Bars -->
+                            <g>
+                                <line x1="170" y1="90" x2="230" y2="90" stroke="var(--accent-cyan)" stroke-width="3" />
+                                <line x1="170" y1="80" x2="170" y2="100" stroke="var(--accent-cyan)" stroke-width="2" />
+                                <line x1="230" y1="80" x2="230" y2="100" stroke="var(--accent-cyan)" stroke-width="2" />
+                            </g>
+                            
+                            <!-- Labels -->
+                            <text x="200" y="165" fill="white" font-size="10" text-anchor="middle">POPULATION MEAN (μ)</text>
+                            <text x="240" y="85" fill="var(--accent-cyan)" font-size="9" font-weight="bold">± 2 SEM (95% CI)</text>
+                        </svg>
+                        <p style="font-size: 0.85rem; color: #aaa; text-align: center; font-style: italic;">The Standard Error is a measure of the precision of the estimate of the population mean.</p>
+                    </div>
                 </div>
 
                 <h2>The "How": Reading the Error Bars</h2>
@@ -75,6 +110,15 @@ window.CHAPTER_DATA["ch11"] = {
                         <li>If the <strong>2xSEM error bars overlap</strong> $\rightarrow$ The difference is likely NOT significant.</li>
                         <li>If the <strong>error bars do NOT overlap</strong> $\rightarrow$ There is a high probability the results are significantly different.</li>
                     </ul>
+                </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (EMBEDDED) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-red); padding: 30px;">
+                    <h5 style="color: var(--accent-red); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Standard Error & SD</h5>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(239,68,68,0.3);">
+                        <iframe src="https://www.youtube.com/embed/BwYj69LAQOI" title="SEM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Standard Deviation vs Standard Error (Bozeman Science)</p>
                 </div>
             </div>
         `

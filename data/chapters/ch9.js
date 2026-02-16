@@ -82,6 +82,15 @@ window.CHAPTER_DATA["ch9"] = {
                         <text x="125" y="162" fill="#fff" font-size="8" font-weight="bold">Included</text>
                     </svg>
                 </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (EMBEDDED) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-magenta); padding: 30px;">
+                    <h5 style="color: var(--accent-magenta); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Systematic Reviews</h5>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(217,70,239,0.3);">
+                        <iframe src="https://www.youtube.com/embed/fA97v8fJ5jE" title="PRISMA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Understanding PRISMA (Cochrane Training)</p>
+                </div>
             </div>
         `
     },
@@ -96,6 +105,31 @@ window.CHAPTER_DATA["ch9"] = {
                     <p>Many "breakthrough" study results cannot be reproduced by other scientists. Why? Because of <strong>P-Hacking</strong>. If you run 20 different tests on random data, by pure chance, one might show a p-value < 0.05. Reporting <em>only</em> that one result is scientific dishonesty.</p>
                 </div>
 
+                <!-- PREMIUM CINEMATIC HEADER: THE P-HACKING BIAS -->
+                <div class="visual-dynamic glass" style="margin: 30px 0; padding: 40px; border-radius: var(--standard-radius); background: linear-gradient(135deg, #451a03 0%, #0c0a09 100%); border: 2px solid var(--accent-orange); overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(249,115,22,0.2);">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 30px; position: relative; z-index: 1;">
+                        <h4 style="color: var(--accent-orange); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; border-bottom: 2px solid var(--accent-orange); padding-bottom: 8px; margin: 0;">Statistical Bias: P-Hacking</h4>
+                        <svg viewBox="0 0 400 150" style="max-width: 500px; width: 100%; height: auto;">
+                            <!-- Data Cloud -->
+                            <rect x="100" y="40" width="200" height="70" rx="10" fill="rgba(255,255,255,0.05)" stroke="white" stroke-width="1" stroke-dasharray="2 2" />
+                            
+                            <!-- Search Beam -->
+                            <path d="M 200 40 L 150 110 L 250 110 Z" fill="rgba(249,115,22,0.2)" stroke="var(--accent-orange)" stroke-width="1" />
+                            
+                            <!-- Result Glow -->
+                            <circle cx="200" cy="85" r="8" fill="var(--accent-orange)">
+                                <animate attributeName="r" values="8;12;8" dur="1s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" values="1;0.4;1" dur="1s" repeatCount="indefinite" />
+                            </circle>
+                            <text x="215" y="90" fill="var(--accent-orange)" font-size="10" font-weight="bold">p < 0.05</text>
+                            
+                            <!-- Labels -->
+                            <text x="50%" y="30" fill="#888" font-size="8" text-anchor="middle">SEARCHING RANDOM DATA FOR SIGNIFICANCE</text>
+                        </svg>
+                        <p style="font-size: 0.85rem; color: #aaa; text-align: center; font-style: italic;">If you torture the data long enough, it will confess to anything.</p>
+                    </div>
+                </div>
+
                 <h2>The "How": Beyond the P-Value</h2>
                 <p>To find the real truth, we focus on two things:</p>
                 <div class="glass-card" style="padding:20px;">
@@ -103,6 +137,15 @@ window.CHAPTER_DATA["ch9"] = {
                         <li><strong>Effect Size:</strong> Instead of asking "Is there a difference?", ask "How <em>big</em> is the difference?" (e.g., does the drug lower blood pressure by 2mmHg or 20mmHg?).</li>
                         <li><strong>Meta-Analysis:</strong> This is a statistical tool that combines the raw data from 50 different reviews. It treats 50 small studies as one giant experiment, giving us a "Forest Plot" of the true effect.</li>
                     </ol>
+                </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (EMBEDDED) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-orange); padding: 30px;">
+                    <h5 style="color: var(--accent-orange); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: P-Hacking & Science Ethics</h5>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(249,115,22,0.3);">
+                        <iframe src="https://www.youtube.com/embed/42QuXLucH3Q" title="p-hacking" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Scientific Bias (Veritasium)</p>
                 </div>
             </div>
         `
@@ -171,6 +214,32 @@ window.CHAPTER_DATA["ch9"] = {
                     <p>We can't measure every tree in the world. We measure 20. The <strong>Standard Error of the Mean (SEM)</strong> tells us how accurately that sample mean represents the true global average. It’s the "precision" of our measuring stick.</p>
                 </div>
 
+                <!-- PREMIUM CINEMATIC HEADER: THE SEM DISTRIBUTION -->
+                <div class="visual-dynamic glass" style="margin: 30px 0; padding: 40px; border-radius: var(--standard-radius); background: linear-gradient(135deg, #450a0a 0%, #0c0a09 100%); border: 2px solid var(--accent-red); overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(239,68,68,0.2);">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 30px; position: relative; z-index: 1;">
+                        <h4 style="color: var(--accent-red); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; border-bottom: 2px solid var(--accent-red); padding-bottom: 8px; margin: 0;">Uncertainty & SEM Architecture</h4>
+                        <svg viewBox="0 0 400 180" style="max-width: 500px; width: 100%; height: auto;">
+                            <!-- Bell Curve -->
+                            <path d="M 50 150 Q 200 20 350 150" fill="rgba(239,68,68,0.1)" stroke="var(--accent-red)" stroke-width="2" />
+                            
+                            <!-- Mean Line -->
+                            <line x1="200" y1="150" x2="200" y2="40" stroke="white" stroke-width="1" stroke-dasharray="4 4" />
+                            
+                            <!-- SEM Error Bars -->
+                            <g>
+                                <line x1="170" y1="90" x2="230" y2="90" stroke="var(--accent-cyan)" stroke-width="3" />
+                                <line x1="170" y1="80" x2="170" y2="100" stroke="var(--accent-cyan)" stroke-width="2" />
+                                <line x1="230" y1="80" x2="230" y2="100" stroke="var(--accent-cyan)" stroke-width="2" />
+                            </g>
+                            
+                            <!-- Labels -->
+                            <text x="200" y="165" fill="white" font-size="10" text-anchor="middle">POPULATION MEAN (μ)</text>
+                            <text x="240" y="85" fill="var(--accent-cyan)" font-size="9" font-weight="bold">± 2 SEM (95% CI)</text>
+                        </svg>
+                        <p style="font-size: 0.85rem; color: #aaa; text-align: center; font-style: italic;">The Standard Error is a measure of the precision of the estimate of the population mean.</p>
+                    </div>
+                </div>
+
                 <h2>The "How": Reading the Error Bars</h2>
                 <div class="glass-card" style="padding:20px;">
                     <ul style="line-height: 1.8;">
@@ -187,6 +256,15 @@ window.CHAPTER_DATA["ch9"] = {
                         <li>If the <strong>2xSEM error bars overlap</strong> $\rightarrow$ The difference is likely NOT significant.</li>
                         <li>If the <strong>error bars do NOT overlap</strong> $\rightarrow$ There is a high probability the results are significantly different.</li>
                     </ul>
+                </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (EMBEDDED) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-red); padding: 30px;">
+                    <h5 style="color: var(--accent-red); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Standard Error & SD</h5>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(239,68,68,0.3);">
+                        <iframe src="https://www.youtube.com/embed/BwYj69LAQOI" title="SEM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Standard Deviation vs Standard Error (Bozeman Science)</p>
                 </div>
             </div>
         `
@@ -212,6 +290,15 @@ window.CHAPTER_DATA["ch9"] = {
                         <li><strong>Constants:</strong> Factors that must stay the same (Temperature, pH, Volume) so they don't mess up the data.</li>
                     </ul>
                 </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (EMBEDDED) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-emerald); padding: 30px;">
+                    <h5 style="color: var(--accent-emerald); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Experimental Design</h5>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(16,185,129,0.3);">
+                        <iframe src="https://www.youtube.com/embed/5U7L_2VnS_k" title="Experimental Design" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Controlled Experiments (Bozeman Science)</p>
+                </div>
             </div>
         `
     },
@@ -236,6 +323,15 @@ window.CHAPTER_DATA["ch9"] = {
                 <div class="key-terms-box glass" style="margin-top:20px; border-color: var(--accent-emerald);">
                     <h4><i class="fas fa-lightbulb"></i> Pro-Tip</h4>
                     <p>Always use 'if/then' logic in your reasoning. "If the enzyme is denatured, then the substrate can no longer bind, thus the reaction stops."</p>
+                </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (EMBEDDED) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-magenta); padding: 30px;">
+                    <h5 style="color: var(--accent-magenta); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: The CER Model</h5>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(217,70,239,0.3);">
+                        <iframe src="https://www.youtube.com/embed/5KKsLuRPsvU" title="CER" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Evidence-Based Claims (Crash Course)</p>
                 </div>
             </div>
         `

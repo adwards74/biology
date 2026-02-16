@@ -29,6 +29,40 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                     <p>Without enzymes, the chemical reactions needed for life would occur so slowly that organisms could not survive. For example, the decomposition of hydrogen peroxide in your body would take <strong>years</strong> without the enzyme catalase — with catalase, it happens in <strong>milliseconds</strong>. Enzymes don't change what is thermodynamically possible; they change how <em>fast</em> it happens.</p>
                 </div>
 
+                <!-- PREMIUM CINEMATIC HEADER: ATOMIC PRECISION (ENZYMES) -->
+                <div class="visual-dynamic glass" style="margin: 30px 0; padding: 40px; border-radius: var(--standard-radius); background: linear-gradient(135deg, #2e1065 0%, #0f172a 100%); border: 2px solid var(--accent-purple); overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(139,92,246,0.2);">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 30px; position: relative; z-index: 1;">
+                        <h4 style="color: var(--accent-purple); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; border-bottom: 2px solid var(--accent-purple); padding-bottom: 8px; margin: 0;">Biocatalysis & Flux Control</h4>
+                        <svg viewBox="0 0 500 150" style="max-width: 600px; width: 100%; height: auto; filter: drop-shadow(0 0 10px rgba(139,92,246,0.3));">
+                            <!-- Enzyme Blueprint -->
+                            <path d="M 150 120 Q 250 20 350 120" fill="none" stroke="var(--accent-purple)" stroke-width="4" stroke-dasharray="10 5">
+                                <animate attributeName="stroke-dashoffset" from="0" to="100" dur="5s" repeatCount="indefinite" />
+                            </path>
+                            
+                            <!-- Active Site Glow -->
+                            <circle cx="250" cy="75" r="20" fill="rgba(139,92,246,0.2)">
+                                <animate attributeName="r" values="20;30;20" dur="2s" repeatCount="indefinite" />
+                            </circle>
+                            
+                            <!-- Substrate "Fitting" Animation -->
+                            <rect x="0" y="0" width="40" height="25" rx="5" fill="var(--accent-cyan)">
+                                <animateMotion path="M 100 20 C 150 20 200 70 240 70" dur="1.5s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" values="1;1;0" dur="1.5s" repeatCount="indefinite" />
+                            </rect>
+                            
+                            <!-- Product "Release" -->
+                            <g>
+                                <path d="M 260 70 L 400 20" fill="none" stroke="var(--accent-emerald)" stroke-width="2" stroke-dasharray="5 5">
+                                    <animate attributeName="stroke-dashoffset" from="0" to="-50" dur="1.5s" repeatCount="indefinite" />
+                                </path>
+                                <circle r="5" fill="var(--accent-emerald)">
+                                    <animateMotion path="M 260 70 L 400 20" dur="1.5s" repeatCount="indefinite" />
+                                </circle>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+
                 <h2>I. The Why: Activation Energy & Metabolic Control</h2>
 
                 <p>Every chemical reaction has an energy barrier called the <strong>activation energy ($E_a$)</strong> — the minimum energy molecules must have to react. Think of it as the hill you must push a boulder over before it rolls downhill on the other side.</p>
@@ -89,27 +123,38 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                 </ol>
 
                 <!-- VISUAL DYNAMIC: INDUCED FIT ANIMATION -->
-                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
-                    <h5 style="color: var(--accent-purple); margin-bottom: 20px; text-align: center;"><i class="fas fa-hand-holding-heart"></i> Visual Dynamic: The Induced Fit Mechanism</h5>
-                    <div style="display: flex; justify-content: center; align-items: center; gap: 30px;">
-                        <svg viewBox="0 0 200 150" width="200">
-                            <!-- Enzyme Base -->
-                            <path d="M 40 100 Q 40 40 100 40 Q 160 40 160 100" fill="none" stroke="var(--accent-purple)" stroke-width="4" />
-                            
-                            <!-- Substrate approaching -->
-                            <rect x="85" y="0" width="30" height="20" fill="var(--accent-cyan)" opacity="0.8">
-                                <animate attributeName="y" values="0;45;45;0" dur="3s" repeatCount="indefinite" />
-                            </rect>
-                            
-                            <!-- Enzyme 'Lips' closing -->
-                            <path d="M 40 100 Q 100 40 160 100" fill="none" stroke="var(--accent-purple)" stroke-width="8">
-                                <animate attributeName="d" 
-                                    values="M 40 100 Q 100 40 160 100; M 40 100 Q 100 65 160 100; M 40 100 Q 100 40 160 100" 
-                                    dur="3s" repeatCount="indefinite" />
-                            </path>
-                            
-                            <text x="100" y="130" fill="white" font-size="9" text-anchor="middle">Dynamic Active Site</text>
+                <div class="visual-dynamic glass" style="padding: 30px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.4); border: 1px solid var(--accent-purple);">
+                    <h5 style="color: var(--accent-purple); margin-bottom: 25px; text-align: center;"><i class="fas fa-handshake"></i> Molecular Dynamic: The Induced Fit "Snap"</h5>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                        <svg viewBox="0 0 400 200" style="max-width: 500px; width: 100%; height: auto;">
+                            <!-- Stage Labels -->
+                            <text x="50" y="30" fill="#888" font-size="10">1. APPROACH</text>
+                            <text x="200" y="30" fill="var(--accent-purple)" font-size="10" text-anchor="middle">2. INDUCED FIT (TRANSITION)</text>
+                            <text x="350" y="30" fill="#888" font-size="10" text-anchor="end">3. RELEASE</text>
+
+                            <!-- Enzyme 1 (Open) -->
+                            <path d="M 60 120 Q 80 70 100 120" fill="none" stroke="var(--accent-purple)" stroke-width="6" opacity="0.4" />
+                            <rect x="70" y="50" width="20" height="20" fill="var(--accent-cyan)" />
+
+                            <!-- Enzyme 2 (Closed/Snap) -->
+                            <g transform="translate(150,0)">
+                                <path d="M 30 120 Q 50 100 70 120" fill="none" stroke="var(--accent-purple)" stroke-width="8">
+                                    <animate attributeName="stroke" values="var(--accent-purple);var(--accent-amber);var(--accent-purple)" dur="2s" repeatCount="indefinite" />
+                                </path>
+                                <rect x="40" y="105" width="20" height="15" fill="var(--accent-amber)">
+                                    <animate attributeName="width" values="20;18;20" dur="2s" repeatCount="indefinite" />
+                                </rect>
+                                <text x="50" y="145" fill="var(--accent-amber)" font-size="8" text-anchor="middle">STRESSED BONDS</text>
+                            </g>
+
+                            <!-- Enzyme 3 (Product Release) -->
+                            <g transform="translate(280,0)">
+                                <path d="M 30 120 Q 50 70 70 120" fill="none" stroke="var(--accent-purple)" stroke-width="6" opacity="0.4" />
+                                <circle cx="45" cy="80" r="6" fill="var(--accent-emerald)" />
+                                <circle cx="55" cy="80" r="6" fill="var(--accent-emerald)" />
+                            </g>
                         </svg>
+                        <p style="font-size: 0.85rem; color: #888; text-align: center; font-style: italic;">The transition state: the enzyme physically warps to lower the energy required to break or form bonds.</p>
                     </div>
                 </div>
 
@@ -177,6 +222,24 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                         <li>$K_m$ is the substrate concentration at half-max velocity — a measure of enzyme-substrate affinity.</li>
                         <li>Denaturation = permanent loss of 3D shape. The enzyme is still chemically present but non-functional.</li>
                     </ul>
+                </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (HYBRID LINK CARD) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-purple); padding: 30px;">
+                    <h5 style="color: var(--accent-purple); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Enzyme Kinetics & $K_m$</h5>
+                    <a href="https://www.youtube.com/watch?v=D2j2kgwJXqc" target="_blank" style="text-decoration: none; display: block;">
+                        <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://img.youtube.com/vi/D2j2kgwJXqc/maxresdefault.jpg'); background-size: cover; background-position: center; border: 1px solid rgba(139,92,246,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s ease;">
+                            <!-- Floating Play Button -->
+                            <div style="width: 80px; height: 80px; background: var(--accent-purple); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(139,92,246,0.6); z-index: 2;">
+                                <i class="fas fa-play" style="color: white; font-size: 2rem; margin-left: 5px;"></i>
+                            </div>
+                            <!-- Bottom Info Bar -->
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(139, 92, 246, 0.9); padding: 12px; text-align: center; backdrop-filter: blur(10px);">
+                                <p style="margin: 0; color: white; font-weight: 800; font-size: 0.9rem; letter-spacing: 1px;">WATCH ON YOUTUBE <i class="fas fa-external-link-alt" style="font-size: 0.8rem; margin-left: 8px;"></i></p>
+                            </div>
+                        </div>
+                    </a>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Enzymes (Amoeba Sisters / Science Curation)</p>
                 </div>
             </div>
         `
@@ -292,6 +355,24 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                         <li>Feedback inhibition: the end product of a pathway inhibits an early enzyme — a self-regulating system.</li>
                         <li>Most drugs are enzyme inhibitors — understanding inhibition = understanding pharmacology.</li>
                     </ul>
+                </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (HYBRID LINK CARD) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-purple); padding: 30px;">
+                    <h5 style="color: var(--accent-purple); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Inhibition & Feedback Loops</h5>
+                    <a href="https://www.youtube.com/watch?v=pilG_ArLclU" target="_blank" style="text-decoration: none; display: block;">
+                        <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://img.youtube.com/vi/pilG_ArLclU/maxresdefault.jpg'); background-size: cover; background-position: center; border: 1px solid rgba(139,92,246,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s ease;">
+                            <!-- Floating Play Button -->
+                            <div style="width: 80px; height: 80px; background: var(--accent-red); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(239,68,68,0.6); z-index: 2;">
+                                <i class="fas fa-play" style="color: white; font-size: 2rem; margin-left: 5px;"></i>
+                            </div>
+                            <!-- Bottom Info Bar -->
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(239, 68, 68, 0.9); padding: 12px; text-align: center; backdrop-filter: blur(10px);">
+                                <p style="margin: 0; color: white; font-weight: 800; font-size: 0.9rem; letter-spacing: 1px;">WATCH ON YOUTUBE <i class="fas fa-external-link-alt" style="font-size: 0.8rem; margin-left: 8px;"></i></p>
+                            </div>
+                        </div>
+                    </a>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Feedback Inhibition & Allosteric Control (Bozeman Science)</p>
                 </div>
             </div>
         `

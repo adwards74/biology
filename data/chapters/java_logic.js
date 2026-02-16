@@ -25,7 +25,7 @@ public class Photosynthesis {
     }
 }
         `,
-        explanation: "이 Java 로직은 광합성의 두 단계를 보여줍니다. 명반응(Light-Dependent)은 if 조건문으로, 캘빈 회로(Calvin Cycle)는 에너지와 CO2가 있을 때 반복되는 while 루프로 표현되었습니다."
+        explanation: "This Java logic illustrates the two phases of photosynthesis. Light-dependent reactions are modeled with an 'if' condition (requires light/water), while the Calvin Cycle is a 'while' loop that iterates as long as ATP and CO2 are available."
     },
 
     "natural_selection": {
@@ -47,7 +47,72 @@ public class EvolutionEngine {
     }
 }
         `,
-        explanation: "자연선택은 집단(List)을 순회하는 for 루프로 표현됩니다. 적합도(Fitness)가 임계값을 넘는 객체만이 reproduction() 메서드를 호출하여 다음 세대로 유전자를 전달합니다."
+        explanation: "Natural selection is modeled as an iteration over a population. Individuals whose fitness exceeds a survival threshold are permitted to 'reproduce', passing their algorithmic traits to the next collection (generation)."
+    },
+
+    "dna_replication": {
+        title: "DNA Replication: Fork Logic",
+        logic: `
+public class ReplicationEngine {
+    public void replicate(DNA doubleHelix) {
+        Helicase helicase = new Helicase();
+        Fork fork = helicase.unzip(doubleHelix);
+        
+        // Semi-conservative replication
+        while (fork.hasNextNucleotide()) {
+            fork.leadingStrand.append(DNA_Polymerase.match(fork.current()));
+            
+            if (fork.isLagging()) {
+                OkazakiFragment frag = Ligase.seal(fork.processLagging());
+                System.out.println("Fragment sealed: " + frag.id);
+            }
+        }
+    }
+}
+        `,
+        explanation: "DNA replication logic follows a semi-conservative model. The 'Helicase' class unzips the helix, creating a fork, while 'Polymerase' methods systematically match nucleotides for both leading and lagging strands."
+    },
+
+    "transcription": {
+        title: "Transcription: Genetic Read-Out",
+        logic: `
+public class GeneExpression {
+    public mRNA transcribe(Gene gene) {
+        RNA_Polymerase pol = new RNA_Polymerase();
+        pol.bind(gene.getPromoter()); // TATA Box bind
+        
+        mRNA transcript = new mRNA();
+        while (!pol.atTerminator()) {
+            Base pair = pol.read(gene.next());
+            transcript.add(pair.getComplementaryRNA());
+        }
+        
+        return Splicer.process(transcript); // Post-transcriptional modification
+    }
+}
+        `,
+        explanation: "Transcription is modeled as a stream-processing operation. RNA Polymerase binds to a promoter, reads the DNA template, and generates an mRNA transcript, which then undergoes post-processing via the 'Splicer' utility."
+    },
+
+    "operon_regulation": {
+        title: "Operon Control: Conditional Logic",
+        logic: `
+public class OperonController {
+    public void regulate(Environment env, Operon lac) {
+        // High Lactose AND Low Glucose required for expression
+        if (env.hasLactose() && !env.hasGlucose()) {
+            lac.setRepressor(false);
+            lac.setCAPBinding(true);
+            lac.express();
+            System.out.println("Lactose breakdown enzymes synthesized.");
+        } else {
+            lac.setRepressor(true); // Repressor blocks RNA Pol
+            System.out.println("Gene expression inhibited by feedback logic.");
+        }
+    }
+}
+        `,
+        explanation: "Gene regulation in bacteria (Operons) acts as a complex conditional gate. The 'lac' operon only activates when specific environmental booleans are met, ensuring metabolic efficiency."
     },
 
     // Mathematics Concepts
@@ -72,7 +137,7 @@ public class MathSolver {
     }
 }
         `,
-        explanation: "이차방정식의 해법은 판별식(Discriminant)의 값에 따른 다중 조건문(if-else if-else) 구조로 명확하게 시각화됩니다."
+        explanation: "The solution to a quadratic equation is visualized as a multi-conditional branching structure based on the value of the discriminant."
     },
 
     "factorial": {
@@ -95,7 +160,7 @@ public class MathPatterns {
     }
 }
         `,
-        explanation: "계승(Factorial)은 반복문(For-loop)과 재귀(Recursion)라는 CS의 핵심 개념을 설명하기에 가장 완벽한 수학적 예시입니다."
+        explanation: "Factorials serve as a perfect mathematical example for explaining the core CS concepts of iteration (using loops) and recursion (functions calling themselves)."
     },
 
     "prime_numbers": {
@@ -115,11 +180,11 @@ public class NumberTheory {
     }
 }
         `,
-        explanation: "소수 판별 알고리즘은 '정수론'의 개념을 코드로 구현한 것입니다. 특히 루프의 범위를 제곱근($\\sqrt{n}$)까지로 제한하는 것은 수학적 성질을 이용한 알고리즘 최적화의 정석입니다."
+        explanation: "A primality test implements number theory in code. Limiting the loop to the square root of 'n' is a standard optimization strategy based on mathematical properties."
     },
 
     "logarithms": {
-        title: "Logarithmic Rules: Method Overloading",
+        title: "Logarithmic Rules: Static Implementation",
         logic: `
 public class LogRules {
     public static double logProduct(double x, double y) {
@@ -138,11 +203,11 @@ public class LogRules {
     }
 }
         `,
-        explanation: "로그의 성질은 Java의 정적 메서드로 깔끔하게 추상화됩니다. 곱셈이 덧셈으로, 나눗셈이 뺄셈으로 변환되는 수학적 논리가 코드의 연산자로 직관적으로 표현됩니다."
+        explanation: "Logarithmic properties are abstracted here into static Java methods. The mathematical logic where multiplication becomes addition is directly reflected in the code's operators."
     },
 
     "differentiation": {
-        title: "Differentiation: The Power Rule Logic",
+        title: "Differentiation: Power Rule Logic",
         logic: `
 public class CalculusEngine {
     public Derivative solvePowerRule(double coefficient, int power) {
@@ -159,7 +224,7 @@ public class CalculusEngine {
     }
 }
         `,
-        explanation: "미분 공식은 알고리즘의 단계적 절차와 같습니다. 파워 룰(Power Rule)은 계수와 지수를 조정하는 단순 연산이며, 체인 룰(Chain Rule)은 재귀적인 함수의 결합으로 코딩할 수 있습니다."
+        explanation: "Differentiation rules are analogous to multi-step algorithmic procedures. The Power Rule is a simple coefficient transformation, while the Chain Rule can be implemented as a functional composition."
     },
 
     "water_potential": {
@@ -185,7 +250,7 @@ public class PlantPhysiology {
     }
 }
         `,
-        explanation: "생물학의 수분 퍼텐셜 개념은 물리학적 시스템의 평형을 계산하는 것과 같습니다. 수치가 높은 곳에서 낮은 곳으로 흐르는 논리는 if-else 조건문으로 완벽하게 설명됩니다."
+        explanation: "Water potential concepts model physical system equilibrium. The logic that water moves from areas of high potential to low potential is perfectly captured by a simple conditional statement."
     },
 
     "mendelian_genetics": {
@@ -210,7 +275,7 @@ public class GeneticsEngine {
     }
 }
         `,
-        explanation: "멘델의 유전 법칙은 이중 for 루프를 통한 조합 생성 알고리즘입니다. 우성 유전자의 유무를 판별하는 논리는 boolean 체크와 조건문으로 간단히 구현됩니다."
+        explanation: "Mendelian laws are implemented via nested loops for allele combination generation. Determining phenotypic expression utilizes boolean logic based on the presence of dominant characters."
     },
 
     "enzyme_kinetics": {
@@ -232,7 +297,7 @@ public class BioChemistry {
     }
 }
         `,
-        explanation: "효소 반응 속도론은 다중 조건문으로 표현됩니다. 경쟁적 저해(Competitive)는 Km 값을, 비경쟁적 저해는 Vmax 값을 변사시키는 매개변수 조작으로 모델링됩니다."
+        explanation: "Enzyme kinetics are modeled through conditional parameter shifts. Competitive inhibition is represented by increasing the effective Km, while non-competitive inhibition decreases the Vmax variable."
     },
 
     "cell_transport": {
@@ -255,7 +320,8 @@ public class MembraneManager {
     }
 }
         `,
-        explanation: "세포막 수송은 에너지(ATP) 가용성과 농도 구배(Gradient)를 체크하는 if-else 로직입니다. 확산은 조건 없이 실행되지만, 능동 수송은 반드시 ATP 소모가 동반됩니다."
+        explanation: "Cellular transport is an if-else decision process based on energy availability and concentration gradients. Passive diffusion executes freely, whereas active transport requires a verified energy expenditure."
     }
 };
+
 

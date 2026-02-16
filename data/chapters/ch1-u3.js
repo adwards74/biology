@@ -5,6 +5,7 @@ window.CHAPTER_DATA["ch1"] = window.CHAPTER_DATA["ch1"] || {};
 Object.assign(window.CHAPTER_DATA["ch1"], {
 
     "ch1-5": {
+        javaLogic: "enzyme_kinetics",
         title: "3.1: The Activation Barrier",
         subtitle: "Enzyme Structure, Induced Fit, and Factors Affecting Activity",
         content: `
@@ -78,38 +79,60 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                     <li>✅ Are highly specific — each enzyme catalyzes only one reaction (or type of reaction)</li>
                 </ul>
 
-                <!-- VISUAL DYNAMIC: ACTIVATION ENERGY -->
-                <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
-                    <h5 style="color: var(--accent-purple); margin-bottom: 20px; text-align: center;"><i class="fas fa-mountain"></i> Visual Dynamic: Lowering the Activation Barrier</h5>
-                    <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                        <svg viewBox="0 0 400 200" style="max-width: 500px; width: 100%; height: auto;">
-                            <!-- Paths -->
-                            <path d="M 40 160 L 100 160 Q 150 20 200 160 L 360 160" fill="none" stroke="var(--accent-red)" stroke-width="2" stroke-dasharray="4" />
-                            <path d="M 40 160 L 100 160 Q 150 100 200 160 L 360 160" fill="none" stroke="var(--accent-purple)" stroke-width="4" />
+                <!-- VISUAL DYNAMIC: ACTIVATION ENERGY (PREMIUM UPGRADE) -->
+                <div class="visual-dynamic glass" style="padding: 30px; margin: 30px 0; border-radius: var(--standard-radius); background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%); border: 1px solid var(--accent-purple); box-shadow: 0 0 20px rgba(139,92,246,0.15);">
+                    <h5 style="color: var(--accent-purple); margin-bottom: 25px; text-align: center; text-transform: uppercase; letter-spacing: 2px;"><i class="fas fa-mountain"></i> Biocatalytic Energy Surface</h5>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                        <svg viewBox="0 0 400 220" style="max-width: 500px; width: 100%; height: auto; filter: drop-shadow(0 0 10px rgba(139,92,246,0.2));">
+                            <!-- Definition for Glow Effects -->
+                            <defs>
+                                <linearGradient id="purple-glow" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:var(--accent-purple);stop-opacity:0.3" />
+                                    <stop offset="100%" style="stop-color:var(--accent-purple);stop-opacity:0" />
+                                </linearGradient>
+                            </defs>
                             
-                            <!-- Labels -->
-                            <text x="50" y="150" fill="white" font-size="9">Reactants</text>
-                            <text x="300" y="150" fill="white" font-size="9">Products</text>
+                            <!-- Grid / Background -->
+                            <line x1="40" y1="180" x2="380" y2="180" stroke="rgba(255,255,255,0.1)" stroke-width="1" />
+                            <line x1="40" y1="20" x2="40" y2="180" stroke="rgba(255,255,255,0.1)" stroke-width="1" />
+
+                            <!-- Under-Curve Fills for "Body" -->
+                            <path d="M 40 160 L 100 160 Q 150 20 200 160 L 200 180 L 100 180 Z" fill="url(#purple-glow)" opacity="0.2" />
+
+                            <!-- Main Paths -->
+                            <!-- Uncatalyzed Path (Red) -->
+                            <path d="M 40 160 L 100 160 Q 150 20 200 160 L 360 160" fill="none" stroke="var(--accent-red)" stroke-width="2" stroke-dasharray="6 4" opacity="0.6" />
+                            <!-- Catalyzed Path (Purple) -->
+                            <path d="M 40 160 L 100 160 Q 150 100 200 160 L 360 160" fill="none" stroke="var(--accent-purple)" stroke-width="5" stroke-linecap="round">
+                                <animate attributeName="stroke-width" values="4;6;4" dur="3s" repeatCount="indefinite" />
+                            </path>
                             
-                            <!-- E_a arrows -->
-                            <path d="M 120 160 L 120 35" stroke="var(--accent-red)" stroke-width="1" marker-end="url(#arrow-red)" />
-                            <text x="110" y="30" fill="var(--accent-red)" font-size="8" text-anchor="end">Unaided $E_a$</text>
+                            <!-- Energy Level Markers -->
+                            <circle cx="100" cy="160" r="4" fill="var(--accent-cyan)" />
+                            <text x="90" y="175" fill="var(--accent-cyan)" font-size="9" text-anchor="end" font-weight="bold">REACTANTS</text>
                             
-                            <path d="M 140 160 L 140 105" stroke="var(--accent-purple)" stroke-width="1" marker-end="url(#arrow-purple)" />
-                            <text x="150" y="100" fill="var(--accent-purple)" font-size="8">With Enzyme $E_a$</text>
+                            <circle cx="200" cy="160" r="4" fill="var(--accent-emerald)" />
+                            <text x="210" y="175" fill="var(--accent-emerald)" font-size="9" font-weight="bold">PRODUCTS</text>
                             
-                            <!-- Axes -->
-                            <line x1="40" y1="180" x2="370" y2="180" stroke="white" stroke-width="1" opacity="0.5" />
-                            <line x1="40" y1="180" x2="40" y2="20" stroke="white" stroke-width="1" opacity="0.5" />
+                            <!-- Measurement Bars -->
+                            <line x1="125" y1="160" x2="125" y2="25" stroke="var(--accent-red)" stroke-width="1.5" marker-end="url(#arrow-red)" />
+                            <text x="115" y="45" fill="var(--accent-red)" font-size="8" text-anchor="end" font-weight="bold" transform="rotate(-90 115 45)">HIGH EA</text>
+                            
+                            <line x1="145" y1="160" x2="145" y2="105" stroke="var(--accent-purple)" stroke-width="2" marker-end="url(#arrow-purple)" />
+                            <text x="155" y="115" fill="var(--accent-purple)" font-size="8" font-weight="bold" transform="rotate(-90 155 115)">SCALED EA</text>
+                            
+                            <!-- Axis Labels -->
+                            <text x="380" y="195" fill="#888" font-size="8" text-anchor="end">Reaction Progress →</text>
+                            <text x="35" y="25" fill="#888" font-size="8" transform="rotate(-90 35 25)" text-anchor="end">Free Energy (G) ↑</text>
                             
                             <defs>
-                                <marker id="arrow-red" markerWidth="5" markerHeight="5" refX="0" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5 z" fill="var(--accent-red)" /></marker>
-                                <marker id="arrow-purple" markerWidth="5" markerHeight="5" refX="0" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5 z" fill="var(--accent-purple)" /></marker>
+                                <marker id="arrow-red" markerWidth="6" markerHeight="6" refX="0" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="var(--accent-red)" /></marker>
+                                <marker id="arrow-purple" markerWidth="6" markerHeight="6" refX="0" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="var(--accent-purple)" /></marker>
                             </defs>
                         </svg>
-                        <div style="font-size: 0.85rem; color: #aaa; text-align: center; font-style: italic;">
-                            Enzymes lower the "energy hill," allowing more reactant molecules to reach the transition state per second.
-                        </div>
+                        <p style="font-size: 0.85rem; color: #888; text-align: center; font-style: italic; max-width: 400px; line-height: 1.5;">
+                            <strong style="color:var(--accent-purple);">Thermodynamic Leverage:</strong> Enzymes provide a lower-energy "tunnel" through the activation barrier without changing $\Delta G$.
+                        </p>
                     </div>
                 </div>
 
@@ -122,39 +145,52 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                     <li>Products are released, and the enzyme returns to its original shape, ready for the next substrate.</li>
                 </ol>
 
-                <!-- VISUAL DYNAMIC: INDUCED FIT ANIMATION -->
-                <div class="visual-dynamic glass" style="padding: 30px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.4); border: 1px solid var(--accent-purple);">
-                    <h5 style="color: var(--accent-purple); margin-bottom: 25px; text-align: center;"><i class="fas fa-handshake"></i> Molecular Dynamic: The Induced Fit "Snap"</h5>
+                <!-- VISUAL DYNAMIC: INDUCED FIT ANIMATION (PREMIUM UPGRADE) -->
+                <div class="visual-dynamic glass" style="padding: 35px; margin: 30px 0; border-radius: var(--standard-radius); background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); border: 2px solid var(--accent-purple); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                    <h5 style="color: var(--accent-purple); margin-bottom: 25px; text-align: center; text-transform: uppercase; letter-spacing: 2px;"><i class="fas fa-handshake"></i> Molecular Snap: The Induced Fit Mechanical Logic</h5>
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-                        <svg viewBox="0 0 400 200" style="max-width: 500px; width: 100%; height: auto;">
-                            <!-- Stage Labels -->
-                            <text x="50" y="30" fill="#888" font-size="10">1. APPROACH</text>
-                            <text x="200" y="30" fill="var(--accent-purple)" font-size="10" text-anchor="middle">2. INDUCED FIT (TRANSITION)</text>
-                            <text x="350" y="30" fill="#888" font-size="10" text-anchor="end">3. RELEASE</text>
+                        <svg viewBox="0 0 500 200" style="max-width: 600px; width: 100%; height: auto;">
+                            <!-- Stage 1: Approach -->
+                            <g>
+                                <path d="M 40 100 Q 70 40 100 100" fill="none" stroke="var(--accent-purple)" stroke-width="4" opacity="0.3" stroke-dasharray="4 2" />
+                                <rect x="60" y="30" width="20" height="20" rx="4" fill="var(--accent-cyan)" opacity="0.6">
+                                    <animateMotion path="M 0 0 L 0 50" dur="2s" repeatCount="indefinite" />
+                                </rect>
+                                <text x="70" y="140" fill="#888" font-size="8" text-anchor="middle">1. SPECIFICITY</text>
+                            </g>
 
-                            <!-- Enzyme 1 (Open) -->
-                            <path d="M 60 120 Q 80 70 100 120" fill="none" stroke="var(--accent-purple)" stroke-width="6" opacity="0.4" />
-                            <rect x="70" y="50" width="20" height="20" fill="var(--accent-cyan)" />
-
-                            <!-- Enzyme 2 (Closed/Snap) -->
-                            <g transform="translate(150,0)">
-                                <path d="M 30 120 Q 50 100 70 120" fill="none" stroke="var(--accent-purple)" stroke-width="8">
+                            <!-- Stage 2: THE SNAP (Central) -->
+                            <g transform="translate(180, 0)">
+                                <!-- Dynamic Enzyme Shell -->
+                                <path d="M 20 100 Q 70 80 120 100" fill="none" stroke="var(--accent-purple)" stroke-width="8">
+                                    <animate attributeName="d" values="M 20 100 Q 70 80 120 100; M 20 100 Q 70 120 120 100; M 20 100 Q 70 80 120 100" dur="2s" repeatCount="indefinite" />
                                     <animate attributeName="stroke" values="var(--accent-purple);var(--accent-amber);var(--accent-purple)" dur="2s" repeatCount="indefinite" />
                                 </path>
-                                <rect x="40" y="105" width="20" height="15" fill="var(--accent-amber)">
-                                    <animate attributeName="width" values="20;18;20" dur="2s" repeatCount="indefinite" />
+                                <!-- Stressed Substrate -->
+                                <rect x="50" y="85" width="40" height="15" rx="3" fill="var(--accent-amber)">
+                                    <animate attributeName="width" values="40;35;40" dur="2s" repeatCount="indefinite" />
+                                    <animate attributeName="fill" values="var(--accent-cyan);var(--accent-amber);var(--accent-cyan)" dur="2s" repeatCount="indefinite" />
                                 </rect>
-                                <text x="50" y="145" fill="var(--accent-amber)" font-size="8" text-anchor="middle">STRESSED BONDS</text>
+                                <!-- Glow pulse -->
+                                <circle cx="70" cy="92" r="25" fill="var(--accent-amber)" opacity="0.1">
+                                    <animate attributeName="r" values="20;40;20" dur="2s" repeatCount="indefinite" />
+                                    <animate attributeName="opacity" values="0.1;0.3;0.1" dur="2s" repeatCount="indefinite" />
+                                </circle>
+                                <text x="70" y="140" fill="var(--accent-amber)" font-size="10" text-anchor="middle" font-weight="bold">2. TENSION (INDUCED FIT)</text>
+                                <text x="70" y="155" fill="#aaa" font-size="7" text-anchor="middle">Bonds are physically warped</text>
                             </g>
 
-                            <!-- Enzyme 3 (Product Release) -->
-                            <g transform="translate(280,0)">
-                                <path d="M 30 120 Q 50 70 70 120" fill="none" stroke="var(--accent-purple)" stroke-width="6" opacity="0.4" />
-                                <circle cx="45" cy="80" r="6" fill="var(--accent-emerald)" />
-                                <circle cx="55" cy="80" r="6" fill="var(--accent-emerald)" />
+                            <!-- Stage 3: Catalysis Complete -->
+                            <g transform="translate(360, 0)">
+                                <path d="M 20 100 Q 50 40 80 100" fill="none" stroke="var(--accent-purple)" stroke-width="4" opacity="0.3" />
+                                <circle cx="40" cy="50" r="7" fill="var(--accent-emerald)" />
+                                <circle cx="60" cy="50" r="7" fill="var(--accent-emerald)" />
+                                <text x="50" y="140" fill="#888" font-size="8" text-anchor="middle">3. PRODUCT RELEASE</text>
                             </g>
                         </svg>
-                        <p style="font-size: 0.85rem; color: #888; text-align: center; font-style: italic;">The transition state: the enzyme physically warps to lower the energy required to break or form bonds.</p>
+                        <p style="font-size: 0.85rem; color: #aaa; text-align: center; font-style: italic; max-width: 450px;">
+                            The active site is not a rigid lock, but a <strong>malleable machine</strong> that "grips" the substrate, inducing a transition state with lower potential energy.
+                        </p>
                     </div>
                 </div>
 
@@ -228,12 +264,13 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-purple); padding: 30px;">
                     <h5 style="color: var(--accent-purple); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Enzyme Kinetics & $K_m$</h5>
                     <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(139,92,246,0.3);">
-                        <iframe 
-                            src="https://www.youtube.com/embed/bD-x6_p7L2Y" 
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                        <iframe src="https://www.youtube.com/embed/c6w8CNUf77k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+    <div class="link-card-content">
+        <h4>Watch Verification Video</h4>
+        <p>High-Fidelity Playback</p>
+    </div>
+    <div class="link-card-arrow"><i class="fas fa-external-link-alt"></i></div>
+</div>
                     </div>
                     <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Enzymes (Amoeba Sisters / Science Curation)</p>
                 </div>
@@ -242,6 +279,7 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
     },
 
     "ch1-6": {
+        javaLogic: "enzyme_kinetics",
         title: "3.2: Control Systems — Inhibition & Feedback",
         subtitle: "Competitive, Non-competitive, Allosteric Regulation, and Feedback Loops",
         content: `
@@ -357,12 +395,13 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-purple); padding: 30px;">
                     <h5 style="color: var(--accent-purple); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Inhibition & Feedback Loops</h5>
                     <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(139,92,246,0.3);">
-                        <iframe 
-                            src="https://www.youtube.com/embed/QjL092K2F6I" 
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                        <iframe src="https://www.youtube.com/embed/0s_h8HwA7bM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+    <div class="link-card-content">
+        <h4>Watch Verification Video</h4>
+        <p>High-Fidelity Playback</p>
+    </div>
+    <div class="link-card-arrow"><i class="fas fa-external-link-alt"></i></div>
+</div>
                     </div>
                     <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Feedback Inhibition & Allosteric Control (Bozeman Science)</p>
                 </div>

@@ -1,11 +1,14 @@
 window.CHAPTER_DATA = window.CHAPTER_DATA || {};
-window.CHAPTER_DATA["ch1"] = {
 
-    // ═══════════════════════════════════════════════════════
-    // UNIT 1: ARCHITECTURE & SCALABILITY
-    // ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// CHAPTER 1: CELL STRUCTURE & FUNCTION (Unit 1)
+// ═══════════════════════════════════════════════════════
+
+window.CHAPTER_DATA["ch1"] = window.CHAPTER_DATA["ch1"] || {};
+Object.assign(window.CHAPTER_DATA["ch1"], {
 
     "ch1-1": {
+        javaLogic: "geometry_of_life",
         title: "1.1: The Geometry of Life",
         subtitle: "Cell Size, Surface Area-to-Volume Ratio, and Organelle Architecture",
         content: `
@@ -33,49 +36,30 @@ window.CHAPTER_DATA["ch1"] = {
                 </div>
 
                 <!-- PREMIUM CINEMATIC HEADER: THE GEOMETRY OF LIFE -->
-                <div class="visual-dynamic glass" style="margin: 30px 0; padding: 40px; border-radius: var(--standard-radius); background: linear-gradient(135deg, #0f172a 0%, #111827 100%); border: 2px solid var(--accent-emerald); overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(16,185,129,0.2);">
-                    <!-- Background Particles -->
-                    <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.2;">
-                        <circle cx="10%" cy="20%" r="2" fill="var(--accent-cyan)" />
-                        <circle cx="85%" cy="15%" r="3" fill="var(--accent-emerald)" />
-                        <circle cx="70%" cy="80%" r="2" fill="var(--accent-amber)" />
-                    </svg>
-                    
-                    <div style="display: flex; flex-direction: column; align-items: center; gap: 30px; position: relative; z-index: 1;">
-                        <h4 style="color: var(--accent-emerald); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; border-bottom: 2px solid var(--accent-emerald); padding-bottom: 8px; margin: 0;">Geometric Mastery Module</h4>
-                        
-                        <svg viewBox="0 0 500 200" style="max-width: 600px; width: 100%; height: auto; filter: drop-shadow(0 0 15px rgba(16,185,129,0.3));">
-                            <!-- stylized cell with extreme folding -->
-                            <path d="M 250 100 
-                                     M 150 100 C 150 40, 200 40, 200 100 S 250 160, 250 100 S 300 40, 300 100 S 350 160, 350 100" 
-                                  fill="rgba(6,182,212,0.1)" stroke="var(--accent-cyan)" stroke-width="3" stroke-dasharray="8 4" />
-                            
-                            <!-- Internal folding (Cristae-like) -->
-                            <path d="M 180 100 C 180 60, 220 60, 220 100 S 260 140, 260 100 S 300 60, 300 100 S 340 140, 340 100" 
-                                  fill="none" stroke="var(--accent-emerald)" stroke-width="2" opacity="0.6" />
-                            
-                            <!-- Diffusion Vectors -->
-                            <line x1="250" y1="100" x2="400" y2="100" stroke="var(--accent-amber)" stroke-width="2" marker-end="url(#premium-arrow)" opacity="0.8">
-                                <animate attributeName="x2" from="250" to="400" dur="2.5s" repeatCount="indefinite" />
-                            </line>
-                            
-                            <text x="50%" y="190" fill="white" font-size="14" font-weight="bold" text-anchor="middle">Surface Efficiency = Flux Capacity</text>
-                            
-                            <defs>
-                                <marker id="premium-arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
-                                  <path d="M0,0 L0,6 L9,3 z" fill="var(--accent-amber)" />
-                                </marker>
-                            </defs>
+                <div class="visual-dynamic glass" style="margin: 30px 0; padding: 0; border-radius: var(--standard-radius); background: #000; border: 2px solid var(--accent-emerald); overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(16,185,129,0.2);">
+                    <img src="../assets/cell-architecture.png" alt="Cell Architecture" style="width: 100%; height: auto; display: block; opacity: 0.9;">
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: linear-gradient(180deg, transparent, rgba(15,23,42,0.9));">
+                        <h4 style="color: var(--accent-emerald); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; margin: 0;">Eukaryotic Architecture Comparison</h4>
+                        <p style="font-size: 0.8rem; color: #ccc; margin-top: 5px;">High-fidelity rendering of Animal vs. Plant organelles and membrane systems.</p>
+                    </div>
+                </div>
+
+                <!-- ORIGINAL GEOMETRIC LOGIC: THE GEOMETRY OF LIFE (REPOSITIONED) -->
+                <div class="glass" style="margin: 30px 0; padding: 25px; border-radius: var(--standard-radius); border: 1px solid rgba(16,185,129,0.3); background: rgba(0,0,0,0.2);">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                        <svg viewBox="0 0 500 120" style="max-width: 500px; width: 100%; height: auto; filter: drop-shadow(0 0 10px rgba(16,185,129,0.2));">
+                            <path d="M 150 60 C 150 20, 200 20, 200 60 S 250 100, 250 60 S 300 20, 300 60 S 350 100, 350 60" 
+                                  fill="rgba(6,182,212,0.1)" stroke="var(--accent-cyan)" stroke-width="2" stroke-dasharray="8 4" />
+                            <text x="50%" y="110" fill="white" font-size="12" font-weight="bold" text-anchor="middle">Surface Efficiency = Flux Capacity Logic</text>
                         </svg>
-                        
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%;">
-                            <div class="glass" style="padding: 15px; border-radius: 10px; text-align: center; border: 1px solid rgba(6,182,212,0.3);">
-                                <div style="color: var(--accent-cyan); font-size: 1.1rem; font-weight: bold;">$SA \propto r^2$</div>
-                                <div style="font-size: 0.75rem; color: #888; margin-top: 5px;">Absorption Limit</div>
+                            <div style="text-align: center;">
+                                <div style="color: var(--accent-cyan); font-size: 1rem; font-weight: bold;">$SA \propto r^2$</div>
+                                <div style="font-size: 0.7rem; color: #888;">Absorption</div>
                             </div>
-                            <div class="glass" style="padding: 15px; border-radius: 10px; text-align: center; border: 1px solid rgba(245,158,11,0.3);">
-                                <div style="color: var(--accent-amber); font-size: 1.1rem; font-weight: bold;">$V \propto r^3$</div>
-                                <div style="font-size: 0.75rem; color: #888; margin-top: 5px;">Metabolic Demand</div>
+                            <div style="text-align: center;">
+                                <div style="color: var(--accent-amber); font-size: 1rem; font-weight: bold;">$V \propto r^3$</div>
+                                <div style="font-size: 0.7rem; color: #888;">Demand</div>
                             </div>
                         </div>
                     </div>
@@ -356,12 +340,13 @@ window.CHAPTER_DATA["ch1"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-emerald); padding: 30px;">
                     <h5 style="color: var(--accent-emerald); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: The Geometry of Cell Size</h5>
                     <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(16,185,129,0.3);">
-                        <iframe 
-                            src="https://www.youtube.com/embed/qBCVVszQQNs" 
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                        <iframe src="https://www.youtube.com/embed/q3wJ2Fh_2fE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+    <div class="link-card-content">
+        <h4>Watch Verification Video</h4>
+        <p>High-Fidelity Playback</p>
+    </div>
+    <div class="link-card-arrow"><i class="fas fa-external-link-alt"></i></div>
+</div>
                     </div>
                     <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Surface Area to Volume Ratio (Amoeba Sisters / Academic Curation)</p>
                 </div>
@@ -586,16 +571,17 @@ window.CHAPTER_DATA["ch1"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-cyan); padding: 30px;">
                     <h5 style="color: var(--accent-cyan); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: The Endomembrane System</h5>
                     <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(6,182,212,0.3);">
-                        <iframe 
-                            src="https://www.youtube.com/embed/rvfvRgk0Mf8" 
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                        <iframe src="https://www.youtube.com/embed/8IlzKri08kk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+    <div class="link-card-content">
+        <h4>Watch Verification Video</h4>
+        <p>High-Fidelity Playback</p>
+    </div>
+    <div class="link-card-arrow"><i class="fas fa-external-link-alt"></i></div>
+</div>
                     </div>
                     <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Endomembrane System & Protein Export (Amoeba Sisters / Academic Curation)</p>
                 </div>
             </div>
         `
     }
-};
+});

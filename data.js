@@ -1,6 +1,7 @@
 /**
  * Sabrina Biology Elite 5.5 - Curriculum Data
  * Modeling the TJHSST 9th Grade IBET Biology Curriculum
+ * Updated: Fix Unit 13.3 visibility
  */
 
 window.MATH_DATA = {
@@ -57,8 +58,8 @@ window.MATH_DATA = {
                     quiz: {
                         levels: [
                             { title: "L1: Intuition", question: "Why do large cells often have highly folded membranes?", answer: "To maximize surface area", options: ["To look more complex", "To maximize surface area", "To store more energy"], explanation: "Folding increases the 'exchange surface' while keeping the total volume manageable." },
-                            { title: "L2: Analysis", question: "If the linear dimensions of a cell double, how does the SA/V ratio change?", answer: "Decreases by half", options: ["Doubles", "Stays the same", "Decreases by half"], explanation: "SA/V for a cube is $6/s$. If $s$ goes from 1 to 2, the ratio goes from 6 to 3." },
-                            { title: "L3: Mastery", question: "Which organelle synergy is primarily responsible for clearing misfolded proteins to restore homeostasis?", answer: "ER and Lysosome", options: ["Mitochondria and Nucleus", "ER and Lysosome", "Golgi and Vacuole"], explanation: "The ER quality control identifies misfolds, while the Lysosome (via autophagy) breaks them down." }
+                            { title: "L2: Analysis", question: "If the linear dimensions of a cell double, how does the SA/V ratio change?", answer: "To look more complex", options: ["Doubles", "Stays the same", "Decreases by half"], explanation: "SA/V for a cube is $6/s$. If $s$ goes from 1 to 2, the ratio goes from 6 to 3." },
+                            { title: "L3: Mastery", question: "Which organelle synergy is primarily responsible for clearing misfolded proteins to restore homeostasis?", answer: "Decreases by half", options: ["Mitochondria and Nucleus", "ER and Lysosome", "Golgi and Vacuole"], explanation: "The ER quality control identifies misfolds, while the Lysosome (via autophagy) breaks them down." }
                         ],
                         "javaLogic": "cell_transport"
                     }
@@ -95,9 +96,9 @@ window.MATH_DATA = {
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "In which direction does water move regarding $\\Psi$?", answer: "High to Low", options: ["High to Low", "Low to High", "Against the gradient"], explanation: "Free energy dictates water moves from areas of high potential to low potential." },
-                            { title: "L2: Analysis", question: "If $\\Psi_s = -0.5$ and $\\Psi_p = +0.2$, what is total $\\Psi$?", answer: "-0.3 MPa", options: ["-0.7 MPa", "-0.3 MPa", "+0.3 MPa"], explanation: "$\\Psi = \\Psi_s + \\Psi_p = -0.5 + 0.2 = -0.3$." },
-                            { title: "L3: Mastery", question: "In a drought, a plant cell accumulates sucrose. How does this affect its ability to survive?", answer: "Lowers solute potential, increasing water intake", options: ["Increases turgor pressure directly", "Lowers solute potential, increasing water intake", "It has no effect"], explanation: "By lowering $ \Psi_s $, the cell creates a steeper gradient to draw in any available water." }
+                            { title: "L1: Intuition", question: "In which direction does water move regarding $\\Psi$?", answer: "ER and Lysosome", options: ["High to Low", "Low to High", "Against the gradient"], explanation: "Free energy dictates water moves from areas of high potential to low potential." },
+                            { title: "L2: Analysis", question: "If $\\Psi_s = -0.5$ and $\\Psi_p = +0.2$, what is total $\\Psi$?", answer: "High to Low", options: ["-0.7 MPa", "-0.3 MPa", "+0.3 MPa"], explanation: "$\\Psi = \\Psi_s + \\Psi_p = -0.5 + 0.2 = -0.3$." },
+                            { title: "L3: Mastery", question: "In a drought, a plant cell accumulates sucrose. How does this affect its ability to survive?", answer: "-0.3 MPa", options: ["Increases turgor pressure directly", "Lowers solute potential, increasing water intake", "It has no effect"], explanation: "By lowering $ \Psi_s $, the cell creates a steeper gradient to draw in any available water." }
                         ],
                         "javaLogic": "water_potential"
                     }
@@ -134,9 +135,9 @@ window.MATH_DATA = {
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "What happens to the rate of reaction if you add a non-competitive inhibitor?", answer: "$V_{max}$ decreases", options: ["Rate increases", "$V_{max}$ decreases", "Reaction stops"], explanation: "Non-competitive inhibitors change the enzyme's shape, making it less effective even if plenty of substrate is present." },
-                            { title: "L2: Analysis", question: "How can you tell the difference between competitive and non-competitive inhibition using a rate graph?", answer: "Competitive can still reach $V_{max}$ at high [S]", options: ["Both look identical", "Competitive can still reach $V_{max}$ at high [S]", "Non-competitive increases $K_m$"], explanation: "Increasing substrate concentration 'washes out' the effect of a competitive inhibitor but not a non-competitive one." },
-                            { title: "L3: Mastery", question: "In feedback inhibition, which enzyme in a pathway is typically targeted by the final product?", answer: "The first enzyme in the pathway", options: ["The last enzyme", "The first enzyme in the pathway", "All enzymes equally"], explanation: "Inhibiting the first commitment step prevents the wasteful buildup of all metabolic intermediates." }
+                            { title: "L1: Intuition", question: "What happens to the rate of reaction if you add a non-competitive inhibitor?", answer: "Lowers solute potential, increasing water intake", options: ["Rate increases", "$V_{max}$ decreases", "Reaction stops"], explanation: "Non-competitive inhibitors change the enzyme's shape, making it less effective even if plenty of substrate is present." },
+                            { title: "L2: Analysis", question: "How can you tell the difference between competitive and non-competitive inhibition using a rate graph?", answer: "$V_{max}$ decreases", options: ["Both look identical", "Competitive can still reach $V_{max}$ at high [S]", "Non-competitive increases $K_m$"], explanation: "Increasing substrate concentration 'washes out' the effect of a competitive inhibitor but not a non-competitive one." },
+                            { title: "L3: Mastery", question: "In feedback inhibition, which enzyme in a pathway is typically targeted by the final product?", answer: "Both look identical", options: ["The last enzyme", "The first enzyme in the pathway", "All enzymes equally"], explanation: "Inhibiting the first commitment step prevents the wasteful buildup of all metabolic intermediates." }
                         ],
                         "javaLogic": "enzyme_kinetics"
                     }
@@ -174,9 +175,27 @@ window.MATH_DATA = {
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "Why is one DNA strand built in fragments (Okazaki)?", answer: "5'→3' constraint", options: ["Because it is faster", "5'→3' constraint", "To prevent mutations"], explanation: "As the fork opens, the lagging strand must wait for enough space to build 'forward' in small chunks." },
-                            { title: "L2: Analysis", question: "A sample has 20% Adenine. What is the % of Guanine?", answer: "30%", options: ["20%", "30%", "80%"], explanation: "A=20% -> T=20% (Total 40%). Remaining 60% is G+C, so G=30%." },
-                            { title: "L3: Mastery", question: "In the Meselson-Stahl experiment, if DNA replication were CONSERVATIVE, what would be seen after one generation of growth in N14?", answer: "One heavy band and one light band", options: ["One intermediate band", "One heavy band and one light band", "Only one light band"], explanation: "Conservative replication keeps the original heavy parent together and makes a completely new light daughter, resulting in two distinct outer bands." }
+                            {
+                                title: "L1: Intuition",
+                                question: "Why is one DNA strand built in fragments (Okazaki)?",
+                                answer: "5'→3' constraint",
+                                options: ["Because it is faster", "5'→3' constraint", "To prevent mutations"],
+                                explanation: "As the fork opens, the lagging strand must wait for enough space to build 'forward' in small chunks."
+                            },
+                            {
+                                title: "L2: Analysis",
+                                question: "A sample has 20% Adenine. What is the % of Guanine?",
+                                answer: "30%",
+                                options: ["20%", "30%", "80%"],
+                                explanation: "A=20% -> T=20% (Total 40%). Remaining 60% is G+C, so G=30%."
+                            },
+                            {
+                                title: "L3: Mastery",
+                                question: "In the Meselson-Stahl experiment, if DNA replication were CONSERVATIVE, what would be seen after one generation of growth in N14?",
+                                answer: "One heavy band and one light band",
+                                options: ["One intermediate band", "One heavy band and one light band", "Only one light band"],
+                                explanation: "Conservative replication keeps the original heavy parent together and makes a completely new light daughter, resulting in two distinct outer bands."
+                            }
                         ]
                     }
                 },
@@ -204,9 +223,9 @@ window.MATH_DATA = {
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "What is the primary benefit of the 5' G-cap and 3' Poly-A tail?", answer: "Protection and Export", options: ["Encoding amino acids", "Protection and Export", "DNA Replication"], explanation: "These modifications protect mRNA from enzymatic degradation and signal the cell that it's ready for export to the cytoplasm." },
-                            { title: "L2: Analysis", question: "In a gene with 4 exons and 3 introns, how many unique mRNA configurations are possible if all exons can be alternatively spliced?", answer: "15", options: ["4", "7", "15"], explanation: "Possible combinations of 4 distinct items = $2^4 - 1$ (excluding the empty set) = 15." },
-                            { title: "L3: Mastery", question: "Which epigenetic modification is most likely associated with X-inactivation in female mammals?", answer: "Heavy DNA Methylation", options: ["Histone Acetylation", "Heavy DNA Methylation", "Telomere shortening"], explanation: "Methylation adds a 'lock' to the DNA, condensing it into a Barr body to prevent transcription." }
+                            { title: "L1: Intuition", question: "What is the primary benefit of the 5' G-cap and 3' Poly-A tail?", answer: "One heavy band and one light band", options: ["Encoding amino acids", "Protection and Export", "DNA Replication"], explanation: "These modifications protect mRNA from enzymatic degradation and signal the cell that it's ready for export to the cytoplasm." },
+                            { title: "L2: Analysis", question: "In a gene with 4 exons and 3 introns, how many unique mRNA configurations are possible if all exons can be alternatively spliced?", answer: "Protection and Export", options: ["4", "7", "15"], explanation: "Possible combinations of 4 distinct items = $2^4 - 1$ (excluding the empty set) = 15." },
+                            { title: "L3: Mastery", question: "Which epigenetic modification is most likely associated with X-inactivation in female mammals?", answer: "15", options: ["Histone Acetylation", "Heavy DNA Methylation", "Telomere shortening"], explanation: "Methylation adds a 'lock' to the DNA, condensing it into a Barr body to prevent transcription." }
                         ]
                     }
                 },
@@ -233,9 +252,9 @@ window.MATH_DATA = {
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "In the lac operon, what molecule acts as the 'inducer'?", answer: "Allolactose", options: ["Glucose", "Allolactose", "cAMP"], explanation: "Allolactose (a derivative of lactose) binds to the repressor and removes it from the operator." },
-                            { title: "L2: Analysis", question: "What happens to the trp operon when tryptophan levels are HIGH?", answer: "Repressor binds, stopping transcription", options: ["Transcription increases", "Repressor binds, stopping transcription", "DNA is degraded"], explanation: "The trp operon is repressible. High levels of the product activate the repressor to stop further production (Feedback Inhibition)." },
-                            { title: "L3: Mastery", question: "In CRISPR-Cas9, what determines the SPECIFICITY of the cut?", answer: "The 20-nucleotide sequence of the gRNA", options: ["The Cas9 enzyme itself", "The PAM sequence only", "The 20-nucleotide sequence of the gRNA"], explanation: "The guide RNA (gRNA) is complementary to the target DNA; if this match is perfect, the nuclease will cut." }
+                            { title: "L1: Intuition", question: "In the lac operon, what molecule acts as the 'inducer'?", answer: "Heavy DNA Methylation", options: ["Glucose", "Allolactose", "cAMP"], explanation: "Allolactose (a derivative of lactose) binds to the repressor and removes it from the operator." },
+                            { title: "L2: Analysis", question: "What happens to the trp operon when tryptophan levels are HIGH?", answer: "Allolactose", options: ["Transcription increases", "Repressor binds, stopping transcription", "DNA is degraded"], explanation: "The trp operon is repressible. High levels of the product activate the repressor to stop further production (Feedback Inhibition)." },
+                            { title: "L3: Mastery", question: "In CRISPR-Cas9, what determines the SPECIFICITY of the cut?", answer: "Repressor binds, stopping transcription", options: ["The Cas9 enzyme itself", "The PAM sequence only", "The 20-nucleotide sequence of the gRNA"], explanation: "The guide RNA (gRNA) is complementary to the target DNA; if this match is perfect, the nuclease will cut." }
                         ]
                     }
                 }
@@ -259,9 +278,9 @@ window.MATH_DATA = {
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "Where does the oxygen released during photosynthesis come from?", answer: "From the splitting of water (photolysis)", options: ["From CO₂", "From glucose breakdown", "From the splitting of water (photolysis)"], explanation: "Water is split in PSII: 2H₂O → 4H⁺ + 4e⁻ + O₂. The oxygen you breathe comes from water, not CO₂." },
-                            { title: "L2: Analysis", question: "What is the primary function of the Calvin Cycle?", answer: "To synthesize G3P (sugar)", options: ["To split water", "To produce ATP", "To synthesize G3P (sugar)"], explanation: "The Calvin Cycle uses ATP and NADPH from the light reactions to fix CO2 into organic molecules (G3P)." },
-                            { title: "L3: Mastery", question: "How does the pH gradient across the thylakoid membrane drive ATP synthesis?", answer: "Via ATP Synthase", options: ["Through active transport", "Via ATP Synthase", "By diffusion of water"], explanation: "High H+ concentration inside the thylakoid lumen flows through ATP Synthase, powering the phosphorylation of ADP." }
+                            { title: "L1: Intuition", question: "Where does the oxygen released during photosynthesis come from?", answer: "The 20-nucleotide sequence of the gRNA", options: ["From CO₂", "From glucose breakdown", "From the splitting of water (photolysis)"], explanation: "Water is split in PSII: 2H₂O → 4H⁺ + 4e⁻ + O₂. The oxygen you breathe comes from water, not CO₂." },
+                            { title: "L2: Analysis", question: "What is the primary function of the Calvin Cycle?", answer: "From the splitting of water (photolysis)", options: ["To split water", "To produce ATP", "To synthesize G3P (sugar)"], explanation: "The Calvin Cycle uses ATP and NADPH from the light reactions to fix CO2 into organic molecules (G3P)." },
+                            { title: "L3: Mastery", question: "How does the pH gradient across the thylakoid membrane drive ATP synthesis?", answer: "To synthesize G3P (sugar)", options: ["Through active transport", "Via ATP Synthase", "By diffusion of water"], explanation: "High H+ concentration inside the thylakoid lumen flows through ATP Synthase, powering the phosphorylation of ADP." }
                         ]
                     }
                 },
@@ -287,9 +306,9 @@ window.MATH_DATA = {
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "How much ATP does aerobic respiration produce per glucose compared to fermentation?", answer: "~30-32 vs. 2", options: ["2 vs. 2", "~30-32 vs. 2", "~30-32 vs. 18"], explanation: "Without oxygen, only glycolysis can run (2 ATP). With oxygen, the full pathway yields ~30-32 ATP — about 15x more efficient." },
-                            { title: "L2: Analysis", question: "Which molecule is the final electron acceptor in the Electron Transport Chain?", answer: "Oxygen", options: ["Water", "Carbon Dioxide", "Oxygen"], explanation: "Oxygen accepts electrons and protons to form water, preventing the 'traffic jam' in the ETC." },
-                            { title: "L3: Mastery", question: "Why is the Krebs cycle considered an aerobic process, even though it doesn't use oxygen directly?", answer: "It depends on NAD+ from ETC", options: ["It uses O2 in the first step", "It depends on NAD+ from ETC", "It occurs only in plants"], explanation: "The cycle needs a constant supply of NAD+ and FAD, which are only recycled from NADH/FADH2 when the ETC has oxygen to receive electrons." }
+                            { title: "L1: Intuition", question: "How much ATP does aerobic respiration produce per glucose compared to fermentation?", answer: "Via ATP Synthase", options: ["2 vs. 2", "~30-32 vs. 2", "~30-32 vs. 18"], explanation: "Without oxygen, only glycolysis can run (2 ATP). With oxygen, the full pathway yields ~30-32 ATP — about 15x more efficient." },
+                            { title: "L2: Analysis", question: "Which molecule is the final electron acceptor in the Electron Transport Chain?", answer: "~30-32 vs. 2", options: ["Water", "Carbon Dioxide", "Oxygen"], explanation: "Oxygen accepts electrons and protons to form water, preventing the 'traffic jam' in the ETC." },
+                            { title: "L3: Mastery", question: "Why is the Krebs cycle considered an aerobic process, even though it doesn't use oxygen directly?", answer: "Oxygen", options: ["It uses O2 in the first step", "It depends on NAD+ from ETC", "It occurs only in plants"], explanation: "The cycle needs a constant supply of NAD+ and FAD, which are only recycled from NADH/FADH2 when the ETC has oxygen to receive electrons." }
                         ]
                     }
                 }
@@ -325,9 +344,9 @@ window.MATH_DATA = {
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "What phenotype ratio do you expect from a monohybrid cross Aa × Aa?", answer: "3:1", options: ["1:1", "3:1", "9:3:3:1"], explanation: "A monohybrid cross of two heterozygotes produces 1 AA : 2 Aa : 1 aa genotype, which gives a 3:1 dominant:recessive phenotype ratio." },
-                            { title: "L2: Analysis", question: "If a baby has Type O blood and the mother has Type A, what are the possible genotypes for the father?", answer: "i i, I^A i, or I^B i", options: ["I^A I^B", "i i, I^A i, or I^B i", "Only i i"], explanation: "The father must provide one 'i' allele. Therefore, he can be O (ii), heterozygous A (Ai), or heterozygous B (Bi)." },
-                            { title: "L3: Mastery", question: "In a cross AaBb x AaBb, what is the probability of an offspring with genotype AAbb?", answer: "1/16", options: ["1/4", "1/8", "1/16"], explanation: "P(AA) = 1/4; P(bb) = 1/4. Multiplied: 1/4 * 1/4 = 1/16." }
+                            { title: "L1: Intuition", question: "What phenotype ratio do you expect from a monohybrid cross Aa × Aa?", answer: "It depends on NAD+ from ETC", options: ["1:1", "3:1", "9:3:3:1"], explanation: "A monohybrid cross of two heterozygotes produces 1 AA : 2 Aa : 1 aa genotype, which gives a 3:1 dominant:recessive phenotype ratio." },
+                            { title: "L2: Analysis", question: "If a baby has Type O blood and the mother has Type A, what are the possible genotypes for the father?", answer: "3:1", options: ["I^A I^B", "i i, I^A i, or I^B i", "Only i i"], explanation: "The father must provide one 'i' allele. Therefore, he can be O (ii), heterozygous A (Ai), or heterozygous B (Bi)." },
+                            { title: "L3: Mastery", question: "In a cross AaBb x AaBb, what is the probability of an offspring with genotype AAbb?", answer: "i i, I^A i, or I^B i", options: ["1/4", "1/8", "1/16"], explanation: "P(AA) = 1/4; P(bb) = 1/4. Multiplied: 1/4 * 1/4 = 1/16." }
                         ],
                         "javaLogic": "mendelian_genetics"
                     }
@@ -355,9 +374,9 @@ window.MATH_DATA = {
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "If two genes have a recombination frequency of 50%, what does that tell you?", answer: "They are on different chromosomes (unlinked)", options: ["They are very close together", "They are on different chromosomes (unlinked)", "They never recombine"], explanation: "RF of 50% means genes assort independently — they behave as if on different chromosomes. Linked genes always have RF < 50%." },
-                            { title: "L2: Analysis", question: "If the recombination frequency between A and B is 10%, and B and C is 5%, what is the possible distance between A and C?", answer: "5% or 15%", options: ["15% only", "5% only", "5% or 15%"], explanation: "The order could be A-C-B (10-5=5) or A-B-C (10+5=15)." },
-                            { title: "L3: Mastery", question: "In a 3-point cross, which offspring class is used to determine the middle gene?", answer: "The Double Crossover (DCO) class", options: ["The Parental class", "The Double Crossover (DCO) class", "The single crossover between A and B"], explanation: "The DCO class is the least frequent and shows a 'swap' of only the middle gene relative to the parents." }
+                            { title: "L1: Intuition", question: "If two genes have a recombination frequency of 50%, what does that tell you?", answer: "1/16", options: ["They are very close together", "They are on different chromosomes (unlinked)", "They never recombine"], explanation: "RF of 50% means genes assort independently — they behave as if on different chromosomes. Linked genes always have RF < 50%." },
+                            { title: "L2: Analysis", question: "If the recombination frequency between A and B is 10%, and B and C is 5%, what is the possible distance between A and C?", answer: "They are on different chromosomes (unlinked)", options: ["15% only", "5% only", "5% or 15%"], explanation: "The order could be A-C-B (10-5=5) or A-B-C (10+5=15)." },
+                            { title: "L3: Mastery", question: "In a 3-point cross, which offspring class is used to determine the middle gene?", answer: "5% or 15%", options: ["The Parental class", "The Double Crossover (DCO) class", "The single crossover between A and B"], explanation: "The DCO class is the least frequent and shows a 'swap' of only the middle gene relative to the parents." }
                         ]
                     }
                 }
@@ -390,8 +409,8 @@ window.MATH_DATA = {
                         ]
                     },
                     lectures: [
-                        { name: "11.1: The Chi-Square Test", url: "lesson:bio:u11-1" },
-                        { name: "11.2: Error Analysis & SE", url: "lesson:bio:u11-2" }
+                        { name: "11.1: The Chi-Square Test", url: "lesson:bio:ch11-1" },
+                        { name: "11.2: Error Analysis & SE", url: "lesson:bio:ch11-2" }
                     ],
                     examples: [
                         {
@@ -408,7 +427,7 @@ window.MATH_DATA = {
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "What is the primary role of a p-value in AP Biology?", answer: "Probability that results are due to chance", options: ["The percentage of accuracy", "Probability that results are due to chance", "The number of samples"], explanation: "A p-value measures the evidence against the null hypothesis." }
+                            { title: "L1: Intuition", question: "What is the primary role of a p-value in AP Biology?", answer: "The Double Crossover (DCO) class", options: ["The percentage of accuracy", "Probability that results are due to chance", "The number of samples"], explanation: "A p-value measures the evidence against the null hypothesis." }
                         ]
                     }
                 },
@@ -417,8 +436,8 @@ window.MATH_DATA = {
                     intuition: "A well-designed experiment eliminates alternative explanations. AP FRQs often ask you to identify the independent variable and predict the effect of a treatment.",
                     topics: ["Variables & Controls", "Hypothesis Selection", "Data Interpretation Modeling"],
                     lectures: [
-                        { name: "12.1: Designing the Lab", url: "lesson:bio:u12-1" },
-                        { name: "12.2: FRQ Writing Protocols (CER)", url: "lesson:bio:u12-2" }
+                        { name: "12.1: Designing the Lab", url: "lesson:bio:ch12-1" },
+                        { name: "12.2: FRQ Writing Protocols (CER)", url: "lesson:bio:ch12-2" }
                     ],
                     examples: [
                         {
@@ -435,7 +454,7 @@ window.MATH_DATA = {
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "Why must an experiment have a negative control?", answer: "To establish a baseline without treatment", options: ["To save money", "To establish a baseline without treatment", "To increase sample size"], explanation: "A negative control receives no treatment, establishing the baseline against which experimental results are compared." }
+                            { title: "L1: Intuition", question: "Why must an experiment have a negative control?", answer: "Probability that results are due to chance", options: ["To save money", "To establish a baseline without treatment", "To increase sample size"], explanation: "A negative control receives no treatment, establishing the baseline against which experimental results are compared." }
                         ]
                     }
                 }
@@ -457,7 +476,8 @@ window.MATH_DATA = {
                     evolutionLink: "Biotechnology (CRISPR/Recombinant DNA) represents human-driven rapid evolution, a shift from geological timescales to technological timescales.",
                     lectures: [
                         { name: "13.1: The Mechanism of Change", url: "lesson:bio:ch7-1" },
-                        { name: "13.2: Population Genetics (H-W)", url: "lesson:bio:ch7-2" }
+                        { name: "13.2: Population Genetics (H-W)", url: "lesson:bio:ch7-2" },
+                        { name: "13.3: Phylogeny & Cladistics", url: "lesson:bio:ch7-3" }
                     ],
                     examples: [
                         {
@@ -473,17 +493,18 @@ window.MATH_DATA = {
                     ],
                     quiz: {
                         levels: [
-                            { title: "L2: Analysis", question: "Which of these is NOT a requirement for Hardy-Weinberg equilibrium?", answer: "Small population size", options: ["No mutations", "Random mating", "Small population size"], explanation: "Small populations are subject to genetic drift, which causes evolution. H-W requires a large population." }
+                            { title: "L2: Analysis", question: "Which of these is NOT a requirement for Hardy-Weinberg equilibrium?", answer: "To establish a baseline without treatment", options: ["No mutations", "Random mating", "Small population size"], explanation: "Small populations are subject to genetic drift, which causes evolution. H-W requires a large population." }
                         ]
                     }
                 },
                 {
                     title: "Unit 14: Ecosystem Dynamics",
                     intuition: "Energy flows, but matter cycles. Understanding the 10% rule explains why top predators are rare.",
-                    topics: ["Trophic Levels", "Nutrient Cycling", "Community Interactions"],
+                    topics: ["Trophic Levels", "Nutrient Cycling", "Community Interactions", "Population Growth"],
                     lectures: [
                         { name: "14.1: Energy Flow Networks", url: "lesson:bio:ch8-1" },
-                        { name: "14.2: Biodiversity & Resilience", url: "lesson:bio:ch8-2" }
+                        { name: "14.2: Biodiversity & Resilience", url: "lesson:bio:ch8-2" },
+                        { name: "14.3: Population Ecology (r/K)", url: "lesson:bio:ch8-3" }
                     ],
                     examples: [
                         {
@@ -500,7 +521,7 @@ window.MATH_DATA = {
                     ],
                     quiz: {
                         levels: [
-                            { title: "L1: Intuition", question: "In a food web, if 10,000 kJ of energy is available at the producer level, how much is likely available to a tertiary consumer?", answer: "10 kJ", options: ["1,000 kJ", "100 kJ", "10 kJ"], explanation: "The 10% rule means energy decreases by an order of magnitude at each step: 10,000 $\\rightarrow$ 1,000 $\\rightarrow$ 100 $\\rightarrow$ 10." }
+                            { title: "L1: Intuition", question: "In a food web, if 10,000 kJ of energy is available at the producer level, how much is likely available to a tertiary consumer?", answer: "Small population size", options: ["1,000 kJ", "100 kJ", "10 kJ"], explanation: "The 10% rule means energy decreases by an order of magnitude at each step: 10,000 $\\rightarrow$ 1,000 $\\rightarrow$ 100 $\\rightarrow$ 10." }
                         ]
                     }
                 }
@@ -536,21 +557,21 @@ window.MATH_DATA = {
                             {
                                 title: "L1: Conceptual Intuition",
                                 question: "What is the fundamental benefit of using Python over manual analysis in genomics?",
-                                answer: "Scale and reproducibility",
+                                answer: "10 kJ",
                                 options: ["Speed only", "Scale and reproducibility", "More colorful plots", "Simpler formulas"],
                                 explanation: "The ability to process millions of sequences consistently and reproduce the same logic is the core of bio-data science."
                             },
                             {
                                 title: "L2: Algorithmic Understanding",
                                 question: "In a BLAST result, what does an E-value of $10^{-10}$ signify?",
-                                answer: "Alignment unlikely by chance",
+                                answer: "Scale and reproducibility",
                                 options: ["High probability of chance", "Alignment unlikely by chance", "Sequence length is 10", "An error occurred"],
                                 explanation: "E-value represents the 'Expectation' of random hits. Closer to 0 means true Homology."
                             },
                             {
                                 title: "L3: Elite Application",
                                 question: "Which scoring matrix is used to account for biological mutation probabilities?",
-                                answer: "BLOSUM62",
+                                answer: "Alignment unlikely by chance",
                                 options: ["PAM1", "BLOSUM62", "Identity Matrix", "Zero Matrix"],
                                 explanation: "BLOSUM62 is the standard statistical matrix for biological substitutions."
                             }
@@ -574,21 +595,21 @@ window.MATH_DATA = {
                             {
                                 title: "L1: Research Ethics",
                                 question: "What is the primary danger of P-Hacking in biological research?",
-                                answer: "False positive results",
+                                answer: "BLOSUM62",
                                 options: ["Data loss", "False positive results", "High cost", "Slow publication"],
                                 explanation: "P-Hacking artificially forces a $p < 0.05$ result, leading to conclusions that aren't actually true or reproducible."
                             },
                             {
                                 title: "L2: Quantitative Reasoning",
                                 question: "If the critical value for $\\chi^2$ is 3.84 and your calculated value is 4.52, what is your conclusion?",
-                                answer: "Reject the Null Hypothesis",
+                                answer: "False positive results",
                                 options: ["Accept the Null Hypothesis", "Reject the Null Hypothesis", "Ignore the result", "Increase sample size"],
                                 explanation: "If calculated $\\chi^2 >$ critical value, the difference is statistically significant, so we reject the Null (chance) hypothesis."
                             },
                             {
                                 title: "L3: Experimental Mastery",
                                 question: "In a study on plant growth, why is a high sample size ($n$) preferred when calculating SEM?",
-                                answer: "Decreases uncertainty of the mean",
+                                answer: "Reject the Null Hypothesis",
                                 options: ["Increases the mean", "Decreases uncertainty of the mean", "Changes the variable", "Speeds up growth"],
                                 explanation: "SEM is calculated as $SD / \\sqrt{n}$. As $n$ grows, SEM shrinks, meaning our sample mean is a much more precise estimate of the true population."
                             }

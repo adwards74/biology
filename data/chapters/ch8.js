@@ -97,17 +97,13 @@ window.CHAPTER_DATA["ch8"] = {
                 </div>
 
                 <!-- VIDEO CURATION: MASTER CLASS (HYBRID LINK CARD) -->
+                <!-- VIDEO CURATION: MASTER CLASS (EMBEDDED) -->
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-emerald); padding: 30px;">
                     <h5 style="color: var(--accent-emerald); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Ecosystem Dynamics & Energy Flow</h5>
-                    <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(16,185,129,0.3);">
-                        <iframe 
-                            src="https://www.youtube.com/embed/v6mtJbB5C28" 
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(16,185,129,0.3);">
+                        <iframe src="https://www.youtube.com/embed/GxE1SSqbSn4" title="Crash Course Ecology #4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                     </div>
-                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Ecosystem Ecology (Bozeman Science / Advanced Curation)</p>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Community Ecology (Crash Course Ecology #4)</p>
                 </div>
             </div>
         `
@@ -165,6 +161,78 @@ window.CHAPTER_DATA["ch8"] = {
                         <li>Succession: primary (bare rock) vs. secondary (post-disturbance with soil intact).</li>
                         <li>Shannon Diversity Index measures biodiversity; higher H = more diverse and stable.</li>
                     </ul>
+                </div>
+            </div>
+        `
+    },
+
+    "ch8-3": {
+        title: "14.3: Population Ecology",
+        subtitle: "The Math of Life — Growth Models (Exponential vs. Logistic) and Carrying Capacity",
+        content: `
+            <div class="lesson-section">
+                <div class="key-terms-box glass" style="border-left: 4px solid var(--accent-blue); padding: 20px; margin-bottom: 30px; border-radius: var(--standard-radius);">
+                    <h4 style="color: var(--accent-blue); margin-bottom: 12px;"><i class="fas fa-key"></i> Key Terms</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.9rem;">
+                        <div><strong>Carrying Capacity (K)</strong> — Max population size an environment can support.</div>
+                        <div><strong>Exponential Growth (J-curve)</strong> — Rapid growth with unlimited resources ($dN/dt = rN$).</div>
+                        <div><strong>Logistic Growth (S-curve)</strong> — Growth slows as it approaches K ($dN/dt = rN(K-N)/K$).</div>
+                        <div><strong>r-selected</strong> — Fast reproduction, many offspring, short life (e.g., bacteria, insects).</div>
+                        <div><strong>K-selected</strong> — Slow reproduction, few offspring, long life (e.g., humans, elephants).</div>
+                    </div>
+                </div>
+
+                <div class="intuition-box glass" style="border-left-color: var(--accent-blue);">
+                    <h3><i class="fas fa-lightbulb"></i> Big Idea: Limits to Growth</h3>
+                    <p>Nothing grows forever. Malthus taught us that populations grow geometrically, but resources grow arithmetically. Nature enforces a speed limit called <strong>Carrying Capacity (K)</strong>. When you hit it, you either stabilize (Logistic) or crash (Overshoot).</p>
+                </div>
+
+                <!-- VISUAL DYNAMIC: POPULATION CURVES -->
+                <div class="visual-dynamic glass" style="padding: 30px; margin: 30px 0; border-radius: var(--standard-radius); background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); border: 2px solid var(--accent-blue);">
+                    <h5 style="color: var(--accent-blue); margin-bottom: 25px; text-align: center;"><i class="fas fa-chart-line"></i> The S-Curve: Biological Reality</h5>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                        <svg viewBox="0 0 500 250" style="max-width: 600px; width: 100%; height: auto;">
+                            <!-- Axes -->
+                            <line x1="50" y1="220" x2="450" y2="220" stroke="white" stroke-width="2" /> <!-- X axis: Time -->
+                            <line x1="50" y1="220" x2="50" y2="20" stroke="white" stroke-width="2" />   <!-- Y axis: Pop Size -->
+                            <text x="420" y="240" fill="white" font-size="10">Time</text>
+                            <text x="10" y="30" fill="white" font-size="10" transform="rotate(-90 10,30)">Population (N)</text>
+                            
+                            <!-- K-Line (Carrying Capacity) -->
+                            <line x1="50" y1="50" x2="450" y2="50" stroke="var(--accent-red)" stroke-width="2" stroke-dasharray="5 5" />
+                            <text x="460" y="55" fill="var(--accent-red)" font-size="12" font-weight="bold">K</text>
+
+                            <!-- Logistic Curve (S-Curve) -->
+                            <path d="M 50 210 C 150 210, 200 50, 400 50" fill="none" stroke="var(--accent-cyan)" stroke-width="4">
+                                <animate attributeName="stroke-dasharray" from="0, 1000" to="1000, 0" dur="3s" repeatCount="indefinite" />
+                            </path>
+                            <text x="300" y="70" fill="var(--accent-cyan)" font-size="10">Logistic (S-Curve)</text>
+
+                            <!-- Exponential Curve (J-Curve) Shadow -->
+                            <path d="M 50 210 Q 150 200 200 20" fill="none" stroke="var(--accent-amber)" stroke-width="2" stroke-dasharray="2 2" opacity="0.5" />
+                            <text x="210" y="30" fill="var(--accent-amber)" font-size="10" opacity="0.8">Exponential (J)</text>
+
+                        </svg>
+                        <p style="font-size: 0.85rem; color: #aaa; text-align: center; font-style: italic;">The gap between J and S represents Environmental Resistance (resource scarcity, predation, disease).</p>
+                    </div>
+                </div>
+
+                <h2>I. The Math of Growth</h2>
+                <div class="glass-card" style="padding:20px; font-family: 'JetBrains Mono', monospace; background:rgba(0,0,0,0.3);">
+                    <p style="color:var(--accent-amber);">1. Exponential: dN/dt = rN</p>
+                    <p style="color:#888; font-size:0.8rem; margin-bottom:15px;">Growth depends only on current size (N) and rate (r).</p>
+                    
+                    <p style="color:var(--accent-cyan);">2. Logistic: dN/dt = rN( (K-N) / K )</p>
+                    <p style="color:#888; font-size:0.8rem;">As N approaches K, the term (K-N)/K approaches 0, slowing growth to a halt.</p>
+                </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (EMBEDDED) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-blue); padding: 30px;">
+                    <h5 style="color: var(--accent-blue); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Population Ecology</h5>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(59,130,246,0.3);">
+                        <iframe src="https://www.youtube.com/embed/P5yvfjSgZc0" title="Crash Course Ecology #2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Population Ecology (Crash Course Ecology #2)</p>
                 </div>
             </div>
         `

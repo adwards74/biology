@@ -866,7 +866,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 nextLesson = currentIdx !== -1 && currentIdx < allLectures.length - 1 ? allLectures[currentIdx + 1] : null;
             }
 
-            const javaKey = Object.keys(window.JAVA_LOGIC_DATA || {}).find(k => {
+            const javaKey = lessonData.javaLogic || Object.keys(window.JAVA_LOGIC_DATA || {}).find(k => {
                 const searchStr = k.replace(/_/g, ' ');
                 return lessonData.title.toLowerCase().includes(searchStr) ||
                     lessonKey.includes(k) ||

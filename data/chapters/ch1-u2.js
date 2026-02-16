@@ -255,12 +255,13 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-cyan); padding: 30px;">
                     <h5 style="color: var(--accent-cyan); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Water Potential & Osmoregulation</h5>
                     <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(6,182,212,0.3);">
-                        <iframe 
-                            src="https://www.youtube.com/embed/L-osEc07vMs" 
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                        <iframe src="https://www.youtube.com/embed/L-osEc07vMs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+    <div class="link-card-content">
+        <h4>Watch Verification Video</h4>
+        <p>High-Fidelity Playback</p>
+    </div>
+    <div class="link-card-arrow"><i class="fas fa-external-link-alt"></i></div>
+</div>
                     </div>
                     <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Water Potential (Amoeba Sisters / Academic Curation)</p>
                 </div>
@@ -485,12 +486,13 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-amber); padding: 30px;">
                     <h5 style="color: var(--accent-amber); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Active Transport & Co-Transport</h5>
                     <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(245,158,11,0.3);">
-                        <iframe 
-                            src="https://www.youtube.com/embed/qBCVVszQQNs" 
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                        <iframe src="https://www.youtube.com/embed/qBCVVszQQNs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+    <div class="link-card-content">
+        <h4>Watch Verification Video</h4>
+        <p>High-Fidelity Playback</p>
+    </div>
+    <div class="link-card-arrow"><i class="fas fa-external-link-alt"></i></div>
+</div>
                     </div>
                     <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Active Transport & Na+/K+ Pump (Amoeba Sisters / Academic Curation)</p>
                 </div>

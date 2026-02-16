@@ -95,22 +95,92 @@ window.CHAPTER_DATA["ch7"] = {
                     <p>Hardy-Weinberg equilibrium is a <strong>Null Hypothesis</strong>. If a population is in H-W equilibrium, it is NOT evolving. If the observed allele frequencies differ from H-W predictions, then evolution *must* be occurring via: Mutation, Selection, Genetic Drift, Gene Flow, or Non-Random Mating.</p>
                 </div>
 
-                <!-- VIDEO CURATION: MASTER CLASS (HYBRID LINK CARD) -->
+                <!-- VIDEO CURATION: MASTER CLASS (EMBEDDED) -->
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-amber); padding: 30px;">
                     <h5 style="color: var(--accent-amber); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Natural Selection & H-W equilibrium</h5>
-                    <a href="https://www.youtube.com/watch?v=7VM9YxmULuo" target="_blank" style="text-decoration: none; display: block;">
-                        <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://img.youtube.com/vi/7VM9YxmULuo/maxresdefault.jpg'); background-size: cover; background-position: center; border: 1px solid rgba(245,158,11,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s ease;">
-                            <!-- Floating Play Button -->
-                            <div style="width: 80px; height: 80px; background: var(--accent-amber); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(245,158,11,0.6); z-index: 2;">
-                                <i class="fas fa-play" style="color: black; font-size: 2rem; margin-left: 5px;"></i>
-                            </div>
-                            <!-- Bottom Info Bar -->
-                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(245, 158, 11, 0.9); padding: 12px; text-align: center; backdrop-filter: blur(10px);">
-                                <p style="margin: 0; color: black; font-weight: 800; font-size: 0.9rem; letter-spacing: 1px;">WATCH ON YOUTUBE <i class="fas fa-external-link-alt" style="font-size: 0.8rem; margin-left: 8px;"></i></p>
-                            </div>
-                        </div>
-                    </a>
-                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Evolution & Hardy-Weinberg (Amoeba Sisters / Advanced Curation)</p>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(245,158,11,0.3);">
+                        <iframe src="https://www.youtube.com/embed/7VM9YxmULuo" title="Hardy-Weinberg Equilibrium" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Evolution & Hardy-Weinberg (Amoeba Sisters)</p>
+                </div>
+            </div>
+        `
+    },
+
+    "ch7-3": {
+        title: "13.3: Phylogeny & Systematics",
+        subtitle: "Reading the Tree of Life — Cladograms, BLAST, and Molecular Clocks",
+        content: `
+            <div class="lesson-section">
+                <div class="key-terms-box glass" style="border-left: 4px solid var(--accent-purple); padding: 20px; margin-bottom: 30px; border-radius: var(--standard-radius);">
+                    <h4 style="color: var(--accent-purple); margin-bottom: 12px;"><i class="fas fa-key"></i> Key Terms</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.9rem;">
+                        <div><strong>Phylogeny</strong> — The evolutionary history of a species or group.</div>
+                        <div><strong>Cladogram</strong> — A branching diagram showing relationships based on shared derived characters.</div>
+                        <div><strong>Node</strong> — A branch point representing the most recent common ancestor.</div>
+                        <div><strong>Molecular Clock</strong> — Using mutation rates in DNA/protein sequences to estimate time of divergence.</div>
+                    </div>
+                </div>
+
+                <div class="intuition-box glass" style="border-left-color: var(--accent-purple);">
+                    <h3><i class="fas fa-lightbulb"></i> Big Idea: Reading the Files</h3>
+                    <p>Morphology (what things look like) can be deceiving due to convergent evolution (e.g., dolphins and sharks). <strong>DNA is the ultimate truth.</strong> By comparing sequence alignment (BLAST), we can determine exactly how closely related two species are, regardless of how they look.</p>
+                </div>
+
+                <!-- VISUAL DYNAMIC: INTERACTIVE CLADOGRAM -->
+                <div class="visual-dynamic glass" style="padding: 30px; margin: 30px 0; border-radius: var(--standard-radius); background: linear-gradient(135deg, #2e1065 0%, #0f172a 100%); border: 2px solid var(--accent-purple);">
+                    <h5 style="color: var(--accent-purple); margin-bottom: 25px; text-align: center;"><i class="fas fa-code-branch"></i> The Tree of Life (Cladistics)</h5>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                        <svg viewBox="0 0 400 250" style="max-width: 500px; width: 100%; height: auto;">
+                            <!-- Main Trunk -->
+                            <line x1="50" y1="200" x2="350" y2="50" stroke="white" stroke-width="2" />
+                            
+                            <!-- Branch 1: Fish -->
+                            <line x1="100" y1="175" x2="100" y2="100" stroke="white" stroke-width="2" />
+                            <text x="100" y="90" fill="white" font-size="10" text-anchor="middle">Fish</text>
+                             <!-- Trait 1 -->
+                            <rect x="95" y="170" width="10" height="10" fill="var(--accent-purple)" />
+                            <text x="110" y="180" fill="#aaa" font-size="8">Vertebrae</text>
+
+                            <!-- Branch 2: Frog -->
+                            <line x1="180" y1="135" x2="180" y2="60" stroke="white" stroke-width="2" />
+                            <text x="180" y="50" fill="white" font-size="10" text-anchor="middle">Frog</text>
+                             <!-- Trait 2 -->
+                            <rect x="175" y="130" width="10" height="10" fill="var(--accent-purple)" />
+                            <text x="190" y="140" fill="#aaa" font-size="8">4 Limbs</text>
+
+                            <!-- Branch 3: Human -->
+                            <line x1="260" y1="95" x2="260" y2="20" stroke="white" stroke-width="2" />
+                            <text x="260" y="10" fill="white" font-size="10" text-anchor="middle">Human</text>
+                            <!-- Trait 3 -->
+                            <rect x="255" y="90" width="10" height="10" fill="var(--accent-purple)" />
+                            <text x="270" y="100" fill="#aaa" font-size="8">Amniotic Egg</text>
+                            
+                            <!-- Node Animation -->
+                            <circle cx="260" cy="95" r="4" fill="var(--accent-cyan)">
+                                <animate attributeName="r" values="4;8;4" dur="2s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" values="1;0;1" dur="2s" repeatCount="indefinite" />
+                            </circle>
+                            <text x="350" y="150" fill="#888" font-size="9" text-anchor="end" font-style="italic">Each node is a common ancestor</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <h2>I. Molecular Homology (BLAST)</h2>
+                <p>The more similar the DNA sequence, the more recently the two species shared a common ancestor.</p>
+                <div class="glass-card" style="padding: 15px; font-family: 'Courier New', monospace; font-size: 0.85rem; background: rgba(0,0,0,0.3);">
+                    <div>Human: A-T-G-C-C-A-T-T</div>
+                    <div>Chimp: A-T-G-C-C-A-T-<span style="color:var(--accent-red);">C</span> (1 diff)</div>
+                    <div>Mouse: A-T-<span style="color:var(--accent-red);">A</span>-C-C-<span style="color:var(--accent-red);">G</span>-T-T (2 diffs)</div>
+                </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (EMBEDDED) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-purple); padding: 30px;">
+                    <h5 style="color: var(--accent-purple); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Cladograms & Phylogenetics</h5>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(168,85,247,0.3);">
+                        <iframe src="https://www.youtube.com/embed/J02_0ZfQ-iI" title="Crash Course Biology #19" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Taxonomy: Life's Filing System (Crash Course Biology #19)</p>
                 </div>
             </div>
         `

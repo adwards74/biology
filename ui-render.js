@@ -279,12 +279,11 @@ window.UIEngine = (function () {
         renderSubjectGrid(data.subjects || [], 'subject-cards-container');
     }
 
-    // Expose functions global context
+    // Expose functions to global context
     window.renderSubjectGrid = renderSubjectGrid;
     window.showSubjectDetail = showSubjectDetail;
     window.showDashboard = showDashboard;
-
-    window.switchQuizLevel = function (unitIdx, levelIdx, subjectId) {
+    function switchQuizLevel(unitIdx, levelIdx, subjectId) {
         const subject = MATH_DATA.subjects.find(s => s.id === subjectId);
         const unit = subject.units[unitIdx];
         const quiz = unit.quiz;
@@ -319,7 +318,7 @@ window.UIEngine = (function () {
         `;
 
         if (window.MathJax) window.MathJax.typesetPromise();
-    };
+    }
 
     function applyTerminologyTooltips(html) {
         if (!window.MATH_DATA || !window.MATH_DATA.glossary) return html;
@@ -632,9 +631,7 @@ window.UIEngine = (function () {
         `;
     }
 
-    // Expose update helper
-    window.UIEngine = window.UIEngine || {};
-    window.UIEngine.updateQuantumPlot = function () {
+    function updateQuantumPlot() {
         const input = document.getElementById('quantum-input-0');
         if (!input) return;
         const expr = input.value;
@@ -642,10 +639,10 @@ window.UIEngine = (function () {
         if (!panel) return;
         panel.innerHTML = renderQuantumGraph({ expressions: [expr] });
         if (window.MathJax) window.MathJax.typesetPromise();
-    };
+    }
 
     // --- Elite 6.1: Plan B Engine Switcher ---
-    window.UIEngine.switchToDesmos = () => {
+    function switchToDesmos() {
         const input = document.getElementById('quantum-input-0');
         const expressions = input ? [input.value] : ['x^2'];
 
@@ -656,7 +653,7 @@ window.UIEngine = (function () {
         if (window.initDesmosLab) {
             window.initDesmosLab({ expressions: expressions, force: true });
         }
-    };
+    }
 
     return {
         renderSubjectGrid,
@@ -667,7 +664,7 @@ window.UIEngine = (function () {
         solveEquation,
         solveQuadratic,
         renderQuantumGraph,
-        updateQuantumPlot: window.UIEngine.updateQuantumPlot,
-        switchToDesmos: window.UIEngine.switchToDesmos
+        updateQuantumPlot,
+        switchToDesmos
     };
 })();

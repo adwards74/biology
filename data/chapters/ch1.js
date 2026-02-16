@@ -400,8 +400,84 @@ window.CHAPTER_DATA["ch1"] = {
                     <p>A eukaryotic cell is not a bag of chemicals — it is a highly organized <strong>logistics network</strong>. Proteins are "manufactured" at ribosomes, "quality-checked" in the ER, "packaged and labeled" in the Golgi, and "shipped" via vesicles to their final destination. Understanding this pipeline is essential because errors in protein trafficking cause serious diseases, including cystic fibrosis and Alzheimer's.</p>
                 </div>
 
+                <!-- PREMIUM CINEMATIC HEADER: CELLULAR LOGISTICS -->
+                <div class="visual-dynamic glass" style="margin: 30px 0; padding: 40px; border-radius: var(--standard-radius); background: linear-gradient(135deg, #082f49 0%, #0f172a 100%); border: 2px solid var(--accent-cyan); overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(6,182,212,0.2);">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 30px; position: relative; z-index: 1;">
+                        <h4 style="color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; border-bottom: 2px solid var(--accent-cyan); padding-bottom: 8px; margin: 0;">Logistics & Export Architecture</h4>
+                        <svg viewBox="0 0 500 150" style="max-width: 600px; width: 100%; height: auto; filter: drop-shadow(0 0 10px rgba(6,182,212,0.3));">
+                            <!-- Flow Path -->
+                            <path d="M 50 75 H 450" stroke="rgba(255,255,255,0.05)" stroke-width="4" />
+                            
+                            <!-- Factory Units -->
+                            <g transform="translate(50, 50)">
+                                <rect width="60" height="50" rx="5" fill="rgba(239, 68, 68, 0.1)" stroke="var(--accent-red)" stroke-width="2" />
+                                <text x="30" y="30" fill="white" font-size="8" text-anchor="middle">DNA SRC</text>
+                            </g>
+                            <g transform="translate(180, 40)">
+                                <path d="M 0 0 Q 30 20 60 0 T 120 0" fill="none" stroke="var(--accent-emerald)" stroke-width="3" />
+                                <text x="60" y="55" fill="var(--accent-emerald)" font-size="9" text-anchor="middle">ER FABRICATOR</text>
+                            </g>
+                            <g transform="translate(380, 50)">
+                                <rect width="70" height="50" rx="5" fill="rgba(6, 182, 212, 0.1)" stroke="var(--accent-cyan)" stroke-width="2" />
+                                <text x="35" y="30" fill="white" font-size="8" text-anchor="middle">GOLGI SHIP</text>
+                            </g>
+                            
+                            <!-- Dynamic Delivery Pings -->
+                            <circle r="4" fill="var(--accent-amber)">
+                                <animateMotion path="M 110 75 H 180 M 300 75 H 380" dur="2s" repeatCount="indefinite" />
+                            </circle>
+                        </svg>
+                        <div style="display: flex; gap: 20px; font-size: 0.8rem; color: #aaa;">
+                            <span><i class="fas fa-microchip"></i> Processing ER</span>
+                            <span><i class="fas fa-boxes"></i> Sorting Golgi</span>
+                            <span><i class="fas fa-truck-loading"></i> Vesicle Flux</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- SECTION I -->
                 <h2>I. The Why: The Logistics Constraint</h2>
+
+                <!-- VISUAL DYNAMIC: PROTEIN PIPELINE SIMULATOR -->
+                <div class="visual-dynamic glass" style="margin: 30px 0; padding: 25px; border-radius: var(--standard-radius); background: rgba(0,0,0,0.4); border: 1px solid var(--accent-cyan);">
+                    <h5 style="color: var(--accent-cyan); margin-bottom: 20px; text-align: center;"><i class="fas fa-shipping-fast"></i> Logistics Simulator: The Protein Pipeline</h5>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                        <svg viewBox="0 0 500 200" style="max-width: 600px; width: 100%; height: auto;">
+                            <!-- Nucleus (Start) -->
+                            <path d="M 10 50 Q 10 100 60 100" fill="none" stroke="var(--accent-red)" stroke-width="2" stroke-dasharray="5,5" />
+                            <circle cx="35" cy="50" r="25" fill="rgba(239, 68, 68, 0.1)" stroke="var(--accent-red)" stroke-width="2" />
+                            <text x="35" y="55" fill="white" font-size="8" text-anchor="middle">NUCLEUS</text>
+
+                            <!-- Rough ER -->
+                            <path d="M 80 80 Q 100 40 150 100 T 220 120" fill="none" stroke="var(--accent-emerald)" stroke-width="3" />
+                            <text x="130" y="70" fill="var(--accent-emerald)" font-size="10" font-weight="bold">Rough ER</text>
+                            
+                            <!-- Golgi -->
+                            <rect x="280" y="70" width="80" height="60" rx="10" fill="rgba(6, 182, 212, 0.1)" stroke="var(--accent-cyan)" stroke-width="2" />
+                            <path d="M 290 85 H 350 M 290 100 H 350 M 290 115 H 350" stroke="var(--accent-cyan)" stroke-width="1" opacity="0.5" />
+                            <text x="320" y="105" fill="var(--accent-cyan)" font-size="11" font-weight="bold" text-anchor="middle">GOLGI</text>
+
+                            <!-- Plasma Membrane (End) -->
+                            <path d="M 450 20 Q 480 100 450 180" fill="none" stroke="white" stroke-width="4" opacity="0.3" />
+                            <text x="480" y="100" fill="white" font-size="9" transform="rotate(90, 480, 100)" text-anchor="middle">MEMBRANE</text>
+
+                            <!-- Moving Vesicle (Animation) -->
+                            <g>
+                                <circle r="6" fill="var(--accent-amber)" stroke="white" stroke-width="1">
+                                    <animateMotion path="M 60 100 Q 100 100 150 100 T 280 100 M 360 100 Q 400 100 450 100" dur="5s" repeatCount="indefinite" />
+                                </circle>
+                                <circle r="3" fill="white">
+                                    <animateMotion path="M 60 100 Q 100 100 150 100 T 280 100 M 360 100 Q 400 100 450 100" dur="5s" repeatCount="indefinite" />
+                                </circle>
+                                <text font-size="8" fill="var(--accent-amber)" font-weight="bold">
+                                    <animateMotion path="M 60 100 Q 100 100 150 100 T 280 100 M 360 100 Q 400 100 450 100" dur="5s" repeatCount="indefinite" />
+                                    <tspan x="10" y="-10">PROTEIN</tspan>
+                                </text>
+                            </g>
+                        </svg>
+                        <p style="font-size: 0.85rem; color: #aaa; text-align: center;">Vesicles act as <strong>security escorts</strong>, shielding proteins from the cytoplasm during transport.</p>
+                    </div>
+                </div>
 
                 <p>When a cell needs to produce a protein that will be exported (like a digestive enzyme or a hormone), that protein must pass through a specific series of organelles. This is the <strong>secretory pathway</strong>.</p>
 
@@ -508,6 +584,24 @@ window.CHAPTER_DATA["ch1"] = {
                         <li>Lysosomes digest imported material and recycle cellular waste.</li>
                         <li>Signal peptides act as molecular "zip codes" directing proteins to the correct destination.</li>
                     </ul>
+                </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (HYBRID LINK CARD) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-cyan); padding: 30px;">
+                    <h5 style="color: var(--accent-cyan); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: The Endomembrane System</h5>
+                    <a href="https://www.youtube.com/watch?v=rvfvRgk0Mf8" target="_blank" style="text-decoration: none; display: block;">
+                        <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://img.youtube.com/vi/rvfvRgk0Mf8/maxresdefault.jpg'); background-size: cover; background-position: center; border: 1px solid rgba(16,185,129,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s ease;">
+                            <!-- Floating Play Button -->
+                            <div style="width: 80px; height: 80px; background: var(--accent-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(6,182,212,0.6); z-index: 2;">
+                                <i class="fas fa-play" style="color: black; font-size: 2rem; margin-left: 5px;"></i>
+                            </div>
+                            <!-- Bottom Info Bar -->
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(6, 182, 212, 0.9); padding: 12px; text-align: center; backdrop-filter: blur(10px);">
+                                <p style="margin: 0; color: black; font-weight: 800; font-size: 0.9rem; letter-spacing: 1px;">WATCH ON YOUTUBE <i class="fas fa-external-link-alt" style="font-size: 0.8rem; margin-left: 8px;"></i></p>
+                            </div>
+                        </div>
+                    </a>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Endomembrane System & Protein Export (Amoeba Sisters / Academic Curation)</p>
                 </div>
             </div>
         `

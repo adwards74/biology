@@ -200,6 +200,50 @@ window.CHAPTER_DATA["ch3"] = {
                     <p>Burning glucose in a fire releases all its energy as heat — instantly and wastefully. Cellular respiration does the same chemistry ($C_6H_{12}O_6 + 6O_2 → 6CO_2 + 6H_2O$) but in <strong>many small steps</strong>, capturing ~34% of the energy as ATP. The rest is still released as heat (which is why you're warm!).</p>
                 </div>
 
+                <!-- PREMIUM CINEMATIC HEADER: THE MITOCHONDRIAL TURBINE (ETC) -->
+                <div class="visual-dynamic glass" style="margin: 30px 0; padding: 40px; border-radius: var(--standard-radius); background: linear-gradient(135deg, #451a03 0%, #0c0a09 100%); border: 2px solid var(--accent-orange); overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(251,146,60,0.2);">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 30px; position: relative; z-index: 1;">
+                        <h4 style="color: var(--accent-orange); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; border-bottom: 2px solid var(--accent-orange); padding-bottom: 8px; margin: 0;">Metabolic Powerhouse & ETC</h4>
+                        <svg viewBox="0 0 500 180" style="max-width: 600px; width: 100%; height: auto;">
+                            <!-- Inner Membrane Boundary -->
+                            <path d="M 0 120 Q 250 100 500 120" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="4" />
+                            
+                            <!-- ETC Complexes -->
+                            <g transform="translate(80, 110)">
+                                <rect x="-20" y="-30" width="40" height="60" rx="5" fill="#1e293b" stroke="var(--accent-orange)" stroke-width="2" />
+                                <text x="0" y="45" fill="#888" font-size="7" text-anchor="middle">Complex I</text>
+                                <!-- Proton Pumping -->
+                                <circle cx="0" cy="0" r="3" fill="var(--accent-cyan)">
+                                    <animate attributeName="cy" values="0;-60" dur="1s" repeatCount="indefinite" />
+                                    <animate attributeName="opacity" values="1;0" dur="1s" repeatCount="indefinite" />
+                                </circle>
+                            </g>
+                            
+                            <g transform="translate(200, 110)">
+                                <rect x="-20" y="-30" width="40" height="60" rx="5" fill="#1e293b" stroke="var(--accent-orange)" stroke-width="2" />
+                            </g>
+                            
+                            <!-- ATP Synthase Turbine -->
+                            <g transform="translate(380, 110)">
+                                <path d="M -25 -40 L 25 -40 L 15 20 L -15 20 Z" fill="var(--accent-amber)" opacity="0.8">
+                                    <animateTransform attributeName="transform" type="rotate" values="0 0 -10; 360 0 -10" dur="2s" repeatCount="indefinite" />
+                                </path>
+                                <text x="0" y="45" fill="var(--accent-amber)" font-size="8" text-anchor="middle" font-weight="bold">ATP SYNTHASE</text>
+                                <!-- Flowing Protons IN -->
+                                <circle cx="0" cy="-70" r="3" fill="var(--accent-cyan)">
+                                    <animate attributeName="cy" values="-70; -30" dur="1s" repeatCount="indefinite" />
+                                </circle>
+                            </g>
+
+                            <!-- Electron Flow Path -->
+                            <path d="M 50 110 L 350 110" fill="none" stroke="var(--accent-amber)" stroke-width="1.5" stroke-dasharray="4 4">
+                                <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="1s" repeatCount="indefinite" />
+                            </path>
+                        </svg>
+                        <p style="font-size: 0.85rem; color: #aaa; text-align: center; font-style: italic;">The Proton Motive Force: Converting electron kinetic energy into a chemical gradient and finally into molecular torque (ATP).</p>
+                    </div>
+                </div>
+
                 <!-- VISUAL DYNAMIC: RESPIRATION FLOW -->
                 <div class="visual-dynamic glass" style="padding: 25px; margin: 30px 0; border-radius: var(--standard-radius); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
                     <h5 style="color: var(--accent-orange); margin-bottom: 20px; text-align: center;"><i class="fas fa-battery-full"></i> Visual Dynamic: The ATP Production Workflow</h5>
@@ -283,6 +327,24 @@ window.CHAPTER_DATA["ch3"] = {
                         <li>O₂ is the final electron acceptor; without it, only fermentation (2 ATP) is possible.</li>
                         <li>Total aerobic yield: ~30-32 ATP per glucose.</li>
                     </ul>
+                </div>
+
+                <!-- VIDEO CURATION: MASTER CLASS (HYBRID LINK CARD) -->
+                <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-orange); padding: 30px;">
+                    <h5 style="color: var(--accent-orange); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Cellular Respiration Details</h5>
+                    <a href="https://www.youtube.com/watch?v=4Eo7JtRA7lg" target="_blank" style="text-decoration: none; display: block;">
+                        <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://img.youtube.com/vi/4Eo7JtRA7lg/maxresdefault.jpg'); background-size: cover; background-position: center; border: 1px solid rgba(251,146,60,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s ease;">
+                            <!-- Floating Play Button -->
+                            <div style="width: 80px; height: 80px; background: var(--accent-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(251,146,60,0.6); z-index: 2;">
+                                <i class="fas fa-play" style="color: black; font-size: 2rem; margin-left: 5px;"></i>
+                            </div>
+                            <!-- Bottom Info Bar -->
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(251, 146, 60, 0.9); padding: 12px; text-align: center; backdrop-filter: blur(10px);">
+                                <p style="margin: 0; color: black; font-weight: 800; font-size: 0.9rem; letter-spacing: 1px;">WATCH ON YOUTUBE <i class="fas fa-external-link-alt" style="font-size: 0.8rem; margin-left: 8px;"></i></p>
+                            </div>
+                        </div>
+                    </a>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Cellular Respiration (Amoeba Sisters / Advanced Curation)</p>
                 </div>
             </div>
         `

@@ -101,7 +101,7 @@ window.CHAPTER_DATA["ch8"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-emerald); padding: 30px;">
                     <h5 style="color: var(--accent-emerald); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Ecosystem Dynamics & Energy Flow</h5>
                     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(16,185,129,0.3);">
-                        <iframe src="https://www.youtube.com/embed/GxE1SSqbSn4" title="Crash Course Ecology #4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/GxE1SSqbSn4?rel=0&modestbranding=1" title="Crash Course Ecology #4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                     </div>
                     <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Community Ecology (Crash Course Ecology #4)</p>
                 </div>
@@ -167,7 +167,7 @@ window.CHAPTER_DATA["ch8"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-emerald); padding: 30px;">
                     <h5 style="color: var(--accent-emerald); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Ecosystem Stability</h5>
                     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(16,185,129,0.3);">
-                        <iframe src="https://www.youtube.com/embed/GK_vRtHJZu4" title="Ecosystem Stability" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/GK_vRtHJZu4?rel=0&modestbranding=1" title="Ecosystem Stability" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                     </div>
                     <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Why Biodiversity is Important (Amoeba Sisters)</p>
                 </div>
@@ -239,7 +239,7 @@ window.CHAPTER_DATA["ch8"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-blue); padding: 30px;">
                     <h5 style="color: var(--accent-blue); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Population Ecology</h5>
                     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(59,130,246,0.3);">
-                        <iframe src="https://www.youtube.com/embed/RBOsqmBQBQk" title="Crash Course Ecology #2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/RBOsqmBQBQk?rel=0&modestbranding=1" title="Crash Course Ecology #2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                     </div>
                     <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Population Ecology (Crash Course Ecology #2)</p>
                 </div>

@@ -87,7 +87,7 @@ window.CHAPTER_DATA["ch2"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-cyan); padding: 30px;">
                     <h5 style="color: var(--accent-cyan); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: DNA Structure & Chemistry</h5>
                     <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(6,182,212,0.3);">
-                        <iframe src="https://www.youtube.com/embed/8m6hHRlKwxY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/8m6hHRlKwxY?rel=0&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
                             <div class="link-card-content">
                                 <h4>Watch Verification Video</h4>
                                 <p>High-Fidelity Playback</p>
@@ -163,7 +163,7 @@ window.CHAPTER_DATA["ch2"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-cyan); padding: 30px;">
                     <h5 style="color: var(--accent-cyan); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: DNA Replication Process</h5>
                     <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(6,182,212,0.3);">
-                        <iframe src="https://www.youtube.com/embed/Qqe4thU-os8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/Qqe4thU-os8?rel=0&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
                             <div class="link-card-content">
                                 <h4>Watch Verification Video</h4>
                                 <p>High-Fidelity Playback</p>
@@ -272,7 +272,7 @@ window.CHAPTER_DATA["ch2"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-purple); padding: 30px;">
                     <h5 style="color: var(--accent-purple); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: RNA Processing</h5>
                     <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden;">
-                        <iframe src="https://www.youtube.com/embed/YjWuVrzDZBs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/YjWuVrzDZBs?rel=0&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
                             <div class="link-card-content">
                                 <h4>Watch Verification Video</h4>
                                 <p>High-Fidelity Playback</p>
@@ -348,7 +348,7 @@ window.CHAPTER_DATA["ch2"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-amber); padding: 30px;">
                     <h5 style="color: var(--accent-amber); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Translation</h5>
                     <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(245,158,11,0.3);">
-                        <iframe src="https://www.youtube.com/embed/oefAI2x2CQM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/oefAI2x2CQM?rel=0&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
                             <div class="link-card-content">
                                 <h4>Watch Verification Video</h4>
                                 <p>High-Fidelity Playback</p>
@@ -407,7 +407,7 @@ window.CHAPTER_DATA["ch2"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-emerald); padding: 30px;">
                     <h5 style="color: var(--accent-emerald); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Operon Logic (Lac & Trp)</h5>
                     <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(16,185,129,0.3);">
-                        <iframe src="https://www.youtube.com/embed/ePJb0Gk-u6Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/ePJb0Gk-u6Y?rel=0&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
                             <div class="link-card-content">
                                 <h4>Watch Verification Video</h4>
                                 <p>High-Fidelity Playback</p>
@@ -456,7 +456,7 @@ window.CHAPTER_DATA["ch2"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-blue); padding: 30px;">
                     <h5 style="color: var(--accent-blue); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: PCR & Gel Electrophoresis</h5>
                     <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(6,182,212,0.3);">
-                        <iframe src="https://www.youtube.com/embed/33c8bJz2sc0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/33c8bJz2sc0?rel=0&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
                             <div class="link-card-content">
                                 <h4>Watch Verification Video</h4>
                                 <p>High-Fidelity Playback</p>

@@ -87,7 +87,7 @@ window.CHAPTER_DATA["ch9"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-magenta); padding: 30px;">
                     <h5 style="color: var(--accent-magenta); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Systematic Reviews</h5>
                     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(217,70,239,0.3);">
-                        <iframe src="https://www.youtube.com/embed/fA97v8fJ5jE" title="PRISMA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/fA97v8fJ5jE?rel=0&modestbranding=1" title="PRISMA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                     </div>
                     <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Understanding PRISMA (Cochrane Training)</p>
                 </div>
@@ -143,7 +143,7 @@ window.CHAPTER_DATA["ch9"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-orange); padding: 30px;">
                     <h5 style="color: var(--accent-orange); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: P-Hacking & Science Ethics</h5>
                     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(249,115,22,0.3);">
-                        <iframe src="https://www.youtube.com/embed/42QuXLucH3Q" title="p-hacking" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/42QuXLucH3Q?rel=0&modestbranding=1" title="p-hacking" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                     </div>
                     <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Scientific Bias (Veritasium)</p>
                 </div>
@@ -196,7 +196,7 @@ window.CHAPTER_DATA["ch9"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-amber); padding: 30px;">
                     <h5 style="color: var(--accent-amber); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: The Chi-Squared Test</h5>
                     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(245,158,11,0.3);">
-                        <iframe src="https://www.youtube.com/embed/zOvUQWOzTlc" title="Pearson's chi square test (goodness of fit)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/zOvUQWOzTlc?rel=0&modestbranding=1" title="Pearson's chi square test (goodness of fit)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                     </div>
                     <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Pearson's chi square test (Khan Academy)</p>
                 </div>
@@ -262,7 +262,7 @@ window.CHAPTER_DATA["ch9"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-red); padding: 30px;">
                     <h5 style="color: var(--accent-red); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Standard Error & SD</h5>
                     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(239,68,68,0.3);">
-                        <iframe src="https://www.youtube.com/embed/BwYj69LAQOI" title="SEM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/BwYj69LAQOI?rel=0&modestbranding=1" title="SEM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                     </div>
                     <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Standard Deviation vs Standard Error (Bozeman Science)</p>
                 </div>
@@ -295,7 +295,7 @@ window.CHAPTER_DATA["ch9"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-emerald); padding: 30px;">
                     <h5 style="color: var(--accent-emerald); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Experimental Design</h5>
                     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(16,185,129,0.3);">
-                        <iframe src="https://www.youtube.com/embed/5U7L_2VnS_k" title="Experimental Design" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/5U7L_2VnS_k?rel=0&modestbranding=1" title="Experimental Design" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                     </div>
                     <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Controlled Experiments (Bozeman Science)</p>
                 </div>
@@ -329,7 +329,7 @@ window.CHAPTER_DATA["ch9"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-magenta); padding: 30px;">
                     <h5 style="color: var(--accent-magenta); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: The CER Model</h5>
                     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(217,70,239,0.3);">
-                        <iframe src="https://www.youtube.com/embed/5KKsLuRPsvU" title="CER" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/5KKsLuRPsvU?rel=0&modestbranding=1" title="CER" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                     </div>
                     <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Evidence-Based Claims (Crash Course)</p>
                 </div>

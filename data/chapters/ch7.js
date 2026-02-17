@@ -81,7 +81,7 @@ window.CHAPTER_DATA["ch7"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-amber); padding: 30px;">
                     <h5 style="color: var(--accent-amber); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Natural Selection Logic</h5>
                     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(245,158,11,0.3);">
-                        <iframe src="https://www.youtube.com/embed/0SCjhI86grU" title="Natural Selection" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/0SCjhI86grU?rel=0&modestbranding=1" title="Natural Selection" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                     </div>
                     <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Stated Clearly: What is Natural Selection?</p>
                 </div>
@@ -108,7 +108,7 @@ window.CHAPTER_DATA["ch7"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-amber); padding: 30px;">
                     <h5 style="color: var(--accent-amber); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Natural Selection & H-W equilibrium</h5>
                     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(245,158,11,0.3);">
-                        <iframe src="https://www.youtube.com/embed/7VM9YxmULuo" title="Hardy-Weinberg Equilibrium" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/7VM9YxmULuo?rel=0&modestbranding=1" title="Hardy-Weinberg Equilibrium" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                     </div>
                     <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Evolution & Hardy-Weinberg (Amoeba Sisters)</p>
                 </div>
@@ -187,7 +187,7 @@ window.CHAPTER_DATA["ch7"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-purple); padding: 30px;">
                     <h5 style="color: var(--accent-purple); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Cladograms & Phylogenetics</h5>
                     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(168,85,247,0.3);">
-                        <iframe src="https://www.youtube.com/embed/F38BmgPcZ_I" title="Crash Course Biology #19" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/F38BmgPcZ_I?rel=0&modestbranding=1" title="Crash Course Biology #19" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                     </div>
                     <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Taxonomy: Life's Filing System (Crash Course Biology #19)</p>
                 </div>

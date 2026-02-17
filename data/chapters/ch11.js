@@ -51,7 +51,7 @@ window.CHAPTER_DATA["ch11"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-amber); padding: 30px;">
                     <h5 style="color: var(--accent-amber); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: The Chi-Squared Test</h5>
                     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(245,158,11,0.3);">
-                        <iframe src="https://www.youtube.com/embed/zOvUQWOzTlc" title="Pearson's chi square test (goodness of fit)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/zOvUQWOzTlc?rel=0&modestbranding=1" title="Pearson's chi square test (goodness of fit)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                     </div>
                     <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Pearson's chi square test (Khan Academy)</p>
                 </div>
@@ -116,7 +116,7 @@ window.CHAPTER_DATA["ch11"] = {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-red); padding: 30px;">
                     <h5 style="color: var(--accent-red); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Standard Error & SD</h5>
                     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: var(--standard-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(239,68,68,0.3);">
-                        <iframe src="https://www.youtube.com/embed/BwYj69LAQOI" title="SEM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/BwYj69LAQOI?rel=0&modestbranding=1" title="SEM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
                     </div>
                     <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Standard Deviation vs Standard Error (Bozeman Science)</p>
                 </div>

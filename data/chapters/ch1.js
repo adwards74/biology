@@ -340,7 +340,7 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-emerald); padding: 30px;">
                     <h5 style="color: var(--accent-emerald); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Why Are Cells Small?</h5>
                     <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(16,185,129,0.3);">
-                        <iframe src="https://www.youtube-nocookie.com/embed/nM5C_Nn_Nq8?rel=0&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/6xx5v3PKZZM?rel=0&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
     <div class="link-card-content">
         <h4>Watch Verification Video</h4>
         <p>High-Fidelity Playback</p>
@@ -348,7 +348,7 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
     <div class="link-card-arrow"><i class="fas fa-external-link-alt"></i></div>
 </div>
                     </div>
-                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Why Are Cells Small? (Bozeman Science / Academic Curation)</p>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Cell Size and SAV Ratio (Amoeba Sisters / Academic Curation)</p>
                 </div>
             </div>
         `

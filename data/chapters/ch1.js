@@ -9,8 +9,8 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
 
     "ch1-1": {
         javaLogic: "geometry_of_life",
-        title: "1.1: The Geometry of Life",
-        subtitle: "Cell Size, Surface Area-to-Volume Ratio, and Organelle Architecture",
+        title: "1.1: Cell Size and Scale",
+        subtitle: "Cellular Scaling Laws, Surface Area-to-Volume Ratio, and Efficiency",
         content: `
             <div class="lesson-section">
 
@@ -50,7 +50,7 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
                         <svg viewBox="0 0 500 120" style="max-width: 500px; width: 100%; height: auto; filter: drop-shadow(0 0 10px rgba(16,185,129,0.2));">
                             <path d="M 150 60 C 150 20, 200 20, 200 60 S 250 100, 250 60 S 300 20, 300 60 S 350 100, 350 60" 
                                   fill="rgba(6,182,212,0.1)" stroke="var(--accent-cyan)" stroke-width="2" stroke-dasharray="8 4" />
-                            <text x="50%" y="110" fill="white" font-size="12" font-weight="bold" text-anchor="middle">Surface Efficiency = Flux Capacity Logic</text>
+                            <text x="50%" y="110" fill="white" font-size="12" font-weight="bold" text-anchor="middle">Surface Efficiency = Flux Capacity logic</text>
                         </svg>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%;">
                             <div style="text-align: center;">
@@ -338,9 +338,9 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
 
                 <!-- VIDEO CURATION: MASTER CLASS (HYBRID LINK CARD) -->
                 <div class="visual-dynamic glass" style="margin-top: 40px; border-top: 1px solid var(--accent-emerald); padding: 30px;">
-                    <h5 style="color: var(--accent-emerald); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: The Geometry of Cell Size</h5>
+                    <h5 style="color: var(--accent-emerald); margin-bottom: 25px; text-align: center;"><i class="fab fa-youtube"></i> Master Class: Why Are Cells Small?</h5>
                     <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--standard-radius); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(16,185,129,0.3);">
-                        <iframe src="https://www.youtube.com/embed/wtH8p_oE91c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+                        <iframe src="https://www.youtube.com/embed/nM5C_Nn_Nq8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
     <div class="link-card-content">
         <h4>Watch Verification Video</h4>
         <p>High-Fidelity Playback</p>
@@ -348,7 +348,7 @@ Object.assign(window.CHAPTER_DATA["ch1"], {
     <div class="link-card-arrow"><i class="fas fa-external-link-alt"></i></div>
 </div>
                     </div>
-                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Surface Area to Volume Ratio (Amoeba Sisters / Academic Curation)</p>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; font-style: italic;">Reference: Why Are Cells Small? (Bozeman Science / Academic Curation)</p>
                 </div>
             </div>
         `

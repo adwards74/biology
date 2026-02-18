@@ -2095,6 +2095,67 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function showLibrary() {
+        const container = document.getElementById('library-view');
+        if (!container) return;
+
+        const libraryData = window.BIO_LIBRARY;
+        if (!libraryData) {
+            container.innerHTML = '<div class="hero"><h1>Bio-Archive Offline</h1><p>Neural data link interrupted.</p></div>';
+            return;
+        }
+
+        container.innerHTML = `
+            <div class="hero">
+                <h1>Bio-Archive <span class="gradient-text">Library</span></h1>
+                <p>Curated external intelligence modules and research nodes for TJHSST IBET.</p>
+            </div>
+            
+            <div class="library-container" style="margin-top:40px; padding-bottom:50px;">
+                ${libraryData.categories.map(cat => `
+                    <div class="library-category">
+                        <h2 style="margin-bottom:25px; display:flex; align-items:center; gap:15px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:15px;">
+                            <i class="${cat.icon}" style="color:var(--accent-emerald);"></i> ${cat.title}
+                        </h2>
+                        <div class="library-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px; margin-bottom:50px;">
+                            ${cat.resources.map(res => renderLibraryResource(res)).join('')}
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    function renderLibraryResource(res) {
+        const fullStars = '★'.repeat(res.relevance);
+        const emptyStars = '☆'.repeat(5 - res.relevance);
+        const icon = res.type === 'video' ? 'fab fa-youtube' : 'fas fa-external-link-alt';
+        const color = res.type === 'video' ? '#ff4b2b' : 'var(--accent-cyan)';
+        const link = res.type === 'video' ? `https://www.youtube.com/watch?v=${res.id}` : res.url;
+
+        return `
+            <div class="library-card glass" onclick="window.open('${link}', '_blank')">
+                <div style="display:flex; align-items:flex-start; gap:15px;">
+                    <div class="card-type-icon" style="background:${color}20; color:${color}; min-width:40px; height:40px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">
+                        <i class="${icon}"></i>
+                    </div>
+                    <div style="flex:1;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+                            <span style="font-size: 0.65rem; text-transform: uppercase; letter-spacing:1px; opacity: 0.6;">${res.author}</span>
+                            ${res.views ? `<span style="font-size: 0.55rem; opacity: 0.5; background: rgba(0,0,0,0.3); padding: 2px 8px; border-radius: 20px;"><i class="fas fa-eye"></i> ${res.views}</span>` : ''}
+                        </div>
+                        <h4 style="font-size: 0.95rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px;">${res.title}</h4>
+                        <p style="font-size: 0.8rem; opacity: 0.7; line-height:1.4; margin-bottom:15px;">${res.description}</p>
+                        <div style="display:flex; justify-content:space-between; align-items:center; padding-top:10px; border-top:1px solid rgba(255,255,255,0.05);">
+                            <span style="color:#ffd700; font-size:0.75rem;">${fullStars}${emptyStars}</span>
+                            <span style="font-size: 0.5rem; letter-spacing: 1px; font-weight: 800; opacity: 0.4;">RELEVANCE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
     function showLab() {
         const container = document.getElementById('lab-view');
         if (!container) return;
@@ -2250,7 +2311,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.showDashboard = showDashboard;
     window.showSubjects = showSubjects;
     window.showStrategy = showStrategy;
-    window.showResources = showResources;
+    window.showLibrary = showLibrary;
     window.showGlossary = showGlossary;
     window.showAtlas = showAtlas;
     window.showReviewHub = showReviewHub;

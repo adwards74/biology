@@ -35,6 +35,7 @@ window.AppRouter = (function () {
         if (viewId === 'atlas' && window.showAtlas) window.showAtlas();
         if (viewId === 'glossary' && window.showGlossary) window.showGlossary();
         if (viewId === 'lab' && window.showLab) window.showLab();
+        if (viewId === 'library' && window.showLibrary) window.showLibrary();
     }
 
     // Expose switchView to window for legacy compatibility

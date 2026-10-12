@@ -1030,6 +1030,21 @@ document.addEventListener('DOMContentLoaded', () => {
         return "Think about the core intuition box for this chapter. Is the growth additive or multiplicative?";
     };
 
+    // Keyword-based validation for free-response justifications
+    window.validateJustification = (userInput, expectedAnswer) => {
+        const stopWords = new Set(['the','a','an','is','are','was','were','be','been','being','have','has','had','do','does','did','will','would','could','should','may','might','must','shall','can','of','in','on','at','to','for','with','by','from','as','into','through','during','before','after','above','below','between','among','it','its','this','that','these','those','and','or','but','not','no','yes','if','then','than','so','very','just','because','since','while','where','when','how','what','which','who','whom','there','here','all','any','both','each','few','more','most','other','some','such','only','own','same','too','s','t','d','ll','m','re','ve']);
+        const cleanAnswer = expectedAnswer.replace(/\$[^$]*\$/g, ' ').replace(/\\\\/g, ' ').replace(/[^a-zA-Z0-9\s]/g, ' ');
+        const answerWords = cleanAnswer.toLowerCase().split(/\s+/).filter(w => w.length > 3 && !stopWords.has(w));
+        const uniqueKeywords = [...new Set(answerWords)];
+        if (uniqueKeywords.length === 0) return { passed: input.length > 20, matched: 0, total: 0 };
+
+        const cleanInput = userInput.toLowerCase();
+        const matched = uniqueKeywords.filter(kw => cleanInput.includes(kw));
+        const coverage = matched.length / uniqueKeywords.length;
+        const passed = coverage >= 0.4 && userInput.trim().length >= 30;
+        return { passed, matched: matched.length, total: uniqueKeywords.length, coverage };
+    };
+
     window.handleJustificationSubmit = (subjectId, unitIdx) => {
         const subject = MATH_DATA.subjects.find(s => s.id === subjectId);
         if (!subject) return;
@@ -1041,28 +1056,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!input.trim()) return;
 
+        const validation = window.validateJustification(input, targetLevel.answer || '');
+
         saveQuizAttempt({
             chapter: unit.title,
             question: targetLevel.question,
-            userAnswer: "[Justification Provided]",
+            userAnswer: input.substring(0, 200),
             correctAnswer: targetLevel.answer,
-            correct: true,
+            correct: validation.passed,
             explanation: targetLevel.answer,
             date: new Date().toLocaleString()
         });
 
-        feedback.innerHTML = `
-            <div class="celebration-badge animate__animated animate__tada">
-                <h3 style="color:#ffd700;"><i class="fas fa-crown"></i> MASTERY ACHIEVED</h3>
-                <p style="color:white; font-size:0.9rem;">Your reasoning has been verified by the Elite 5.5 Neural Link.</p>
-            </div>
-        `;
-
-        if (window.confetti) {
-            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#ffd700', '#00d2ff', '#9d50bb'] });
+        if (validation.passed) {
+            feedback.innerHTML = `
+                <div class="celebration-badge animate__animated animate__tada">
+                    <h3 style="color:#ffd700;"><i class="fas fa-crown"></i> MASTERY ACHIEVED</h3>
+                    <p style="color:white; font-size:0.9rem;">Your reasoning covers the key concepts (${validation.matched}/${validation.total} keywords).</p>
+                </div>
+            `;
+            if (window.confetti) {
+                confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#ffd700', '#00d2ff', '#9d50bb'] });
+            }
+            setTimeout(() => { window.showSubjectDetail(subjectId); }, 3000);
+        } else {
+            feedback.innerHTML = `
+                <div class="glass" style="padding:20px; border-left: 4px solid #ff6b6b;">
+                    <h3 style="color:#ff6b6b;"><i class="fas fa-exclamation-triangle"></i> Needs More Detail</h3>
+                    <p style="color:white; font-size:0.9rem;">Your explanation matched ${validation.matched}/${validation.total} key concepts. Try including more specific reasoning from the lesson.</p>
+                    <p style="color:#aaa; font-size:0.8rem; margin-top:10px;"><strong>Expected key ideas:</strong> ${targetLevel.answer}</p>
+                </div>
+            `;
         }
-
-        setTimeout(() => { window.showSubjectDetail(subjectId); }, 3000);
     };
 
     window.handleFinalQuizAnswer = (subjectId, unitIdx, selected) => {

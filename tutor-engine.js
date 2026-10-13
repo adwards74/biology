@@ -125,8 +125,38 @@ window.TutorEngine = (function () {
                     else if (cleanKey.includes(kw)) score += 5;
                 });
 
+                // Neo 6.0: Fuzzy match fallback (Levenshtein)
+                if (score === 0) {
+                    const distance = this.getLevenshtein(cleanKey, lowerQuery);
+                    const threshold = Math.max(2, Math.floor(cleanKey.length * 0.3));
+                    if (distance <= threshold && cleanKey.length > 3) {
+                        score = 5 - distance;
+                    }
+                }
+
                 if (score > 0) {
                     items.forEach(item => results.push({ ...item, score }));
+                }
+            }
+
+            // Neo 6.0: HINT_DATABASE keyword fallback (with fuzzy)
+            if (results.length === 0) {
+                for (const [keyword, hint] of Object.entries(HINT_DATABASE)) {
+                    if (lowerQuery.includes(keyword) || keyword.includes(lowerQuery)) {
+                        results.push({ type: 'hint', title: keyword, definition: hint, score: 8 });
+                    } else if (keyword.length > 4) {
+                        // Fuzzy: allow typos in hint keywords
+                        const tokens = lowerQuery.split(/\s+/);
+                        for (const tok of tokens) {
+                            if (tok.length < 4) continue;
+                            const d = this.getLevenshtein(keyword, tok);
+                            const th = Math.max(2, Math.floor(keyword.length * 0.3));
+                            if (d <= th) {
+                                results.push({ type: 'hint', title: keyword, definition: hint, score: 6 - d });
+                                break;
+                            }
+                        }
+                    }
                 }
             }
 
@@ -146,6 +176,47 @@ window.TutorEngine = (function () {
             }
             return dp[m][n];
         }
+    };
+
+    // ========================================
+    // NEO 6.0: HINT DATABASE (Biology)
+    // ========================================
+    const HINT_DATABASE = {
+        "cell": "Cells are the basic unit of life. Remember: prokaryotes (no nucleus) vs eukaryotes (nucleus + organelles).",
+        "mitosis": "Mitosis phases: PMAT — Prophase, Metaphase, Anaphase, Telophase. Chromosomes line up at the metaphase plate!",
+        "meiosis": "Meiosis = 2 divisions, 4 haploid cells. Crossing over in Prophase I creates genetic variation.",
+        "dna": "DNA: A-T, G-C (Chargaff's rule). Antiparallel strands, 5' to 3' synthesis. The double helix!",
+        "replication": "DNA replication is semiconservative — each new molecule has one old strand and one new strand.",
+        "transcription": "Transcription: DNA -> mRNA (in nucleus). RNA polymerase reads 3' to 5', builds 5' to 3'.",
+        "translation": "Translation: mRNA -> protein (at ribosome). Codons (3 bases) = 1 amino acid. Start: AUG.",
+        "photosynthesis": "Photosynthesis: 6CO2 + 6H2O -> C6H12O6 + 6O2. Light reactions (thylakoid) + Calvin cycle (stroma).",
+        "respiration": "Cellular respiration: C6H12O6 + 6O2 -> 6CO2 + 6H2O + ATP. Glycolysis -> Krebs -> ETC. ~32 ATP total.",
+        "enzyme": "Enzymes lower activation energy. Lock-and-key (or induced fit). Denatured by extreme pH/temperature.",
+        "natural selection": "Natural selection: variation + competition + heritability = evolution. Survival of the fittest!",
+        "heredity": "Mendel's laws: segregation (alleles separate) and independent assortment (genes sort independently).",
+        "punnett": "Punnett squares predict offspring genotypes. Monohybrid = 3:1 phenotypic ratio (Aa x Aa).",
+        "ecosystem": "Ecosystems: energy flows (10% rule), nutrients cycle. Producers -> consumers -> decomposers.",
+        "homeostasis": "Homeostasis = stable internal conditions. Negative feedback loops (like thermostat) maintain balance.",
+        "osmosis": "Osmosis: water moves toward higher solute concentration. Hypotonic = swell, hypertonic = shrink.",
+        "atp": "ATP = cellular energy currency. ADP + Pi -> ATP (needs energy input). Hydrolysis releases energy.",
+        "pcr": "PCR amplifies DNA: denature (95C) -> anneal (55C) -> extend (72C). Doubles each cycle — exponential!",
+        "gel electrophoresis": "Gel electrophoresis separates DNA by size. Smaller fragments move farther. DNA is negative, moves to positive electrode.",
+        "operon": "Operons (lac/trp): prokaryotic gene regulation. Lac = inducible (lactose turns ON), Trp = repressible (tryptophan turns OFF).",
+        "linkage": "Linked genes are on the same chromosome and tend to inherit together. Crossing over can separate them — map distance = % recombination."
+    };
+
+    const PREREQUISITE_MAP = {
+        "mitosis": ["cell"],
+        "meiosis": ["mitosis", "cell"],
+        "replication": ["dna"],
+        "transcription": ["dna"],
+        "translation": ["transcription"],
+        "pcr": ["replication", "dna"],
+        "gel electrophoresis": ["pcr", "dna"],
+        "operon": ["transcription", "translation"],
+        "linkage": ["meiosis", "heredity"],
+        "photosynthesis": ["cell", "atp"],
+        "respiration": ["cell", "atp", "enzyme"]
     };
 
     // ========================================
@@ -203,6 +274,18 @@ window.TutorEngine = (function () {
         return stats;
     }
 
+    function getWeakTopics() {
+        const stats = getStats();
+        const weak = [];
+        for (const [topic, data] of Object.entries(stats.topicAccuracy)) {
+            if (data.total >= 2) {
+                const acc = Math.round((data.correct / data.total) * 100);
+                if (acc < 70) weak.push({ topic, accuracy: acc });
+            }
+        }
+        return weak.sort((a, b) => a.accuracy - b.accuracy);
+    }
+
     function updateTutorUI(stats, justCorrect) {
         const display = document.getElementById('tutor-stats-display');
         if (!display) return;
@@ -231,6 +314,12 @@ window.TutorEngine = (function () {
         if (!query || query.trim().length === 0) return "Sabrina, specify your biological inquiry.";
 
         const lowerQuery = query.toLowerCase().trim();
+
+        // Neo 6.0: Friday bridge + Wrong Answer Journal (before filters)
+        const fridayResp = handleFridayFlow(lowerQuery);
+        if (fridayResp) return fridayResp;
+        const journalResp = handleWrongAnswerFlow(lowerQuery, query);
+        if (journalResp) return journalResp;
 
         // --- 1. IBET & AP High-Intelligence Filters ---
         if (lowerQuery.includes('crispr') || lowerQuery.includes('biotech') || lowerQuery.includes('recombinant')) {
@@ -266,7 +355,9 @@ window.TutorEngine = (function () {
             const best = matches[0];
             let response = "";
 
-            if (best.type === 'unit' && best.insight) {
+            if (best.type === 'hint') {
+                response += `<div style="color:var(--accent-magenta); font-weight:bold; margin-bottom:5px;">💡 INTUITION:</div> ${best.definition}<br><br>`;
+            } else if (best.type === 'unit' && best.insight) {
                 response += `<div style="color:var(--accent-magenta); font-weight:bold; margin-bottom:5px;">💡 INTUITION:</div> ${best.insight}<br><br>`;
             } else if (best.type === 'glossary') {
                 response += `<div style="color:var(--accent-blue); font-weight:bold; margin-bottom:5px;">📝 DEFINITION:</div> ${best.definition}<br><br>`;
@@ -321,8 +412,181 @@ window.TutorEngine = (function () {
         return res;
     }
 
+    // ========================================
+    // NEO 6.0: WRONG ANSWER JOURNAL
+    // ========================================
+    const WRONG_KEY = 'neo_wrong_answers';
+    const WRONG_MAX = 50;
+
+    function getWrongAnswers() {
+        try {
+            const saved = localStorage.getItem(WRONG_KEY);
+            return saved ? JSON.parse(saved) : [];
+        } catch (e) {
+            return [];
+        }
+    }
+
+    function saveWrongAnswers(list) {
+        try {
+            localStorage.setItem(WRONG_KEY, JSON.stringify(list));
+        } catch (e) { /* silent */ }
+    }
+
+    function recordWrongAnswer(topic, question) {
+        const list = getWrongAnswers();
+        const dup = list.some(w => !w.resolved &&
+            w.topic.toLowerCase() === (topic || 'general').toLowerCase());
+        if (!dup) {
+            list.push({
+                topic: topic || 'general',
+                question: question || '',
+                timestamp: Date.now(),
+                resolved: false
+            });
+            if (list.length > WRONG_MAX) list.splice(0, list.length - WRONG_MAX);
+            saveWrongAnswers(list);
+        }
+        return getUnresolvedCount();
+    }
+
+    function getUnresolvedCount() {
+        return getWrongAnswers().filter(w => !w.resolved).length;
+    }
+
+    function getUnresolvedList() {
+        return getWrongAnswers().filter(w => !w.resolved);
+    }
+
+    function markWrongResolved(topic) {
+        const list = getWrongAnswers();
+        const lower = (topic || '').toLowerCase().trim();
+        let count = 0;
+        list.forEach(w => {
+            if (!w.resolved && (lower === '' ||
+                w.topic.toLowerCase().includes(lower) ||
+                lower.includes(w.topic.toLowerCase()))) {
+                w.resolved = true;
+                count++;
+            }
+        });
+        saveWrongAnswers(list);
+        return count;
+    }
+
+    function pickReviewItem() {
+        const unresolved = getUnresolvedList();
+        if (unresolved.length === 0) return null;
+        return unresolved[Math.floor(Math.random() * unresolved.length)];
+    }
+
+    const WRONG_TRIGGERS = [
+        "i don't understand", "i dont understand", "don't get it",
+        "dont get it", "i'm confused", "im confused", "i got it wrong",
+        "this is wrong", "i made a mistake", "still confused"
+    ];
+    const REVIEW_TRIGGERS = ["review", "quiz me", "test me", "practice"];
+    const RESOLVED_TRIGGERS = ["got it now", "understand now", "i get it now", "resolved", "makes sense now"];
+    const FRIDAY_PREP_TRIGGERS = ["prepare friday", "friday prep", "prepare for friday", "friday preview"];
+    const FRIDAY_REVIEW_TRIGGERS = ["review friday", "friday review", "friday recap"];
+
+    function stripTriggerWords(query, triggers) {
+        let cleaned = query.toLowerCase();
+        triggers.forEach(t => { cleaned = cleaned.split(t).join(' '); });
+        return cleaned.replace(/\s+/g, ' ').trim();
+    }
+
+    function handleWrongAnswerFlow(lowerQuery, originalQuery) {
+        if (WRONG_TRIGGERS.some(t => lowerQuery.includes(t))) {
+            const topicGuess = stripTriggerWords(lowerQuery, WRONG_TRIGGERS) ||
+                (KnowledgeMap.lastQueryTopic || 'general');
+            const count = recordWrongAnswer(topicGuess, originalQuery);
+            const hint = HINT_DATABASE[topicGuess.toLowerCase()] || '';
+            KnowledgeMap.lastQueryTopic = topicGuess;
+            return `📝 <strong>Saved to your Wrong Answer Journal</strong> ("${topicGuess}"). ` +
+                `You have ${count} unresolved item${count === 1 ? '' : 's'}. ` +
+                `Type "review" anytime to quiz yourself.` +
+                (hint ? `<br><br>💡 <strong>Quick help:</strong> ${hint}` : '');
+        }
+        if (REVIEW_TRIGGERS.some(t => lowerQuery === t || lowerQuery.startsWith(t + ' '))) {
+            const item = pickReviewItem();
+            if (!item) {
+                return "🎉 <strong>Wrong Answer Journal is clear!</strong> No unresolved items.";
+            }
+            const hint = HINT_DATABASE[item.topic.toLowerCase()] || '';
+            return `📝 <strong>Review Quiz</strong> (${getUnresolvedCount()} unresolved):<br><br>` +
+                `<strong>Topic:</strong> ${item.topic}<br>` +
+                `<strong>You asked:</strong> "${item.question}"<br><br>` +
+                (hint ? `💡 <strong>Hint:</strong> ${hint}<br><br>` : '') +
+                `Explain this concept back to me. Say "got it now" when resolved.`;
+        }
+        if (RESOLVED_TRIGGERS.some(t => lowerQuery.includes(t))) {
+            const topicGuess = stripTriggerWords(lowerQuery, RESOLVED_TRIGGERS);
+            const n = markWrongResolved(topicGuess);
+            if (n > 0) {
+                return `✅ <strong>Marked ${n} item${n === 1 ? '' : 's'} resolved!</strong> ` +
+                    `${getUnresolvedCount()} still in your journal.`;
+            }
+            return "✅ Noted! Journal item marked resolved.";
+        }
+        return null;
+    }
+
+    // ========================================
+    // NEO 6.0: ZOOM SESSION BRIDGE
+    // ========================================
+    const FRIDAY_CORE_TOPICS = [
+        "pcr",
+        "gel electrophoresis",
+        "operon",
+        "natural selection",
+        "cellular respiration"
+    ];
+
+    function handleFridayFlow(lowerQuery) {
+        if (FRIDAY_PREP_TRIGGERS.some(t => lowerQuery.includes(t))) {
+            const weak = getWeakTopics().slice(0, 3).map(w => w.topic);
+            const topics = weak.length >= 3 ? weak :
+                [...weak, ...FRIDAY_CORE_TOPICS.filter(t => !weak.includes(t))].slice(0, 3);
+            let out = "🎯 <strong>Friday Session Prep</strong> — 3 key concepts:<br><br>";
+            topics.forEach((t, i) => {
+                const hint = HINT_DATABASE[t.toLowerCase()] || '';
+                const prereqs = PREREQUISITE_MAP[t.toLowerCase()] || [];
+                out += `<strong>${i + 1}. ${t}</strong><br>`;
+                if (hint) out += `${hint}<br>`;
+                if (prereqs.length > 0) out += `🛡️ Prereqs: ${prereqs.join(', ')}<br>`;
+                out += "<br>";
+            });
+            out += "Skim these and bring questions to your tutor!";
+            return out;
+        }
+        if (FRIDAY_REVIEW_TRIGGERS.some(t => lowerQuery.includes(t))) {
+            const unresolved = getUnresolvedList();
+            let out = "🔄 <strong>Friday Session Review</strong><br><br>";
+            if (unresolved.length > 0) {
+                out += `📝 <strong>Wrong Answer Journal:</strong> ${unresolved.length} unresolved<br>`;
+                unresolved.slice(0, 5).forEach(w => { out += `   • ${w.topic}<br>`; });
+                out += '<br>Type "review" to quiz yourself.<br><br>';
+            } else {
+                out += "📝 <strong>Wrong Answer Journal:</strong> all clear!<br><br>";
+            }
+            const weak = getWeakTopics().slice(0, 3);
+            if (weak.length > 0) {
+                out += "📊 <strong>Weakest topics:</strong><br>";
+                weak.forEach(w => { out += `   • ${w.topic} (${w.accuracy}%)<br>`; });
+            }
+            return out;
+        }
+        return null;
+    }
+
     // Initialize
     setTimeout(() => KnowledgeMap.build(), 1000);
+
+    // Neo 6.0: expose journal API
+    window.getWrongAnswers = getWrongAnswers;
+    window.getUnresolvedCount = getUnresolvedCount;
+    window.markWrongResolved = markWrongResolved;
 
     return {
         handleChatInput,
@@ -330,7 +594,13 @@ window.TutorEngine = (function () {
         getSocraticAdvice,
         getConceptMatrix,
         getStats,
+        getWeakTopics,
         updateTutorUI,
-        buildNeuralMap: () => KnowledgeMap.build()
+        buildNeuralMap: () => KnowledgeMap.build(),
+        // Neo 6.0
+        getWrongAnswers,
+        getUnresolvedCount,
+        markWrongResolved,
+        pickReviewItem
     };
 })();

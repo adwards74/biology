@@ -22,9 +22,9 @@ window.BIO_LIBRARY = {
                 },
                 {
                     type: "video",
-                    title: "The Biology Learning Playlist Intro",
+                    title: "Amoeba Sisters Biology Learning Playlist Introduction",
                     author: "Amoeba Sisters",
-                    id: "T-0MvM-kE7A",
+                    id: "DHAK-Idi_OY",
                     views: "800K+",
                     relevance: 5,
                     description: "A perfect roadmap for visual learners starting their biology journey."
@@ -56,7 +56,7 @@ window.BIO_LIBRARY = {
                     type: "video",
                     title: "Introduction to Cells",
                     author: "Amoeba Sisters",
-                    id: "8IlzKri08t0",
+                    id: "8IlzKri08kk",
                     views: "6M+",
                     relevance: 5,
                     description: "Detailed visualization of prokaryotic vs eukaryotic architecture."

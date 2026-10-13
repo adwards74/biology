@@ -237,23 +237,30 @@ document.addEventListener('DOMContentLoaded', () => {
         recognition.interimResults = false;
         recognition.maxAlternatives = 1;
 
-        btn.style.color = "var(--accent-red)";
-        btn.querySelector('i').className = "fas fa-circle-notch fa-spin";
+        // Neo 6.0 Phase 2 (F7): defensive — button may not exist in older markup
+        const setBtn = (color, iconClass) => {
+            if (!btn) return;
+            btn.style.color = color;
+            const icon = btn.querySelector('i');
+            if (icon) icon.className = iconClass;
+        };
+        setBtn("var(--accent-red)", "fas fa-circle-notch fa-spin");
 
         recognition.onresult = (event) => {
             const transcript = event.results[0][0].transcript;
             input.value = transcript;
+            // Neo 6.0 Phase 2 (F7): mark this query as voice-originated so the
+            // tutor speaks its answer back once, even if TTS toggle is off
+            window._voiceQuery = true;
             window.submitTutorChat();
         };
 
         recognition.onend = () => {
-            btn.style.color = "var(--accent-magenta)";
-            btn.querySelector('i').className = "fas fa-microphone";
+            setBtn("var(--accent-magenta)", "fas fa-microphone");
         };
 
         recognition.onerror = () => {
-            btn.style.color = "var(--accent-magenta)";
-            btn.querySelector('i').className = "fas fa-microphone";
+            setBtn("var(--accent-magenta)", "fas fa-microphone");
         };
 
         recognition.start();

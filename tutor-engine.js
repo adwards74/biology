@@ -321,6 +321,10 @@ window.TutorEngine = (function () {
         const journalResp = handleWrongAnswerFlow(lowerQuery, query);
         if (journalResp) return journalResp;
 
+        // Neo 6.0 Phase 2 (F5): learning-path map trigger
+        const mapResp = handleMapFlow(lowerQuery);
+        if (mapResp) return mapResp;
+
         // --- 1. IBET & AP High-Intelligence Filters ---
         if (lowerQuery.includes('crispr') || lowerQuery.includes('biotech') || lowerQuery.includes('recombinant')) {
             return `
@@ -390,6 +394,10 @@ window.TutorEngine = (function () {
                 i++; setTimeout(type, delay);
             } else {
                 bubble.innerHTML = `<span class="terminal-prefix">></span> ${html}`;
+                // Neo 6.0 Phase 2 (F7): speak when TTS enabled or query came from voice
+                const voiceOnce = window._voiceQuery === true;
+                window._voiceQuery = false;
+                if (voiceOnce || isTTSEnabled()) speakText(stripForSpeech(text));
             }
         }
         type();
@@ -438,15 +446,23 @@ window.TutorEngine = (function () {
         const dup = list.some(w => !w.resolved &&
             w.topic.toLowerCase() === (topic || 'general').toLowerCase());
         if (!dup) {
-            list.push({
+            const now = Date.now();
+            const item = {
                 topic: topic || 'general',
                 question: question || '',
-                timestamp: Date.now(),
-                resolved: false
-            });
+                timestamp: now,
+                resolved: false,
+                // Neo 6.0 Phase 2 (F6): spaced repetition fields
+                subject: (typeof TUTOR_SUBJECT !== 'undefined' ? TUTOR_SUBJECT : 'general'),
+                lastReviewed: now,
+                reviewCount: 0,
+                nextReview: now + DAY_MS // first review due in 1 day
+            };
+            list.push(item);
             if (list.length > WRONG_MAX) list.splice(0, list.length - WRONG_MAX);
             saveWrongAnswers(list);
         }
+        updateReviewBadge();
         return getUnresolvedCount();
     }
 
@@ -471,13 +487,16 @@ window.TutorEngine = (function () {
             }
         });
         saveWrongAnswers(list);
+        updateReviewBadge();
         return count;
     }
 
     function pickReviewItem() {
-        const unresolved = getUnresolvedList();
-        if (unresolved.length === 0) return null;
-        return unresolved[Math.floor(Math.random() * unresolved.length)];
+        // Neo 6.0 Phase 2 (F6): prefer items due for spaced review
+        const due = getDueItems();
+        const pool = due.length > 0 ? due : getUnresolvedList();
+        if (pool.length === 0) return null;
+        return pool[Math.floor(Math.random() * pool.length)];
     }
 
     const WRONG_TRIGGERS = [
@@ -508,11 +527,31 @@ window.TutorEngine = (function () {
                 `Type "review" anytime to quiz yourself.` +
                 (hint ? `<br><br>💡 <strong>Quick help:</strong> ${hint}` : '');
         }
+        // Neo 6.0 Phase 2 (F6): "due" lists items due for spaced review
+        if (lowerQuery === "due" || lowerQuery === "what's due" ||
+            lowerQuery === "what is due" || lowerQuery === "review due" ||
+            lowerQuery === "due for review") {
+            const due = getDueItems();
+            if (due.length === 0) {
+                return "📅 <strong>Nothing due for review!</strong> " +
+                    (getUnresolvedCount() > 0
+                        ? `You have ${getUnresolvedCount()} unresolved item(s), but none are due yet. Spaced review keeps them fresh.`
+                        : "Your Wrong Answer Journal is clear. Nice work!");
+            }
+            let out = `📅 <strong>Due for review (${due.length}):</strong><br><br>`;
+            due.slice(0, 8).forEach(w => { out += `• ${w.topic}<br>`; });
+            out += `<br>Type "review" to start quizzing.`;
+            return out;
+        }
         if (REVIEW_TRIGGERS.some(t => lowerQuery === t || lowerQuery.startsWith(t + ' '))) {
             const item = pickReviewItem();
             if (!item) {
                 return "🎉 <strong>Wrong Answer Journal is clear!</strong> No unresolved items.";
             }
+            // Neo 6.0 Phase 2 (F6): presenting the quiz counts as a review —
+            // push the next review to the next spaced interval
+            scheduleNextReview(item);
+            updateJournalItem(item);
             const hint = HINT_DATABASE[item.topic.toLowerCase()] || '';
             return `📝 <strong>Review Quiz</strong> (${getUnresolvedCount()} unresolved):<br><br>` +
                 `<strong>Topic:</strong> ${item.topic}<br>` +
@@ -580,6 +619,232 @@ window.TutorEngine = (function () {
         return null;
     }
 
+    // ========================================
+    // NEO 6.0 PHASE 2: SPACED REPETITION + VOICE LINK + LEARNING-PATH TREE
+    // ========================================
+    const TUTOR_SUBJECT = 'bio';
+    const REVIEW_INTERVALS = [1, 3, 7, 14]; // days between reviews (1d, 3d, 7d, 14d)
+    const DAY_MS = 24 * 60 * 60 * 1000;
+    const TTS_KEY = 'neo_tts_enabled';
+
+    function escHtml(s) {
+        return String(s == null ? '' : s).replace(/[&<>"']/g, c =>
+            ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+
+    // --- F6: spaced repetition helpers (backward compatible with Phase 1 records) ---
+    function normalizeJournalItem(w) {
+        if (typeof w.reviewCount !== 'number') w.reviewCount = 0;
+        if (typeof w.lastReviewed !== 'number') w.lastReviewed = w.timestamp || Date.now();
+        if (typeof w.nextReview !== 'number') {
+            w.nextReview = w.lastReviewed + REVIEW_INTERVALS[0] * DAY_MS;
+        }
+        if (!w.subject) w.subject = 'general';
+        return w;
+    }
+
+    function getDueItems() {
+        const now = Date.now();
+        return getWrongAnswers().map(normalizeJournalItem)
+            .filter(w => !w.resolved && w.nextReview <= now);
+    }
+
+    function scheduleNextReview(w) {
+        normalizeJournalItem(w);
+        w.lastReviewed = Date.now();
+        w.reviewCount = (w.reviewCount || 0) + 1;
+        const idx = Math.min(w.reviewCount, REVIEW_INTERVALS.length - 1);
+        w.nextReview = w.lastReviewed + REVIEW_INTERVALS[idx] * DAY_MS;
+        return w;
+    }
+
+    function updateJournalItem(updated) {
+        const list = getWrongAnswers();
+        const i = list.findIndex(w => w.topic === updated.topic && w.timestamp === updated.timestamp);
+        if (i >= 0) {
+            list[i] = updated;
+            saveWrongAnswers(list);
+        }
+        updateReviewBadge();
+    }
+
+    function updateReviewBadge() {
+        try {
+            const anchor = document.querySelector('.tutor-chat-input');
+            if (!anchor) return;
+            let badge = document.getElementById('neo-review-badge');
+            if (!badge) {
+                badge = document.createElement('div');
+                badge.id = 'neo-review-badge';
+                anchor.parentNode.insertBefore(badge, anchor);
+            }
+            const due = getDueItems().length;
+            if (due > 0) {
+                badge.style.display = 'block';
+                badge.innerHTML =
+                    `<div style="margin-bottom:8px; padding:8px 12px; border-radius:10px; ` +
+                    `background:rgba(255,215,0,.08); border:1px solid rgba(255,215,0,.35); ` +
+                    `font-size:.78rem; color:#ffd700; cursor:pointer;" ` +
+                    `onclick="if(window.TutorEngine&&window.TutorEngine.handleChatInput){` +
+                    `var r=window.TutorEngine.handleChatInput('due');` +
+                    `if(window.typeTerminalMessage)window.typeTerminalMessage(r);}" ` +
+                    `title="Click to see what is due">` +
+                    `📅 <strong>Today: ${due} to review</strong> ` +
+                    `<span style="opacity:.65;">— tap to see</span></div>`;
+            } else {
+                badge.style.display = 'none';
+                badge.innerHTML = '';
+            }
+        } catch (e) { /* DOM not ready — silent */ }
+    }
+
+    // --- F5: prerequisite learning-path tree (CSS only, no libraries) ---
+    function injectTreeCSS() {
+        if (document.getElementById('neo-tree-css')) return;
+        const style = document.createElement('style');
+        style.id = 'neo-tree-css';
+        style.textContent =
+            '.neo-logic-tree{margin-top:12px;padding:14px;border:1px solid rgba(0,255,100,.25);' +
+            'border-radius:14px;background:rgba(0,0,0,.25);text-align:center;}' +
+            '.neo-tree-title{font-weight:bold;color:var(--accent-emerald,#00ff64);margin-bottom:10px;font-size:.9rem;}' +
+            '.neo-tree-level{margin:2px 0;}' +
+            '.neo-tree-level-label{font-size:.62rem;letter-spacing:1px;opacity:.55;margin-bottom:6px;}' +
+            '.neo-tree-nodes{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}' +
+            '.neo-tree-node{display:inline-block;padding:6px 12px;border:1px solid rgba(0,255,100,.35);' +
+            'border-radius:10px;font-size:.75rem;background:rgba(0,0,0,.35);color:#fff;}' +
+            '.neo-tree-node.prereq{border-color:rgba(56,239,125,.5);}' +
+            '.neo-tree-node.current{border:2px solid var(--accent-magenta,#f0f);font-weight:bold;' +
+            'font-size:.85rem;padding:9px 16px;}' +
+            '.neo-tree-node.child{border-color:rgba(255,215,0,.5);}' +
+            '.neo-tree-arrow{opacity:.4;margin:4px 0;font-size:.8rem;}' +
+            '.neo-tree-empty{font-size:.75rem;opacity:.7;margin-top:8px;}';
+        document.head.appendChild(style);
+    }
+
+    function renderLogicMap(topic) {
+        injectTreeCSS();
+        const key = (topic || '').toLowerCase().trim();
+        const display = topic || 'general';
+        const parents = PREREQUISITE_MAP[key] || [];
+        const grandparents = [];
+        parents.forEach(p => {
+            (PREREQUISITE_MAP[p.toLowerCase()] || []).forEach(gp => {
+                if (gp.toLowerCase() !== key && !parents.includes(gp) && !grandparents.includes(gp)) {
+                    grandparents.push(gp);
+                }
+            });
+        });
+        const children = Object.keys(PREREQUISITE_MAP).filter(k =>
+            (PREREQUISITE_MAP[k] || []).some(p => p.toLowerCase() === key));
+        let html = `<div class="neo-logic-tree">` +
+            `<div class="neo-tree-title">🗺️ Learning Path: ${escHtml(display)}</div>`;
+        if (grandparents.length > 0) {
+            html += `<div class="neo-tree-level"><div class="neo-tree-level-label">START HERE — FOUNDATION</div>` +
+                `<div class="neo-tree-nodes">` +
+                grandparents.map(g => `<span class="neo-tree-node">${escHtml(g)}</span>`).join('') +
+                `</div></div><div class="neo-tree-arrow">⬇</div>`;
+        }
+        if (parents.length > 0) {
+            html += `<div class="neo-tree-level"><div class="neo-tree-level-label">PREREQUISITES</div>` +
+                `<div class="neo-tree-nodes">` +
+                parents.map(p => `<span class="neo-tree-node prereq">${escHtml(p)}</span>`).join('') +
+                `</div></div><div class="neo-tree-arrow">⬇</div>`;
+        }
+        html += `<div class="neo-tree-level"><div class="neo-tree-nodes">` +
+            `<span class="neo-tree-node current">★ ${escHtml(display)}</span></div></div>`;
+        if (children.length > 0) {
+            html += `<div class="neo-tree-arrow">⬇</div>` +
+                `<div class="neo-tree-level"><div class="neo-tree-level-label">UNLOCKS NEXT</div>` +
+                `<div class="neo-tree-nodes">` +
+                children.slice(0, 6).map(c => `<span class="neo-tree-node child">${escHtml(c)}</span>`).join('') +
+                `</div></div>`;
+        }
+        if (parents.length === 0 && grandparents.length === 0 && children.length === 0) {
+            html += `<div class="neo-tree-empty">No prerequisite links recorded for this topic yet — ` +
+                `it is a foundation topic. 🌱</div>`;
+        }
+        html += `</div>`;
+        return html;
+    }
+
+    const MAP_TRIGGERS = ["map ", "path ", "learning path", "prerequisites of ", "prereqs of "];
+
+    function handleMapFlow(lowerQuery) {
+        for (const t of MAP_TRIGGERS) {
+            if (lowerQuery.startsWith(t)) {
+                const topic = lowerQuery.slice(t.length).trim() ||
+                    KnowledgeMap.lastQueryTopic || 'general';
+                return renderLogicMap(topic);
+            }
+        }
+        if (lowerQuery === "map" || lowerQuery === "path" ||
+            lowerQuery === "prerequisites" || lowerQuery === "prereqs") {
+            const topic = KnowledgeMap.lastQueryTopic || 'general';
+            return renderLogicMap(topic);
+        }
+        return null;
+    }
+
+    // --- F7: Voice Link — TTS (speech synthesis). STT lives in app.js. ---
+    function isTTSEnabled() {
+        try { return localStorage.getItem(TTS_KEY) === '1'; }
+        catch (e) { return false; }
+    }
+
+    function setTTSEnabled(on) {
+        try { localStorage.setItem(TTS_KEY, on ? '1' : '0'); } catch (e) { /* silent */ }
+        syncTTSButton();
+    }
+
+    function stripForSpeech(html) {
+        const d = document.createElement('div');
+        d.innerHTML = html;
+        let t = d.innerText || '';
+        t = t.replace(/[*_#`>|~]/g, ' ');
+        try {
+            t = t.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}]/gu, ' ');
+        } catch (e) { /* older regex engine — keep emoji */ }
+        return t.replace(/\s+/g, ' ').trim().slice(0, 500);
+    }
+
+    function speakText(text) {
+        if (!('speechSynthesis' in window)) return false;
+        try {
+            window.speechSynthesis.cancel();
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = 'en-US';
+            u.rate = 1.0;
+            window.speechSynthesis.speak(u);
+            return true;
+        } catch (e) { return false; }
+    }
+
+    function toggleTutorVoice() {
+        const on = !isTTSEnabled();
+        setTTSEnabled(on);
+        return on
+            ? "🔊 Voice responses ON — I will read my answers aloud."
+            : "🔇 Voice responses OFF.";
+    }
+
+    function syncTTSButton() {
+        try {
+            const btn = document.getElementById('tts-btn');
+            if (!btn) return;
+            const icon = btn.querySelector('i');
+            const on = isTTSEnabled();
+            if (icon) icon.className = on ? 'fas fa-volume-up' : 'fas fa-volume-mute';
+            btn.style.color = on ? 'var(--accent-emerald)' : 'var(--accent-magenta)';
+        } catch (e) { /* silent */ }
+    }
+
+    // Refresh badge + TTS button once the DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => { updateReviewBadge(); syncTTSButton(); });
+    } else {
+        updateReviewBadge(); syncTTSButton();
+    }
+
     // Initialize
     setTimeout(() => KnowledgeMap.build(), 1000);
 
@@ -587,6 +852,14 @@ window.TutorEngine = (function () {
     window.getWrongAnswers = getWrongAnswers;
     window.getUnresolvedCount = getUnresolvedCount;
     window.markWrongResolved = markWrongResolved;
+
+    // Neo 6.0 Phase 2 (F5/F6/F7)
+    window.renderLogicMap = renderLogicMap;
+    window.toggleTutorVoice = toggleTutorVoice;
+    window.isTTSEnabled = isTTSEnabled;
+    window.speakText = speakText;
+    window.getDueItems = getDueItems;
+    window.updateReviewBadge = updateReviewBadge;
 
     return {
         handleChatInput,
@@ -601,6 +874,13 @@ window.TutorEngine = (function () {
         getWrongAnswers,
         getUnresolvedCount,
         markWrongResolved,
-        pickReviewItem
+        pickReviewItem,
+        // Neo 6.0 Phase 2
+        getDueItems,
+        updateReviewBadge,
+        renderLogicMap,
+        toggleTutorVoice,
+        isTTSEnabled,
+        speakText
     };
 })();

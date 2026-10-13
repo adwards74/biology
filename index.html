@@ -213,6 +213,16 @@
                     <input type="text" id="tutor-chat-input" class="glass" placeholder="Ask Bio Tutor..."
                         style="flex:1; padding:10px 15px; border-radius:12px; background:rgba(0,0,0,0.3); border:1px solid rgba(0,255,100,0.2); color:white; font-size:0.85rem;"
                         onkeypress="if(event.key==='Enter')window.submitTutorChat()">
+                    <button class="glass" onclick="window.startVoiceInput()"
+                        style="padding:10px 15px; border-radius:12px; color:var(--accent-magenta); cursor:pointer;"
+                        id="voice-btn" title="Voice input">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <button class="glass" onclick="var r=window.toggleTutorVoice?window.toggleTutorVoice():'';if(r&&window.typeTerminalMessage)window.typeTerminalMessage(r);"
+                        style="padding:10px 15px; border-radius:12px; color:var(--accent-magenta); cursor:pointer;"
+                        id="tts-btn" title="Toggle voice responses">
+                        <i class="fas fa-volume-mute"></i>
+                    </button>
                     <button class="glass" onclick="window.submitTutorChat()"
                         style="padding:10px 15px; border-radius:12px; color:var(--accent-emerald); cursor:pointer;">
                         <i class="fas fa-paper-plane"></i>
